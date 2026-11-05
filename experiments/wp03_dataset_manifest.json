@@ -1,0 +1,265 @@
+{
+  "answer_protocol": "numeric-v1",
+  "data_config_sha256": "b99a1510116f5851648b876920078ea5eeb9feb46d1fb5eb8831ecfae96e8dda",
+  "dataset_fingerprint": "79ff92320ebb64e283ce342076c5e570989ef5433d8791231b2d78f370baf485",
+  "deduplication": {
+    "gsm8k": {
+      "test": {
+        "heldout_overlap_removed": 0,
+        "input": 1319,
+        "output": 1319,
+        "within_source_duplicates": 0
+      },
+      "train": {
+        "heldout_overlap_removed": 0,
+        "input": 7473,
+        "output": 7473,
+        "within_source_duplicates": 0
+      }
+    },
+    "tinystories": {
+      "heldout": {
+        "heldout_overlap_removed": 0,
+        "input": 2000,
+        "output": 2000,
+        "within_source_duplicates": 0
+      },
+      "train": {
+        "heldout_overlap_removed": 0,
+        "input": 10000,
+        "output": 10000,
+        "within_source_duplicates": 0
+      },
+      "train_vs_heldout": {
+        "heldout_overlap_removed": 0,
+        "input": 10000,
+        "output": 10000,
+        "within_source_duplicates": 0
+      }
+    }
+  },
+  "difficulty_interpretation": "reasoning_steps is expression dependency depth, not measured model/human reasoning effort; prompt length is controlled wording, word count is measured",
+  "files": {
+    "gsm8k/test.jsonl": {
+      "path": "gsm8k/test.jsonl",
+      "records": 1319,
+      "role": "training_or_evaluation",
+      "sha256": "004109fc103f45224abf47cb878bd9ba98208dd73fe677bb5732235cfbee0668",
+      "size_bytes": 1022549
+    },
+    "gsm8k/train.jsonl": {
+      "path": "gsm8k/train.jsonl",
+      "records": 6973,
+      "role": "training_or_evaluation",
+      "sha256": "42745feb0410a2ce951db2848c0e6e03c554bf6f9c1b76bd86c0ae6e5a76ba65",
+      "size_bytes": 5354859
+    },
+    "gsm8k/validation.jsonl": {
+      "path": "gsm8k/validation.jsonl",
+      "records": 500,
+      "role": "training_or_evaluation",
+      "sha256": "87d005b55956f683b14e434c66b561db9cde0e90e0369cc762f3531a9bced338",
+      "size_bytes": 380102
+    },
+    "math/test.jsonl": {
+      "path": "math/test.jsonl",
+      "records": 300,
+      "role": "training_or_evaluation",
+      "sha256": "fc4363514ce07c576103673b62bef4fb84e520fbbfd67429d70f50f8a9595eed",
+      "size_bytes": 242896
+    },
+    "math/train.jsonl": {
+      "path": "math/train.jsonl",
+      "records": 1500,
+      "role": "training_or_evaluation",
+      "sha256": "148688f520b73088c61969954900361a296a800cba66b617196cef05ea9cf0c8",
+      "size_bytes": 1216582
+    },
+    "math/validation.jsonl": {
+      "path": "math/validation.jsonl",
+      "records": 300,
+      "role": "training_or_evaluation",
+      "sha256": "522472eae2e6f64e8f121b5502aa2d5d1555e575a1a5d1d174c9a842622af0d8",
+      "size_bytes": 244681
+    },
+    "pilot/test.questions.jsonl": {
+      "path": "pilot/test.questions.jsonl",
+      "records": 150,
+      "role": "questions",
+      "sha256": "8d2e67d1b1f721080a34f1b35cba9933596fa97bbf4bca1beb5eedee0f2ea013",
+      "size_bytes": 79301
+    },
+    "pilot/test.references.jsonl": {
+      "path": "pilot/test.references.jsonl",
+      "records": 150,
+      "role": "references",
+      "sha256": "d9c4fc0a98c8b81b47a57171febafbe53184912bfce43c526c5459e8d8dca186",
+      "size_bytes": 19228
+    },
+    "pilot/validation.questions.jsonl": {
+      "path": "pilot/validation.questions.jsonl",
+      "records": 150,
+      "role": "questions",
+      "sha256": "ee52376fca54db76adcd1d7dd42f2c72220d1d7e8e137a062369b53a0e8d5bfc",
+      "size_bytes": 80203
+    },
+    "pilot/validation.references.jsonl": {
+      "path": "pilot/validation.references.jsonl",
+      "records": 150,
+      "role": "references",
+      "sha256": "ff1a02bf8b954636b1e40daeb4c650c2ada034a0fad3fc22c9f528298659e59a",
+      "size_bytes": 20148
+    },
+    "tinystories/test.jsonl": {
+      "path": "tinystories/test.jsonl",
+      "records": 1000,
+      "role": "pretraining",
+      "sha256": "ac255fd8bbfa4268529946c0f3d39b2b057fada4cd7e032fa4cf0adb765e8b7f",
+      "size_bytes": 995926
+    },
+    "tinystories/train.jsonl": {
+      "path": "tinystories/train.jsonl",
+      "records": 10000,
+      "role": "pretraining",
+      "sha256": "92e562218a2db37f9d6804dd7a565820785c003dd622f6a82184c4318e3fb8b9",
+      "size_bytes": 10711689
+    },
+    "tinystories/validation.jsonl": {
+      "path": "tinystories/validation.jsonl",
+      "records": 1000,
+      "role": "pretraining",
+      "sha256": "3650487dd48e82aeed5262fd6c881cdace7e5c44265d0966c38005f34da479d6",
+      "size_bytes": 1008063
+    }
+  },
+  "generator_version": "arithmetic-v1",
+  "leakage_audit": {
+    "limitations": "Exact-normalized text and +/* associative/commutative tree grouping; not semantic paraphrase detection",
+    "normalization": "NFKC + casefold + whitespace-v1",
+    "overlaps": {
+      "train/test": {
+        "normalized_text": 0,
+        "procedural_semantic_id": 0
+      },
+      "train/validation": {
+        "normalized_text": 0,
+        "procedural_semantic_id": 0
+      },
+      "validation/test": {
+        "normalized_text": 0,
+        "procedural_semantic_id": 0
+      }
+    },
+    "passed": true
+  },
+  "levels": [
+    {
+      "name": "easy",
+      "operand_max": 30,
+      "operand_min": 1,
+      "operations": 1,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "prompt_length": "short",
+      "reasoning_steps": 1
+    },
+    {
+      "name": "medium",
+      "operand_max": 20,
+      "operand_min": 1,
+      "operations": 3,
+      "operators": [
+        "+",
+        "-",
+        "*"
+      ],
+      "prompt_length": "medium",
+      "reasoning_steps": 2
+    },
+    {
+      "name": "hard",
+      "operand_max": 20,
+      "operand_min": 1,
+      "operations": 5,
+      "operators": [
+        "+",
+        "-",
+        "*",
+        "/"
+      ],
+      "prompt_length": "long",
+      "reasoning_steps": 3
+    }
+  ],
+  "pilot": {
+    "test": {
+      "difficulty_counts": {
+        "easy": 50,
+        "hard": 50,
+        "medium": 50
+      },
+      "records": 150
+    },
+    "validation": {
+      "difficulty_counts": {
+        "easy": 50,
+        "hard": 50,
+        "medium": 50
+      },
+      "records": 150
+    }
+  },
+  "schema_version": 1,
+  "scope": "full",
+  "seed": 42,
+  "selection_policy": "No model results or gold answers enter split ranking/pilot selection. Thresholds/calibrators may use validation only; test is held out.",
+  "sources": {
+    "gsm8k": {
+      "card_url": "https://github.com/openai/grade-school-math/tree/3101c7d5072418e28b9008a6636bde82a006892c",
+      "files": {
+        "test": {
+          "sha256": "3730d312f6e3440559ace48831e51066acaca737f6eabec99bccb9e4b3c39d14",
+          "size_bytes": 749738,
+          "url": "https://raw.githubusercontent.com/openai/grade-school-math/3101c7d5072418e28b9008a6636bde82a006892c/grade_school_math/data/test.jsonl"
+        },
+        "train": {
+          "sha256": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465",
+          "size_bytes": 4166206,
+          "url": "https://raw.githubusercontent.com/openai/grade-school-math/3101c7d5072418e28b9008a6636bde82a006892c/grade_school_math/data/train.jsonl"
+        }
+      },
+      "license": "MIT",
+      "repository": "openai/grade-school-math",
+      "revision": "3101c7d5072418e28b9008a6636bde82a006892c",
+      "selection": "Official train/test JSONL; validation is carved only from official train"
+    },
+    "schema_version": 1,
+    "tinystories": {
+      "card_url": "https://huggingface.co/datasets/roneneldan/TinyStories/blob/f54c09fd23315a6f9c86f9dc80f725de7d8f9c64/README.md",
+      "files": {
+        "train": {
+          "sha256": "77cf780cebe52b6e83e3a2ac84bc56d8059363113e41d17a023f1d8b2ed0fc0b",
+          "size_bytes": 248731111,
+          "url": "https://huggingface.co/datasets/roneneldan/TinyStories/resolve/f54c09fd23315a6f9c86f9dc80f725de7d8f9c64/data/train-00000-of-00004-2d5a1467fff1081b.parquet?download=true"
+        },
+        "validation": {
+          "sha256": "33406a6206554cfc279c29c11f4df51528af487aa1a602b075566fc83c49dcab",
+          "size_bytes": 9989127,
+          "url": "https://huggingface.co/datasets/roneneldan/TinyStories/resolve/f54c09fd23315a6f9c86f9dc80f725de7d8f9c64/data/validation-00000-of-00001-869c898b519ad725.parquet?download=true"
+        }
+      },
+      "license": "cdla-sharing-1.0",
+      "repository": "roneneldan/TinyStories",
+      "revision": "f54c09fd23315a6f9c86f9dc80f725de7d8f9c64",
+      "selection": "First configured rows of one pinned original TinyStories train shard and the official validation shard; not the whole corpus"
+    }
+  },
+  "split_policy": {
+    "gsm8k": "Official test preserved except exact duplicate collapse; validation carved only from official train",
+    "math": "Stable-ID hash ranking, stratified by configured difficulty",
+    "tinystories": "Official validation prefix split into internal validation/test; train overlap removed"
+  },
+  "work_package": "WP03"
+}

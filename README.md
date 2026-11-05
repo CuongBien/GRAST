@@ -2,14 +2,14 @@
 
 Repository cho nghiên cứu LLM from scratch theo Hướng C: reasoning và test-time compute.
 
-**Trạng thái: WP01 skeleton + WP02 configuration/reproducibility.** Đã có config,
-seed, run metadata/logs, checkpoint RNG và smoke test tái lập. Tokenizer, model,
-training loop, inference và thuật toán stopping vẫn chưa implement.
-Smoke chỉ dùng RNG và ma trận float32 nhỏ, không phải kết quả thực nghiệm model.
+**Trạng thái: WP01+WP02 baseline; WP03 data pipeline đã triển khai.** Đã có config,
+seed, metadata/logs, checkpoint RNG; dataset preparation, benchmark toán, answer extraction,
+split/dedup và fixed pilot. Tokenizer, model, training loop, inference và stopping chưa implement.
+Smoke WP02 chỉ dùng RNG/ma trận nhỏ; WP03 chưa đánh giá chất lượng model.
 
 WP02 đã nghiệm thu CPU, RTX 4060 và Colab A100; xem [evidence](docs/wp02_validation.md).
-Baseline được đánh dấu bằng tag `wp02-baseline`; chuẩn bị WP03 trên branch riêng.
-Chi tiết chuyển tiếp: [WP03 handoff](docs/wp03_handoff.md).
+Baseline được đánh dấu bằng tag `wp02-baseline`; WP03 phát triển trên branch riêng.
+Scope WP03: [handoff](docs/wp03_handoff.md); cách chạy: [WP03 data pipeline](docs/wp03_data.md).
 
 Nguồn kế hoạch: [LLM From Scratch — Hướng C | Project HQ](https://app.notion.com/p/4093badafe55810db45bfcc26b766de9)
 (bản cập nhật 31/10/2026; hạn đồ án 01/12/2026).
@@ -32,7 +32,7 @@ chưa phải cấu hình đã được kiểm chứng. Không dùng `AutoModelFo
 Cài [uv](https://docs.astral.sh/uv/getting-started/installation/), rồi chạy trong repository:
 
 ```powershell
-uv sync --locked --extra cpu
+uv sync --locked --extra cpu --extra data
 uv run --no-sync grast smoke --config configs/experiments/local_smoke.toml
 uv run --no-sync ruff check .
 uv run --no-sync ruff format --check .
@@ -40,9 +40,16 @@ uv run --no-sync pytest
 uv build
 ```
 
+Chuẩn bị dữ liệu thật và fixed pilot:
+
+```powershell
+uv run --no-sync grast prepare-data --config configs/data/wp03.toml
+# Các lần sau có thể thêm --offline để dùng lại cache đã xác minh.
+```
+
 Python mặc định là 3.11 trong `.python-version`. `uv.lock` cố định dependency đã resolve.
 Package phân phối tên `grast`, import bằng `llm_scratch`. Extra `cpu` cài PyTorch 2.9.1
-CPU; dùng `uv sync --locked --extra cuda` cho CUDA 12.8, rồi chọn config `local_cuda.toml`.
+CPU; dùng `uv sync --locked --extra cuda --extra data` cho CUDA 12.8, rồi chọn config `local_cuda.toml`.
 Hai extra loại trừ nhau. Dùng `--no-sync` khi chạy để giữ đúng runtime đã chọn.
 Colab dùng PyTorch có sẵn và ghi phiên bản thực tế, xem [WP02](docs/reproducibility.md).
 
@@ -50,7 +57,7 @@ Colab dùng PyTorch có sẵn và ghi phiên bản thực tế, xem [WP02](docs/
 
 ```text
 .github/                 CI, Dependabot cho Actions, issue và PR templates
-configs/                 model, tokenizer, pretrain, sft, sampling, experiments (TOML)
+configs/                 data/source lock, model, tokenizer, pretrain, sft, sampling, experiments
 src/llm_scratch/
   data/                  tokenizer, datasets, collator, difficulty
   model/                 config, layers, attention, transformer, cache
@@ -60,8 +67,8 @@ src/llm_scratch/
   research/              sample_bank, policy_replay, modal_analysis, error_analysis
   evaluation/            benchmarks, metrics, latency_vram
   utils/                 seed, logging
-scripts/                 entry points dự kiến; chạy hiện tại sẽ báo skeleton và exit 1
-tests/                   package, config, RNG/checkpoint và fresh-process reproducibility
+scripts/                 prepare_data đã chạy được; các entry points model/training còn placeholder
+tests/                   package, reproducibility, data/splits/dedup, arithmetic và answer extraction
 notebooks/               Colab A100 preflight và WP02 smoke; chưa chạy training
 experiments/             manifest thực nghiệm; chưa có kết quả
 artifacts/               runs, checkpoints, tokenizers, sample_bank, results (gitignore)

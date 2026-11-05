@@ -36,10 +36,10 @@ Trigger: push lên `main` hoặc các prefix branch trong `ci.yml`, PR vào `mai
 
 Hai job matrix chạy Python 3.11 trên Ubuntu và Windows:
 
-1. `uv sync --locked --extra cpu`.
+1. `uv sync --locked --extra cpu --extra data`.
 2. Ruff lint và format check.
-3. Package, configuration và reproducibility behavioral tests.
-4. WP02 fresh-process smoke (CPU), lưu run directory vào workspace runner.
+3. Package, configuration, reproducibility và data/answer-extraction behavioral tests.
+4. WP02 fresh-process smoke (CPU) và WP03 math-only smoke; data sources dùng offline fixtures trong tests.
 5. Build wheel và source distribution.
 6. Cài wheel vào environment sạch và import ngoài source tree.
 

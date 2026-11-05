@@ -4,6 +4,18 @@ Nguồn: [Project HQ — Research focus](https://app.notion.com/p/4093badafe5581
 Đây là hợp đồng thiết kế cho bước tiếp theo; chưa có serializer hoặc validator.
 Không có dữ liệu thực nghiệm trong repository.
 
+## Dataset/pilot — WP03 đã triển khai
+
+Manifest và dữ liệu WP03 theo [data protocol](wp03_data.md).
+Tất cả records có stable `question_id`, `source` và `split`; TinyStories dùng `text`,
+math/GSM8K dùng `question`, `answer`, `canonical_answer`. Arithmetic còn có
+`difficulty`, `operation_count`, `reasoning_steps` (dependency depth), prompt length/word count,
+semantic tree group và expression AST để audit exact answers.
+
+Pilot questions loại bỏ gold/AST; references được tách file theo cùng IDs.
+Manifest ghi SHA-256/counts/source revisions và split/pilot policies. Sample-bank implementation
+sau này phải lấy prompts từ questions files và chỉ join gold trong evaluator.
+
 ## Sample bank — giai đoạn 1
 
 Mỗi record đại diện một candidate của một question tại một checkpoint và decoding config.

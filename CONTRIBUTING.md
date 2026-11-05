@@ -22,6 +22,7 @@ Xem [GitHub workflow](docs/github_workflow.md) để biết thao tác bootstrap 
 - Không commit dataset, checkpoint, token, `.env` hay output lớn.
 - Lưu artifact ngoài Git; manifest ghi vị trí, config, seed, commit và checksum khi có.
 - Khi thêm dependency: cập nhật `pyproject.toml`, chạy `uv lock`, commit cả `uv.lock`.
-  Sync với `--extra cpu` hoặc `--extra cuda`; chạy `uv run --no-sync ...` để giữ runtime đó.
+  Sync với `--extra cpu` hoặc `--extra cuda`, thêm `--extra data` cho WP03;
+  chạy `uv run --no-sync ...` để giữ runtime đó.
 - Thêm behavioral tests cùng implementation; không dùng test rỗng hoặc skip để tuyên bố đã pass.
 - WP02 có PyTorch/NumPy cho reproducibility probes; chưa implement model hoặc tokenizer.

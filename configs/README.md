@@ -17,3 +17,7 @@ kiểu sai, seed không hợp lệ, head dimension/vocabulary không khớp, K k
 Snapshot resolved nằm trong `run/config.json`; file TOML nguồn được chép vào `config_sources/`.
 Model/training/generation config hiện chỉ được validate và snapshot; smoke chạy probe RNG
 và ma trận 8×8 float32, không khởi tạo model hoặc dùng các hyperparameter để train.
+
+WP03 có schema data riêng: `data/wp03.toml` và `data/sources.lock.json`.
+Lệnh `grast prepare-data --config configs/data/wp03.toml` tạo corpus/splits/math/pilot
+và manifest, không đi qua model-config loader. Xem `docs/wp03_data.md`.

@@ -1,8 +1,9 @@
 # WP03 — Dataset & Benchmark Design
 
-Scope do người dùng chốt ngày 05/11/2026. **Trạng thái: chỉ chuẩn bị; chưa triển khai WP03.**
-Nhánh `codex/wp03-preparation` bắt đầu từ tag `wp02-baseline`. Chưa tải/sinh dữ liệu,
-chưa tạo dataset manifest hoặc pilot, chưa viết script data hay answer extraction.
+Scope do người dùng chốt và cho phép thực hiện ngày 05/11/2026.
+**Trạng thái: đã triển khai và kiểm tra pipeline dữ liệu local.**
+Nhánh `codex/wp03-preparation` bắt đầu từ tag `wp02-baseline`.
+Xem [cách chạy và protocol](wp03_data.md) cùng [bằng chứng nghiệm thu](wp03_validation.md).
 
 ## Baseline đầu vào
 
@@ -39,25 +40,28 @@ phụ thuộc corpus và nằm sau phần data này.
 validation; giữ test set cho đánh giá cuối. Gold label chỉ dùng training/evaluation,
 không làm policy input. Không tuyên bố GSM8K là gate accuracy bắt buộc của model nhỏ.
 
-## Các quyết định sẽ chốt khi bắt đầu triển khai
+## Các quyết định của WP03 v1
 
-- TinyStories: source/revision cụ thể, subset/budget, preprocessing và split policy.
-- Bộ toán: templates, phép tính hỗ trợ, định nghĩa từng mức trên ba trục độ khó.
-- Pilot: số mức, số câu mỗi mức và phân bố validation/test; chưa gán số lượng mặc định.
-- Quy ước đáp án: kiểu số hỗ trợ, canonical form, xử lý invalid/missing và comparison rule.
-- GSM8K: revision, sample budget và protocol benchmark bổ sung.
+- TinyStories: một original Parquet train shard và official validation shard pin revision/SHA;
+  10.000 train / 1.000 validation / 1.000 test sau xử lý trên source hiện tại.
+- Bộ toán: ba mức operation count/dependency depth/prompt length = 1/1/short,
+  3/2/medium, 5/3/long; có thể cấu hình từng trục độc lập trong giới hạn cây.
+- Pilot: 50 câu/mức/split validation và test, tổng 300 câu; prompts và references tách riêng.
+- Đáp án numeric-v1: canonical exact rational, invalid trả None, không float tolerance.
+- GSM8K: official train carve 500 validation; official test 1.319 giữ held-out.
 
-Các giá trị này chưa được chọn hoặc tải về trong bước chuẩn bị.
+Mức khó là thiết kế cấu trúc, chưa phải độ khó nhận thức đã đo bằng model.
+Budget/mức độ khó có thể đổi qua config; khi đổi phải tạo manifest/fingerprint mới.
 
-## Vị trí code dự kiến khi thực hiện WP03
+## Các phần đã triển khai
 
-- Config data trong `configs/data/`; manifest versioned và artifact links trong `experiments/`.
-- `src/llm_scratch/data/datasets.py`, `difficulty.py` cho data/split/difficulty.
+- Config/data source lock trong `configs/data/`; manifest và validation record trong `experiments/`.
+- `src/llm_scratch/data/config.py`, `datasets.py`, `difficulty.py`, `prepare.py` cho pipeline.
 - `src/llm_scratch/reasoning/answer_extraction.py` cho đáp án chuẩn hóa.
-- Script chuẩn bị dữ liệu và tests split/dedup/answer extraction sẽ thêm khi triển khai.
+- `scripts/prepare_data.py` / CLI `grast prepare-data` và tests data/difficulty/answer extraction.
 
-Đây là danh sách nơi sẽ sửa, không phải các implementation đã có. Dataset/output lớn
-lưu ngoài Git, kèm đường dẫn và checksum. Vocab/model size hiện vẫn là draft.
+Dataset/output lớn lưu ngoài Git, kèm manifest/đường dẫn/checksum.
+Vocab/model size hiện vẫn là draft.
 WP03 không bao gồm BPE, decoder, pretraining, CoT SFT, stopping policies hoặc memory RL.
 
 ## Bắt đầu từ baseline
@@ -67,4 +71,4 @@ git switch codex/wp03-preparation
 uv run --no-sync grast smoke --config configs/experiments/local_smoke.toml
 ```
 
-Chỉ bắt đầu implementation khi người dùng yêu cầu thực hiện WP03. Giữ tag baseline cố định.
+Giữ tag baseline WP02 cố định. Nghiệm thu WP03 là data pipeline/pilot, không phải chất lượng model.

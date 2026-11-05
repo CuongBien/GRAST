@@ -36,7 +36,7 @@ jobs:
       - name: Install pinned Python
         run: uv python install
       - name: Install locked development environment
-        run: uv sync --locked --extra cpu
+        run: uv sync --locked --extra cpu --extra data
       - name: Lint
         run: uv run --no-sync ruff check .
       - name: Check formatting
@@ -45,6 +45,8 @@ jobs:
         run: uv run --no-sync pytest
       - name: WP02 acceptance smoke
         run: uv run --no-sync grast smoke --config configs/experiments/local_smoke.toml
+      - name: WP03 arithmetic smoke (external source pipeline tested with offline fixtures)
+        run: uv run --no-sync grast prepare-data --config configs/data/wp03.toml --math-only --offline
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree

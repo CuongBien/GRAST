@@ -28,8 +28,37 @@ def main(argv: list[str] | None = None) -> int:
     check.add_argument("--device", choices=("cpu", "cuda", "auto"), default="cpu")
     check.add_argument("--require-gpu-name", default="")
     check.add_argument("--output", type=Path)
+    prepare = commands.add_parser(
+        "prepare-data", help="Prepare pinned WP03 datasets and fixed pilot"
+    )
+    prepare.add_argument("--config", type=Path, required=True)
+    prepare.add_argument("--output-root", type=Path)
+    prepare.add_argument("--offline", action="store_true")
+    prepare.add_argument(
+        "--math-only",
+        action="store_true",
+        help="Generate synthetic data only; not full WP03 acceptance",
+    )
     args = parser.parse_args(argv)
     try:
+        if args.command == "prepare-data":
+            from llm_scratch.data.config import load_data_config
+            from llm_scratch.data.prepare import prepare_data
+
+            config = load_data_config(args.config, output_root=args.output_root)
+            path = prepare_data(config, offline=args.offline, math_only=args.math_only)
+            print(
+                json.dumps(
+                    {
+                        "status": "completed",
+                        "scope": "math-only" if args.math_only else "full",
+                        "run_directory": str(path),
+                        "manifest": str(path / "artifacts/datasets/manifest.json"),
+                    },
+                    ensure_ascii=False,
+                )
+            )
+            return 0
         if args.command == "check-env":
             report = inspect_environment(args.device, args.require_gpu_name)
             if args.output:

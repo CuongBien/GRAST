@@ -1,0 +1,53 @@
+schema_version = 1
+sources_lock = "sources.lock.json"
+
+[experiment]
+name = "wp03-data-pilot"
+phase = 1
+
+[reproducibility]
+seed = 42
+
+[artifacts]
+root = "../../artifacts/runs"
+cache_root = "../../artifacts/datasets/cache"
+
+[tinystories]
+train_records = 10000
+heldout_records = 2000
+
+[gsm8k]
+validation_records = 500
+
+[math]
+train_per_level = 500
+validation_per_level = 100
+test_per_level = 100
+pilot_per_level_per_split = 50
+
+[[math.levels]]
+name = "easy"
+operations = 1
+reasoning_steps = 1
+prompt_length = "short"
+operand_min = 1
+operand_max = 30
+operators = ["+", "-"]
+
+[[math.levels]]
+name = "medium"
+operations = 3
+reasoning_steps = 2
+prompt_length = "medium"
+operand_min = 1
+operand_max = 20
+operators = ["+", "-", "*"]
+
+[[math.levels]]
+name = "hard"
+operations = 5
+reasoning_steps = 3
+prompt_length = "long"
+operand_min = 1
+operand_max = 20
+operators = ["+", "-", "*", "/"]

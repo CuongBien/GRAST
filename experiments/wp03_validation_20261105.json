@@ -1,0 +1,23 @@
+{
+  "checks": {
+    "all_output_record_counts_verified": true,
+    "all_output_sha256_verified": true,
+    "cross_split_audit_passed": true,
+    "manifests_byte_identical": true,
+    "pilot_questions_exclude_gold": true,
+    "pilot_references_join_by_id": true
+  },
+  "data_artifacts_in_git": false,
+  "dataset_fingerprint": "79ff92320ebb64e283ce342076c5e570989ef5433d8791231b2d78f370baf485",
+  "independent_runs": [
+    "artifacts/runs/20261105T111456959057Z-wp03-data-pilot-seed42-1c1de7b2",
+    "artifacts/runs/20261105T111500087337Z-wp03-data-pilot-seed42-32792f68"
+  ],
+  "manifest_sha256": "28517ab4e8a65674d64206d9ff536626b2661d008bd26797d36ec930830281eb",
+  "pilot_questions": 300,
+  "schema_version": 1,
+  "scope": "full-real-sources",
+  "test_result": "86 passed (WP02 + WP03)",
+  "verified_on": "2026-11-05",
+  "work_package": "WP03"
+}
