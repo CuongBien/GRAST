@@ -1,0 +1,22 @@
+name: Bug report
+description: Báo lỗi có bước tái hiện.
+title: "[Bug] "
+body:
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Cách tái hiện
+      description: Lệnh, commit, config, seed và môi trường liên quan.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Kỳ vọng và kết quả thực tế
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Log hoặc bằng chứng
+      description: Loại bỏ token, dữ liệu riêng tư và thông tin bí mật.

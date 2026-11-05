@@ -1,0 +1,11 @@
+# Debug defaults only; the WP02 smoke does not run a training loop.
+[training]
+stage = "pretrain"
+batch_size = 2
+gradient_accumulation_steps = 1
+max_steps = 2
+learning_rate = 0.0003
+weight_decay = 0.1
+warmup_steps = 0
+max_grad_norm = 1.0
+precision = "float32"

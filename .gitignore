@@ -1,0 +1,40 @@
+# Python and local tooling
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.wheel-venv/
+.cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+.ipynb_checkpoints/
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Credentials and local settings
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local datasets and generated research output
+/data/
+/wandb/
+/runs/
+/artifacts/**
+!/artifacts/**/
+!/artifacts/**/.gitkeep
+!/artifacts/README.md
+/reports/figures/**
+!/reports/figures/.gitkeep
+*.pt
+*.pth
+*.ckpt
+*.safetensors

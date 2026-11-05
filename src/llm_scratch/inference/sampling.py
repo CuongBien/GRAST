@@ -1,0 +1,1 @@
+"""Candidate sampling; implementation deferred."""

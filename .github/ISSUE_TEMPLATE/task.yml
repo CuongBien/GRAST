@@ -1,0 +1,31 @@
+name: Task
+description: Công việc có phạm vi và tiêu chí nghiệm thu rõ ràng.
+title: "[Task] "
+body:
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Giai đoạn
+      options:
+        - "1 — Đồ án (trước 01/12/2026)"
+        - "2 — NCKH (sau 01/12/2026, cần go/no-go)"
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: Mục tiêu và phạm vi
+      description: Ghi rõ phần ngoài phạm vi và link task Notion nếu có.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Tiêu chí nghiệm thu
+      description: Hành vi cần kiểm tra và bằng chứng test/log/artifact cần có.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Phụ thuộc và rủi ro

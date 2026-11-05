@@ -1,0 +1,1 @@
+"""Autoregressive generation; implementation deferred."""

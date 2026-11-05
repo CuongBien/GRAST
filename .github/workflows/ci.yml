@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main, "codex/**", "feat/**", "fix/**", "chore/**", "docs/**", "research/**"]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: checks (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up uv
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.12.19"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - name: Install pinned Python
+        run: uv python install
+      - name: Install locked development environment
+        run: uv sync --locked --extra cpu
+      - name: Lint
+        run: uv run --no-sync ruff check .
+      - name: Check formatting
+        run: uv run --no-sync ruff format --check .
+      - name: Package and reproducibility tests
+        run: uv run --no-sync pytest
+      - name: WP02 acceptance smoke
+        run: uv run --no-sync grast smoke --config configs/experiments/local_smoke.toml
+      - name: Build wheel and source distribution
+        run: uv build
+      - name: Verify installed wheel outside source tree
+        shell: bash
+        run: |
+          uv venv .wheel-venv --python 3.11
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            WHEEL_PYTHON="$GITHUB_WORKSPACE/.wheel-venv/Scripts/python.exe"
+          else
+            WHEEL_PYTHON="$GITHUB_WORKSPACE/.wheel-venv/bin/python"
+          fi
+          uv pip install --python "$WHEEL_PYTHON" dist/*.whl
+          cd "$RUNNER_TEMP"
+          "$WHEEL_PYTHON" -c "import importlib.metadata, llm_scratch; assert importlib.metadata.version('grast') == llm_scratch.__version__"

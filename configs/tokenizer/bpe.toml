@@ -1,0 +1,5 @@
+# Configuration contract; no tokenizer implementation in WP02.
+[tokenizer]
+algorithm = "bpe"
+vocab_size = 8192
+special_tokens = ["<pad>", "<bos>", "<eos>", "<unk>", "<think>", "</think>", "<final>", "</final>"]

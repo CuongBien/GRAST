@@ -1,0 +1,6 @@
+# Future generation defaults; WP02 only validates and snapshots these settings.
+[generation]
+max_new_tokens = 64
+temperature = 0.8
+top_p = 0.95
+k_values = [1, 2, 4, 8, 16]

@@ -1,0 +1,24 @@
+schema_version = 1
+
+[experiment]
+name = "wp02-local-cuda"
+phase = 1
+
+[components]
+model = "../model/draft_35m.toml"
+tokenizer = "../tokenizer/bpe.toml"
+training = "../pretrain/debug.toml"
+generation = "../sampling/baseline.toml"
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[environment]
+device = "cuda"
+require_gpu_name = ""
+
+[artifacts]
+# Resolved relative to THIS experiment file, independent of working directory.
+root = "../../artifacts/runs"
