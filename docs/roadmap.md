@@ -25,8 +25,13 @@ WP02 đã đạt nghiệm thu local và Colab A100 ngày 05/11/2026.
 Evidence được kiểm tra với source fingerprint và lưu manifest trong repository;
 tag `wp02-baseline` chốt WP01+WP02 trước các thay đổi WP03.
 
-Xem [WP03 handoff](wp03_handoff.md) để bắt đầu từ baseline và đối chiếu phạm vi kế tiếp
-với WBS. WP03 chưa có implementation trong baseline này.
+## WP03 — Dataset & Benchmark Design (chỉ chuẩn bị)
+
+Scope chốt ngày 05/11/2026: ưu tiên TinyStories cho pretraining ban đầu; bộ toán có độ khó
+điều chỉnh; answer normalization; train/validation/test và dedup; GSM8K bổ sung;
+pilot cố định. Nghiệm thu cần manifest, script tạo/tải dữ liệu, answer-extraction tests
+và fixed pilot. Không dùng test set chọn threshold.
+Xem [WP03 handoff](wp03_handoff.md) để biết checklist. Chưa triển khai WP03.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 

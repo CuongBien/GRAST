@@ -1,42 +1,64 @@
-# Chuẩn bị chuyển sang WP03
+# WP03 — Dataset & Benchmark Design
 
-WP01+WP02 được chốt tại tag `wp02-baseline`. Evidence CPU, local CUDA và A100 đã đạt
-nghiệm thu; config, seed, metadata, run logging và RNG checkpoint sẵn để dùng lại.
-Tokenizer/model/training/generation chưa được triển khai. Nhánh chuẩn bị là
-`codex/wp03-preparation`, bắt đầu từ baseline, chưa chứa implementation WP03.
+Scope do người dùng chốt ngày 05/11/2026. **Trạng thái: chỉ chuẩn bị; chưa triển khai WP03.**
+Nhánh `codex/wp03-preparation` bắt đầu từ tag `wp02-baseline`. Chưa tải/sinh dữ liệu,
+chưa tạo dataset manifest hoặc pilot, chưa viết script data hay answer extraction.
 
-## Phạm vi cần chốt
+## Baseline đầu vào
 
-WBS hiện tại trong [Project HQ](https://app.notion.com/p/4093badafe55810db45bfcc26b766de9)
-chưa gắn mã WP03. Task tiếp theo theo thứ tự WBS là
+WP01+WP02 đã nghiệm thu CPU, local CUDA và Colab A100. Config, seed, metadata,
+run logging và RNG checkpoint sẵn để dùng lại. Tokenizer/model/training/generation
+vẫn là placeholder. Tag WP02 giữ nguyên; thay đổi WP03 đi qua branch/commit riêng.
+
+Scope khớp task
 [khảo sát dữ liệu pretrain và benchmark toán; khóa train/validation/test](https://app.notion.com/4093badafe55819e9bd5ee16a5a0c500).
 Task [BPE và round-trip tests](https://app.notion.com/4093badafe5581788c8dfe85c40cfb8b)
-phụ thuộc corpus. Vì vậy đề xuất WP03 là data/benchmark/splits trước khi triển khai BPE.
-Đây là đề xuất chuyển tiếp; không tự coi mã WP03 hoặc lựa chọn dataset đã được người dùng chốt.
+phụ thuộc corpus và nằm sau phần data này.
 
-## Checklist nếu WP03 theo task data trong WBS
+## Phạm vi đã chốt
 
-1. Chọn corpus pretrain và benchmark toán có độ khó điều chỉnh; GSM8K là phần bổ sung.
-   Ghi source, revision, license, ngôn ngữ, kích thước và giới hạn tài nguyên dự kiến.
-2. Khóa train/validation/test bằng seed và stable IDs; ghi số lượng, fingerprint/hash,
-   split rule và thao tác lọc/chuẩn hóa vào manifest versioned.
-3. Kiểm tra trùng lặp/contamination giữa splits và với benchmark; lưu report và các
-   trường hợp cần xử lý. Gold label chỉ dùng training/evaluation, không làm policy input.
-4. Định nghĩa difficulty và metric cho feasibility gate trước khi đánh giá model.
-   Không giả định model nhỏ giải tốt GSM8K.
-5. Thêm config data và một lệnh kiểm tra tái lập khi triển khai; dùng run directory,
-   metadata và config snapshot của WP02. Dataset/output lớn vẫn lưu ngoài Git.
+1. Chọn corpus pretraining, ưu tiên **TinyStories** cho lần chạy đầu.
+2. Xây bộ toán điều chỉnh được ba trục: số phép tính, số bước suy luận và độ dài đề.
+3. Chuẩn hóa đáp án để so sánh tự động.
+4. Chia train/validation/test, kiểm tra trùng lặp và lưu báo cáo.
+5. Chuẩn bị **GSM8K làm benchmark bổ sung**.
+6. Xác định các mức độ khó và số lượng câu hỏi cho pilot; tạo bộ pilot cố định.
 
-## Gate nghiệm thu đề xuất
+## Sản phẩm và gate nghiệm thu
 
-- Có dataset/benchmark manifest chứa source revision, split sizes và fingerprint.
-- Cùng input/config/seed tạo lại đúng stable IDs và splits; khác split không chồng lặp.
-- Có báo cáo chống leakage và protocol difficulty/feasibility rõ ràng.
-- Có test cho hành vi split/normalization có rủi ro, không chỉ kiểm tra file tồn tại.
-- Có commit, run logs và artifact link/checksum; cập nhật acceptance khi thực sự đạt gate.
+| Sản phẩm cần triển khai | Tiêu chí nghiệm thu |
+| --- | --- |
+| Dataset manifest | Source/revision, license, preprocessing, seed, split sizes và fingerprint/checksum được ghi rõ |
+| Script tạo/tải dữ liệu | Tạo lại corpus/benchmark/split/pilot theo config, giữ stable IDs và lưu log/metadata bằng hạ tầng WP02 |
+| Answer normalization/extraction | Có quy ước đáp án canonical và tests kiểm tra trường hợp hợp lệ, thiếu/sai định dạng, dấu và biểu diễn số được hỗ trợ |
+| Split/dedup report | Không chồng lặp stable IDs hoặc câu hỏi đã chuẩn hóa giữa train/validation/test; ghi phương pháp và các trùng lặp phát hiện được |
+| Pilot cố định | Mức khó, số câu, seed, stable question IDs, split và fingerprint được khóa trong manifest |
+| GSM8K bổ sung | Source revision, cách dùng split và quy tắc answer extraction/evaluation được ghi rõ |
 
-Vocab/model size trong config hiện là draft; feasibility và training budget vẫn cần kiểm chứng.
-WP03 chưa bao gồm decoder, pretraining, CoT SFT, stopping policies hoặc memory RL.
+**Không dùng test set để chọn threshold.** Mọi threshold/calibrator chỉ chọn hoặc fit trên
+validation; giữ test set cho đánh giá cuối. Gold label chỉ dùng training/evaluation,
+không làm policy input. Không tuyên bố GSM8K là gate accuracy bắt buộc của model nhỏ.
+
+## Các quyết định sẽ chốt khi bắt đầu triển khai
+
+- TinyStories: source/revision cụ thể, subset/budget, preprocessing và split policy.
+- Bộ toán: templates, phép tính hỗ trợ, định nghĩa từng mức trên ba trục độ khó.
+- Pilot: số mức, số câu mỗi mức và phân bố validation/test; chưa gán số lượng mặc định.
+- Quy ước đáp án: kiểu số hỗ trợ, canonical form, xử lý invalid/missing và comparison rule.
+- GSM8K: revision, sample budget và protocol benchmark bổ sung.
+
+Các giá trị này chưa được chọn hoặc tải về trong bước chuẩn bị.
+
+## Vị trí code dự kiến khi thực hiện WP03
+
+- Config data trong `configs/data/`; manifest versioned và artifact links trong `experiments/`.
+- `src/llm_scratch/data/datasets.py`, `difficulty.py` cho data/split/difficulty.
+- `src/llm_scratch/reasoning/answer_extraction.py` cho đáp án chuẩn hóa.
+- Script chuẩn bị dữ liệu và tests split/dedup/answer extraction sẽ thêm khi triển khai.
+
+Đây là danh sách nơi sẽ sửa, không phải các implementation đã có. Dataset/output lớn
+lưu ngoài Git, kèm đường dẫn và checksum. Vocab/model size hiện vẫn là draft.
+WP03 không bao gồm BPE, decoder, pretraining, CoT SFT, stopping policies hoặc memory RL.
 
 ## Bắt đầu từ baseline
 
@@ -45,4 +67,4 @@ git switch codex/wp03-preparation
 uv run --no-sync grast smoke --config configs/experiments/local_smoke.toml
 ```
 
-Giữ tag baseline cố định. Các thay đổi WP03 sau khi chốt scope đi qua commit/PR riêng.
+Chỉ bắt đầu implementation khi người dùng yêu cầu thực hiện WP03. Giữ tag baseline cố định.
