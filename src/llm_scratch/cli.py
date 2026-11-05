@@ -39,8 +39,36 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Generate synthetic data only; not full WP03 acceptance",
     )
+    tokenizer = commands.add_parser(
+        "train-tokenizer", help="Train and evaluate from-scratch byte BPE"
+    )
+    tokenizer.add_argument("--config", type=Path, required=True)
+    tokenizer.add_argument("--dataset-root", type=Path)
+    tokenizer.add_argument("--output-root", type=Path)
     args = parser.parse_args(argv)
     try:
+        if args.command == "train-tokenizer":
+            from llm_scratch.data.train_tokenizer import (
+                load_tokenizer_training_config,
+                train_tokenizer,
+            )
+
+            config = load_tokenizer_training_config(
+                args.config, output_root=args.output_root, dataset_root=args.dataset_root
+            )
+            path = train_tokenizer(config)
+            print(
+                json.dumps(
+                    {
+                        "status": "completed",
+                        "run_directory": str(path),
+                        "tokenizer": str(path / "artifacts/tokenizer"),
+                        "report": str(path / "artifacts/tokenizer_report.json"),
+                    },
+                    ensure_ascii=False,
+                )
+            )
+            return 0
         if args.command == "prepare-data":
             from llm_scratch.data.config import load_data_config
             from llm_scratch.data.prepare import prepare_data

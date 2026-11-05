@@ -1,4 +1,4 @@
-# Configuration contract; no tokenizer implementation in WP02.
+# WP04 target vocabulary and stable ordered controls; training options are in train.toml.
 [tokenizer]
 algorithm = "bpe"
 vocab_size = 8192

@@ -2,14 +2,15 @@
 
 Repository cho nghiên cứu LLM from scratch theo Hướng C: reasoning và test-time compute.
 
-**Trạng thái: WP01+WP02 baseline; WP03 data pipeline đã triển khai.** Đã có config,
+**Trạng thái: WP01+WP02 baseline; WP03 data và WP04 tokenizer đã triển khai.** Đã có config,
 seed, metadata/logs, checkpoint RNG; dataset preparation, benchmark toán, answer extraction,
-split/dedup và fixed pilot. Tokenizer, model, training loop, inference và stopping chưa implement.
+split/dedup, fixed pilot và byte BPE tự viết. Model, training loop, inference và stopping chưa implement.
 Smoke WP02 chỉ dùng RNG/ma trận nhỏ; WP03 chưa đánh giá chất lượng model.
 
 WP02 đã nghiệm thu CPU, RTX 4060 và Colab A100; xem [evidence](docs/wp02_validation.md).
 Baseline được đánh dấu bằng tag `wp02-baseline`; WP03 phát triển trên branch riêng.
 Scope WP03: [handoff](docs/wp03_handoff.md); cách chạy: [WP03 data pipeline](docs/wp03_data.md).
+WP04: [tokenizer và API chung](docs/wp04_tokenizer.md), [nghiệm thu](docs/wp04_validation.md).
 
 Nguồn kế hoạch: [LLM From Scratch — Hướng C | Project HQ](https://app.notion.com/p/4093badafe55810db45bfcc26b766de9)
 (bản cập nhật 31/10/2026; hạn đồ án 01/12/2026).
@@ -45,6 +46,7 @@ Chuẩn bị dữ liệu thật và fixed pilot:
 ```powershell
 uv run --no-sync grast prepare-data --config configs/data/wp03.toml
 # Các lần sau có thể thêm --offline để dùng lại cache đã xác minh.
+uv run --no-sync grast train-tokenizer --config configs/tokenizer/train.toml
 ```
 
 Python mặc định là 3.11 trong `.python-version`. `uv.lock` cố định dependency đã resolve.
@@ -67,8 +69,8 @@ src/llm_scratch/
   research/              sample_bank, policy_replay, modal_analysis, error_analysis
   evaluation/            benchmarks, metrics, latency_vram
   utils/                 seed, logging
-scripts/                 prepare_data đã chạy được; các entry points model/training còn placeholder
-tests/                   package, reproducibility, data/splits/dedup, arithmetic và answer extraction
+scripts/                 prepare_data, train_tokenizer; model/training còn placeholder
+tests/                   package, reproducibility, data/math, answer extraction, BPE và adapters
 notebooks/               Colab A100 preflight và WP02 smoke; chưa chạy training
 experiments/             manifest thực nghiệm; chưa có kết quả
 artifacts/               runs, checkpoints, tokenizers, sample_bank, results (gitignore)

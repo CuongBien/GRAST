@@ -1,0 +1,138 @@
+{
+  "algorithm": "byte-bpe-v1",
+  "artifact_directory": "artifacts/runs/20261105T154939888754Z-wp04-byte-bpe-seed42-4102afe0/artifacts/tokenizer",
+  "config": "configs/tokenizer/train.toml",
+  "dataset_fingerprint": "79ff92320ebb64e283ce342076c5e570989ef5433d8791231b2d78f370baf485",
+  "evaluation": {
+    "gsm8k/test.jsonl:question": {
+      "bytes_per_token": 2.173031378498418,
+      "characters": 316390,
+      "documents": 1319,
+      "round_trip_documents": 1319,
+      "tokens": 145673,
+      "tokens_per_character": 0.4604222636619362,
+      "unknown_tokens": 0,
+      "utf8_bytes": 316552
+    },
+    "gsm8k/train.jsonl:question": {
+      "bytes_per_token": 2.179781277491705,
+      "characters": 1636977,
+      "documents": 6973,
+      "round_trip_documents": 6973,
+      "tokens": 751363,
+      "tokens_per_character": 0.4589942314400263,
+      "unknown_tokens": 0,
+      "utf8_bytes": 1637807
+    },
+    "gsm8k/validation.jsonl:question": {
+      "bytes_per_token": 2.174398916356248,
+      "characters": 115497,
+      "documents": 500,
+      "round_trip_documents": 500,
+      "tokens": 53154,
+      "tokens_per_character": 0.4602197459674277,
+      "unknown_tokens": 0,
+      "utf8_bytes": 115578
+    },
+    "math/test.jsonl:question": {
+      "bytes_per_token": 1.9965371765796083,
+      "characters": 81872,
+      "documents": 300,
+      "round_trip_documents": 300,
+      "tokens": 41007,
+      "tokens_per_character": 0.5008672073480555,
+      "unknown_tokens": 0,
+      "utf8_bytes": 81872
+    },
+    "math/train.jsonl:question": {
+      "bytes_per_token": 1.9997317988979373,
+      "characters": 410085,
+      "documents": 1500,
+      "round_trip_documents": 1500,
+      "tokens": 205070,
+      "tokens_per_character": 0.5000670592682005,
+      "unknown_tokens": 0,
+      "utf8_bytes": 410085
+    },
+    "math/validation.jsonl:question": {
+      "bytes_per_token": 1.9979990239141043,
+      "characters": 81878,
+      "documents": 300,
+      "round_trip_documents": 300,
+      "tokens": 40980,
+      "tokens_per_character": 0.5005007450108698,
+      "unknown_tokens": 0,
+      "utf8_bytes": 81878
+    },
+    "tinystories/test.jsonl:text": {
+      "bytes_per_token": 2.348512010412969,
+      "characters": 792882,
+      "documents": 1000,
+      "round_trip_documents": 1000,
+      "tokens": 338040,
+      "tokens_per_character": 0.42634339031533064,
+      "unknown_tokens": 0,
+      "utf8_bytes": 793891
+    },
+    "tinystories/train.jsonl:text": {
+      "bytes_per_token": 2.335572574216165,
+      "characters": 8674761,
+      "documents": 10000,
+      "round_trip_documents": 10000,
+      "tokens": 3721797,
+      "tokens_per_character": 0.42903741094423237,
+      "unknown_tokens": 0,
+      "utf8_bytes": 8692527
+    },
+    "tinystories/validation.jsonl:text": {
+      "bytes_per_token": 2.3487001834862387,
+      "characters": 799060,
+      "documents": 1000,
+      "round_trip_documents": 1000,
+      "tokens": 340625,
+      "tokens_per_character": 0.4262821315045178,
+      "unknown_tokens": 0,
+      "utf8_bytes": 800026
+    }
+  },
+  "files": {
+    "merges.json": "7a631cf8143b67db9c4246ed83a54d680f5300e55236851a1429d46551d0d8ed",
+    "tokenizer_config.json": "fae3d75d7ddb0fda306c7608f6caff65b47f5a33a4b2a486174c7b597d2a8210",
+    "tokenizer_manifest.json": "b98d98bdb58c7c7fe4e1fa2d6e7759449e84ab02a504777fa8a8738c94a30268",
+    "vocab.json": "9f5cf82719d7e2edc94b95937c1c699a25db6566e12c03958785f2aec5aee7b6"
+  },
+  "protocol": "All metrics use frozen ordinary-text encoding without BOS/EOS; characters are Unicode code points. Held-out data never enters training or vocabulary selection.",
+  "schema_version": 1,
+  "special_token_ids": {
+    "</final>": 7,
+    "</think>": 5,
+    "<bos>": 1,
+    "<eos>": 2,
+    "<final>": 6,
+    "<pad>": 0,
+    "<think>": 4,
+    "<unk>": 3
+  },
+  "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+  "training": {
+    "actual_vocab_size": 8192,
+    "characters": 8674761,
+    "documents": 10000,
+    "merges_learned": 7928,
+    "stop_reason": "target_reached",
+    "target_vocab_size": 8192,
+    "unique_pieces": 10847,
+    "utf8_bytes": 8692527
+  },
+  "training_source": {
+    "field": "text",
+    "file": "tinystories/train.jsonl",
+    "max_piece_bytes": 256,
+    "max_records": 10000,
+    "min_frequency": 2,
+    "sha256": "92e562218a2db37f9d6804dd7a565820785c003dd622f6a82184c4318e3fb8b9",
+    "split": "train"
+  },
+  "vocab_size": 8192,
+  "work_package": "WP04"
+}

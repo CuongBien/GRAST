@@ -1,4 +1,4 @@
-# Test status — WP02 + WP03
+# Test status — WP02 + WP03 + WP04
 
 Sync environment với `uv sync --locked --extra cpu --extra data` (hoặc `cuda` thay `cpu`).
 `test_package.py` kiểm tra metadata/importability; `test_reproducibility.py` kiểm tra
@@ -10,6 +10,11 @@ WP03: `test_answer_extraction.py`, `test_difficulty.py` và `test_datasets.py` k
 numeric protocol, exact rational answers, operation count/depth/wording, stable splits
 không phụ thuộc labels, normalized-text/semantic leakage, checksum/offline cache và
 full pipeline/pilot bằng authored Parquet/JSONL fixtures. Không tải dữ liệu thật trong CI.
+
+WP04: `test_tokenizer.py` so với trainer tham chiếu full-recount, kiểm tra merge rank,
+Unicode/byte fallback, specials, round-trip, deterministic ties, save/load/checksum và
+pretraining/SFT/inference adapters. `test_tokenizer_pipeline.py` chạy CLI với JSONL tự viết,
+kiểm tra log/config/artifact và thay held-out text để xác minh codec không đổi.
 
 Các test dự kiến theo HQ, thêm cùng implementation:
 

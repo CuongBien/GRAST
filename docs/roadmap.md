@@ -34,6 +34,13 @@ và fixed pilot. Không dùng test set chọn threshold.
 Đã có pipeline nguồn thật, numeric-v1, split/dedup và fixed pilot 300 câu.
 Xem [WP03 data](wp03_data.md) và [validation](wp03_validation.md) để tái lập/kiểm tra.
 
+## WP04 — Tokenizer from Scratch (đã triển khai)
+
+Byte BPE tự viết, Unicode lossless, tám control tokens, vocab/merges/config/checksum,
+API chung cho pretraining/SFT/inference và thống kê trên dữ liệu WP03.
+Chỉ fit TinyStories train; held-out dùng kiểm tra codec cố định.
+Xem [thiết kế và cách chạy](wp04_tokenizer.md), [nghiệm thu](wp04_validation.md).
+
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 
 *When Does Confidence-Gated Test-Time Scaling Fail? A Study of Reliability and
@@ -70,5 +77,5 @@ Không có RL/controller implementation hoặc dependency trong bước 1.
 
 ## Các quyết định còn mở
 
-Vocab, kích thước/context model, GPU budget, dataset và threshold/calibration cần kiểm chứng
+Kích thước/context model, GPU budget và threshold/calibration cần kiểm chứng
 ở task tương ứng. Các config draft/debug của WP02 chỉ cung cấp contract và default ban đầu.

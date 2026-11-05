@@ -1,0 +1,34 @@
+schema_version = 1
+tokenizer_config = "bpe.toml"
+dataset_manifest = "../../experiments/wp03_dataset_manifest.json"
+dataset_runs_root = "../../artifacts/runs"
+
+[experiment]
+name = "wp04-byte-bpe"
+phase = 1
+
+[reproducibility]
+seed = 42
+
+[artifacts]
+root = "../../artifacts/runs"
+
+[training]
+file = "tinystories/train.jsonl"
+field = "text"
+max_records = 10000
+min_frequency = 2
+max_piece_bytes = 256
+
+[evaluation]
+files = [
+  { file = "tinystories/train.jsonl", field = "text" },
+  { file = "tinystories/validation.jsonl", field = "text" },
+  { file = "tinystories/test.jsonl", field = "text" },
+  { file = "math/train.jsonl", field = "question" },
+  { file = "math/validation.jsonl", field = "question" },
+  { file = "math/test.jsonl", field = "question" },
+  { file = "gsm8k/train.jsonl", field = "question" },
+  { file = "gsm8k/validation.jsonl", field = "question" },
+  { file = "gsm8k/test.jsonl", field = "question" },
+]

@@ -8,7 +8,8 @@ và artifact root tương đối được resolve theo file experiment, không t
 - `experiments/local_cuda.toml`: bắt buộc CUDA, không fallback CPU.
 - `experiments/colab_a100.toml`: bắt buộc GPU có tên chứa A100.
 - `model/draft_35m.toml`: thiết kế ứng viên, chưa kiểm chứng parameter count/feasibility.
-- `tokenizer/bpe.toml`: vocabulary và special-token contract, chưa có tokenizer.
+- `tokenizer/bpe.toml`: vocabulary đích và special-token contract dùng chung WP02/WP04.
+- `tokenizer/train.toml`: WP04 train-only TinyStories, kiểm tra round-trip và thống kê codec.
 - `pretrain/debug.toml`, `sft/debug.toml`: debug defaults, chưa có training loop.
 - `sampling/baseline.toml`: generation defaults, chưa sinh văn bản.
 
@@ -21,3 +22,7 @@ và ma trận 8×8 float32, không khởi tạo model hoặc dùng các hyperpar
 WP03 có schema data riêng: `data/wp03.toml` và `data/sources.lock.json`.
 Lệnh `grast prepare-data --config configs/data/wp03.toml` tạo corpus/splits/math/pilot
 và manifest, không đi qua model-config loader. Xem `docs/wp03_data.md`.
+
+WP04 dùng loader riêng cho `tokenizer/train.toml`, compose `bpe.toml` và khóa manifest WP03.
+`grast train-tokenizer --config configs/tokenizer/train.toml` tạo codec/metrics trong run riêng.
+Không fit trên validation/test. Xem `docs/wp04_tokenizer.md`.

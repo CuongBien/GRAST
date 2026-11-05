@@ -1,4 +1,8 @@
-"""Reserved train_tokenizer entry point; intentionally unavailable in step 1."""
+"""WP04 from-scratch byte BPE; equivalent to grast train-tokenizer."""
+
+import sys
+
+from llm_scratch.cli import main
 
 if __name__ == "__main__":
-    raise SystemExit("train_tokenizer: skeleton only; implementation is deferred.")
+    raise SystemExit(main(["train-tokenizer", *sys.argv[1:]]))

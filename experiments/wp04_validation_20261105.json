@@ -1,0 +1,33 @@
+{
+  "artifact_files_identical": true,
+  "artifact_files_sha256": {
+    "merges.json": "7a631cf8143b67db9c4246ed83a54d680f5300e55236851a1429d46551d0d8ed",
+    "tokenizer_config.json": "fae3d75d7ddb0fda306c7608f6caff65b47f5a33a4b2a486174c7b597d2a8210",
+    "tokenizer_manifest.json": "b98d98bdb58c7c7fe4e1fa2d6e7759449e84ab02a504777fa8a8738c94a30268",
+    "vocab.json": "9f5cf82719d7e2edc94b95937c1c699a25db6566e12c03958785f2aec5aee7b6"
+  },
+  "date": "2026-11-05",
+  "full_round_trip_documents": 22892,
+  "integration_checks": {
+    "pretraining_round_trip": true,
+    "sft_inference_prefix_equal": true
+  },
+  "limitations": [
+    "Token-level adapters verified; neural model training and generation are not implemented.",
+    "Training wall time and run metadata are not expected to match byte-for-byte."
+  ],
+  "runs": [
+    "artifacts/runs/20261105T153908194424Z-wp04-byte-bpe-seed42-4f8df345",
+    "artifacts/runs/20261105T154939888754Z-wp04-byte-bpe-seed42-4102afe0"
+  ],
+  "save_load_id_checks_per_run": 144,
+  "schema_version": 1,
+  "tests": {
+    "failed": 0,
+    "passed": 138,
+    "scope": "Full WP02/WP03/WP04 suite, including independent reference BPE and held-out mutation isolation"
+  },
+  "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+  "unknown_tokens": 0,
+  "work_package": "WP04"
+}
