@@ -1,0 +1,169 @@
+{
+  "architecture_plan": "docs/wp05_architecture.md",
+  "checks": {
+    "rmsnorm_finite_difference_input_and_scale": true,
+    "rmsnorm_torch_reference_output_and_gradients": true,
+    "rope_finite_difference": true,
+    "rope_independent_rotation_reference": true,
+    "rope_relative_dot_product": true,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "wheel_sdist_build": true,
+    "wp04_tokenizer_adapter_ids": true
+  },
+  "date": "2026-11-06",
+  "limitations": [
+    "No attention, decoder, CE loss or overfit yet.",
+    "Primitive parameter counts are not the full model parameter count."
+  ],
+  "remaining_phases": [
+    "WP05.2 causal MHA and padding masks",
+    "WP05.3 SwiGLU and residual decoder block",
+    "WP05.4 decoder, LM head, cross-entropy and full parameter count",
+    "WP05.5 overfit and full-model causal isolation"
+  ],
+  "runs": [
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cpu"
+      },
+      "report": {
+        "device": "cpu",
+        "finite_gradients": true,
+        "gradient_l2": {
+          "embedding": 0.0020421668887138367,
+          "rmsnorm": 0.09123523533344269
+        },
+        "hidden_shape": [
+          2,
+          16,
+          512
+        ],
+        "input_shape": [
+          2,
+          16
+        ],
+        "limitation": "Primitive autograd probe; no attention, decoder, CE loss or overfit.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "parameter_counts": {
+          "embedding": 4194304,
+          "rmsnorm": 512,
+          "rope": 0
+        },
+        "probe_objective": 0.9974304437637329,
+        "rope_max_squared_norm_error": 1.52587890625e-05,
+        "rotated_shape": [
+          2,
+          8,
+          16,
+          64
+        ],
+        "status": "passed",
+        "work_package": "WP05.1"
+      },
+      "run_directory": "artifacts/runs/20261106T084047552152Z-wp05-1-primitives-seed42-37cd118e"
+    },
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cuda:0"
+      },
+      "report": {
+        "device": "cuda",
+        "finite_gradients": true,
+        "gradient_l2": {
+          "embedding": 0.0019308304181322455,
+          "rmsnorm": 0.0908677875995636
+        },
+        "hidden_shape": [
+          2,
+          16,
+          512
+        ],
+        "input_shape": [
+          2,
+          16
+        ],
+        "limitation": "Primitive autograd probe; no attention, decoder, CE loss or overfit.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "parameter_counts": {
+          "embedding": 4194304,
+          "rmsnorm": 512,
+          "rope": 0
+        },
+        "probe_objective": 0.9975241422653198,
+        "rope_max_squared_norm_error": 1.52587890625e-05,
+        "rotated_shape": [
+          2,
+          8,
+          16,
+          64
+        ],
+        "status": "passed",
+        "work_package": "WP05.1"
+      },
+      "run_directory": "artifacts/runs/20261106T083917894897Z-wp05-1-primitives-seed42-4e99ccbc"
+    }
+  ],
+  "schema_version": 1,
+  "status": "accepted_phase_only",
+  "tests": {
+    "additional_cuda_cases": 7,
+    "failed": 0,
+    "full_local_passed": 191,
+    "phase_cpu_cases": 46,
+    "phase_local_passed": 53
+  },
+  "work_package": "WP05.1"
+}

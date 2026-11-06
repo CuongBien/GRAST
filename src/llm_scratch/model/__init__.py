@@ -1,1 +1,1 @@
-"""Model namespace. No runtime implementation in step 1."""
+"""Decoder architecture, implemented incrementally in WP05; torch is an optional extra."""

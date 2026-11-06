@@ -41,12 +41,14 @@ jobs:
         run: uv run --no-sync ruff check .
       - name: Check formatting
         run: uv run --no-sync ruff format --check .
-      - name: Package, reproducibility, data and tokenizer tests
+      - name: Package, reproducibility, data, tokenizer and model tests
         run: uv run --no-sync pytest
       - name: WP02 acceptance smoke
         run: uv run --no-sync grast smoke --config configs/experiments/local_smoke.toml
       - name: WP03 arithmetic smoke (external source pipeline tested with offline fixtures)
         run: uv run --no-sync grast prepare-data --config configs/data/wp03.toml --math-only --offline
+      - name: WP05.1 model primitives smoke
+        run: uv run --no-sync python scripts/check_model_primitives.py --device cpu
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree

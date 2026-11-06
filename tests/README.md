@@ -4,7 +4,7 @@ Sync environment với `uv sync --locked --extra cpu --extra data` (hoặc `cuda
 `test_package.py` kiểm tra metadata/importability; `test_reproducibility.py` kiểm tra
 config validation, RNG/checkpoint continuation, run failure logging, independent-process
 repeatability, khác seed, CUDA preflight failure và Git chưa có commit.
-Chưa có behavioral test cho model.
+Model được bổ sung kiểm thử theo từng phase WP05.
 
 WP03: `test_answer_extraction.py`, `test_difficulty.py` và `test_datasets.py` kiểm tra
 numeric protocol, exact rational answers, operation count/depth/wording, stable splits
@@ -15,6 +15,13 @@ WP04: `test_tokenizer.py` so với trainer tham chiếu full-recount, kiểm tra
 Unicode/byte fallback, specials, round-trip, deterministic ties, save/load/checksum và
 pretraining/SFT/inference adapters. `test_tokenizer_pipeline.py` chạy CLI với JSONL tự viết,
 kiểm tra log/config/artifact và thay held-out text để xác minh codec không đổi.
+
+WP05.1: `test_model_primitives.py` kiểm tra ModelConfig, embedding với IDs WP04,
+parameter count và repeated-token gradients, RMSNorm đối chiếu PyTorch FP64 và
+finite-difference gradcheck, RoPE đối chiếu ma trận quay độc lập, relative dot products,
+explicit positions/chunk equivalence, Unicode IDs, shapes và low precision.
+CPU cases luôn chạy; các cases tương ứng chạy thêm trên CUDA khi có thiết bị.
+Chưa có kiểm thử model attention/decoder/overfit trước khi các phase đó được triển khai.
 
 Các test dự kiến theo HQ, thêm cùng implementation:
 

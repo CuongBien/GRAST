@@ -11,6 +11,8 @@ WP02 đã nghiệm thu CPU, RTX 4060 và Colab A100; xem [evidence](docs/wp02_va
 Baseline được đánh dấu bằng tag `wp02-baseline`; WP03 phát triển trên branch riêng.
 Scope WP03: [handoff](docs/wp03_handoff.md); cách chạy: [WP03 data pipeline](docs/wp03_data.md).
 WP04: [tokenizer và API chung](docs/wp04_tokenizer.md), [nghiệm thu](docs/wp04_validation.md).
+WP05 đang chia thành 5 phase: [kế hoạch kiến trúc](docs/wp05_architecture.md).
+WP05.1 có model config, embedding, RoPE và RMSNorm; attention/decoder/loss chưa triển khai.
 
 Nguồn kế hoạch: [LLM From Scratch — Hướng C | Project HQ](https://app.notion.com/p/4093badafe55810db45bfcc26b766de9)
 (bản cập nhật 31/10/2026; hạn đồ án 01/12/2026).
@@ -24,7 +26,7 @@ Nguồn kế hoạch: [LLM From Scratch — Hướng C | Project HQ](https://app
    Policies under Shared GPU Budgets.* Chỉ mở khi workload đồng thời thật sự tạo memory
    contention; RL không nằm trong critical path đồ án và chưa có implementation trong repo.
 
-Mục tiêu sau này là tự viết tokenizer, decoder-only Transformer, attention, generation
+Mục tiêu tiếp theo là hoàn thiện decoder-only Transformer, attention, generation
 và KV cache bằng PyTorch. Model khoảng 30–60M là mục tiêu cần feasibility gate,
 chưa phải cấu hình đã được kiểm chứng. Không dùng `AutoModelForCausalLM` làm kiến trúc chính.
 
