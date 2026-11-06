@@ -12,7 +12,8 @@ Baseline được đánh dấu bằng tag `wp02-baseline`; WP03 phát triển tr
 Scope WP03: [handoff](docs/wp03_handoff.md); cách chạy: [WP03 data pipeline](docs/wp03_data.md).
 WP04: [tokenizer và API chung](docs/wp04_tokenizer.md), [nghiệm thu](docs/wp04_validation.md).
 WP05 đang chia thành 5 phase: [kế hoạch kiến trúc](docs/wp05_architecture.md).
-WP05.1 có model config, embedding, RoPE và RMSNorm; attention/decoder/loss chưa triển khai.
+WP05.1 có model config, embedding, RoPE và RMSNorm; WP05.2 có causal MHA và padding masks.
+Decoder/loss chưa triển khai. [Báo cáo WP05.2](docs/wp05_2_validation.md).
 
 Nguồn kế hoạch: [LLM From Scratch — Hướng C | Project HQ](https://app.notion.com/p/4093badafe55810db45bfcc26b766de9)
 (bản cập nhật 31/10/2026; hạn đồ án 01/12/2026).

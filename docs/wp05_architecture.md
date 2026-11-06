@@ -7,12 +7,12 @@ forward/backward, overfit và causal-isolation của model hoàn chỉnh.
 | Phase | Phạm vi | Gate nghiệm thu | Trạng thái |
 | --- | --- | --- | --- |
 | WP05.1 | ModelConfig, token embedding, RoPE, RMSNorm | Reference số học, shapes, gradients, dtype/device, nhận IDs WP04 | Đã triển khai |
-| WP05.2 | MHA causal self-attention | Reference attention, causal/padding masks, future-token isolation, không NaN ở hàng bị mask | Chưa triển khai |
+| WP05.2 | MHA causal self-attention | Reference attention, causal/padding masks, future-token isolation, không NaN ở hàng bị mask | Đã triển khai |
 | WP05.3 | SwiGLU và pre-norm decoder block | Shapes, gradients qua attention/FFN/residual, identity khi nhánh residual bằng 0 | Chưa triển khai |
 | WP05.4 | Decoder-only LM, final norm, LM head, CE loss | Logits, shift labels đúng một lần, ignore -100, tied embeddings, parameter count thực tế | Chưa triển khai |
 | WP05.5 | Integration và overfit batch nhỏ | Loss giảm trên batch cố định, gradients hữu hạn, kiểm tra model không nhìn future tokens và không dùng padding | Chưa triển khai |
 
-Lượt triển khai đầu dừng ở WP05.1 để người dùng có thể xem kết quả trước phase attention.
+Mỗi lượt dừng ở phase đã nghiệm thu để người dùng có thể xem kết quả trước phase tiếp theo.
 Baseline chọn **MHA**, không yêu cầu GQA ở WP05. Mọi phép attention/block sẽ viết bằng
 PyTorch tensors/parameters/autograd; không dùng `nn.Transformer`, `nn.MultiheadAttention`
 hoặc model tải sẵn. KV cache/generation và pretraining loop thuộc các bước sau.
@@ -86,3 +86,44 @@ CUDA được yêu cầu rõ thì không fallback CPU. GPU không phải điều
 GPU cases được chạy bổ sung khi PyTorch thực sự thấy CUDA.
 
 Kết quả: [WP05.1 validation](wp05_1_validation.md).
+
+## WP05.2 — causal MHA
+
+`CausalSelfAttention(ModelConfig)` nhận `x [B,T,H]`, optional `attention_mask [B,T]`
+và `position_ids [T]` hoặc `[B,T]`. Output giữ shape `[B,T,H]`.
+MHA có bốn projection Q/K/V/output không bias, khởi tạo normal std 0.02;
+tổng tham số `4 * hidden_size²`. RoPE phase 1 chỉ áp dụng lên Q/K.
+Scaled dot-product attention theo [Vaswani et al.](https://arxiv.org/abs/1706.03762)
+được tính bằng matmul, scaling, masked softmax, dropout và matmul với V;
+implementation không gọi SDPA có sẵn. Test dùng
+[PyTorch SDPA math backend](https://docs.pytorch.org/docs/2.9/generated/torch.nn.functional.scaled_dot_product_attention.html)
+làm reference độc lập cùng RoPE bằng số phức.
+
+Mask phải là bool/integer 0 hoặc 1, cùng device với x; 1/True nghĩa là token hợp lệ,
+không phải additive attention bias. Causal rule dựa trên chỉ số chuỗi `key_index <= query_index`,
+không dựa trên position IDs. Key padding và query padding đều bị mask.
+Position IDs mặc định là chỉ số vật lý của chuỗi; với padding ở giữa chuỗi, caller
+có thể truyền explicit positions nếu muốn đánh số theo token hợp lệ.
+
+Padding x được thay bằng 0 trước projection, kể cả khi chứa NaN/Inf; valid activations
+được giả định hữu hạn. Hàng không có key hợp lệ nhận finite scores tạm trước softmax,
+sau đó mọi xác suất bị cấm được gán 0. Như vậy không tính softmax trên hàng toàn `-inf`;
+output query padding và gradients của padding input bằng 0. Mẫu toàn padding có
+output/gradients hữu hạn bằng 0. Module không thêm residual; block phase 3 sẽ xử lý residual.
+
+Scores, softmax và weighted sum dùng FP32 cho input FP16/BF16, FP64 cho input FP64.
+Autocast bị tắt trong phần này để matmul không tự quay lại FP16; projections vẫn
+tuân theo dtype/autocast thông thường của PyTorch. Dropout áp dụng lên probabilities
+chỉ trong train mode; eval tắt dropout. Memory attention hiện là `O(B * heads * T²)`;
+chưa có KV cache hoặc kernel attention tối ưu.
+
+```powershell
+uv run --no-sync pytest tests/test_attention.py -q
+uv run --no-sync python scripts/check_attention.py --device cpu
+uv run --no-sync python scripts/check_attention.py --device cuda
+```
+
+Probe tạo run riêng có architecture snapshot, môi trường, source/Git metadata, log
+và `artifacts/attention_report.json`. Kiểm tra future perturbation, future gradients,
+padding perturbation và mẫu toàn padding ở kích thước candidate.
+Kết quả: [WP05.2 validation](wp05_2_validation.md).

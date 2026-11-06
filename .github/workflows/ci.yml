@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, "codex/**", "feat/**", "fix/**", "chore/**", "docs/**", "research/**"]
+    branches: [main, "feat/**"]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -49,6 +49,8 @@ jobs:
         run: uv run --no-sync grast prepare-data --config configs/data/wp03.toml --math-only --offline
       - name: WP05.1 model primitives smoke
         run: uv run --no-sync python scripts/check_model_primitives.py --device cpu
+      - name: WP05.2 causal attention smoke
+        run: uv run --no-sync python scripts/check_attention.py --device cpu
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree

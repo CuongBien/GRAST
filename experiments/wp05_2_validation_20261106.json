@@ -1,0 +1,162 @@
+{
+  "checks": {
+    "dropout_train_eval_seed": true,
+    "finite_difference_input_gradcheck": true,
+    "float16_bfloat16_autocast": true,
+    "fully_padded_rows_finite_zero_output_and_gradients": true,
+    "future_token_isolation": true,
+    "native_sdpa_complex_rope_reference_output_input_and_parameter_gradients": true,
+    "nonfinite_padding_isolation": true,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "wheel_sdist_build": true,
+    "wp04_adapter_integration": true,
+    "zero_future_input_gradients": true
+  },
+  "date": "2026-11-06",
+  "limitations": [
+    "Attention module only; decoder and overfit not implemented.",
+    "Explicit attention uses quadratic memory in sequence length."
+  ],
+  "remaining_phases": [
+    "WP05.3 SwiGLU/residual decoder block",
+    "WP05.4 decoder/LM head/CE loss/full parameter count",
+    "WP05.5 overfit/full-model causal isolation"
+  ],
+  "runs": [
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cpu"
+      },
+      "report": {
+        "checks": {
+          "finite_gradients": true,
+          "fully_padded_outputs_and_gradients_finite_zero": true,
+          "future_perturbation_prefix_unchanged": true,
+          "padded_query_outputs_zero": true,
+          "padding_input_gradients_zero": true,
+          "padding_perturbation_output_unchanged": true,
+          "prefix_to_future_input_gradients_zero": true
+        },
+        "device": "cpu",
+        "expected_parameter_count": 1048576,
+        "future_prefix_max_abs_difference": 0.0,
+        "input_shape": [
+          2,
+          16,
+          512
+        ],
+        "limitation": "Attention module only; no decoder, language-model loss or overfit yet.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "output_shape": [
+          2,
+          16,
+          512
+        ],
+        "padding_max_abs_difference": 0.0,
+        "parameter_count": 1048576,
+        "status": "passed",
+        "work_package": "WP05.2"
+      },
+      "run_directory": "artifacts/runs/20261106T093940938912Z-wp05-2-attention-seed42-c9e9f03a"
+    },
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cuda:0"
+      },
+      "report": {
+        "checks": {
+          "finite_gradients": true,
+          "fully_padded_outputs_and_gradients_finite_zero": true,
+          "future_perturbation_prefix_unchanged": true,
+          "padded_query_outputs_zero": true,
+          "padding_input_gradients_zero": true,
+          "padding_perturbation_output_unchanged": true,
+          "prefix_to_future_input_gradients_zero": true
+        },
+        "device": "cuda",
+        "expected_parameter_count": 1048576,
+        "future_prefix_max_abs_difference": 0.0,
+        "input_shape": [
+          2,
+          16,
+          512
+        ],
+        "limitation": "Attention module only; no decoder, language-model loss or overfit yet.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "output_shape": [
+          2,
+          16,
+          512
+        ],
+        "padding_max_abs_difference": 0.0,
+        "parameter_count": 1048576,
+        "status": "passed",
+        "work_package": "WP05.2"
+      },
+      "run_directory": "artifacts/runs/20261106T094009598970Z-wp05-2-attention-seed42-7f177a5e"
+    }
+  ],
+  "schema_version": 1,
+  "status": "accepted_phase_only",
+  "tests": {
+    "additional_cuda_cases": 11,
+    "failed": 0,
+    "full_local_passed": 230,
+    "phase_cpu_cases": 28,
+    "phase_local_passed": 39
+  },
+  "work_package": "WP05.2"
+}

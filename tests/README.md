@@ -21,11 +21,14 @@ parameter count và repeated-token gradients, RMSNorm đối chiếu PyTorch FP6
 finite-difference gradcheck, RoPE đối chiếu ma trận quay độc lập, relative dot products,
 explicit positions/chunk equivalence, Unicode IDs, shapes và low precision.
 CPU cases luôn chạy; các cases tương ứng chạy thêm trên CUDA khi có thiết bị.
-Chưa có kiểm thử model attention/decoder/overfit trước khi các phase đó được triển khai.
+WP05.2: `test_attention.py` so MHA với native SDPA math + complex RoPE về output,
+input/parameter gradients; kiểm tra causal prefix, zero future gradients, left/right/interior
+padding, fully padded rows và nonfinite padding. Có gradcheck, FP16/BF16/autocast,
+dropout train/eval, state-dict, count/shapes và tích hợp IDs/masks WP04.
+Chưa có kiểm thử decoder/overfit trước khi các phase đó được triển khai.
 
 Các test dự kiến theo HQ, thêm cùng implementation:
 
-- `test_attention.py`: causal mask, shape và không nhìn future tokens.
 - `test_kv_cache.py`: cached/uncached logits trong tolerance, fixed seed.
 - `test_generation.py`: generation boundaries và seed reproducibility.
 - `test_sample_bank.py`: contract, ordering và reproducibility.

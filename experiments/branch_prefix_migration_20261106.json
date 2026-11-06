@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-06",
+  "new_phase_branch": "feat/wp05-2-causal-attention",
+  "preserved": {
+    "dependabot_pull_request": {
+      "base": "main",
+      "head": "dependabot/github_actions/astral-sh/setup-uv-10.3.3",
+      "number": 1,
+      "state": "open"
+    },
+    "main": "aa8c36ca9349107862281bb0f43611fdc8976b08",
+    "wp02-baseline_commit": "aa8c36ca9349107862281bb0f43611fdc8976b08"
+  },
+  "renames": [
+    {
+      "commit": "fd19dd9144d3dd42ed91a7bf46a795b8ebadb0bc",
+      "local_renamed": true,
+      "new": "feat/wp03-preparation",
+      "old": "codex/wp03-preparation",
+      "old_remote_removed_with_lease": true,
+      "remote_new_sha_verified": true,
+      "upstream_updated": true
+    },
+    {
+      "commit": "c343ae439b0cffd3a11b47308e0c5f4b1e1d65d2",
+      "local_renamed": true,
+      "new": "feat/wp04-tokenizer",
+      "old": "codex/wp04-tokenizer",
+      "old_remote_removed_with_lease": true,
+      "remote_new_sha_verified": true,
+      "upstream_updated": true
+    },
+    {
+      "commit": "1e7c880830e40d73331716ddadd6883511145898",
+      "local_renamed": true,
+      "new": "feat/wp05-1-model-primitives",
+      "old": "codex/wp05-1-model-primitives",
+      "old_remote_removed_with_lease": true,
+      "remote_new_sha_verified": true,
+      "upstream_updated": true
+    }
+  ],
+  "repository": "https://github.com/CuongBien/GRAST",
+  "schema_version": 1,
+  "scope": "GRAST development branches, local and origin; main retained by explicit user instruction; automated Dependabot branch retained",
+  "verification": "git ls-remote --heads origin returned each replacement at the identical SHA and no remaining codex/ ref; open PR inventory confirmed no renamed development branch had an open PR."
+}

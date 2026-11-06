@@ -2,7 +2,8 @@
 
 Scope do người dùng chốt và cho phép thực hiện ngày 05/11/2026.
 **Trạng thái: đã triển khai và kiểm tra pipeline dữ liệu local.**
-Nhánh `codex/wp03-preparation` bắt đầu từ tag `wp02-baseline`.
+Nhánh `feat/wp03-preparation` bắt đầu từ tag `wp02-baseline`
+(đổi prefix từ `codex/` ngày 06/11/2026, giữ nguyên commit).
 Xem [cách chạy và protocol](wp03_data.md) cùng [bằng chứng nghiệm thu](wp03_validation.md).
 
 ## Baseline đầu vào
@@ -67,7 +68,7 @@ WP03 không bao gồm BPE, decoder, pretraining, CoT SFT, stopping policies ho�
 ## Bắt đầu từ baseline
 
 ```powershell
-git switch codex/wp03-preparation
+git switch feat/wp03-preparation
 uv run --no-sync grast smoke --config configs/experiments/local_smoke.toml
 ```
 

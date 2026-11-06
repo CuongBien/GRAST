@@ -20,14 +20,22 @@ Các work package sau dùng branch và PR từ `main` hoặc baseline đã nghi�
 ```powershell
 git switch main
 git pull --ff-only
-git switch -c codex/ten-task
+git switch -c feat/ten-task
 # Thay đổi và chạy checks trong README.
 git add <file-da-review>
 git commit -m "chore: describe the change"
-git push -u origin codex/ten-task
+git push -u origin feat/ten-task
 ```
 
 Mở PR vào `main` trên GitHub và dùng template có sẵn. Notion vẫn là task tracker chính.
+
+Từ 06/11/2026, mọi nhánh phát triển GRAST dùng prefix `feat/`. Ba nhánh `codex/wp03-preparation`,
+`codex/wp04-tokenizer`, `codex/wp05-1-model-primitives` đã được đổi sang tên `feat/`
+tương ứng ở local và remote; commit không đổi, upstream đã trỏ tới tên mới.
+Nhánh cũ được gỡ sau khi xác minh SHA của tên mới, có lease chống xóa nhầm ref đã thay đổi.
+`main` giữ nguyên theo yêu cầu người dùng; tag baseline không thay đổi.
+Nhánh Dependabot tự động có PR riêng giữ tên do bot quản lý.
+Evidence: `experiments/branch_prefix_migration_20261106.json`.
 
 ## CI hiện có
 
@@ -38,14 +46,16 @@ Hai job matrix chạy Python 3.11 trên Ubuntu và Windows:
 
 1. `uv sync --locked --extra cpu --extra data`.
 2. Ruff lint và format check.
-3. Package, configuration, reproducibility và data/answer-extraction behavioral tests.
-4. WP02 fresh-process smoke (CPU) và WP03 math-only smoke; data sources dùng offline fixtures trong tests.
+3. Package, reproducibility, data/answer-extraction, tokenizer và model-phase tests.
+4. WP02 smoke, WP03 math-only smoke và các probe WP05.1/WP05.2 trên CPU;
+   data sources dùng offline fixtures trong tests.
 5. Build wheel và source distribution.
 6. Cài wheel vào environment sạch và import ngoài source tree.
 
 Token chỉ có `contents: read`; không yêu cầu repo secret. Action được pin bằng commit SHA,
 Dependabot kiểm tra Actions hàng tuần. Tool uv pin 0.12.19; dependency resolve nằm trong `uv.lock`.
-CI xanh kiểm tra package và WP02 trên CPU; không xác nhận CUDA/A100, model hoặc training.
+CI xanh kiểm tra package và các phase đã triển khai trên CPU; không xác nhận CUDA/A100
+hoặc các phase model/training chưa được thực hiện.
 
 Tham chiếu: [uv GitHub Actions integration](https://docs.astral.sh/uv/guides/integration/github/)
 và [actions/checkout](https://github.com/actions/checkout).

@@ -47,7 +47,8 @@ WP05.1 config/embedding/RoPE/RMSNorm → WP05.2 causal MHA/masks →
 WP05.3 SwiGLU/decoder block → WP05.4 decoder/LM head/loss/parameter count →
 WP05.5 overfit và causal-isolation của model hoàn chỉnh.
 Mỗi phase có test/báo cáo/commit riêng; chỉ chốt WP05 sau gate cuối.
-Xem [kế hoạch và contract](wp05_architecture.md), [kết quả phase 1](wp05_1_validation.md).
+Xem [kế hoạch và contract](wp05_architecture.md), [kết quả phase 1](wp05_1_validation.md)
+và [kết quả phase 2](wp05_2_validation.md).
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 

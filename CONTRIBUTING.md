@@ -6,8 +6,10 @@ Gắn link task Notion trong issue/PR thay vì tạo hai bảng tiến độ đ�
 ## Quy trình
 
 1. Chọn một task có phạm vi nhỏ, ghi tiêu chí nghiệm thu và dependency.
-2. Tạo branch từ `main`, ví dụ `codex/repository-skeleton`, `feat/tokenizer` hoặc
-   `fix/causal-mask`. Không tạo branch giai đoạn 2 để làm việc ngoài scope hiện tại.
+2. Tạo branch từ `main` hoặc phase phụ thuộc đã nghiệm thu, ví dụ `feat/tokenizer`
+   hoặc `feat/wp05-2-causal-attention`. Mọi branch phát triển dùng prefix `feat/`;
+   `main` giữ vai trò nhánh mặc định, Dependabot quản lý branch tự động riêng.
+   Không tạo branch giai đoạn 2 để làm việc ngoài scope hiện tại.
 3. Thay đổi code/docs và chạy các lệnh kiểm tra trong README.
 4. Commit có mục đích rõ ràng, ví dụ `chore: scaffold repository and CI`.
 5. Mở PR vào `main`, điền template, đính kèm test/log/config/artifact phù hợp.
@@ -25,4 +27,4 @@ Xem [GitHub workflow](docs/github_workflow.md) để biết thao tác bootstrap 
   Sync với `--extra cpu` hoặc `--extra cuda`, thêm `--extra data` cho WP03;
   chạy `uv run --no-sync ...` để giữ runtime đó.
 - Thêm behavioral tests cùng implementation; không dùng test rỗng hoặc skip để tuyên bố đã pass.
-- WP02 có PyTorch/NumPy cho reproducibility probes; chưa implement model hoặc tokenizer.
+- WP02 có reproducibility probes; WP04 có tokenizer; WP05 triển khai model theo phase.
