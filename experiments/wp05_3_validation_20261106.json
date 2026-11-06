@@ -1,0 +1,188 @@
+{
+  "checks": {
+    "block_finite_difference_input": true,
+    "float16_bfloat16_autocast_residual_stream": true,
+    "independent_full_block_reference_output_input_and_all_parameter_gradients": true,
+    "independent_swiglu_reference_output_input_and_parameter_gradients": true,
+    "nonfinite_padding_and_fully_masked_gradients": true,
+    "one_two_block_causal_isolation": true,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "swiglu_finite_difference_input_and_all_parameters": true,
+    "wheel_sdist_build": true,
+    "wp04_adapter_integration": true,
+    "wp05_2_attention_regression_suite": true,
+    "zero_branch_exact_identity_and_full_input_jacobian": true
+  },
+  "date": "2026-11-06",
+  "limitations": [
+    "Parameter count is for one block, not the full language model.",
+    "No full decoder, LM loss, overfit or KV cache yet."
+  ],
+  "remaining_phases": [
+    "WP05.4 full decoder, final norm, LM head, CE loss and total parameter count",
+    "WP05.5 overfit and full-model causal isolation"
+  ],
+  "runs": [
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cpu"
+      },
+      "report": {
+        "block_count": 1,
+        "checks": {
+          "all_trainable_parameters_nonzero_gradients": true,
+          "finite_outputs_and_gradients": true,
+          "fully_padded_outputs_all_gradients_finite_zero": true,
+          "future_perturbation_prefix_unchanged": true,
+          "nonfinite_padding_perturbation_unchanged": true,
+          "padding_outputs_and_input_gradients_zero": true,
+          "prefix_to_future_input_gradients_zero": true,
+          "zero_branches_exact_identity_and_input_jacobian": true
+        },
+        "device": "cpu",
+        "expected_parameter_count": 4195328,
+        "future_prefix_max_abs_difference": 0.0,
+        "gradient_l2_before_zeroing_branches": {
+          "attention.k_proj.weight": 0.010381286963820457,
+          "attention.out_proj.weight": 0.07359224557876587,
+          "attention.q_proj.weight": 0.01026941929012537,
+          "attention.v_proj.weight": 0.0762554481625557,
+          "attention_norm.weight": 0.001788088702596724,
+          "ffn.down_proj.weight": 0.06732127070426941,
+          "ffn.gate_proj.weight": 0.069192074239254,
+          "ffn.up_proj.weight": 0.067409947514534,
+          "ffn_norm.weight": 0.0023187962360680103
+        },
+        "input_shape": [
+          2,
+          16,
+          512
+        ],
+        "limitation": "One decoder block only; full decoder, LM head, CE loss and overfit follow.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "output_shape": [
+          2,
+          16,
+          512
+        ],
+        "padding_max_abs_difference": 0.0,
+        "parameter_count": 4195328,
+        "status": "passed",
+        "work_package": "WP05.3"
+      },
+      "run_directory": "artifacts/runs/20261106T102957468932Z-wp05-3-decoder-block-seed42-f538ed16"
+    },
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cuda:0"
+      },
+      "report": {
+        "block_count": 1,
+        "checks": {
+          "all_trainable_parameters_nonzero_gradients": true,
+          "finite_outputs_and_gradients": true,
+          "fully_padded_outputs_all_gradients_finite_zero": true,
+          "future_perturbation_prefix_unchanged": true,
+          "nonfinite_padding_perturbation_unchanged": true,
+          "padding_outputs_and_input_gradients_zero": true,
+          "prefix_to_future_input_gradients_zero": true,
+          "zero_branches_exact_identity_and_input_jacobian": true
+        },
+        "device": "cuda",
+        "expected_parameter_count": 4195328,
+        "future_prefix_max_abs_difference": 0.0,
+        "gradient_l2_before_zeroing_branches": {
+          "attention.k_proj.weight": 0.00995386578142643,
+          "attention.out_proj.weight": 0.07623863220214844,
+          "attention.q_proj.weight": 0.010002661496400833,
+          "attention.v_proj.weight": 0.0776294469833374,
+          "attention_norm.weight": 0.0018429775955155492,
+          "ffn.down_proj.weight": 0.06660422682762146,
+          "ffn.gate_proj.weight": 0.06845328211784363,
+          "ffn.up_proj.weight": 0.06743884086608887,
+          "ffn_norm.weight": 0.0023885357659310102
+        },
+        "input_shape": [
+          2,
+          16,
+          512
+        ],
+        "limitation": "Block probe only; full decoder, LM head, CE loss and overfit follow.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "output_shape": [
+          2,
+          16,
+          512
+        ],
+        "padding_max_abs_difference": 0.0,
+        "parameter_count": 4195328,
+        "status": "passed",
+        "work_package": "WP05.3"
+      },
+      "run_directory": "artifacts/runs/20261106T103037233955Z-wp05-3-decoder-block-seed42-97f6094a"
+    }
+  ],
+  "schema_version": 1,
+  "status": "accepted_phase_only",
+  "tests": {
+    "additional_cuda_cases": 13,
+    "failed": 0,
+    "full_local_passed": 276,
+    "phase_cpu_cases": 33,
+    "phase_local_passed": 46
+  },
+  "work_package": "WP05.3"
+}

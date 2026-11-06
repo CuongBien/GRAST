@@ -10,6 +10,7 @@ from torch.nn import functional as F
 
 from llm_scratch.model.config import ModelConfig
 from llm_scratch.model.layers import RotaryEmbedding
+from llm_scratch.model.masking import valid_token_mask
 
 
 def _scaled_attention(
@@ -67,26 +68,8 @@ class CausalSelfAttention(nn.Module):
         attention_mask: Tensor | None = None,
         position_ids: Tensor | None = None,
     ) -> Tensor:
-        if not x.is_floating_point() or x.ndim != 3 or x.shape[-1] != self.config.hidden_size:
-            raise ValueError("Attention expects floating [batch, sequence, hidden_size]")
+        valid = valid_token_mask(x, attention_mask, self.config)
         batch, length, hidden_size = x.shape
-        if batch == 0 or not 1 <= length <= self.config.context_length:
-            raise ValueError("Need a nonempty batch/sequence within configured context length")
-        if attention_mask is None:
-            valid = torch.ones((batch, length), dtype=torch.bool, device=x.device)
-        else:
-            if (
-                attention_mask.shape != (batch, length)
-                or attention_mask.device != x.device
-                or attention_mask.dtype
-                not in (torch.bool, torch.uint8, torch.int8, torch.int16, torch.int32, torch.int64)
-            ):
-                raise ValueError(
-                    "attention_mask must be bool/integer [batch, sequence] on x.device"
-                )
-            if torch.any((attention_mask != 0) & (attention_mask != 1)):
-                raise ValueError("attention_mask values must be 0 or 1")
-            valid = attention_mask.bool()
         # Clear even nonfinite padding values so zero probabilities never multiply NaN/Inf V.
         x = x.masked_fill(~valid.unsqueeze(-1), 0.0)
 

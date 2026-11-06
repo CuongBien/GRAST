@@ -1,4 +1,4 @@
-"""WP05.1 primitives built from torch tensors, parameters and autograd."""
+"""Embedding, normalization, RoPE and SwiGLU built from torch/autograd primitives."""
 
 from __future__ import annotations
 
@@ -56,6 +56,26 @@ class RMSNorm(nn.Module):
         value = x.to(compute_dtype)
         normalized = value * torch.rsqrt(value.square().mean(dim=-1, keepdim=True) + self.eps)
         return (normalized * self.weight.to(compute_dtype)).to(x.dtype)
+
+
+class SwiGLU(nn.Module):
+    """Token-wise, bias-free FFN: down(silu(gate(x)) * up(x))."""
+
+    def __init__(self, hidden_size: int, ffn_hidden_size: int):
+        super().__init__()
+        _positive_size(hidden_size, "hidden_size")
+        _positive_size(ffn_hidden_size, "ffn_hidden_size")
+        self.hidden_size = hidden_size
+        self.gate_proj = nn.Linear(hidden_size, ffn_hidden_size, bias=False)
+        self.up_proj = nn.Linear(hidden_size, ffn_hidden_size, bias=False)
+        self.down_proj = nn.Linear(ffn_hidden_size, hidden_size, bias=False)
+        for projection in (self.gate_proj, self.up_proj, self.down_proj):
+            nn.init.normal_(projection.weight, mean=0.0, std=0.02)
+
+    def forward(self, x: Tensor) -> Tensor:
+        if not x.is_floating_point() or x.ndim < 1 or x.shape[-1] != self.hidden_size:
+            raise ValueError("SwiGLU expects floating input with final dimension hidden_size")
+        return self.down_proj(F.silu(self.gate_proj(x)) * self.up_proj(x))
 
 
 class RotaryEmbedding(nn.Module):

@@ -13,6 +13,9 @@ Xem `docs/wp05_architecture.md`; chưa chạy model hoàn chỉnh hoặc overfit
 `check_attention.py --device cpu` (hoặc `cuda`) chạy probe WP05.2 trên kích thước
 candidate: forward/backward, future-token isolation, padding/fully-masked rows.
 
+`check_decoder_block.py --device cpu` (hoặc `cuda`) chạy probe WP05.3: gradients
+qua attention/SwiGLU/norms, residual identity, causal/padding isolation ở một block.
+
 Các script model/training bên dưới giữ tên theo HQ và hiện exit 1 với thông báo `skeleton only`.
 Chưa có CLI arguments, training, sampling, profiling hay evaluation.
 

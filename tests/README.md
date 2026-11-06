@@ -1,4 +1,4 @@
-# Test status — WP02 + WP03 + WP04
+# Test status — WP02–WP05 (các phase đã triển khai)
 
 Sync environment với `uv sync --locked --extra cpu --extra data` (hoặc `cuda` thay `cpu`).
 `test_package.py` kiểm tra metadata/importability; `test_reproducibility.py` kiểm tra
@@ -25,7 +25,11 @@ WP05.2: `test_attention.py` so MHA với native SDPA math + complex RoPE về ou
 input/parameter gradients; kiểm tra causal prefix, zero future gradients, left/right/interior
 padding, fully padded rows và nonfinite padding. Có gradcheck, FP16/BF16/autocast,
 dropout train/eval, state-dict, count/shapes và tích hợp IDs/masks WP04.
-Chưa có kiểm thử decoder/overfit trước khi các phase đó được triển khai.
+WP05.3: `test_decoder_block.py` so SwiGLU và cả block với reference độc lập về
+output/input/parameter gradients, kiểm tra finite-difference, zero-branch identity/Jacobian,
+causal isolation của 1–2 block, padding NaN/Inf, all-padding gradients, dtype/autocast,
+dropout, state-dict/count/shapes và tích hợp WP04. Việc chia sẻ mask validation được
+kiểm tra cùng suite attention của phase trước. Chưa có full language model/overfit tests.
 
 Các test dự kiến theo HQ, thêm cùng implementation:
 

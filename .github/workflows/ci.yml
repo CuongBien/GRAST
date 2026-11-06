@@ -51,6 +51,8 @@ jobs:
         run: uv run --no-sync python scripts/check_model_primitives.py --device cpu
       - name: WP05.2 causal attention smoke
         run: uv run --no-sync python scripts/check_attention.py --device cpu
+      - name: WP05.3 decoder block smoke
+        run: uv run --no-sync python scripts/check_decoder_block.py --device cpu
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree

@@ -8,7 +8,7 @@ forward/backward, overfit và causal-isolation của model hoàn chỉnh.
 | --- | --- | --- | --- |
 | WP05.1 | ModelConfig, token embedding, RoPE, RMSNorm | Reference số học, shapes, gradients, dtype/device, nhận IDs WP04 | Đã triển khai |
 | WP05.2 | MHA causal self-attention | Reference attention, causal/padding masks, future-token isolation, không NaN ở hàng bị mask | Đã triển khai |
-| WP05.3 | SwiGLU và pre-norm decoder block | Shapes, gradients qua attention/FFN/residual, identity khi nhánh residual bằng 0 | Chưa triển khai |
+| WP05.3 | SwiGLU và pre-norm decoder block | Shapes, gradients qua attention/FFN/residual, identity khi nhánh residual bằng 0 | Đã triển khai |
 | WP05.4 | Decoder-only LM, final norm, LM head, CE loss | Logits, shift labels đúng một lần, ignore -100, tied embeddings, parameter count thực tế | Chưa triển khai |
 | WP05.5 | Integration và overfit batch nhỏ | Loss giảm trên batch cố định, gradients hữu hạn, kiểm tra model không nhìn future tokens và không dùng padding | Chưa triển khai |
 
@@ -25,7 +25,7 @@ hoặc model tải sẵn. KV cache/generation và pretraining loop thuộc các 
 - RoPE áp dụng riêng lên Q/K bằng cùng position IDs; V không xoay.
 - Padding mask từ collator có 1/True là token hợp lệ. Phase attention kết hợp mask
   causal và key padding, xử lý rõ query padding/hàng không có key hợp lệ.
-- Decoder block dự kiến pre-norm: residual attention rồi residual SwiGLU; các linear
+- Decoder block pre-norm: residual attention rồi residual SwiGLU; các linear
   projections không bias. Final RMSNorm trước LM head.
 - Labels WP04 chưa shift và dùng `-100` cho prompt/padding. Khi triển khai WP05.4,
   loss trong model sẽ so `logits[:, :-1]` với `labels[:, 1:]`; trainer không shift lần hai.
@@ -127,3 +127,53 @@ Probe tạo run riêng có architecture snapshot, môi trường, source/Git met
 và `artifacts/attention_report.json`. Kiểm tra future perturbation, future gradients,
 padding perturbation và mẫu toàn padding ở kích thước candidate.
 Kết quả: [WP05.2 validation](wp05_2_validation.md).
+
+## WP05.3 — SwiGLU và decoder block
+
+`SwiGLU(hidden_size, ffn_hidden_size)` tính
+`down(silu(gate(x)) * up(x))`, theo
+[GLU Variants Improve Transformer](https://arxiv.org/abs/2002.05202).
+[SiLU](https://docs.pytorch.org/docs/2.9/generated/torch.nn.functional.silu.html)
+là `x * sigmoid(x)`. Ba projection không bias, khởi tạo normal std 0.02;
+FFN hoạt động độc lập theo từng token, không trộn chiều thời gian.
+`ffn_hidden_size` là chiều intermediate thực tế, không tự nhân hệ số 2/3.
+Tổng số tham số FFN là `3 * hidden_size * ffn_hidden_size`.
+
+`DecoderBlock(ModelConfig)` dùng hai RMSNorm riêng và hai residual:
+
+```text
+clean_x = clear_padding(x)
+a = clean_x + dropout(attention(attention_norm(clean_x), mask, positions))
+out = a + dropout(swiglu(ffn_norm(a)))
+```
+
+Padding được clear trước norm đầu tiên và sau từng residual. Không để padding NaN/Inf
+đi qua identity path hoặc làm hỏng gradients của RMSNorm. Mask validation được dùng
+chung giữa attention và block qua `model/masking.py`; quy ước 1=True=valid không đổi.
+Valid activations được giả định hữu hạn. Với hai output projection của attention/FFN
+bằng 0, output ở token hợp lệ bằng input chính xác và input Jacobian là identity;
+padding output/input gradients vẫn bằng 0.
+
+`dropout` trong config áp dụng cho attention probabilities như phase 2 và cho output
+của hai nhánh residual; không có dropout nội bộ riêng trong SwiGLU.
+Dropout tắt trong eval. Khi autocast với input FP32, residual stream giữ FP32 nhờ
+phép cộng với input, còn các linear projections tuân theo autocast. Với module và
+input FP16/BF16, output giữ dtype tương ứng; RMSNorm/attention giữ quy tắc tích lũy
+FP32 của phase trước. SwiGLU dùng dtype/autocast thông thường của PyTorch.
+
+Một block có `4*H² + 3*H*F + 2*H` tham số: attention + SwiGLU + hai RMSNorm.
+Đây chưa phải tổng model: phase 4 sẽ bổ sung embedding, stack, final norm và LM head.
+Block nhận/trả `[B,T,H]`, optional mask `[B,T]` và position IDs như attention;
+không có KV cache, final norm hoặc loss trong block.
+
+```powershell
+uv run --no-sync pytest tests/test_decoder_block.py -q
+uv run --no-sync python scripts/check_decoder_block.py --device cpu
+uv run --no-sync python scripts/check_decoder_block.py --device cuda
+```
+
+Probe ghi run/config/log/metadata, architecture và `artifacts/decoder_block_report.json`.
+Nó kiểm tra gradient của mọi parameter ở block thông thường, causal/padding isolation,
+mẫu toàn padding và identity output/input Jacobian khi zero hai nhánh.
+Test còn kiểm tra tính nhân quả khi xếp hai block; chưa tạo language model đầy đủ.
+Kết quả: [WP05.3 validation](wp05_3_validation.md).
