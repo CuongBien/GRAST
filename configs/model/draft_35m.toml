@@ -1,4 +1,4 @@
-# Design candidate only; parameter count/feasibility await model implementation.
+# Legacy filename; WP05.4 measured 46,148,096 tied parameters. Training feasibility is pending.
 [model]
 vocab_size = 8192
 context_length = 1024

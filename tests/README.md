@@ -29,7 +29,14 @@ WP05.3: `test_decoder_block.py` so SwiGLU và cả block với reference độc 
 output/input/parameter gradients, kiểm tra finite-difference, zero-branch identity/Jacobian,
 causal isolation của 1–2 block, padding NaN/Inf, all-padding gradients, dtype/autocast,
 dropout, state-dict/count/shapes và tích hợp WP04. Việc chia sẻ mask validation được
-kiểm tra cùng suite attention của phase trước. Chưa có full language model/overfit tests.
+kiểm tra cùng suite attention của phase trước.
+WP05.4: `test_transformer.py` kiểm tra assembly order, unique parameter counts,
+tied/untied head và alias sau dtype/device/load/optimizer step, shifted CE reference,
+prompt/padding pair masks, differentiable-zero cases, mixed precision và FP32 loss.
+Có checkpoint metadata/config/fingerprint/weights-only round-trip qua atomic checkpoint WP02,
+WP04 pretraining/SFT prefix và basic future-token isolation. Overfit thuộc WP05.5.
+`conftest.py` đặt cuBLAS workspace trước khi CUDA được khởi tạo để GPU cases chạy
+được trước/sau các test bật deterministic mode mà không phụ thuộc thứ tự.
 
 Các test dự kiến theo HQ, thêm cùng implementation:
 

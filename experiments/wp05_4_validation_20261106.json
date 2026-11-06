@@ -1,0 +1,271 @@
+{
+  "actual_tied_parameter_count": 46148096,
+  "analytical_untied_candidate_parameter_count": 50342400,
+  "checks": {
+    "checkpoint_config_fingerprint_weights_only_atomic_rng_round_trip": true,
+    "cuda_workspace_set_before_test_cuda_initialization": true,
+    "empty_supervision_differentiable_zero": true,
+    "low_precision_logits_fp32_loss_autocast": true,
+    "prompt_padding_left_boundary_gap_masks": true,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "shifted_ce_logsoftmax_reference_and_masked_gradients": true,
+    "tied_untied_unique_parameter_counts": true,
+    "tying_after_dtype_device_optimizer_load_and_assign": true,
+    "wheel_sdist_build": true,
+    "wp04_pretraining_sft_prefix_and_first_reasoning_target": true
+  },
+  "date": "2026-11-06",
+  "limitations": [
+    "Model is untrained; observed loss is not a quality result.",
+    "Probe sequences are short; max-context training feasibility not measured.",
+    "No pretraining loop, generation or KV cache yet."
+  ],
+  "remaining_phases": [
+    "WP05.5 overfit small fixed batch and complete full-model causal/padding integration acceptance"
+  ],
+  "runs": [
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cpu"
+      },
+      "report": {
+        "batch_source": "wp04_tokenizer_pretrain_sft_examples",
+        "checks": {
+          "basic_future_perturbation_prefix_unchanged": true,
+          "finite_logits_loss_gradients": true,
+          "manual_shifted_ce_matches": true,
+          "padding_logits_zero": true,
+          "parameter_formula_matches_actual": true,
+          "supervised_pair_count_correct": true,
+          "weight_tying_correct": true
+        },
+        "device": "cpu",
+        "expected_parameter_count": 46148096,
+        "gradient_l2_by_component": {
+          "blocks": 21.87108274442195,
+          "final_norm": 0.14319150149822235,
+          "lm_head_unique": 0.0,
+          "token_embedding": 10.820830345153809
+        },
+        "input_shape": [
+          2,
+          27
+        ],
+        "limitation": "Forward/backward probe of an untrained model; no overfit or quality claim.",
+        "logits_shape": [
+          2,
+          27,
+          8192
+        ],
+        "loss": 9.003583908081055,
+        "manual_next_token_loss": 9.003582954406738,
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "num_loss_tokens": 28,
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "status": "passed",
+        "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+        "unique_parameters_with_finite_nonzero_gradients": 92,
+        "work_package": "WP05.4"
+      },
+      "run_directory": "artifacts/runs/20261106T145041988149Z-wp05-4-causal-lm-seed42-275aff42"
+    },
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cuda:0"
+      },
+      "report": {
+        "batch_source": "wp04_tokenizer_pretrain_sft_examples",
+        "checks": {
+          "basic_future_perturbation_prefix_unchanged": true,
+          "finite_logits_loss_gradients": true,
+          "manual_shifted_ce_matches": true,
+          "padding_logits_zero": true,
+          "parameter_formula_matches_actual": true,
+          "supervised_pair_count_correct": true,
+          "weight_tying_correct": true
+        },
+        "device": "cuda",
+        "expected_parameter_count": 46148096,
+        "gradient_l2_by_component": {
+          "blocks": 21.871296890344077,
+          "final_norm": 0.14319150149822235,
+          "lm_head_unique": 0.0,
+          "token_embedding": 10.823502540588379
+        },
+        "input_shape": [
+          2,
+          27
+        ],
+        "limitation": "Untrained model forward/backward probe; no overfit or quality claim.",
+        "logits_shape": [
+          2,
+          27,
+          8192
+        ],
+        "loss": 9.003583908081055,
+        "manual_next_token_loss": 9.003583908081055,
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "num_loss_tokens": 28,
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "status": "passed",
+        "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+        "unique_parameters_with_finite_nonzero_gradients": 92,
+        "work_package": "WP05.4"
+      },
+      "run_directory": "artifacts/runs/20261106T145115511718Z-wp05-4-causal-lm-seed42-f48a81d4"
+    },
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cpu"
+      },
+      "report": {
+        "batch_source": "seeded_synthetic_token_ids",
+        "checks": {
+          "basic_future_perturbation_prefix_unchanged": true,
+          "finite_logits_loss_gradients": true,
+          "manual_shifted_ce_matches": true,
+          "padding_logits_zero": true,
+          "parameter_formula_matches_actual": true,
+          "supervised_pair_count_correct": true,
+          "weight_tying_correct": true
+        },
+        "device": "cpu",
+        "expected_parameter_count": 46148096,
+        "gradient_l2_by_component": {
+          "blocks": 18.161102274721888,
+          "final_norm": 0.11057484149932861,
+          "lm_head_unique": 0.0,
+          "token_embedding": 9.201614379882812
+        },
+        "input_shape": [
+          2,
+          16
+        ],
+        "limitation": "Untrained model forward/backward probe; no overfit or quality claim.",
+        "logits_shape": [
+          2,
+          16,
+          8192
+        ],
+        "loss": 9.24560832977295,
+        "manual_next_token_loss": 9.24560832977295,
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "num_loss_tokens": 19,
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "status": "passed",
+        "tokenizer_fingerprint": null,
+        "unique_parameters_with_finite_nonzero_gradients": 92,
+        "work_package": "WP05.4"
+      },
+      "run_directory": "artifacts/runs/20261106T145247951570Z-wp05-4-causal-lm-seed42-2df7b697"
+    }
+  ],
+  "schema_version": 1,
+  "status": "accepted_phase_only",
+  "tests": {
+    "additional_cuda_cases": 11,
+    "failed": 0,
+    "full_local_passed": 327,
+    "phase_cpu_cases": 40,
+    "phase_local_passed": 51
+  },
+  "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+  "work_package": "WP05.4"
+}

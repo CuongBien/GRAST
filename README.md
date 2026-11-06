@@ -4,7 +4,8 @@ Repository cho nghiên cứu LLM from scratch theo Hướng C: reasoning và tes
 
 **Trạng thái: WP01+WP02 baseline; WP03 data và WP04 tokenizer đã triển khai.** Đã có config,
 seed, metadata/logs, checkpoint RNG; dataset preparation, benchmark toán, answer extraction,
-split/dedup, fixed pilot và byte BPE tự viết. Model hoàn chỉnh, training loop, inference và stopping chưa implement.
+split/dedup, fixed pilot và byte BPE tự viết. WP05.4 đã ghép full language model;
+training loop, generation và stopping chưa implement.
 Smoke WP02 chỉ dùng RNG/ma trận nhỏ; WP03 chưa đánh giá chất lượng model.
 
 WP02 đã nghiệm thu CPU, RTX 4060 và Colab A100; xem [evidence](docs/wp02_validation.md).
@@ -14,7 +15,8 @@ WP04: [tokenizer và API chung](docs/wp04_tokenizer.md), [nghiệm thu](docs/wp0
 WP05 đang chia thành 5 phase: [kế hoạch kiến trúc](docs/wp05_architecture.md).
 WP05.1 có model config, embedding, RoPE và RMSNorm; WP05.2 có causal MHA và padding masks.
 WP05.3 có SwiGLU và pre-norm decoder block với residual connections.
-Full decoder/LM head/loss chưa triển khai. [Báo cáo WP05.3](docs/wp05_3_validation.md).
+WP05.4 có full decoder, LM head và causal CE loss; candidate tied có **46.148.096 tham số**.
+[Báo cáo WP05.4](docs/wp05_4_validation.md). Chưa nghiệm thu overfit ở WP05.5.
 
 Nguồn kế hoạch: [LLM From Scratch — Hướng C | Project HQ](https://app.notion.com/p/4093badafe55810db45bfcc26b766de9)
 (bản cập nhật 31/10/2026; hạn đồ án 01/12/2026).
@@ -28,9 +30,9 @@ Nguồn kế hoạch: [LLM From Scratch — Hướng C | Project HQ](https://app
    Policies under Shared GPU Budgets.* Chỉ mở khi workload đồng thời thật sự tạo memory
    contention; RL không nằm trong critical path đồ án và chưa có implementation trong repo.
 
-Mục tiêu tiếp theo là hoàn thiện decoder-only Transformer, generation
-và KV cache bằng PyTorch. Model khoảng 30–60M là mục tiêu cần feasibility gate,
-chưa phải cấu hình đã được kiểm chứng. Không dùng `AutoModelForCausalLM` làm kiến trúc chính.
+Mục tiêu tiếp theo là kiểm tra overfit, pretraining, generation và KV cache bằng PyTorch.
+Candidate 46,15M đã chạy forward/backward; training feasibility vẫn cần kiểm chứng.
+Không dùng `AutoModelForCausalLM` làm kiến trúc chính.
 
 ## Bắt đầu
 

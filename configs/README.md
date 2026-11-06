@@ -7,7 +7,8 @@ và artifact root tương đối được resolve theo file experiment, không t
 - `experiments/local_smoke.toml`: CPU, seed 42, deterministic.
 - `experiments/local_cuda.toml`: bắt buộc CUDA, không fallback CPU.
 - `experiments/colab_a100.toml`: bắt buộc GPU có tên chứa A100.
-- `model/draft_35m.toml`: thiết kế ứng viên, chưa kiểm chứng parameter count/feasibility.
+- `model/draft_35m.toml`: tên file kế thừa WP02; model thực có 46.148.096 tied parameters.
+  Training feasibility chưa nghiệm thu.
 - `tokenizer/bpe.toml`: vocabulary đích và special-token contract dùng chung WP02/WP04.
 - `tokenizer/train.toml`: WP04 train-only TinyStories, kiểm tra round-trip và thống kê codec.
 - `pretrain/debug.toml`, `sft/debug.toml`: debug defaults, chưa có training loop.
@@ -16,8 +17,10 @@ và artifact root tương đối được resolve theo file experiment, không t
 Schema version 1 được kiểm tra trong `llm_scratch.utils.config`: từ chối key không biết,
 kiểu sai, seed không hợp lệ, head dimension/vocabulary không khớp, K không hợp lệ, v.v.
 Snapshot resolved nằm trong `run/config.json`; file TOML nguồn được chép vào `config_sources/`.
-Model/training/generation config hiện chỉ được validate và snapshot; smoke chạy probe RNG
+Trong WP02, model/training/generation config chỉ được validate và snapshot; smoke chạy probe RNG
 và ma trận 8×8 float32, không khởi tạo model hoặc dùng các hyperparameter để train.
+WP05.4 dùng các model fields qua `ModelConfig` để khởi tạo full LM; architecture snapshot
+thêm explicit `rope_theta` và `rms_norm_eps`. Xem `docs/wp05_architecture.md`.
 
 WP03 có schema data riêng: `data/wp03.toml` và `data/sources.lock.json`.
 Lệnh `grast prepare-data --config configs/data/wp03.toml` tạo corpus/splits/math/pilot

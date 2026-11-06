@@ -16,6 +16,10 @@ candidate: forward/backward, future-token isolation, padding/fully-masked rows.
 `check_decoder_block.py --device cpu` (hoặc `cuda`) chạy probe WP05.3: gradients
 qua attention/SwiGLU/norms, residual identity, causal/padding isolation ở một block.
 
+`check_causal_lm.py --device cpu` (hoặc `cuda`) chạy full model/loss/count probe WP05.4.
+Thêm `--tokenizer PATH` để dùng artifact WP04 với ví dụ pretraining/SFT;
+không truyền thì dùng seeded synthetic IDs cho CI. Chưa chạy overfit hoặc pretraining.
+
 Các script model/training bên dưới giữ tên theo HQ và hiện exit 1 với thông báo `skeleton only`.
 Chưa có CLI arguments, training, sampling, profiling hay evaluation.
 

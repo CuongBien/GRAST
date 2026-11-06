@@ -9,7 +9,7 @@ forward/backward, overfit và causal-isolation của model hoàn chỉnh.
 | WP05.1 | ModelConfig, token embedding, RoPE, RMSNorm | Reference số học, shapes, gradients, dtype/device, nhận IDs WP04 | Đã triển khai |
 | WP05.2 | MHA causal self-attention | Reference attention, causal/padding masks, future-token isolation, không NaN ở hàng bị mask | Đã triển khai |
 | WP05.3 | SwiGLU và pre-norm decoder block | Shapes, gradients qua attention/FFN/residual, identity khi nhánh residual bằng 0 | Đã triển khai |
-| WP05.4 | Decoder-only LM, final norm, LM head, CE loss | Logits, shift labels đúng một lần, ignore -100, tied embeddings, parameter count thực tế | Chưa triển khai |
+| WP05.4 | Decoder-only LM, final norm, LM head, CE loss | Logits, shift labels đúng một lần, ignore -100, tied embeddings, parameter count thực tế | Đã triển khai |
 | WP05.5 | Integration và overfit batch nhỏ | Loss giảm trên batch cố định, gradients hữu hạn, kiểm tra model không nhìn future tokens và không dùng padding | Chưa triển khai |
 
 Mỗi lượt dừng ở phase đã nghiệm thu để người dùng có thể xem kết quả trước phase tiếp theo.
@@ -27,14 +27,14 @@ hoặc model tải sẵn. KV cache/generation và pretraining loop thuộc các 
   causal và key padding, xử lý rõ query padding/hàng không có key hợp lệ.
 - Decoder block pre-norm: residual attention rồi residual SwiGLU; các linear
   projections không bias. Final RMSNorm trước LM head.
-- Labels WP04 chưa shift và dùng `-100` cho prompt/padding. Khi triển khai WP05.4,
-  loss trong model sẽ so `logits[:, :-1]` với `labels[:, 1:]`; trainer không shift lần hai.
+- Labels WP04 chưa shift và dùng `-100` cho prompt/padding. Loss trong model
+  so `logits[:, :-1]` với `labels[:, 1:]`; trainer không shift lần hai.
 - Kích thước vocab thực tế phải khớp artifact tokenizer; checkpoint model phải ghi
   tokenizer fingerprint và toàn bộ `ModelConfig.to_dict()`.
 
-Candidate `draft_35m.toml` chưa phải parameter count đã đo của model hoàn chỉnh.
-SwiGLU và tied/untied head ảnh hưởng tổng số tham số; WP05.4 sẽ tính từ Parameters
-thực tế và kiểm tra công thức độc lập trước khi kết luận feasibility.
+Candidate `draft_35m.toml` giữ tên file từ WP02, nhưng model thực đo ở WP05.4 có
+46.148.096 tham số với tied head. Con số này khớp công thức kiến trúc và nằm trong
+target 30–60M; forward/backward chưa chứng minh training feasibility hoặc chất lượng.
 
 ## WP05.1 — lớp nền tảng
 
@@ -177,3 +177,71 @@ Nó kiểm tra gradient của mọi parameter ở block thông thường, causal
 mẫu toàn padding và identity output/input Jacobian khi zero hai nhánh.
 Test còn kiểm tra tính nhân quả khi xếp hai block; chưa tạo language model đầy đủ.
 Kết quả: [WP05.3 validation](wp05_3_validation.md).
+
+## WP05.4 — full causal LM và loss
+
+`CausalLM(config, tokenizer_fingerprint=...)` ghép token embedding → `num_layers`
+decoder blocks độc lập → final RMSNorm → LM head không bias. Constructor tạo model
+ngẫu nhiên từ PyTorch thuần, không tải pretrained weights. Khi `tie_embeddings=True`,
+head và embedding dùng **cùng Parameter**, không chỉ khởi tạo cùng giá trị.
+Khi untied, head có Parameter riêng khởi tạo normal std 0.02.
+
+```python
+import torch
+from llm_scratch.model.config import ModelConfig
+from llm_scratch.model.transformer import CausalLM
+
+config = ModelConfig(vocab_size=len(tokenizer), context_length=128, hidden_size=64,
+                     num_layers=2, num_heads=4, ffn_hidden_size=128)
+model = CausalLM(config, tokenizer_fingerprint=tokenizer.fingerprint)
+# batch từ collate_tokenized; chuyển tất cả fields sang Tensor trên device của model.
+batch = {name: torch.tensor(value) for name, value in batch.items()}
+result = model(**batch)
+result.loss.backward()
+```
+
+`input_ids` là int32/int64 `[B,T]`, mọi ID trong vocab kể cả padding; `attention_mask`
+giữ quy ước 1=valid. `labels` optional, cùng shape/device, int32/int64 và mỗi entry là
+ID hợp lệ hoặc `-100`. `position_ids` theo contract RoPE. Output dataclass gồm
+`logits [B,T,V]`, `loss` (None nếu không có labels) và `num_loss_tokens`.
+Padding logits bằng 0. ID PAD không tự tạo mask: caller phải truyền attention_mask.
+
+Loss shift **một lần trong model**, target `labels[:,1:]` dùng logits `[:,:-1]`.
+Một pair chỉ được giám sát nếu cả query lẫn target đều valid và target không phải -100.
+Điều này bỏ pair từ left-padding vào token đầu và không nối qua padding ở giữa.
+Prompt labels -100 vẫn cho phép target đầu tiên của reasoning được dự đoán từ THINK.
+Loss là tổng [cross-entropy](https://docs.pytorch.org/docs/2.9/generated/torch.nn.functional.cross_entropy.html)
+với `ignore_index=-100` chia số targets thực sự giám sát. Trainer sau này không shift
+labels thêm hoặc lấy trung bình các microbatch có token counts khác nhau một cách ngầm định.
+Loss dùng FP32 cho logits FP16/BF16/FP32, FP64 khi logits FP64, với autocast tắt ở CE.
+Nếu T=1 hoặc không có supervised pair, trả differentiable zero và zero gradients;
+training loop nên bỏ optimizer step cho batch không có targets.
+
+`parameter_counts()` đếm Parameters thực, loại trùng theo identity; head tied tính
+vào embedding một lần. `ModelConfig.expected_parameter_count` dùng công thức độc lập:
+`V*H*(1 if tied else 2) + L*(4*H² + 3*H*F + 2*H) + H`.
+Candidate tied: embedding 4.194.304 + blocks 41.953.280 + final norm 512 = **46.148.096**.
+Untied formula: 50.342.400; test model nhỏ cũng đối chiếu cả hai chế độ.
+
+Model `state_dict()` chứa `_extra_state` versioned với resolved ModelConfig và
+tokenizer fingerprint, dùng [Module extra state](https://docs.pytorch.org/docs/2.9/generated/torch.nn.Module.html#torch.nn.Module.get_extra_state).
+Nó hoạt động với `torch.load(..., weights_only=True)` và atomic RNG checkpoint WP02.
+Khi load, config phải khớp; truyền fingerprint mong đợi vào constructor để khóa đúng codec.
+Nếu constructor không có fingerprint, load sẽ nhận fingerprint từ checkpoint.
+Tied checkpoint có hai weight entries không đồng nhất bị từ chối; direct
+`model.load_state_dict(...)` giữ alias cả với `assign=True` (optimizer phải tạo sau assign
+theo API PyTorch). Chỉ dùng checkpoint có provenance đã xác minh; đây không phải cơ chế ký artifact.
+Probe synthetic cho phép fingerprint None; checkpoint nghiên cứu với dữ liệu WP04 phải
+truyền fingerprint từ tokenizer đã load và giữ vocab size khớp `len(tokenizer)`.
+
+```powershell
+uv run --no-sync pytest tests/test_transformer.py -q
+uv run --no-sync python scripts/check_causal_lm.py --device cpu
+# Có tokenizer artifact WP04: thêm --tokenizer PATH/TO/artifacts/tokenizer
+uv run --no-sync python scripts/check_causal_lm.py --device cuda --tokenizer PATH/TO/artifacts/tokenizer
+```
+
+Không truyền tokenizer thì probe dùng seeded synthetic IDs, phù hợp CI không tải dữ liệu.
+Truyền tokenizer thì kiểm tra vocab, ghép ví dụ pretraining/SFT bằng codec thật và ghi
+fingerprint trong report/metadata. Probe đối chiếu CE thủ công, counts, sharing và gradients;
+không chạy optimizer loop hoặc kết luận overfit. Kết quả: [WP05.4 validation](wp05_4_validation.md).

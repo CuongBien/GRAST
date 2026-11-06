@@ -56,6 +56,16 @@ class ModelConfig:
     def head_dim(self) -> int:
         return self.hidden_size // self.num_heads
 
+    @property
+    def expected_parameter_count(self) -> int:
+        block = (
+            4 * self.hidden_size**2
+            + 3 * self.hidden_size * self.ffn_hidden_size
+            + 2 * self.hidden_size
+        )
+        embeddings = self.vocab_size * self.hidden_size * (1 if self.tie_embeddings else 2)
+        return embeddings + self.num_layers * block + self.hidden_size
+
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
