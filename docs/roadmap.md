@@ -41,14 +41,16 @@ API chung cho pretraining/SFT/inference và thống kê trên dữ liệu WP03.
 Chỉ fit TinyStories train; held-out dùng kiểm tra codec cố định.
 Xem [thiết kế và cách chạy](wp04_tokenizer.md), [nghiệm thu](wp04_validation.md).
 
-## WP05 — Transformer Architecture (đang triển khai theo phase)
+## WP05 — Transformer Architecture (đã đạt nghiệm thu kiến trúc)
 
 WP05.1 config/embedding/RoPE/RMSNorm → WP05.2 causal MHA/masks →
 WP05.3 SwiGLU/decoder block → WP05.4 decoder/LM head/loss/parameter count →
 WP05.5 overfit và causal-isolation của model hoàn chỉnh.
 Mỗi phase có test/báo cáo/commit riêng; chỉ chốt WP05 sau gate cuối.
 Xem [kế hoạch và contract](wp05_architecture.md), [kết quả phase 1](wp05_1_validation.md)
-và [kết quả phase 2](wp05_2_validation.md), [phase 3](wp05_3_validation.md), [phase 4](wp05_4_validation.md).
+và [kết quả phase 2](wp05_2_validation.md), [phase 3](wp05_3_validation.md), [phase 4](wp05_4_validation.md),
+[phase 5 / gate cuối](wp05_5_validation.md). Đã overfit fixture cố định, kiểm tra loss,
+gradients, causal/padding isolation và checkpoint continuation; chưa pretrain corpus.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 

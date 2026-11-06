@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "purpose": "Authored fixed diagnostic training batch; not a benchmark or held-out split.",
+  "records": [
+    {"stage": "pretrain", "text": "A fox shares a story."},
+    {"stage": "sft", "question": "What is 2 + 3?", "reasoning": "Add 2 and 3.", "answer": "5"}
+  ]
+}

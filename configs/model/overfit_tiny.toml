@@ -1,0 +1,10 @@
+# Same decoder implementation as the candidate; small deterministic CI diagnostic.
+[model]
+vocab_size = 280
+context_length = 128
+hidden_size = 64
+num_layers = 2
+num_heads = 4
+ffn_hidden_size = 128
+dropout = 0.0
+tie_embeddings = true

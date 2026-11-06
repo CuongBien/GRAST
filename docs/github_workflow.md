@@ -47,7 +47,7 @@ Hai job matrix chạy Python 3.11 trên Ubuntu và Windows:
 1. `uv sync --locked --extra cpu --extra data`.
 2. Ruff lint và format check.
 3. Package, reproducibility, data/answer-extraction, tokenizer và model-phase tests.
-4. WP02 smoke, WP03 math-only smoke và các probe WP05.1–WP05.4 trên CPU;
+4. WP02 smoke, WP03 math-only smoke, các probe WP05.1–WP05.4 và WP05.5 overfit trên CPU;
    data sources dùng offline fixtures trong tests.
 5. Build wheel và source distribution.
 6. Cài wheel vào environment sạch và import ngoài source tree.

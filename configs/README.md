@@ -26,6 +26,10 @@ WP03 có schema data riêng: `data/wp03.toml` và `data/sources.lock.json`.
 Lệnh `grast prepare-data --config configs/data/wp03.toml` tạo corpus/splits/math/pilot
 và manifest, không đi qua model-config loader. Xem `docs/wp03_data.md`.
 
+WP05.5 có schema riêng `experiments/wp05_acceptance.toml`, hai profile tiny/candidate,
+fixed fixture, optimizer recipe và thresholds đặt trước. Tiny dùng `model/overfit_tiny.toml`;
+candidate dùng `draft_35m.toml` với artifact tokenizer WP04 bắt buộc. Xem `docs/wp05_architecture.md`.
+
 WP04 dùng loader riêng cho `tokenizer/train.toml`, compose `bpe.toml` và khóa manifest WP03.
 `grast train-tokenizer --config configs/tokenizer/train.toml` tạo codec/metrics trong run riêng.
 Không fit trên validation/test. Xem `docs/wp04_tokenizer.md`.

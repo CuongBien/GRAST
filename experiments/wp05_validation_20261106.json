@@ -1,0 +1,314 @@
+{
+  "acceptance": {
+    "before_after_full_model_audits": true,
+    "checkpoint_round_trip_exact": true,
+    "finite_gradients_all_steps": true,
+    "max_loss_ratio": 0.2,
+    "min_supervised_token_accuracy": 0.95,
+    "steps": 200
+  },
+  "checks": {
+    "ruff_format": true,
+    "ruff_lint": true,
+    "wheel_sdist_build": true
+  },
+  "completed_phases": [
+    "WP05.1",
+    "WP05.2",
+    "WP05.3",
+    "WP05.4",
+    "WP05.5"
+  ],
+  "date": "2026-11-06",
+  "final_phase": "WP05.5",
+  "fixture": "experiments/wp05_overfit_fixture.json",
+  "limitations": [
+    "Fixed authored training batch only; teacher-forced accuracy is memorization, not benchmark accuracy.",
+    "Full candidate overfit was on a short batch on local RTX 4060; max-context corpus training is not validated.",
+    "No corpus pretraining/SFT trainer, generation loop or KV cache yet."
+  ],
+  "prior_evidence": [
+    "experiments/wp05_1_validation_20261106.json",
+    "experiments/wp05_2_validation_20261106.json",
+    "experiments/wp05_3_validation_20261106.json",
+    "experiments/wp05_4_validation_20261106.json"
+  ],
+  "protocol": "configs/experiments/wp05_acceptance.toml",
+  "protocol_sha256": "ad652e8df7ee91b808bd4ba6699f79029a2a06430e58f8a1c80483fa57f9f6f9",
+  "runs": [
+    {
+      "after_training": {
+        "checks": {
+          "fully_padded_logits_loss_gradients_zero": true,
+          "future_perturbations": true,
+          "interior_padding_explicit_positions": true,
+          "left_right_padding": true,
+          "no_gold_label_input": true,
+          "padding_value_isolation": true,
+          "prefix_only_equivalence": true,
+          "zero_future_embedding_gradients": true,
+          "zero_padding_embedding_gradients": true
+        },
+        "cross_shape_tolerance": {
+          "atol": 1e-05,
+          "rtol": 0.0001
+        },
+        "cutoffs": [
+          1,
+          13,
+          25
+        ],
+        "max_future_prefix_difference": 0.0
+      },
+      "batch_sha256": "9b9ed895da8ef3a2759b6eca07435f091a3c3bfa2a0ee95deb7dfee1a492ca2a",
+      "before_training": {
+        "checks": {
+          "fully_padded_logits_loss_gradients_zero": true,
+          "future_perturbations": true,
+          "interior_padding_explicit_positions": true,
+          "left_right_padding": true,
+          "no_gold_label_input": true,
+          "padding_value_isolation": true,
+          "prefix_only_equivalence": true,
+          "zero_future_embedding_gradients": true,
+          "zero_padding_embedding_gradients": true
+        },
+        "cross_shape_tolerance": {
+          "atol": 1e-05,
+          "rtol": 0.0001
+        },
+        "cutoffs": [
+          1,
+          13,
+          25
+        ],
+        "max_future_prefix_difference": 0.0
+      },
+      "checkpoint": {
+        "path": "artifacts/runs/20261106T162054273993Z-wp05-acceptance-tiny-seed42-c3da37ff/checkpoints/overfit.pt",
+        "round_trip_exact": true,
+        "sha256": "5643626e87090040f91f42949d4eccf77072ee7f7b90452ad709f0c2f32949dc",
+        "size_bytes": 1239853
+      },
+      "device": "cpu",
+      "environment": {
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cpu"
+      },
+      "final": {
+        "gradient_norm_before_clip": 0.0007320735021494329,
+        "loss": 0.00023902054817881435,
+        "num_loss_tokens": 26,
+        "step": 200,
+        "token_accuracy": 1.0
+      },
+      "fixture_sha256": "02875f496a5c3d767bec61230bbceb3122413e2b6ef6218ac486a25b6c1d4556",
+      "history_sha256": "6c3282af5067084501c8d0283597ad3d954dfed547a099610c5e6c908ce202e9",
+      "initial": {
+        "loss": 5.638908863067627,
+        "num_loss_tokens": 26,
+        "step": 0,
+        "token_accuracy": 0.0
+      },
+      "input_shape": [
+        2,
+        26
+      ],
+      "loss_ratio": 4.238773031858944e-05,
+      "model_config": {
+        "context_length": 128,
+        "dropout": 0.0,
+        "ffn_hidden_size": 128,
+        "hidden_size": 64,
+        "num_heads": 4,
+        "num_layers": 2,
+        "rms_norm_eps": 1e-06,
+        "rope_theta": 10000.0,
+        "tie_embeddings": true,
+        "vocab_size": 280
+      },
+      "optimizer_recipe": {
+        "betas": [
+          0.9,
+          0.95
+        ],
+        "foreach": false,
+        "fused": false,
+        "learning_rate": 0.003,
+        "max_grad_norm": 1.0,
+        "name": "AdamW",
+        "steps": 200,
+        "weight_decay": 0.0
+      },
+      "parameter_counts": {
+        "blocks": 82176,
+        "final_norm": 64,
+        "lm_head_unique": 0,
+        "token_embedding": 17920,
+        "total": 100160
+      },
+      "profile": "tiny",
+      "report_sha256": "a5560c0875ed79bb8afc0c1d957c1eaf4c4c2368d1c141839d6d792179352c23",
+      "run_directory": "artifacts/runs/20261106T162054273993Z-wp05-acceptance-tiny-seed42-c3da37ff",
+      "tokenizer_fingerprint": "b8ea262a357c610f48ea1b7c111f58e881a17c65c1187c72e0ef5d08d28b74d6"
+    },
+    {
+      "after_training": {
+        "checks": {
+          "fully_padded_logits_loss_gradients_zero": true,
+          "future_perturbations": true,
+          "interior_padding_explicit_positions": true,
+          "left_right_padding": true,
+          "no_gold_label_input": true,
+          "padding_value_isolation": true,
+          "prefix_only_equivalence": true,
+          "zero_future_embedding_gradients": true,
+          "zero_padding_embedding_gradients": true
+        },
+        "cross_shape_tolerance": {
+          "atol": 1e-05,
+          "rtol": 0.0001
+        },
+        "cutoffs": [
+          1,
+          13,
+          26
+        ],
+        "max_future_prefix_difference": 0.0
+      },
+      "batch_sha256": "ab06b110ff7b124289e8f2431f6644224de8961c3fb3b09110dd626814fcb1b4",
+      "before_training": {
+        "checks": {
+          "fully_padded_logits_loss_gradients_zero": true,
+          "future_perturbations": true,
+          "interior_padding_explicit_positions": true,
+          "left_right_padding": true,
+          "no_gold_label_input": true,
+          "padding_value_isolation": true,
+          "prefix_only_equivalence": true,
+          "zero_future_embedding_gradients": true,
+          "zero_padding_embedding_gradients": true
+        },
+        "cross_shape_tolerance": {
+          "atol": 1e-05,
+          "rtol": 0.0001
+        },
+        "cutoffs": [
+          1,
+          13,
+          26
+        ],
+        "max_future_prefix_difference": 0.0
+      },
+      "checkpoint": {
+        "path": "artifacts/runs/20261106T161538470095Z-wp05-acceptance-candidate-seed42-5ff8a9e1/checkpoints/overfit.pt",
+        "round_trip_exact": true,
+        "sha256": "e756d7a9519d1423a7ee554884afdc2b0ebb98a73188bd40a5554179eaa8de56",
+        "size_bytes": 553905435
+      },
+      "device": "cuda",
+      "environment": {
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cuda:0"
+      },
+      "final": {
+        "gradient_norm_before_clip": 0.00016270294145215303,
+        "loss": 2.5771769287530333e-05,
+        "num_loss_tokens": 26,
+        "step": 200,
+        "token_accuracy": 1.0
+      },
+      "fixture_sha256": "02875f496a5c3d767bec61230bbceb3122413e2b6ef6218ac486a25b6c1d4556",
+      "history_sha256": "782fb91d5f01a5c0825c8c24cb53175a2425455d34ad6a20a00bffecd0fbadec",
+      "initial": {
+        "loss": 8.976395606994629,
+        "num_loss_tokens": 26,
+        "step": 0,
+        "token_accuracy": 0.0
+      },
+      "input_shape": [
+        2,
+        27
+      ],
+      "loss_ratio": 2.8710598792513483e-06,
+      "model_config": {
+        "context_length": 1024,
+        "dropout": 0.0,
+        "ffn_hidden_size": 2048,
+        "hidden_size": 512,
+        "num_heads": 8,
+        "num_layers": 10,
+        "rms_norm_eps": 1e-06,
+        "rope_theta": 10000.0,
+        "tie_embeddings": true,
+        "vocab_size": 8192
+      },
+      "optimizer_recipe": {
+        "betas": [
+          0.9,
+          0.95
+        ],
+        "foreach": false,
+        "fused": false,
+        "learning_rate": 0.001,
+        "max_grad_norm": 1.0,
+        "name": "AdamW",
+        "steps": 200,
+        "weight_decay": 0.0
+      },
+      "parameter_counts": {
+        "blocks": 41953280,
+        "final_norm": 512,
+        "lm_head_unique": 0,
+        "token_embedding": 4194304,
+        "total": 46148096
+      },
+      "profile": "candidate",
+      "report_sha256": "cd2b2fa338cf938b6416a92d35005b4f48b69875cb127e1cbc0782714c2c504b",
+      "run_directory": "artifacts/runs/20261106T161538470095Z-wp05-acceptance-candidate-seed42-5ff8a9e1",
+      "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3"
+    }
+  ],
+  "schema_version": 1,
+  "status": "accepted_architecture",
+  "tests": {
+    "additional_cuda_cases": 1,
+    "failed": 0,
+    "full_local_passed": 346,
+    "negative_control_bad_padding_detected": true,
+    "negative_control_future_leak_detected": true,
+    "optimizer_checkpoint_continuation_exact": true,
+    "phase_cpu_cases": 18,
+    "phase_local_passed": 19,
+    "two_fresh_cpu_process_reports_identical": true
+  },
+  "work_package": "WP05"
+}

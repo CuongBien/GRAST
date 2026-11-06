@@ -20,6 +20,11 @@ qua attention/SwiGLU/norms, residual identity, causal/padding isolation ở mộ
 Thêm `--tokenizer PATH` để dùng artifact WP04 với ví dụ pretraining/SFT;
 không truyền thì dùng seeded synthetic IDs cho CI. Chưa chạy overfit hoặc pretraining.
 
+`check_architecture.py --device cpu` chạy WP05.5 model nhỏ và 200-step overfit gate;
+thêm `--profile candidate --device cuda --tokenizer PATH` để dùng full candidate/codec WP04.
+Cấu hình/gate: `configs/experiments/wp05_acceptance.toml`; đây là diagnostic fixed-batch loop,
+chưa phải pretraining/SFT trainer cho corpus. Checkpoint lớn được lưu trong run, không vào Git.
+
 Các script model/training bên dưới giữ tên theo HQ và hiện exit 1 với thông báo `skeleton only`.
 Chưa có CLI arguments, training, sampling, profiling hay evaluation.
 

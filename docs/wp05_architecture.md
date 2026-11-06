@@ -10,7 +10,7 @@ forward/backward, overfit và causal-isolation của model hoàn chỉnh.
 | WP05.2 | MHA causal self-attention | Reference attention, causal/padding masks, future-token isolation, không NaN ở hàng bị mask | Đã triển khai |
 | WP05.3 | SwiGLU và pre-norm decoder block | Shapes, gradients qua attention/FFN/residual, identity khi nhánh residual bằng 0 | Đã triển khai |
 | WP05.4 | Decoder-only LM, final norm, LM head, CE loss | Logits, shift labels đúng một lần, ignore -100, tied embeddings, parameter count thực tế | Đã triển khai |
-| WP05.5 | Integration và overfit batch nhỏ | Loss giảm trên batch cố định, gradients hữu hạn, kiểm tra model không nhìn future tokens và không dùng padding | Chưa triển khai |
+| WP05.5 | Integration và overfit batch nhỏ | Loss giảm trên batch cố định, gradients hữu hạn, kiểm tra model không nhìn future tokens và không dùng padding | Đã đạt |
 
 Mỗi lượt dừng ở phase đã nghiệm thu để người dùng có thể xem kết quả trước phase tiếp theo.
 Baseline chọn **MHA**, không yêu cầu GQA ở WP05. Mọi phép attention/block sẽ viết bằng
@@ -34,7 +34,8 @@ hoặc model tải sẵn. KV cache/generation và pretraining loop thuộc các 
 
 Candidate `draft_35m.toml` giữ tên file từ WP02, nhưng model thực đo ở WP05.4 có
 46.148.096 tham số với tied head. Con số này khớp công thức kiến trúc và nằm trong
-target 30–60M; forward/backward chưa chứng minh training feasibility hoặc chất lượng.
+target 30–60M. WP05.5 đã overfit batch chẩn đoán; corpus training feasibility và chất lượng
+tổng quát hóa vẫn cần kiểm chứng ở các bước tiếp theo.
 
 ## WP05.1 — lớp nền tảng
 
@@ -245,3 +246,59 @@ Không truyền tokenizer thì probe dùng seeded synthetic IDs, phù hợp CI k
 Truyền tokenizer thì kiểm tra vocab, ghép ví dụ pretraining/SFT bằng codec thật và ghi
 fingerprint trong report/metadata. Probe đối chiếu CE thủ công, counts, sharing và gradients;
 không chạy optimizer loop hoặc kết luận overfit. Kết quả: [WP05.4 validation](wp05_4_validation.md).
+
+## WP05.5 — gate cuối kiến trúc
+
+Protocol versioned: `configs/experiments/wp05_acceptance.toml` và
+`experiments/wp05_overfit_fixture.json`. Batch gồm một câu chuyện tự viết và một ví dụ
+reasoning SFT; không đọc train/validation/test của benchmark WP03 để chọn gate.
+Config/model/tokenizer/fixture/batch được snapshot và fingerprint trước optimization.
+
+Gate cố định trước khi đo: **200 optimizer steps**, final loss / initial loss ≤0,2,
+teacher-forced accuracy trên supervised targets ≥0,95, finite gradients mọi bước,
+audits trước/sau training và checkpoint round-trip chính xác.
+Không early-stop, không chọn best checkpoint, không yêu cầu loss giảm đơn điệu từng bước.
+Đây là gate chẩn đoán kiến trúc, không phải accuracy của bài toán chưa gặp.
+
+Tiny CPU/CI: H64, 2 layers, 4 heads, FFN128, vocab280, 100.160 parameters; BPE tự viết
+fit duy nhất trên fixture. Candidate: H512, 10 layers, FFN2048, vocab8192 và tokenizer
+WP04 cố định; 46.148.096 parameters. AdamW betas (0,9; 0,95), weight decay 0,
+gradient clipping norm 1, FP32, dropout 0, foreach/fused tắt; LR tiny 0,003, candidate 0,001.
+Vòng lặp `training/overfit.py` chỉ lặp đúng một batch, không phải general pretraining/SFT trainer.
+Batch không có targets, optimizer thiếu parameters, dropout khác 0 hoặc nonfinite gradients
+đều bị từ chối. Loss/accuracy/gradient norm sau từng step được lưu vào history/log.
+
+`evaluation/architecture.py` kiểm tra full model trong eval mode, giữ nguyên weights:
+
+- Thay suffix ở ba cutoff (sớm/giữa/muộn) không đổi prefix logits **chính xác**.
+- Gradient từ prefix logits đến future input embeddings bằng 0; gradient hợp lệ phải khác 0
+  để tránh phép kiểm tra rỗng. Padding embedding gradients cũng bằng 0.
+- Prefix-only forward và thêm left/right/interior padding giữ valid logits trong tolerance
+  cross-shape. Interior padding dùng explicit positions giữ vị trí gốc của valid tokens.
+- Thay PAD IDs hoặc thay gold labels không đổi logits; all-padding logits/loss/parameter
+  gradients hữu hạn bằng 0.
+
+Cross-shape FP32 dùng rtol 1e-4 / atol 1e-5, FP64 1e-10 / 1e-12, vì GEMM với shape
+khác nhau có thể cộng theo thứ tự khác. Một probe candidate ban đầu phát hiện sai số
+FP32 khoảng 1,5e-6 với tolerance cũ 1e-6. Các gate same-shape perturbation và future
+gradients luôn giữ yêu cầu exact-zero, không nới để qua thử nghiệm.
+Test đối chứng cố ý làm attention nhìn tương lai và cố ý tạo PAD logits khác 0 phải thất bại.
+
+Runner lưu final model + AdamW + RNG vào atomic checkpoint; load model/fingerprint lại
+phải giữ logits chính xác. Test riêng kiểm tra optimizer continuation so với cập nhật liên tục,
+và hai fresh processes cùng seed phải cho report/history giống nhau trên cùng CPU/runtime.
+Không yêu cầu CPU/GPU có cùng tensor/trajectory.
+
+```powershell
+# Mặc định chạy model nhỏ, offline, không cần dataset ngoài.
+uv run --no-sync python scripts/check_architecture.py --device cpu
+# Candidate đầy đủ, cần artifact tokenizer WP04 đã tạo.
+uv run --no-sync python scripts/check_architecture.py --profile candidate --device cuda --tokenizer PATH/TO/artifacts/tokenizer
+uv run --no-sync pytest tests/test_architecture_acceptance.py -q
+```
+
+Wrapper chạy module trong process mới để tránh file `scripts/profile.py` che stdlib `profile`
+khi AdamW import cProfile. Equivalent entry: `python -m llm_scratch.research.architecture_acceptance`.
+Run có `artifacts/acceptance_report.json`, fixed batch, codec snapshot, logs và checkpoint.
+Gate thất bại tạo failed lifecycle; không ghi accepted checkpoint.
+Kết quả và giới hạn: [WP05.5 / tổng nghiệm thu](wp05_5_validation.md).

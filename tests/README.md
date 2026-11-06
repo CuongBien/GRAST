@@ -35,6 +35,10 @@ tied/untied head và alias sau dtype/device/load/optimizer step, shifted CE refe
 prompt/padding pair masks, differentiable-zero cases, mixed precision và FP32 loss.
 Có checkpoint metadata/config/fingerprint/weights-only round-trip qua atomic checkpoint WP02,
 WP04 pretraining/SFT prefix và basic future-token isolation. Overfit thuộc WP05.5.
+WP05.5: `test_architecture_acceptance.py` kiểm tra full-model overfit/audits trước-sau,
+negative controls phát hiện future leakage/PAD logits lỗi, finite-gradient gate, zero-target
+batch, optimizer coverage, exact optimizer/RNG checkpoint continuation, failed lifecycle
+và hai fresh-process full-protocol reports giống nhau. Model nhỏ cùng kiến trúc chạy trong CI.
 `conftest.py` đặt cuBLAS workspace trước khi CUDA được khởi tạo để GPU cases chạy
 được trước/sau các test bật deterministic mode mà không phụ thuộc thứ tự.
 
