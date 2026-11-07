@@ -4,8 +4,9 @@ Repository cho nghiên cứu LLM from scratch theo Hướng C: reasoning và tes
 
 **Trạng thái: WP01+WP02 baseline; WP03 data và WP04 tokenizer đã triển khai.** Đã có config,
 seed, metadata/logs, checkpoint RNG; dataset preparation, benchmark toán, answer extraction,
-split/dedup, fixed pilot và byte BPE tự viết. WP05.4 đã ghép full language model;
-pretraining/SFT trainer cho corpus, generation và stopping chưa implement.
+split/dedup, fixed pilot và byte BPE tự viết. WP05 đã nghiệm thu kiến trúc; WP06.1–3
+có cached forward, sampling và uncached generation với EOS. Pretraining/SFT trainer
+cho corpus và confidence stopping chưa implement.
 Smoke WP02 chỉ dùng RNG/ma trận nhỏ; WP03 chưa đánh giá chất lượng model.
 
 WP02 đã nghiệm thu CPU, RTX 4060 và Colab A100; xem [evidence](docs/wp02_validation.md).
@@ -21,7 +22,9 @@ WP05.4 có full decoder, LM head và causal CE loss; candidate tied có **46.148
 xem [WP05.5](docs/wp05_5_validation.md). Kết quả này chưa đo khả năng tổng quát hóa.
 WP06 chia thành 5 phase: [kế hoạch cache/inference](docs/wp06_inference.md).
 WP06.1 có KV storage/transactions; WP06.2 đã tích hợp cached prefill/token/chunk forward.
-[Báo cáo WP06.2](docs/wp06_2_validation.md). Sampling, generation và profiling còn ở các phase sau.
+[Báo cáo WP06.2](docs/wp06_2_validation.md). WP06.3 có greedy/temperature/top-k/top-p,
+EOS và seeded uncached generation: [báo cáo](docs/wp06_3_validation.md).
+Cached generation equivalence và profiling tiếp tục ở WP06.4–5.
 
 Nguồn kế hoạch: [LLM From Scratch — Hướng C | Project HQ](https://app.notion.com/p/4093badafe55810db45bfcc26b766de9)
 (bản cập nhật 31/10/2026; hạn đồ án 01/12/2026).
@@ -80,10 +83,10 @@ src/llm_scratch/
   research/              sample_bank, policy_replay, modal_analysis, error_analysis
   evaluation/            benchmarks, metrics, latency_vram
   utils/                 seed, logging
-scripts/                 prepare_data, train_tokenizer; model/training còn placeholder
+scripts/                 data/tokenizer tools, model/cache/generation diagnostic probes
 tests/                   package, reproducibility, data/math, answer extraction, BPE và adapters
 notebooks/               Colab A100 preflight và WP02 smoke; chưa chạy training
-experiments/             manifest thực nghiệm; chưa có kết quả
+experiments/             fixed diagnostic fixtures và validation manifests
 artifacts/               runs, checkpoints, tokenizers, sample_bank, results (gitignore)
 reports/                 figures, paper
 docs/                    roadmap, data contracts, GitHub workflow

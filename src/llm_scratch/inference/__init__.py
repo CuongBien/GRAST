@@ -1,1 +1,1 @@
-"""Inference namespace. No runtime implementation in step 1."""
+"""Generation settings, sampling and uncached autoregressive inference."""

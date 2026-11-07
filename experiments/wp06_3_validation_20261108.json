@@ -1,0 +1,632 @@
+{
+  "backend": "uncached_full_prefix",
+  "checks": {
+    "analytical_sampling_distribution_and_empirical_frequencies": true,
+    "exact_top_k_nucleus_boundary_and_extreme_settings": true,
+    "padding_eos_budget_context_contracts": true,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "sdist_excludes_generated_runs_caches_weights": true,
+    "seeded_replay_private_rng": true,
+    "wheel_generation_outside_source_tree": true,
+    "wheel_sdist_build": true
+  },
+  "date": "2026-11-08",
+  "implementation_sha256": {
+    "configs/sampling/wp06_generation.toml": "484f7e9a62f76c3a1208f1d9effc4105564f45634e4f9fd102fcc7353938c395",
+    "experiments/wp06_generation_fixture.json": "d4328b3a6e2ea366921a561725c220a09012c377f995f7f734caa6fe9e4e1337",
+    "scripts/check_generation.py": "f89fc722279a05cf14aa8d54b00801b792010beda5b720204f351fb17fdcb5e0",
+    "src/llm_scratch/inference/config.py": "0476777d429f48d93320181eca5373d34c3b26cdfedb6b82b52e7605a4b8dda7",
+    "src/llm_scratch/inference/generate.py": "d694eb0b492c415ad7194f694547823208578f7dd96c60d34d379a325da208e9",
+    "src/llm_scratch/inference/sampling.py": "d06f3d227c1ee239194033c4a5d75a12ce5c066b31b3c07ec6ea3e26c2ffad46"
+  },
+  "limitations": [
+    "Diagnostic generation on authored WP05 overfit prefixes; no held-out benchmark or quality claim.",
+    "Seed replay is scoped to fixed model/precision/device/runtime/batch schedule; no cross-platform sampling guarantee.",
+    "Cached generation equivalence and custom-position generation are not implemented in this phase.",
+    "No measured TTFT, next-token latency, tokens/s or VRAM; baseline context remains 1024."
+  ],
+  "remaining_phases": [
+    "WP06.4 cached/uncached generation logits and token equivalence",
+    "WP06.5 measured TTFT/latency/throughput/VRAM L=128/512/1024/2048"
+  ],
+  "runs": [
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cpu"
+      },
+      "report": {
+        "attention_mask": [
+          [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        "backend": "uncached_full_prefix",
+        "batch_source": "wp04_tokenizer_authored_story_reasoning_prefixes",
+        "checkpoint_sha256": "e756d7a9519d1423a7ee554884afdc2b0ebb98a73188bd40a5554179eaa8de56",
+        "checks": {
+          "eos_mask_length_bookkeeping": true,
+          "global_rng_unchanged": true,
+          "greedy_and_sampled_seeded_replay": true
+        },
+        "device": "cpu",
+        "fixture_sha256": "d4328b3a6e2ea366921a561725c220a09012c377f995f7f734caa6fe9e4e1337",
+        "input_ids": [
+          [
+            1,
+            73,
+            40,
+            1356,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            730,
+            40,
+            284,
+            40,
+            58,
+            40,
+            51,
+            40,
+            59,
+            71,
+            18,
+            4
+          ]
+        ],
+        "limitation": "Diagnostic generation only; no benchmark quality claim, cached equivalence or latency/VRAM profiling.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "outputs": {
+          "greedy": {
+            "decoded": [
+              " shares story.<eos>",
+              "Add 2 and 3.</think><final>5</final><eos>"
+            ],
+            "finish_reasons": [
+              "eos",
+              "eos"
+            ],
+            "generated_ids": [
+              [
+                40,
+                891,
+                123,
+                40,
+                1092,
+                54,
+                2
+              ],
+              [
+                73,
+                502,
+                40,
+                58,
+                40,
+                268,
+                40,
+                59,
+                54,
+                5,
+                6,
+                61,
+                7,
+                2
+              ]
+            ],
+            "generated_lengths": [
+              7,
+              14
+            ],
+            "generated_mask": [
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ],
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ]
+            ],
+            "seeded_replay_exact": true,
+            "settings": {
+              "do_sample": false,
+              "eos_token_id": 2,
+              "max_new_tokens": 16,
+              "pad_token_id": 0,
+              "temperature": 0.8,
+              "top_k": 40,
+              "top_p": 0.95
+            }
+          },
+          "sampled": {
+            "decoded": [
+              " shares story.<eos>",
+              "Add 2 and 3.</think><final>5</final><eos>"
+            ],
+            "finish_reasons": [
+              "eos",
+              "eos"
+            ],
+            "generated_ids": [
+              [
+                40,
+                891,
+                123,
+                40,
+                1092,
+                54,
+                2
+              ],
+              [
+                73,
+                502,
+                40,
+                58,
+                40,
+                268,
+                40,
+                59,
+                54,
+                5,
+                6,
+                61,
+                7,
+                2
+              ]
+            ],
+            "generated_lengths": [
+              7,
+              14
+            ],
+            "generated_mask": [
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ],
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ]
+            ],
+            "seeded_replay_exact": true,
+            "settings": {
+              "do_sample": true,
+              "eos_token_id": 2,
+              "max_new_tokens": 16,
+              "pad_token_id": 0,
+              "temperature": 0.8,
+              "top_k": 40,
+              "top_p": 0.95
+            }
+          }
+        },
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "seed": 42,
+        "status": "passed",
+        "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+        "work_package": "WP06.3"
+      },
+      "report_sha256": "7142177db86a5e72946d17ed5ebc1e1519871330877326da704b1baf0ca04243",
+      "run_directory": "artifacts/runs/20261107T173903698181Z-wp06-3-generation-seed42-94f6c668"
+    },
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cuda:0"
+      },
+      "report": {
+        "attention_mask": [
+          [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        "backend": "uncached_full_prefix",
+        "batch_source": "wp04_tokenizer_authored_story_reasoning_prefixes",
+        "checkpoint_sha256": "e756d7a9519d1423a7ee554884afdc2b0ebb98a73188bd40a5554179eaa8de56",
+        "checks": {
+          "eos_mask_length_bookkeeping": true,
+          "global_rng_unchanged": true,
+          "greedy_and_sampled_seeded_replay": true
+        },
+        "device": "cuda",
+        "fixture_sha256": "d4328b3a6e2ea366921a561725c220a09012c377f995f7f734caa6fe9e4e1337",
+        "input_ids": [
+          [
+            1,
+            73,
+            40,
+            1356,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            730,
+            40,
+            284,
+            40,
+            58,
+            40,
+            51,
+            40,
+            59,
+            71,
+            18,
+            4
+          ]
+        ],
+        "limitation": "Diagnostic generation only; no benchmark quality claim, cached equivalence or latency/VRAM profiling.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "outputs": {
+          "greedy": {
+            "decoded": [
+              " shares story.<eos>",
+              "Add 2 and 3.</think><final>5</final><eos>"
+            ],
+            "finish_reasons": [
+              "eos",
+              "eos"
+            ],
+            "generated_ids": [
+              [
+                40,
+                891,
+                123,
+                40,
+                1092,
+                54,
+                2
+              ],
+              [
+                73,
+                502,
+                40,
+                58,
+                40,
+                268,
+                40,
+                59,
+                54,
+                5,
+                6,
+                61,
+                7,
+                2
+              ]
+            ],
+            "generated_lengths": [
+              7,
+              14
+            ],
+            "generated_mask": [
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ],
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ]
+            ],
+            "seeded_replay_exact": true,
+            "settings": {
+              "do_sample": false,
+              "eos_token_id": 2,
+              "max_new_tokens": 16,
+              "pad_token_id": 0,
+              "temperature": 0.8,
+              "top_k": 40,
+              "top_p": 0.95
+            }
+          },
+          "sampled": {
+            "decoded": [
+              " shares story.<eos>",
+              "Add 2 and 3.</think><final>5</final><eos>"
+            ],
+            "finish_reasons": [
+              "eos",
+              "eos"
+            ],
+            "generated_ids": [
+              [
+                40,
+                891,
+                123,
+                40,
+                1092,
+                54,
+                2
+              ],
+              [
+                73,
+                502,
+                40,
+                58,
+                40,
+                268,
+                40,
+                59,
+                54,
+                5,
+                6,
+                61,
+                7,
+                2
+              ]
+            ],
+            "generated_lengths": [
+              7,
+              14
+            ],
+            "generated_mask": [
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ],
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ]
+            ],
+            "seeded_replay_exact": true,
+            "settings": {
+              "do_sample": true,
+              "eos_token_id": 2,
+              "max_new_tokens": 16,
+              "pad_token_id": 0,
+              "temperature": 0.8,
+              "top_k": 40,
+              "top_p": 0.95
+            }
+          }
+        },
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "seed": 42,
+        "status": "passed",
+        "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+        "work_package": "WP06.3"
+      },
+      "report_sha256": "d6632a99e1d8c6b8c37262af240c0e7cee0fe22402dd28ada91c30d2f8bc1153",
+      "run_directory": "artifacts/runs/20261107T173903715725Z-wp06-3-generation-seed42-3a15400a"
+    }
+  ],
+  "schema_version": 1,
+  "status": "accepted_phase_only",
+  "tests": {
+    "additional_cuda_cases": 12,
+    "cpu_only_ci_skips": "Two hardware cases repository-wide: cross-device cache and wrong-device sampling RNG",
+    "failed": 0,
+    "full_local_passed": 526,
+    "phase_cpu_cases": 66,
+    "phase_local_passed": 78
+  },
+  "work_package": "WP06.3"
+}

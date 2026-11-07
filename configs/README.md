@@ -12,7 +12,11 @@ và artifact root tương đối được resolve theo file experiment, không t
 - `tokenizer/bpe.toml`: vocabulary đích và special-token contract dùng chung WP02/WP04.
 - `tokenizer/train.toml`: WP04 train-only TinyStories, kiểm tra round-trip và thống kê codec.
 - `pretrain/debug.toml`, `sft/debug.toml`: debug defaults, chưa có training loop.
-- `sampling/baseline.toml`: generation defaults, chưa sinh văn bản.
+- `sampling/baseline.toml`: WP02 experiment grid; `k_values` là số candidate
+  sequences cho nghiên cứu, không phải top-k vocabulary filtering.
+- `sampling/wp06_generation.toml`: runtime policy WP06.3, đọc riêng bằng
+  `GenerationConfig`; có greedy/sampling, temperature, `top_k`, `top_p`, EOS/PAD.
+  Probe lưu policy nguồn và effective settings riêng bên cạnh WP02 snapshot.
 
 Schema version 1 được kiểm tra trong `llm_scratch.utils.config`: từ chối key không biết,
 kiểu sai, seed không hợp lệ, head dimension/vocabulary không khớp, K không hợp lệ, v.v.

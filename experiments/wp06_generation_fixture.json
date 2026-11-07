@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "purpose": "Authored diagnostic prefixes from the WP05 overfit examples; not held-out evaluation.",
+  "story_prefix": "A fox",
+  "question": "What is 2 + 3?"
+}

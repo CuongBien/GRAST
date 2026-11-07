@@ -7,12 +7,13 @@ toàn bộ sau cached/uncached equivalence và profiling thực đo ở phase cu
 | --- | --- | --- | --- |
 | WP06.1 | KV storage theo layer, append transaction, masks/positions, reset, bounds/payload | Copy/concat chính xác, không desync layer, rollback giữ prefix, dtype/device/limit đúng | Đã triển khai |
 | WP06.2 | Tích hợp attention/model với prefill và token/chunk decode | Cached logits khớp full forward, RoPE offset/mask đúng, model ownership/context checks | Đã triển khai |
-| WP06.3 | Greedy, temperature, top-k/top-p, EOS và seeded generation | Sampling/filtering đúng, generated token IDs/masks/context/EOS nhất quán | Chưa triển khai |
+| WP06.3 | Greedy, temperature, top-k/top-p, EOS và seeded generation | Sampling/filtering đúng, generated token IDs/masks/context/EOS nhất quán | Đã triển khai |
 | WP06.4 | Cached/uncached generation integration | Logits trong tolerance, greedy tokens giống nhau; sampling fixtures cùng RNG kiểm soát, padding/offset boundaries | Chưa triển khai |
 | WP06.5 | Online profiling tại prompt L=128/512/1024/2048 | TTFT, next-token latency, tokens/s và allocated/reserved/peak VRAM thực đo, protocol và environment đầy đủ | Chưa triển khai |
 
-Đã hoàn thành WP06.1–WP06.2; lượt này dừng tại cached model forward. Không dùng cache payload hoặc offline replay làm bằng chứng
-latency/VRAM. Sampling, generation và profiling placeholders chưa được trình bày là đã chạy.
+Đã hoàn thành WP06.1–WP06.3: cached model forward và uncached generation baseline.
+Generation dùng cache sẽ tích hợp/đối chiếu ở WP06.4. Không dùng cache payload hoặc
+offline replay làm bằng chứng latency/VRAM; profiling thực đo thuộc WP06.5.
 
 ## Các quyết định tích hợp đã chốt
 
@@ -173,6 +174,88 @@ Checkpoint load với `weights_only=True`, CPU mapping/mmap và strict model met
 không restore optimizer/RNG cho inference probe. Report ghi checkpoint SHA-256, codec
 fingerprint, chunk errors và cache payload. Chưa đo TTFT/latency/VRAM ở phase này.
 Kết quả: [WP06.2 validation](wp06_2_validation.md).
+
+## WP06.3 — sampling và uncached generation
+
+```python
+from llm_scratch.inference.config import GenerationConfig
+from llm_scratch.inference.generate import generate
+
+model.eval()
+policy = GenerationConfig(
+    max_new_tokens=16, do_sample=True, temperature=0.8, top_k=40, top_p=0.95,
+    pad_token_id=tokenizer.pad_token_id, eos_token_id=tokenizer.eos_token_id,
+)
+output = generate(model, prompt_ids, prompt_mask, config=policy, seed=42)
+tokens = output.generated_ids[0, :output.generated_lengths[0]].tolist()
+text = tokenizer.decode(tokens)
+```
+
+`generate` là uncached full-prefix baseline ở phase này. Không thay mode của model;
+caller phải `eval()`, hàm tự disable gradients. Prompt IDs là int32/int64 `[B,P]`
+trên model device, mask optional binary `[B,P]`, mỗi hàng phải có ít nhất một valid
+token. Output IDs là int64, masks bool. Không thêm BOS hoặc tokenize tự động:
+ordinary text dùng codec WP04; reasoning dùng `encode_reasoning_prompt` cùng SFT framing.
+Chưa expose custom positions ở generation; positions mặc định theo physical columns.
+
+Initial logits đọc tại **last valid prompt token của từng hàng**, hỗ trợ left/right
+padding và interior gaps. Generated tokens được append sau physical prompt width;
+không compact prompt. Mọi padding column vẫn chiếm context/RoPE index. Yêu cầu
+`P + max_new_tokens <= context_length` được kiểm tra trước forward, kể cả nếu EOS
+có thể đến sớm. Budget 0 hợp lệ, trả suffix rỗng và không gọi model. Không truncate,
+evict hoặc tự giảm budget. Một forward full prefix cho mỗi bước sinh token.
+
+EOS chỉ xét trên token **mới sinh**, không dừng vì EOS có sẵn trong prompt. EOS được
+giữ và tính vào `generated_lengths`. Hàng đã EOS không được sampling nữa; các bước
+còn lại trong batch append PAD với mask 0. Dừng khi tất cả hàng EOS hoặc hết budget;
+EOS tại bước cuối vẫn có reason `eos`. `eos_token_id=None` chỉ dừng theo budget.
+PAD có thể trùng EOS. Không tự suppress PAD/BOS/reasoning tokens: nếu model sinh PAD
+trong một hàng active, token đó vẫn có mask 1 trừ khi cũng là EOS. Dùng mask để phân
+biệt generated PAD và padding sau khi hàng đã dừng.
+
+Output có `sequences`, `attention_mask`, `generated_ids`, `generated_mask`,
+`generated_lengths`, per-row `finish_reasons` (`eos`/`max_new_tokens`) và seed.
+Suffix tensor dài bằng số bước batch đã chạy, bao gồm padding sau EOS. Decode/evaluate
+từng hàng bằng valid generated length, không tính tail padding là output.
+
+Sampling contract:
+
+- Greedy là `do_sample=False`, raw argmax; tie lấy ID nhỏ nhất, không dùng temperature/
+  filters hoặc tiêu thụ RNG. Settings vẫn được validate. Không dùng temperature=0
+  làm sentinel; mọi temperature phải finite >0.
+- Stochastic: temperature → exact top-k → top-p trên phân phối đã renormalize sau top-k.
+  `top_k=0` tắt filter, `top_k=1` chỉ giữ argmax; top-k không được vượt vocab.
+  Stable sort giữ thứ tự ID tăng khi score bằng nhau, nên ties không làm vượt k.
+- Nucleus giữ prefix nhỏ nhất có cumulative probability >= top_p, gồm token đầu tiên
+  vượt threshold. Nếu đã đạt đúng threshold thì không thêm token kế. `top_p=1` tắt
+  filter; `0 < top_p <= 1`. Luôn giữ ít nhất một finite candidate.
+- Filtering trả FP32 (FP64 nếu logits FP64), giữ inputs nguyên, dùng -inf cho candidates
+  bị loại. Chấp nhận -inf trong input nếu còn finite candidate; NaN/+inf hoặc all--inf
+  row bị từ chối. Extreme finite temperatures được xử lý tránh scalar cast overflow.
+- `sample_next_token` yêu cầu explicit same-device `torch.Generator` ở stochastic mode.
+  `generate` tự tạo generator riêng theo device/seed; không advance global CPU/CUDA RNG.
+  Chỉ active rows theo batch order được sampling, không draw cho finished rows.
+  Cùng seed tái lập trong cùng model, precision, device/runtime và batch schedule;
+  không hứa sample IDs giống CPU/GPU hoặc giữa batch và từng request riêng.
+
+Implementation dùng stable [sort](https://docs.pytorch.org/docs/2.9/generated/torch.sort.html)
+và explicit generator của [multinomial](https://docs.pytorch.org/docs/2.9/generated/torch.multinomial.html).
+Không dùng thư viện generation bên ngoài PyTorch.
+
+Runtime policy ở `configs/sampling/wp06_generation.toml`, schema riêng `GenerationConfig`.
+`k_values` trong WP02 grid là **số candidate sequences**, không được map vào `top_k`.
+Probe mặc định chạy candidate random weights + fixed synthetic IDs không tải external
+data. Optional checkpoint WP05 + tokenizer WP04 dùng story/reasoning prefixes tự viết,
+lưu generated IDs/masks/decoded text, policy snapshot/hash, checkpoint hash và environment.
+Không restore training optimizer/RNG. Đây là diagnostic, chưa phải quality benchmark.
+
+```powershell
+uv run --no-sync python scripts/check_generation.py --device cpu
+uv run --no-sync python scripts/check_generation.py --device cuda --checkpoint PATH/TO/overfit.pt --tokenizer PATH/TO/artifacts/tokenizer
+```
+
+Kết quả: [WP06.3 validation](wp06_3_validation.md). WP06.4 tiếp tục cached/uncached
+generation equivalence, WP06.5 mới đo TTFT/latency/throughput/VRAM.
 
 ## Protocol profiling cần hoàn tất ở phase 5
 

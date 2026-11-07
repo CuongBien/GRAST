@@ -38,3 +38,11 @@ Chưa có CLI arguments, training, sampling, profiling hay evaluation.
 
 `pretrain`, `finetune`, `build_sample_bank`, `replay_policies`,
 `evaluate`, `profile`, `demo` sẽ được triển khai theo critical path và có kiểm tra tương ứng.
+## WP06.3 generation
+
+`uv run --no-sync python scripts/check_generation.py --device cpu` chạy greedy và
+sampled uncached baseline, kiểm tra replay cùng seed, EOS/masks/lengths và global RNG.
+Có `--policy configs/sampling/wp06_generation.toml`, `--seed`, `--output-root`;
+`--checkpoint <wp05-overfit.pt> --tokenizer <wp04-tokenizer-directory>` dùng model
+và codec thật, lưu token IDs và decoded outputs từ authored diagnostic prefixes.
+Không phải quality benchmark, cached generation equivalence hoặc profiling.

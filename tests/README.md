@@ -1,4 +1,4 @@
-# Test status — WP02–WP05 (các phase đã triển khai)
+# Test status — WP02–WP06 (các phase đã triển khai)
 
 Sync environment với `uv sync --locked --extra cpu --extra data` (hoặc `cuda` thay `cpu`).
 `test_package.py` kiểm tra metadata/importability; `test_reproducibility.py` kiểm tra
@@ -54,10 +54,19 @@ Hook projection xác minh decode chỉ project token mới và past K không đ�
 
 Các test dự kiến theo HQ, thêm cùng implementation:
 
-- Cached/uncached logits và generated tokens sẽ được thêm cùng WP06.2–WP06.4.
-- `test_generation.py`: generation boundaries và seed reproducibility.
+- Cached/uncached generated-token integration sẽ được thêm cùng WP06.4.
 - `test_sample_bank.py`: contract, ordering và reproducibility.
 - `test_policy_replay.py`: prefix-only observations, không gold leakage.
 - `test_confidence.py`: confidence signal, stopping và validation-only calibration.
 
 Không tạo test rỗng/skip cho các mục này để tránh hiểu nhầm là đã nghiệm thu.
+
+## WP06.3 sampling và generation
+
+`test_sampling.py`: distribution/temperature, exact top-k với ties, minimal nucleus
+prefix và threshold boundary, combined filtering sau renormalization, extreme finite
+settings, statistical frequencies, private RNG replay và input/config errors.
+`test_generation.py`: hand-authored transitions, last-valid readout khi padding/gaps,
+EOS từng hàng và cả batch, EOS/PAD dùng chung ID, mask/length/budget/context boundaries,
+finished rows không tiêu thụ sampling draws và real-model seeded baseline.
+CPU/CUDA được kiểm tra; wrong-device RNG case cần CUDA và skip trên CPU-only CI.

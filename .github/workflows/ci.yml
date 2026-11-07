@@ -61,6 +61,8 @@ jobs:
         run: uv run --no-sync python scripts/check_kv_cache.py --device cpu
       - name: WP06.2 cached prefill/decode smoke
         run: uv run --no-sync python scripts/check_cached_forward.py --device cpu
+      - name: WP06.3 greedy and sampled generation smoke
+        run: uv run --no-sync python scripts/check_generation.py --device cpu
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree
