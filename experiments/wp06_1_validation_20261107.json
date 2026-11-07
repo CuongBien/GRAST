@@ -1,0 +1,202 @@
+{
+  "checks": {
+    "capacity_reset_storage_reuse": true,
+    "exact_concat_references_all_layers_dtypes": true,
+    "inference_mode_buffer_lifetime": true,
+    "no_layer_desynchronization": true,
+    "partial_and_full_update_exception_rollback": true,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "strict_dtype_device_shape_validation": true,
+    "wheel_sdist_build": true
+  },
+  "date": "2026-11-07",
+  "limitations": [
+    "Tensor payload accounting is not measured VRAM or latency profiling.",
+    "Cache is not connected to attention/CausalLM yet.",
+    "Static MHA cache only; no GQA, sliding window, beam reorder or cross-request sharing."
+  ],
+  "remaining_phases": [
+    "WP06.2 cached prefill/decode model integration and RoPE offsets",
+    "WP06.3 generation and sampling",
+    "WP06.4 cached/uncached logits and tokens equivalence",
+    "WP06.5 measured TTFT/latency/throughput/VRAM L=128/512/1024/2048"
+  ],
+  "runs": [
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cpu"
+      },
+      "report": {
+        "batch_size": 2,
+        "capacity": 1024,
+        "checks": {
+          "all_layer_concat_round_trip_exact": true,
+          "capacity_accounting_matches_formula": true,
+          "committed_prefix_preserved": true,
+          "reset_reuses_storage": true,
+          "rotated_key_storage": true
+        },
+        "committed_length_before_reset": 6,
+        "device": "cpu",
+        "dtype": "torch.float32",
+        "limitation": "Cache foundation only; no cached model logits, generation or latency/VRAM measurements.",
+        "memory_bytes_after_reset_reuse": {
+          "kv_capacity_bytes": 83886080,
+          "kv_used_bytes": 81920,
+          "metadata_capacity_bytes": 18432,
+          "metadata_used_bytes": 18,
+          "tensor_capacity_bytes": 83904512
+        },
+        "memory_bytes_before_reset": {
+          "kv_capacity_bytes": 83886080,
+          "kv_used_bytes": 491520,
+          "metadata_capacity_bytes": 18432,
+          "metadata_used_bytes": 108,
+          "tensor_capacity_bytes": 83904512
+        },
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "positions_before_reset": [
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        ],
+        "status": "passed",
+        "work_package": "WP06.1"
+      },
+      "report_sha256": "de120eacb06650359b40a2c079e3d389f2bbc5bb9f95830049de763d48bb863f",
+      "run_directory": "artifacts/runs/20261107T024740517491Z-wp06-1-kv-cache-seed42-3f48c719"
+    },
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cuda:0"
+      },
+      "report": {
+        "batch_size": 2,
+        "capacity": 1024,
+        "checks": {
+          "all_layer_concat_round_trip_exact": true,
+          "capacity_accounting_matches_formula": true,
+          "committed_prefix_preserved": true,
+          "reset_reuses_storage": true,
+          "rotated_key_storage": true
+        },
+        "committed_length_before_reset": 6,
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "limitation": "Cache foundation only; no cached model logits, generation or latency/VRAM measurements.",
+        "memory_bytes_after_reset_reuse": {
+          "kv_capacity_bytes": 83886080,
+          "kv_used_bytes": 81920,
+          "metadata_capacity_bytes": 18432,
+          "metadata_used_bytes": 18,
+          "tensor_capacity_bytes": 83904512
+        },
+        "memory_bytes_before_reset": {
+          "kv_capacity_bytes": 83886080,
+          "kv_used_bytes": 491520,
+          "metadata_capacity_bytes": 18432,
+          "metadata_used_bytes": 108,
+          "tensor_capacity_bytes": 83904512
+        },
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "positions_before_reset": [
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        ],
+        "status": "passed",
+        "work_package": "WP06.1"
+      },
+      "report_sha256": "7fc274a97035e8ce902a37a3e15463b9fd16582d4a623c74531cca1751899281",
+      "run_directory": "artifacts/runs/20261107T024747343701Z-wp06-1-kv-cache-seed42-49749ffc"
+    }
+  ],
+  "schema_version": 1,
+  "status": "accepted_phase_only",
+  "tests": {
+    "additional_cuda_cases": 9,
+    "cpu_only_ci_skip": "One cross-device hardware case when CUDA unavailable",
+    "failed": 0,
+    "full_local_passed": 403,
+    "phase_cpu_cases": 48,
+    "phase_local_passed": 57
+  },
+  "work_package": "WP06.1"
+}

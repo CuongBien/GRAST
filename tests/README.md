@@ -42,9 +42,15 @@ và hai fresh-process full-protocol reports giống nhau. Model nhỏ cùng ki�
 `conftest.py` đặt cuBLAS workspace trước khi CUDA được khởi tạo để GPU cases chạy
 được trước/sau các test bật deterministic mode mà không phụ thuộc thứ tự.
 
+WP06.1: `test_kv_cache.py` kiểm tra static storage với exact concat references,
+RoPE keys/value/metadata, layer-consistent commit, exception/incomplete abort, bounds,
+reset/reuse, payload bytes, noncontiguous inputs, dtype/device/shape validation và
+inference-mode lifetime. Một test cross-device được skip khi runtime không có CUDA;
+đây là hardware case thực, không phải placeholder cho cached generation.
+
 Các test dự kiến theo HQ, thêm cùng implementation:
 
-- `test_kv_cache.py`: cached/uncached logits trong tolerance, fixed seed.
+- Cached/uncached logits và generated tokens sẽ được thêm cùng WP06.2–WP06.4.
 - `test_generation.py`: generation boundaries và seed reproducibility.
 - `test_sample_bank.py`: contract, ordering và reproducibility.
 - `test_policy_replay.py`: prefix-only observations, không gold leakage.
