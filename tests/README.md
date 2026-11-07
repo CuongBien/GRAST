@@ -47,6 +47,10 @@ RoPE keys/value/metadata, layer-consistent commit, exception/incomplete abort, b
 reset/reuse, payload bytes, noncontiguous inputs, dtype/device/shape validation và
 inference-mode lifetime. Một test cross-device được skip khi runtime không có CUDA;
 đây là hardware case thực, không phải placeholder cho cached generation.
+WP06.2: `test_cached_forward.py` so prefill/token/chunk logits với uncached ở các dtype,
+padding layouts và positions; kiểm tra inference-only guards, ownership, stale weights,
+dtype/autocast, reset, failure rollback sau head, requests interleaved và weak owner lifetime.
+Hook projection xác minh decode chỉ project token mới và past K không đổi.
 
 Các test dự kiến theo HQ, thêm cùng implementation:
 

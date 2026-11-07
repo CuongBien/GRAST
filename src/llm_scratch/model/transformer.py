@@ -10,8 +10,9 @@ from torch import Tensor, nn
 from torch.nn import functional as F
 
 from llm_scratch.model.attention import CausalSelfAttention
+from llm_scratch.model.cache import KVCache, KVCacheStep
 from llm_scratch.model.config import ModelConfig
-from llm_scratch.model.layers import RMSNorm, SwiGLU, TokenEmbedding
+from llm_scratch.model.layers import RMSNorm, RotaryEmbedding, SwiGLU, TokenEmbedding
 from llm_scratch.model.masking import valid_token_mask
 
 
@@ -37,11 +38,25 @@ class DecoderBlock(nn.Module):
         x: Tensor,
         attention_mask: Tensor | None = None,
         position_ids: Tensor | None = None,
+        *,
+        cache_step: KVCacheStep | None = None,
+        layer_index: int | None = None,
     ) -> Tensor:
+        if cache_step is None and layer_index is not None:
+            raise ValueError("layer_index requires cache_step")
         valid = valid_token_mask(x, attention_mask, self.config)
         padding = ~valid.unsqueeze(-1)
         x = x.masked_fill(padding, 0.0)
-        attended = self.attention(self.attention_norm(x), valid, position_ids)
+        if cache_step is None:
+            attended = self.attention(self.attention_norm(x), valid, position_ids)
+        else:
+            attended = self.attention(
+                self.attention_norm(x),
+                valid,
+                position_ids,
+                cache_step=cache_step,
+                layer_index=layer_index,
+            )
         x = (x + self.residual_dropout(attended)).masked_fill(padding, 0.0)
         transformed = self.ffn(self.ffn_norm(x))
         return (x + self.residual_dropout(transformed)).masked_fill(padding, 0.0)
@@ -52,6 +67,7 @@ class CausalLMOutput:
     logits: Tensor
     loss: Tensor | None = None
     num_loss_tokens: int = 0
+    cache: KVCache | None = None
 
 
 def _check_fingerprint(value: str | None) -> None:
@@ -74,6 +90,7 @@ class CausalLM(nn.Module):
         _check_fingerprint(tokenizer_fingerprint)
         self.config = config
         self.tokenizer_fingerprint = tokenizer_fingerprint
+        self._cache_revision = 0
         self.token_embedding = TokenEmbedding(config.vocab_size, config.hidden_size)
         self.blocks = nn.ModuleList([DecoderBlock(config) for _ in range(config.num_layers)])
         self.final_norm = RMSNorm(config.hidden_size, config.rms_norm_eps)
@@ -89,7 +106,19 @@ class CausalLM(nn.Module):
         attention_mask: Tensor | None = None,
         labels: Tensor | None = None,
         position_ids: Tensor | None = None,
+        *,
+        use_cache: bool = False,
+        cache: KVCache | None = None,
     ) -> CausalLMOutput:
+        if type(use_cache) is not bool:
+            raise ValueError("use_cache must be a boolean")
+        if cache is not None and (not use_cache or not isinstance(cache, KVCache)):
+            raise ValueError("A KVCache argument requires use_cache=True")
+        if use_cache:
+            if any(module.training for module in self.modules()) or torch.is_grad_enabled():
+                raise ValueError("Cached forward requires model.eval() and no_grad/inference_mode")
+            if labels is not None:
+                raise ValueError("Cached forward does not accept training labels")
         if input_ids.ndim != 2 or input_ids.dtype not in (torch.int32, torch.int64):
             raise ValueError("input_ids must be int32/int64 [batch, sequence]")
         batch, length = input_ids.shape
@@ -110,12 +139,20 @@ class CausalLM(nn.Module):
                 raise ValueError("labels must be -100 or a valid vocabulary ID")
         hidden = self.token_embedding(input_ids)
         valid = valid_token_mask(hidden, attention_mask, self.config)
-        padding = ~valid.unsqueeze(-1)
-        hidden = hidden.masked_fill(padding, 0.0)
-        for block in self.blocks:
-            hidden = block(hidden, valid, position_ids)
-        hidden = self.final_norm(hidden).masked_fill(padding, 0.0)
-        logits = self.lm_head(hidden).masked_fill(padding, 0.0)
+        if use_cache:
+            if cache is None:
+                cache = self.new_cache(batch)
+            signature = self._cache_signature()
+            cache.validate_for_model(self, signature, batch, self._kv_dtype())
+            if cache.requires_explicit_positions and position_ids is None:
+                raise ValueError("Explicit position_ids required after custom-position cache use")
+            with cache.begin_step(length, attention_mask=valid, position_ids=position_ids) as step:
+                logits = self._hidden_logits(hidden, valid, step.position_ids, cache_step=step)
+                if self._cache_signature() != signature:
+                    raise RuntimeError("Model changed during cached forward; append aborted")
+            cache.record_model_commit(self, signature, explicit_positions=position_ids is not None)
+            return CausalLMOutput(logits=logits, cache=cache)
+        logits = self._hidden_logits(hidden, valid, position_ids)
         if labels is None:
             return CausalLMOutput(logits=logits)
         targets = labels[:, 1:].long().masked_fill(~(valid[:, :-1] & valid[:, 1:]), -100)
@@ -129,6 +166,81 @@ class CausalLM(nn.Module):
                 reduction="sum",
             ) / max(count, 1)
         return CausalLMOutput(logits=logits, loss=loss, num_loss_tokens=count)
+
+    def _hidden_logits(
+        self,
+        hidden: Tensor,
+        valid: Tensor,
+        position_ids: Tensor | None,
+        *,
+        cache_step: KVCacheStep | None = None,
+    ) -> Tensor:
+        padding = ~valid.unsqueeze(-1)
+        hidden = hidden.masked_fill(padding, 0.0)
+        for index, block in enumerate(self.blocks):
+            if cache_step is None:
+                hidden = block(hidden, valid, position_ids)
+            else:
+                hidden = block(
+                    hidden, valid, position_ids, cache_step=cache_step, layer_index=index
+                )
+        hidden = self.final_norm(hidden).masked_fill(padding, 0.0)
+        return self.lm_head(hidden).masked_fill(padding, 0.0)
+
+    def _kv_dtype(self) -> torch.dtype:
+        weight = self.token_embedding.weight
+        if weight.dtype != torch.float64 and torch.is_autocast_enabled(weight.device.type):
+            return torch.get_autocast_dtype(weight.device.type)
+        return weight.dtype
+
+    def new_cache(self, batch_size: int, *, max_length: int | None = None) -> KVCache:
+        return KVCache(
+            self.config,
+            batch_size,
+            max_length=max_length,
+            device=self.token_embedding.weight.device,
+            dtype=self._kv_dtype(),
+        )
+
+    def _cache_signature(self) -> tuple:
+        tensors = []
+        for name, value in (*self.named_parameters(), *self.named_buffers()):
+            if torch.is_inference(value):
+                raise ValueError(
+                    "Construct model outside inference_mode for versioned cache binding"
+                )
+            tensors.append(
+                (
+                    name,
+                    id(value),
+                    value.data_ptr(),
+                    value._version,
+                    value.dtype,
+                    value.device,
+                    tuple(value.shape),
+                )
+            )
+        modules = []
+        for name, module in self.named_modules():
+            attributes = ()
+            if isinstance(module, RotaryEmbedding):
+                attributes = (module.theta, module.max_seq_len, module.head_dim)
+            elif isinstance(module, RMSNorm):
+                attributes = (module.eps,)
+            modules.append((name, id(module), type(module), module.training, attributes))
+        return (
+            self.config,
+            self.tokenizer_fingerprint,
+            self._cache_revision,
+            tuple(tensors),
+            tuple(modules),
+        )
+
+    def _apply(self, fn, recurse=True):
+        # A root dtype/device round trip can reuse an old pointer/version after
+        # quantizing values. Invalidate even when the eventual dtype matches again.
+        self._cache_revision += 1
+        return super()._apply(fn, recurse=recurse)
 
     def parameter_counts(self) -> dict[str, int]:
         """Count actual unique Parameters; tied head is charged only to embedding."""
@@ -172,6 +284,7 @@ class CausalLM(nn.Module):
         self.tokenizer_fingerprint = fingerprint
 
     def load_state_dict(self, state_dict, strict: bool = True, assign: bool = False):
+        self._cache_revision += 1
         if self.config.tie_embeddings:
             embedding = state_dict.get("token_embedding.weight")
             head = state_dict.get("lm_head.weight")

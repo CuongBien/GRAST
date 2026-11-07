@@ -29,6 +29,10 @@ chưa phải pretraining/SFT trainer cho corpus. Checkpoint lớn được lưu 
 geometry candidate. `--dtype`/`--max-length` chọn payload layout; chưa chạy cached LM
 hoặc profiling latency/VRAM. Xem `docs/wp06_inference.md`.
 
+`check_cached_forward.py --device cpu` (hoặc `cuda`) chạy WP06.2 cached/uncached logits
+probe. Optional `--checkpoint PATH --tokenizer PATH` kiểm tra candidate đã overfit ở WP05
+với fixture được encode qua codec WP04. Chưa chạy sampling/generation/profiling.
+
 Các script model/training bên dưới giữ tên theo HQ và hiện exit 1 với thông báo `skeleton only`.
 Chưa có CLI arguments, training, sampling, profiling hay evaluation.
 

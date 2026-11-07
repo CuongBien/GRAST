@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import weakref
+
 import torch
 from torch import Tensor
 
@@ -59,6 +61,9 @@ class KVCache:
         self._device = self._valid.device  # Canonicalize e.g. cuda -> cuda:0, cpu:0 -> cpu.
         self._length = 0
         self._active: KVCacheStep | None = None
+        self._owner: weakref.ReferenceType | None = None
+        self._model_signature: tuple | None = None
+        self._explicit_positions = False
 
     @property
     def config(self) -> ModelConfig:
@@ -161,6 +166,34 @@ class KVCache:
         if self._active is not None:
             raise RuntimeError("Abort/commit the active append before reset")
         self._length = 0
+        self._owner = None
+        self._model_signature = None
+        self._explicit_positions = False
+
+    @property
+    def requires_explicit_positions(self) -> bool:
+        return self._explicit_positions
+
+    def validate_for_model(
+        self, model, signature: tuple, batch_size: int, dtype: torch.dtype
+    ) -> None:
+        """Reject stale/cross-model prefixes before any append can write new data."""
+        if self._active is not None:
+            raise RuntimeError("A cache append is already active")
+        if self.config != model.config or self.batch_size != batch_size:
+            raise ValueError("Cache model configuration/batch size mismatch")
+        if self.device != model.token_embedding.weight.device or self.dtype != dtype:
+            raise ValueError("Cache device/dtype does not match current inference precision")
+        if self.sequence_length:
+            if self._owner is None or self._owner() is not model:
+                raise RuntimeError("Populated cache belongs to another model or is unbound")
+            if self._model_signature != signature:
+                raise RuntimeError("Model weights/metadata changed; reset the cache before reuse")
+
+    def record_model_commit(self, model, signature: tuple, *, explicit_positions: bool) -> None:
+        self._owner = weakref.ref(model)
+        self._model_signature = signature
+        self._explicit_positions = self._explicit_positions or explicit_positions
 
     def memory_bytes(self) -> dict[str, int]:
         """Tensor payload, not CUDA allocator reserved/peak memory or measured VRAM."""
@@ -251,6 +284,10 @@ class KVCacheStep:
         if len(self._written) != self._cache.config.num_layers:
             raise RuntimeError("Cannot commit an append with incomplete layers")
         self._cache._length = self.end
+        # Only the model can attest that an entire forward produced this prefix.
+        # A raw storage append must not silently extend a previously bound prefix.
+        self._cache._owner = None
+        self._cache._model_signature = None
         self._cache._active = None
         self._closed = True
 

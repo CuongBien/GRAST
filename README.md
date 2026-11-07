@@ -20,7 +20,8 @@ WP05.4 có full decoder, LM head và causal CE loss; candidate tied có **46.148
 **WP05 đã đạt gate kiến trúc**: overfit batch nhỏ và full-model causal/padding isolation,
 xem [WP05.5](docs/wp05_5_validation.md). Kết quả này chưa đo khả năng tổng quát hóa.
 WP06 chia thành 5 phase: [kế hoạch cache/inference](docs/wp06_inference.md).
-WP06.1 có KV cache storage/transactions; chưa tích hợp cached model forward/generation/profiling.
+WP06.1 có KV storage/transactions; WP06.2 đã tích hợp cached prefill/token/chunk forward.
+[Báo cáo WP06.2](docs/wp06_2_validation.md). Sampling, generation và profiling còn ở các phase sau.
 
 Nguồn kế hoạch: [LLM From Scratch — Hướng C | Project HQ](https://app.notion.com/p/4093badafe55810db45bfcc26b766de9)
 (bản cập nhật 31/10/2026; hạn đồ án 01/12/2026).

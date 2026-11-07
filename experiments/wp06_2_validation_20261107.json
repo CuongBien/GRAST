@@ -1,0 +1,534 @@
+{
+  "checks": {
+    "autocast_precision_guards": true,
+    "cached_prefill_token_chunk_logits": true,
+    "model_ownership_and_mutation_guards": true,
+    "padding_causality_custom_positions": true,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "sdist_excludes_generated_runs_caches_weights": true,
+    "transactional_rollback_and_request_isolation": true,
+    "wheel_cached_forward_outside_source_tree": true,
+    "wheel_sdist_build": true
+  },
+  "date": "2026-11-07",
+  "limitations": [
+    "Teacher-forced logits only; generated-token equivalence follows in WP06.4.",
+    "No measured TTFT, next-token latency, tokens/s or VRAM yet.",
+    "Baseline context remains 1024; L=2048 profiling requires an explicit later configuration.",
+    "Static MHA only; no GQA, sliding window, beam reorder or cross-request sharing."
+  ],
+  "remaining_phases": [
+    "WP06.3 generation and sampling",
+    "WP06.4 cached/uncached generated-token equivalence",
+    "WP06.5 measured TTFT/latency/throughput/VRAM L=128/512/1024/2048"
+  ],
+  "runs": [
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cpu"
+      },
+      "report": {
+        "batch_source": "wp04_tokenizer_authored_pretrain_sft_fixture",
+        "cache_memory_bytes": {
+          "kv_capacity_bytes": 2211840,
+          "kv_used_bytes": 2211840,
+          "metadata_capacity_bytes": 486,
+          "metadata_used_bytes": 486,
+          "tensor_capacity_bytes": 2212326
+        },
+        "checkpoint_sha256": "e756d7a9519d1423a7ee554884afdc2b0ebb98a73188bd40a5554179eaa8de56",
+        "checks": {
+          "cache_length_masks_positions_correct": true,
+          "capacity_limit_rejected": true,
+          "prefill_token_chunk_logits_equivalent": true,
+          "prefix_keys_unchanged": true,
+          "reload_invalidates_cache": true,
+          "static_storage_reused": true
+        },
+        "chunks": [
+          {
+            "end": 3,
+            "max_abs_error": 0.0,
+            "start": 0
+          },
+          {
+            "end": 4,
+            "max_abs_error": 3.337860107421875e-06,
+            "start": 3
+          },
+          {
+            "end": 6,
+            "max_abs_error": 1.9073486328125e-06,
+            "start": 4
+          },
+          {
+            "end": 7,
+            "max_abs_error": 3.337860107421875e-06,
+            "start": 6
+          },
+          {
+            "end": 8,
+            "max_abs_error": 4.76837158203125e-06,
+            "start": 7
+          },
+          {
+            "end": 9,
+            "max_abs_error": 3.814697265625e-06,
+            "start": 8
+          },
+          {
+            "end": 10,
+            "max_abs_error": 5.7220458984375e-06,
+            "start": 9
+          },
+          {
+            "end": 11,
+            "max_abs_error": 3.337860107421875e-06,
+            "start": 10
+          },
+          {
+            "end": 12,
+            "max_abs_error": 3.814697265625e-06,
+            "start": 11
+          },
+          {
+            "end": 13,
+            "max_abs_error": 3.337860107421875e-06,
+            "start": 12
+          },
+          {
+            "end": 14,
+            "max_abs_error": 2.384185791015625e-06,
+            "start": 13
+          },
+          {
+            "end": 15,
+            "max_abs_error": 2.86102294921875e-06,
+            "start": 14
+          },
+          {
+            "end": 16,
+            "max_abs_error": 2.86102294921875e-06,
+            "start": 15
+          },
+          {
+            "end": 17,
+            "max_abs_error": 7.62939453125e-06,
+            "start": 16
+          },
+          {
+            "end": 18,
+            "max_abs_error": 2.384185791015625e-06,
+            "start": 17
+          },
+          {
+            "end": 19,
+            "max_abs_error": 3.337860107421875e-06,
+            "start": 18
+          },
+          {
+            "end": 20,
+            "max_abs_error": 2.86102294921875e-06,
+            "start": 19
+          },
+          {
+            "end": 21,
+            "max_abs_error": 2.86102294921875e-06,
+            "start": 20
+          },
+          {
+            "end": 22,
+            "max_abs_error": 2.384185791015625e-06,
+            "start": 21
+          },
+          {
+            "end": 23,
+            "max_abs_error": 2.86102294921875e-06,
+            "start": 22
+          },
+          {
+            "end": 24,
+            "max_abs_error": 2.384185791015625e-06,
+            "start": 23
+          },
+          {
+            "end": 25,
+            "max_abs_error": 5.7220458984375e-06,
+            "start": 24
+          },
+          {
+            "end": 26,
+            "max_abs_error": 2.86102294921875e-06,
+            "start": 25
+          },
+          {
+            "end": 27,
+            "max_abs_error": 3.814697265625e-06,
+            "start": 26
+          }
+        ],
+        "device": "cpu",
+        "input_shape": [
+          2,
+          27
+        ],
+        "limitation": "Teacher-forced logits only; sampling, generation equivalence and profiling follow.",
+        "max_abs_logit_error": 7.62939453125e-06,
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "status": "passed",
+        "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+        "tolerance": {
+          "atol": 1e-05,
+          "rtol": 0.0001
+        },
+        "work_package": "WP06.2"
+      },
+      "report_sha256": "dc6fa162de6213fad18446bea2f733faa2ce0a585f23ef97eb1d6caf7f9fbb65",
+      "run_directory": "artifacts/runs/20261107T083412068990Z-wp06-2-cached-forward-seed42-a643ad81"
+    },
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cuda:0"
+      },
+      "report": {
+        "batch_source": "wp04_tokenizer_authored_pretrain_sft_fixture",
+        "cache_memory_bytes": {
+          "kv_capacity_bytes": 2211840,
+          "kv_used_bytes": 2211840,
+          "metadata_capacity_bytes": 486,
+          "metadata_used_bytes": 486,
+          "tensor_capacity_bytes": 2212326
+        },
+        "checkpoint_sha256": "e756d7a9519d1423a7ee554884afdc2b0ebb98a73188bd40a5554179eaa8de56",
+        "checks": {
+          "cache_length_masks_positions_correct": true,
+          "capacity_limit_rejected": true,
+          "prefill_token_chunk_logits_equivalent": true,
+          "prefix_keys_unchanged": true,
+          "reload_invalidates_cache": true,
+          "static_storage_reused": true
+        },
+        "chunks": [
+          {
+            "end": 3,
+            "max_abs_error": 0.0,
+            "start": 0
+          },
+          {
+            "end": 4,
+            "max_abs_error": 1.9073486328125e-06,
+            "start": 3
+          },
+          {
+            "end": 6,
+            "max_abs_error": 3.814697265625e-06,
+            "start": 4
+          },
+          {
+            "end": 7,
+            "max_abs_error": 1.9073486328125e-06,
+            "start": 6
+          },
+          {
+            "end": 8,
+            "max_abs_error": 9.5367431640625e-07,
+            "start": 7
+          },
+          {
+            "end": 9,
+            "max_abs_error": 3.814697265625e-06,
+            "start": 8
+          },
+          {
+            "end": 10,
+            "max_abs_error": 3.814697265625e-06,
+            "start": 9
+          },
+          {
+            "end": 11,
+            "max_abs_error": 3.814697265625e-06,
+            "start": 10
+          },
+          {
+            "end": 12,
+            "max_abs_error": 4.291534423828125e-06,
+            "start": 11
+          },
+          {
+            "end": 13,
+            "max_abs_error": 4.291534423828125e-06,
+            "start": 12
+          },
+          {
+            "end": 14,
+            "max_abs_error": 2.86102294921875e-06,
+            "start": 13
+          },
+          {
+            "end": 15,
+            "max_abs_error": 4.291534423828125e-06,
+            "start": 14
+          },
+          {
+            "end": 16,
+            "max_abs_error": 3.814697265625e-06,
+            "start": 15
+          },
+          {
+            "end": 17,
+            "max_abs_error": 2.86102294921875e-06,
+            "start": 16
+          },
+          {
+            "end": 18,
+            "max_abs_error": 2.6226043701171875e-06,
+            "start": 17
+          },
+          {
+            "end": 19,
+            "max_abs_error": 2.86102294921875e-06,
+            "start": 18
+          },
+          {
+            "end": 20,
+            "max_abs_error": 3.814697265625e-06,
+            "start": 19
+          },
+          {
+            "end": 21,
+            "max_abs_error": 2.86102294921875e-06,
+            "start": 20
+          },
+          {
+            "end": 22,
+            "max_abs_error": 2.384185791015625e-06,
+            "start": 21
+          },
+          {
+            "end": 23,
+            "max_abs_error": 2.86102294921875e-06,
+            "start": 22
+          },
+          {
+            "end": 24,
+            "max_abs_error": 1.9073486328125e-06,
+            "start": 23
+          },
+          {
+            "end": 25,
+            "max_abs_error": 3.814697265625e-06,
+            "start": 24
+          },
+          {
+            "end": 26,
+            "max_abs_error": 2.384185791015625e-06,
+            "start": 25
+          },
+          {
+            "end": 27,
+            "max_abs_error": 2.86102294921875e-06,
+            "start": 26
+          }
+        ],
+        "device": "cuda",
+        "input_shape": [
+          2,
+          27
+        ],
+        "limitation": "Teacher-forced logits only; sampling, generation equivalence and profiling follow.",
+        "max_abs_logit_error": 4.291534423828125e-06,
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "status": "passed",
+        "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+        "tolerance": {
+          "atol": 1e-05,
+          "rtol": 0.0001
+        },
+        "work_package": "WP06.2"
+      },
+      "report_sha256": "c9c77da4e51da3a857b061b1e5cf4ab7209aa702f5fb0db5f2be9dad9e9ec9fb",
+      "run_directory": "artifacts/runs/20261107T083322905620Z-wp06-2-cached-forward-seed42-4218556f"
+    },
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cpu"
+      },
+      "report": {
+        "batch_source": "seeded_synthetic_token_ids",
+        "cache_memory_bytes": {
+          "kv_capacity_bytes": 737280,
+          "kv_used_bytes": 737280,
+          "metadata_capacity_bytes": 162,
+          "metadata_used_bytes": 162,
+          "tensor_capacity_bytes": 737442
+        },
+        "checkpoint_sha256": null,
+        "checks": {
+          "cache_length_masks_positions_correct": true,
+          "capacity_limit_rejected": true,
+          "prefill_token_chunk_logits_equivalent": true,
+          "prefix_keys_unchanged": true,
+          "reload_invalidates_cache": true,
+          "static_storage_reused": true
+        },
+        "chunks": [
+          {
+            "end": 3,
+            "max_abs_error": 0.0,
+            "start": 0
+          },
+          {
+            "end": 4,
+            "max_abs_error": 1.3113021850585938e-06,
+            "start": 3
+          },
+          {
+            "end": 6,
+            "max_abs_error": 1.1324882507324219e-06,
+            "start": 4
+          },
+          {
+            "end": 7,
+            "max_abs_error": 1.2516975402832031e-06,
+            "start": 6
+          },
+          {
+            "end": 8,
+            "max_abs_error": 1.3113021850585938e-06,
+            "start": 7
+          },
+          {
+            "end": 9,
+            "max_abs_error": 1.2516975402832031e-06,
+            "start": 8
+          }
+        ],
+        "device": "cpu",
+        "input_shape": [
+          2,
+          9
+        ],
+        "limitation": "Teacher-forced logits only; sampling, generation equivalence and profiling follow.",
+        "max_abs_logit_error": 1.3113021850585938e-06,
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "status": "passed",
+        "tokenizer_fingerprint": null,
+        "tolerance": {
+          "atol": 1e-05,
+          "rtol": 0.0001
+        },
+        "work_package": "WP06.2"
+      },
+      "report_sha256": "5cff9c751b2aa9ae37b80c41e102790f1dc9cc1e19d6d15413784d1b4055e711",
+      "run_directory": "artifacts/runs/20261107T083732394792Z-wp06-2-cached-forward-seed42-07285907"
+    }
+  ],
+  "schema_version": 1,
+  "status": "accepted_phase_only",
+  "tests": {
+    "additional_cuda_cases": 14,
+    "cpu_only_ci_skip": "One existing cross-device hardware case when CUDA unavailable",
+    "failed": 0,
+    "full_local_passed": 448,
+    "phase_cpu_cases": 31,
+    "phase_local_passed": 45
+  },
+  "work_package": "WP06.2"
+}

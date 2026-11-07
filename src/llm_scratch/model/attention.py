@@ -8,6 +8,7 @@ import torch
 from torch import Tensor, nn
 from torch.nn import functional as F
 
+from llm_scratch.model.cache import KVCacheStep
 from llm_scratch.model.config import ModelConfig
 from llm_scratch.model.layers import RotaryEmbedding
 from llm_scratch.model.masking import valid_token_mask
@@ -48,7 +49,7 @@ class CausalSelfAttention(nn.Module):
     Padded inputs are cleared before projection; padded query outputs are exactly
     zero. A fully padded example has zero output/gradients, without NaNs.
     Causality follows sequence order, independently of explicit RoPE position IDs.
-    No residual connection, KV cache or decoder is implemented here.
+    Optional cache_step appends already-rotated K and raw V for the supplied layer.
     """
 
     def __init__(self, config: ModelConfig):
@@ -67,7 +68,26 @@ class CausalSelfAttention(nn.Module):
         x: Tensor,
         attention_mask: Tensor | None = None,
         position_ids: Tensor | None = None,
+        *,
+        cache_step: KVCacheStep | None = None,
+        layer_index: int | None = None,
     ) -> Tensor:
+        if cache_step is not None:
+            if self.training or torch.is_grad_enabled():
+                raise ValueError("Cached attention requires eval and no_grad/inference_mode")
+            if layer_index is None:
+                raise ValueError("Cached attention requires layer_index")
+            if position_ids is not None:
+                expected = cache_step.position_ids
+                if (
+                    not isinstance(position_ids, Tensor)
+                    or position_ids.shape not in ((x.shape[1],), expected.shape)
+                    or not torch.equal(position_ids.expand_as(expected), expected)
+                ):
+                    raise ValueError("position_ids do not match cache transaction")
+            position_ids = cache_step.position_ids
+        elif layer_index is not None:
+            raise ValueError("layer_index requires cache_step")
         valid = valid_token_mask(x, attention_mask, self.config)
         batch, length, hidden_size = x.shape
         # Clear even nonfinite padding values so zero probabilities never multiply NaN/Inf V.
@@ -83,8 +103,20 @@ class CausalSelfAttention(nn.Module):
         query = self.rope(heads(self.q_proj), position_ids)
         key = self.rope(heads(self.k_proj), position_ids)
         value = heads(self.v_proj)
-        causal = torch.ones((length, length), dtype=torch.bool, device=x.device).tril()
-        allowed = causal[None, None, :, :] & valid[:, None, None, :] & valid[:, None, :, None]
+        if cache_step is None:
+            causal = torch.ones((length, length), dtype=torch.bool, device=x.device).tril()
+            key_mask = valid
+        else:
+            if cache_step.end - cache_step.start != length or not torch.equal(
+                valid, cache_step.query_mask
+            ):
+                raise ValueError("Cached attention chunk/mask does not match transaction")
+            key, value = cache_step.update(layer_index, key, value)
+            query_offsets = torch.arange(cache_step.start, cache_step.end, device=x.device)
+            key_offsets = torch.arange(cache_step.end, device=x.device)
+            causal = key_offsets[None, :] <= query_offsets[:, None]
+            key_mask = cache_step.attention_mask
+        allowed = causal[None, None, :, :] & key_mask[:, None, None, :] & valid[:, None, :, None]
         attended = _scaled_attention(
             query, key, value, allowed, dropout_p=self.config.dropout, training=self.training
         )
