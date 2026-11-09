@@ -1,0 +1,151 @@
+{
+  "checks": {
+    "actual_generate_path_no_logits_copy_hooks": true,
+    "all_eight_conditions_complete": true,
+    "context_only_copy_preserves_source_checkpoint_and_weights": true,
+    "cuda_synchronized_and_peaks_reset_per_request": true,
+    "five_measured_repeats_after_two_warmups": true,
+    "generated_ids_exact_modes_repeats_and_independent_runs": true,
+    "installed_wheel_profiling": true,
+    "measured_requests": 40,
+    "next_token_intervals": 600,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "token_ready_timestamps": 640,
+    "wheel_sdist_build": true
+  },
+  "cpu_smoke": {
+    "memory_claim": "CPU wall-clock only; vram_bytes is null",
+    "report_sha256": "86e3702d24f3e3c2b943fa368f0acf97fbb40412a2349cd042cda7f9c6924637",
+    "run_directory": "artifacts/runs/20261109T051656222428Z-wp06-5-inference-profile-seed42-a422cc46"
+  },
+  "date": "2026-11-09",
+  "limitations": [
+    "Warm host-observed streaming timings include per-token synchronization/callback and implementation validation overhead.",
+    "Shared laptop GPU, unlocked clocks; latency samples are noisy and not bitwise reproducible or A100 predictions.",
+    "PyTorch allocated/reserved/peak bytes do not represent whole-device VRAM or analytical cache payload.",
+    "Context extends 1024 to 2064 for measurement only; no trained long-context quality claim.",
+    "Diagnostic overfit checkpoint and synthetic token prompts, not held-out quality evaluation."
+  ],
+  "measurement": {
+    "config_sha256": "6e32411f785dfccb79bf07443cea60b1d33aefe22b9e123f3a5b3e36c81e1e21",
+    "environment": {
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "cudnn_version": 91002,
+      "gpus": [
+        {
+          "compute_capability": [
+            8,
+            9
+          ],
+          "index": 0,
+          "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+          "total_memory_bytes": 8585216000
+        }
+      ],
+      "numpy_version": "2.4.6",
+      "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, 610.47, 8188 MiB",
+      "platform": "Windows-10-10.0.22631-SP0",
+      "process_environment": {
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+        "MKL_NUM_THREADS": null,
+        "OMP_NUM_THREADS": null,
+        "PYTHONHASHSEED": null
+      },
+      "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+      "pytorch_version": "2.9.1+cu128",
+      "requested_device": "cuda",
+      "selected_device": "cuda:0",
+      "validation": {
+        "errors": [],
+        "ok": true
+      }
+    },
+    "git": {
+      "branch": "feat/wp06-5-inference-profiling",
+      "commit": "81ebadbc3ecfeca7ec67545e49de06966954f6cf",
+      "dirty": false,
+      "state": "committed",
+      "untracked_files": 0
+    },
+    "package_source": {
+      "files": {
+        "__init__.py": "a932361731d3b5400bba34659283d6ef6a304a6da98c5966d4c0f4b131052ce6",
+        "cli.py": "72a2695cc1d117fb4d17effe022af651ee280ec97ffd470e23831ce83dcd5887",
+        "data/__init__.py": "37640abf9abccdbbca164220d5b9ef0ca5f987df3deae5429e1a5abf1faf13ba",
+        "data/collator.py": "2989c16de5f09bc2b0ca5133e6d0549dded0b0d7fc0f817bf8b2a464adc24946",
+        "data/config.py": "e4dce9b1e2017c7a54f1157aceaf47d207fef262e065433f45b1f4fb945f5b4c",
+        "data/datasets.py": "209dc4b9503b4cee5977dec070b46a1f6bbe566ae7765b6593c3168c642e4f3b",
+        "data/difficulty.py": "c476d63e31788bdb0cebae55eeb1720807a0a468f43ce9461de73e11dcc51136",
+        "data/prepare.py": "c6542c961aa915a55dcc001ed1e5527e92c1653e9dd39dd2305fb4414ba08ad9",
+        "data/tokenizer.py": "490cf37dcc30fd8d0fc10077e78dc87225b99c0ead36a9083188d993d108c7c8",
+        "data/train_tokenizer.py": "bce714b1866478a39b21bb4ea769048c1ac4b2fe853d3a81ef14ab1f36dfb6bb",
+        "evaluation/__init__.py": "23023649cdac3c8b6b08380b762f45a7e0ab553051515e8a5d88e6f75cbef00f",
+        "evaluation/architecture.py": "642b6f796caca1829ad484dbcdc7e13542e2b12b6f4774e36237e752b3c6c9a7",
+        "evaluation/benchmarks.py": "ca7e89c1efc88f9d4222aa2a50edfcfbb48dcde32fa2b81311c3f78766adf6d6",
+        "evaluation/latency_vram.py": "f0f5f96ef82cc99d1c8fed0496dbacfc17171c83e0471a93580934beab95d7dc",
+        "evaluation/metrics.py": "1a6e2e8d1bcdf9e18d110b4245ce039bc4520e7856ff3c7a0f35577fb7d0bcc4",
+        "inference/__init__.py": "cbf594c0e9af4a205645ff5f645976620f381c1eb18425b47bbb0d2e45ae5ed9",
+        "inference/config.py": "0476777d429f48d93320181eca5373d34c3b26cdfedb6b82b52e7605a4b8dda7",
+        "inference/generate.py": "c324458c1d9ea06b8752cbe8cf7daf2f891ffaf75b853f4952da864cbd1fa1bd",
+        "inference/profile_config.py": "40b40557009f9f0f5beb703c63c4140b187b30dcc685bd890da70bac24fa60ae",
+        "inference/profiling.py": "36926b264ca7aa68abf45cad4a68d8fe6207d646b6b99fc8009de0ceb5e086db",
+        "inference/sampling.py": "d06f3d227c1ee239194033c4a5d75a12ce5c066b31b3c07ec6ea3e26c2ffad46",
+        "model/__init__.py": "ac3ea756b304c0c61e0f637f52baa01c49184460ca1bec18ee059a900a96c186",
+        "model/attention.py": "73eb90ea1ad8e0cec308fd8bbacc9a93a489e3489e7803ae6c3fd7edf15063b2",
+        "model/cache.py": "dbc4ba0bc15341fdce0c48657c153711b958dedbad6a18938e2e8ddf2c96b809",
+        "model/config.py": "c0a57de40db350ce9cec5dfa434b8890cece050bd7363e2bdabc066098bab654",
+        "model/layers.py": "eb1f0a6b04d5899564370e6222d37f4073cb9d7ac280a846aeb084761046c549",
+        "model/masking.py": "0f5cfb2b72771f2cd6299161f38ae1a6b708b8ca1aadc91a2e20019ddf06dd7e",
+        "model/transformer.py": "402ef05f730d40d491708abccb2f511755f7d3cb2991d824ef34c0ac8ac578cf",
+        "reasoning/__init__.py": "9525a21e83f0f3463c5a65c4c02067cd2277e21477bb598c4c9d5224c52fc59d",
+        "reasoning/answer_extraction.py": "278cb398a55ad60d5c704f0af4ac3658126536126d655bf875987f5aabc60f6c",
+        "reasoning/calibration.py": "8623a869c40572b9e6bd9bafc3a585c6cc2288eb72756b69e84da0663579d52d",
+        "reasoning/confidence.py": "3e056474fe0765d9dc54822032c992ebbb9358065fa56a8bff254ab5b201fe2e",
+        "reasoning/formatting.py": "a97ab3e42d282707646aecd630a3954c86793b1dba9b440280d6f4a1e89bccee",
+        "reasoning/stopping.py": "460860b2c37dd45d14a568a083649c960f8d41a5b43726869cf448c5835168dd",
+        "reasoning/voting.py": "647e2e566ec00e873312fa2f8ca95332629a0918571b4425ebbd02e585875115",
+        "research/__init__.py": "e195f474092aa6a65a3d13533578c24a88c2c0203c865b315fa8f13ac37bf4d5",
+        "research/architecture_acceptance.py": "652bd81168899e6d00ef15080d3bfaae36b88b8922920269b9a0016db9a31ffc",
+        "research/error_analysis.py": "d4af11db51bb713b6f51b78e7762d00046d628fe23522d20027c17108b0453f5",
+        "research/generation_equivalence.py": "78d4471fc969a05198c520cc5788f066686f86326e84c40a6b92766d62baebb2",
+        "research/modal_analysis.py": "e75b30643e29ee3f8075fadb4fbfe3afbf2075930bbc3d17368ffe03f5f4bd9d",
+        "research/policy_replay.py": "7e516f047aa4c7c49cb3944ed613674af54093b7bec170dfe3c6b390e6469a1d",
+        "research/sample_bank.py": "5d2bef537d2aa7986745cf36704b4a905ff76d963a56468aee6d169dae156d81",
+        "smoke.py": "22ac0489a7d33b415520bbc513df0b3ef1538dd72835eeec2e58fc74eceb26fe",
+        "training/__init__.py": "e92b29c7ab75629f8122c30421df1a1269f1f9363176fb576bf2600f7500ae46",
+        "training/checkpoint.py": "3462539b3f2fccadcddd2f0c856ec56cc0c7bff50fa76e50d6ea10713be3efae",
+        "training/optim.py": "052bd5b736040d2f29cefcdc2fd0bfcca5c9a1c5e52195d79200d9c0ff6c9741",
+        "training/overfit.py": "c275b4d65924117c4fdbb37b80af25049d1ed7c762a431dba09d356904ced24f",
+        "training/trainer.py": "72552b1c8887c04213c464fb73761ad2c43ae87da3105e42d3e23f6f5fcdf46b",
+        "utils/__init__.py": "e7f8cd0a06da7b3325c9a40e4134c2e608778f1c9a129334f3454dd25e4010d3",
+        "utils/config.py": "0f38a59adac97736c6451fbebadfe12ba014d2df2320b7fb026aa9cb516d1de2",
+        "utils/environment.py": "2c893485853779ff25a010c1780a55727f6fe86e9759468c875952b73acb14bb",
+        "utils/io.py": "76fedb40bef134e5b8eb639e383b5cfdb7825dfa7561afb262c468ffbc7978ac",
+        "utils/logging.py": "49b094b66fa516e79c622f542eaf429e2b88b087d2302a759d5c3a3a1fd03a4a",
+        "utils/seed.py": "3f9b9d89ac64c7ee5565f04d47e69edc5982347200ca809cfc8019837e9bfdf1"
+      },
+      "sha256": "cae8c482fea003fa972ffdb17131e8dd54d8bfe4e17c641fabd49b44cb0890e4"
+    },
+    "profiling_source_sha256": "36926b264ca7aa68abf45cad4a68d8fe6207d646b6b99fc8009de0ceb5e086db",
+    "run_directory": "artifacts/runs/20261109T051450654044Z-wp06-5-inference-profile-seed42-2f17621f",
+    "run_report_sha256": "c76b670e4bb6f779420ac34954cdcafd530c316ae2806cc76d8fd787ba047656",
+    "versioned_format": "UTF-8 LF; semantic copy of original run JSON",
+    "versioned_report": "experiments/wp06_5_profiling_20261109.json",
+    "versioned_report_sha256": "c76b670e4bb6f779420ac34954cdcafd530c316ae2806cc76d8fd787ba047656"
+  },
+  "remaining_wp06_work": [],
+  "schema_version": 1,
+  "status": "accepted",
+  "tests": {
+    "additional_cuda_cases": 4,
+    "cpu_only_ci_skips": "Two existing hardware cases: cross-device cache and wrong-device sampling RNG",
+    "failed": 0,
+    "full_local_passed": 612,
+    "phase_cpu_cases": 22,
+    "phase_local_passed": 26
+  },
+  "work_package": "WP06.5",
+  "wp06_status": "complete_with_documented_scope"
+}

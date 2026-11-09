@@ -52,16 +52,18 @@ và [kết quả phase 2](wp05_2_validation.md), [phase 3](wp05_3_validation.md)
 [phase 5 / gate cuối](wp05_5_validation.md). Đã overfit fixture cố định, kiểm tra loss,
 gradients, causal/padding isolation và checkpoint continuation; chưa pretrain corpus.
 
-## WP06 — KV Cache & Autoregressive Inference (theo phase)
+## WP06 — KV Cache & Autoregressive Inference (đã đạt nghiệm thu)
 
 WP06.1 cache storage/transactions → WP06.2 prefill/token decode/RoPE/masks →
 WP06.3 greedy/temperature/top-k/top-p/EOS → WP06.4 cached/uncached equivalence →
 WP06.5 online profiling TTFT/latency/throughput/VRAM tại L=128/512/1024/2048.
-Từng phase có báo cáo/commit riêng; chưa chốt toàn WP06 trước equivalence và thực đo.
+Từng phase có báo cáo/commit riêng; đã có equivalence và profiling online thực đo.
 Xem [kế hoạch và contracts](wp06_inference.md), [phase 1](wp06_1_validation.md),
 [phase 2](wp06_2_validation.md), [phase 3](wp06_3_validation.md),
 [phase 4](wp06_4_validation.md). Đã có cached/uncached generation với greedy/temperature/
-top-k/top-p/EOS, logits/tokens equivalence và RoPE/context guards; chưa chốt profiling thực đo.
+top-k/top-p/EOS, logits/tokens equivalence và RoPE/context guards.
+[WP06.5](wp06_5_validation.md) lưu raw timing/VRAM và protocol RTX 4060 Laptop,
+B1/N16/FP32, L128/512/1024/2048, explicit inference context 2064; baseline 1024 giữ nguyên.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 

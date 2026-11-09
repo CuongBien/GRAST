@@ -1,7 +1,7 @@
 # WP06 — KV Cache & Autoregressive Inference theo phase
 
-Mỗi phase có implementation, test, báo cáo và commit riêng. WP06 chỉ đạt nghiệm thu
-toàn bộ sau cached/uncached equivalence và profiling thực đo ở phase cuối.
+Mỗi phase có implementation, test, báo cáo và commit riêng. WP06 đã đạt nghiệm thu
+cached/uncached equivalence và profiling thực đo trên RTX 4060 Laptop.
 
 | Phase | Phạm vi | Gate | Trạng thái |
 | --- | --- | --- | --- |
@@ -9,11 +9,12 @@ toàn bộ sau cached/uncached equivalence và profiling thực đo ở phase cu
 | WP06.2 | Tích hợp attention/model với prefill và token/chunk decode | Cached logits khớp full forward, RoPE offset/mask đúng, model ownership/context checks | Đã triển khai |
 | WP06.3 | Greedy, temperature, top-k/top-p, EOS và seeded generation | Sampling/filtering đúng, generated token IDs/masks/context/EOS nhất quán | Đã triển khai |
 | WP06.4 | Cached/uncached generation integration | Logits trong tolerance, greedy tokens giống nhau; sampling fixtures cùng RNG kiểm soát, padding/offset boundaries | Đã triển khai |
-| WP06.5 | Online profiling tại prompt L=128/512/1024/2048 | TTFT, next-token latency, tokens/s và allocated/reserved/peak VRAM thực đo, protocol và environment đầy đủ | Chưa triển khai |
+| WP06.5 | Online profiling tại prompt L=128/512/1024/2048 | TTFT, next-token latency, tokens/s và allocated/reserved/peak VRAM thực đo, protocol và environment đầy đủ | Đã triển khai và thực đo |
 
-Đã hoàn thành WP06.1–WP06.4: cached model forward, sampling và hai generation paths
-đã đối chiếu logits/token IDs trên fixed fixtures. Không dùng cache payload hoặc
-offline replay làm bằng chứng latency/VRAM; profiling thực đo thuộc WP06.5.
+Đã hoàn thành WP06.1–WP06.5: cached model forward, sampling, generation equivalence
+và profiling online. [Nghiệm thu cuối](wp06_5_validation.md) ghi phạm vi phần cứng,
+protocol, context override và giới hạn; không dùng cache payload/offline replay thay
+cho latency/VRAM thực đo.
 
 ## Các quyết định tích hợp đã chốt
 
@@ -322,16 +323,16 @@ set hoặc tuyên bố benchmark quality. Trace copy logits về CPU có synchro
 **không dùng acceptance probe/hook làm profiling**. Kết quả:
 [WP06.4 validation](wp06_4_validation.md). WP06.5 mới đo TTFT/latency/throughput/VRAM.
 
-## Protocol profiling cần hoàn tất ở phase 5
+## WP06.5 — profiling online đã thực hiện
 
-L là số prompt tokens hợp lệ; cần định nghĩa rõ số new tokens cố định, B, dtype,
-warm-up/repeats, seed, checkpoint, backend và phạm vi timing. Tách TTFT (prefill +
-chọn token đầu), latency các decode sau và throughput steady-state; đồng bộ CUDA
-ở biên đo, lưu raw samples, không thay latency bằng replay cost proxy.
-Tokenizer/host transfers sẽ được ghi rõ là có/không nằm trong timing.
+L là số valid prompt tokens. Protocol đã khóa B1/N16/FP32, warm-up 2/repeats 5,
+seed 42 và checkpoint WP05. TTFT gồm prefill/chọn token đầu; next-token latency
+và decode/overall tokens/s được ghi riêng, synchronize CUDA tại token-ready boundaries.
+Tokenization/model load/H2D nằm ngoài timing; raw samples và allocator peaks được lưu.
 
 Baseline WP05 có context 1024. Với L=2048 và N new tokens, profiling cần inference
-config riêng đủ **L+N** capacity/context (không chỉ 2048). Phase 2/5 phải có override
-context/checkpoint metadata minh bạch; không sửa baseline và không tuyên bố chất lượng
-ở context dài đã được train. Ghi cả prompt length, cache capacity, used payload và
-CUDA allocated/reserved/peak thực đo. Chưa có cơ chế/profiling này ở phase 1.
+config riêng đủ **L+N** capacity/context (2064), context-only copy giữ nguyên weights,
+không sửa checkpoint/baseline hoặc nới strict checkpoint loading. Không tuyên bố chất
+lượng ở context dài đã được train. Ghi prompt length, cache capacity, used payload
+cùng CUDA allocated/reserved/peak thực đo.
+Xem [protocol và cách chạy](wp06_profiling.md), [bảng số liệu/acceptance](wp06_5_validation.md).

@@ -1,0 +1,3558 @@
+{
+  "allocator_protocol": "Empty unused CUDA allocator cache once per condition before warmups; warmups discarded; reset peaks before each measured request, never empty_cache inside timing.",
+  "backend": "pure_pytorch_explicit_MHA_no_compile_no_attention_kernel_substitution",
+  "checkpoint_sha256": "e756d7a9519d1423a7ee554884afdc2b0ebb98a73188bd40a5554179eaa8de56",
+  "context_override": {
+    "checkpoint_file_unchanged": true,
+    "field": "context_length",
+    "trained_long_context_claim": false,
+    "weights_equal_before_precision_cast": true
+  },
+  "effective_model": {
+    "context_length": 2064,
+    "dropout": 0.0,
+    "ffn_hidden_size": 2048,
+    "hidden_size": 512,
+    "num_heads": 8,
+    "num_layers": 10,
+    "rms_norm_eps": 1e-06,
+    "rope_theta": 10000.0,
+    "tie_embeddings": true,
+    "vocab_size": 8192
+  },
+  "generation": "greedy, eos disabled, fixed token budget, no logits-copy hooks",
+  "memory_scope": "CUDA PyTorch allocator allocated/reserved/peaks, not whole-device memory or analytical cache payload; CPU memory is null.",
+  "parameter_counts": {
+    "blocks": 41953280,
+    "final_norm": 512,
+    "lm_head_unique": 0,
+    "token_embedding": 4194304,
+    "total": 46148096
+  },
+  "profiling": {
+    "batch_size": 1,
+    "context_length": 2064,
+    "device": "cuda",
+    "new_tokens": 16,
+    "precision": "float32",
+    "prompt_lengths": [
+      128,
+      512,
+      1024,
+      2048
+    ],
+    "repeats": 5,
+    "warmup": 2
+  },
+  "prompt_recipe": "CPU torch.Generator(seed+L), IDs uniform [8,V), first column BOS=1; all positions valid; copied to device before timing.",
+  "protocol_version": 1,
+  "records": [
+    {
+      "batch_size": 1,
+      "cache_payload_formula_bytes": null,
+      "condition_order": 0,
+      "mode": "uncached",
+      "new_tokens": 16,
+      "prompt_ids_sha256": "b7a0a3ae37e4eef752da43d35486b2cb0cc26cf52abc115385a1cf3e3eafbcdc",
+      "prompt_length": 128,
+      "repeats": 5,
+      "samples": [
+        {
+          "generated_ids": [
+            [
+              73,
+              123,
+              123,
+              123,
+              123,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40
+            ]
+          ],
+          "next_token_latencies_ms": [
+            41.418,
+            39.6059,
+            38.4749,
+            38.3751,
+            38.0433,
+            44.6556,
+            38.4607,
+            41.2623,
+            37.7209,
+            38.095,
+            39.3803,
+            39.1356,
+            40.0512,
+            39.2631,
+            39.4293
+          ],
+          "request_elapsed_ns": 639162600,
+          "token_ready_offsets_ns": [
+            45616700,
+            87034700,
+            126640600,
+            165115500,
+            203490600,
+            241533900,
+            286189500,
+            324650200,
+            365912500,
+            403633400,
+            441728400,
+            481108700,
+            520244300,
+            560295500,
+            599558600,
+            638987900
+          ],
+          "total_ms": 639.1626,
+          "ttft_ms": 45.6167,
+          "vram_bytes": {
+            "baseline_allocated": 218148352,
+            "baseline_reserved": 245366784,
+            "end_allocated": 218150912,
+            "end_reserved": 245366784,
+            "peak_allocated": 232797696,
+            "peak_allocated_above_baseline": 14649344,
+            "peak_reserved": 245366784
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              73,
+              123,
+              123,
+              123,
+              123,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40
+            ]
+          ],
+          "next_token_latencies_ms": [
+            42.7223,
+            42.0733,
+            43.3675,
+            60.4314,
+            41.0838,
+            38.6771,
+            39.2462,
+            40.7415,
+            47.3348,
+            39.2027,
+            37.2745,
+            37.3856,
+            38.4063,
+            36.957,
+            37.7676
+          ],
+          "request_elapsed_ns": 662925300,
+          "token_ready_offsets_ns": [
+            40096300,
+            82818600,
+            124891900,
+            168259400,
+            228690800,
+            269774600,
+            308451700,
+            347697900,
+            388439400,
+            435774200,
+            474976900,
+            512251400,
+            549637000,
+            588043300,
+            625000300,
+            662767900
+          ],
+          "total_ms": 662.9253,
+          "ttft_ms": 40.0963,
+          "vram_bytes": {
+            "baseline_allocated": 218148352,
+            "baseline_reserved": 245366784,
+            "end_allocated": 218150912,
+            "end_reserved": 245366784,
+            "peak_allocated": 232797696,
+            "peak_allocated_above_baseline": 14649344,
+            "peak_reserved": 245366784
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              73,
+              123,
+              123,
+              123,
+              123,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40
+            ]
+          ],
+          "next_token_latencies_ms": [
+            38.1278,
+            40.1235,
+            39.4653,
+            40.9626,
+            43.7902,
+            39.6513,
+            38.8705,
+            37.7851,
+            40.1594,
+            36.6575,
+            42.7064,
+            48.6724,
+            38.3467,
+            39.0534,
+            40.6278
+          ],
+          "request_elapsed_ns": 648238600,
+          "token_ready_offsets_ns": [
+            43083300,
+            81211100,
+            121334600,
+            160799900,
+            201762500,
+            245552700,
+            285204000,
+            324074500,
+            361859600,
+            402019000,
+            438676500,
+            481382900,
+            530055300,
+            568402000,
+            607455400,
+            648083200
+          ],
+          "total_ms": 648.2386,
+          "ttft_ms": 43.0833,
+          "vram_bytes": {
+            "baseline_allocated": 218148352,
+            "baseline_reserved": 245366784,
+            "end_allocated": 218150912,
+            "end_reserved": 245366784,
+            "peak_allocated": 232797696,
+            "peak_allocated_above_baseline": 14649344,
+            "peak_reserved": 245366784
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              73,
+              123,
+              123,
+              123,
+              123,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40
+            ]
+          ],
+          "next_token_latencies_ms": [
+            41.1526,
+            40.9404,
+            40.8271,
+            39.0476,
+            37.4245,
+            38.192,
+            37.0621,
+            37.2864,
+            40.5,
+            38.3194,
+            38.439,
+            40.8555,
+            39.0009,
+            37.6484,
+            38.4148
+          ],
+          "request_elapsed_ns": 630028800,
+          "token_ready_offsets_ns": [
+            44760100,
+            85912700,
+            126853100,
+            167680200,
+            206727800,
+            244152300,
+            282344300,
+            319406400,
+            356692800,
+            397192800,
+            435512200,
+            473951200,
+            514806700,
+            553807600,
+            591456000,
+            629870800
+          ],
+          "total_ms": 630.0288,
+          "ttft_ms": 44.7601,
+          "vram_bytes": {
+            "baseline_allocated": 218148352,
+            "baseline_reserved": 245366784,
+            "end_allocated": 218150912,
+            "end_reserved": 245366784,
+            "peak_allocated": 232797696,
+            "peak_allocated_above_baseline": 14649344,
+            "peak_reserved": 245366784
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              73,
+              123,
+              123,
+              123,
+              123,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40
+            ]
+          ],
+          "next_token_latencies_ms": [
+            40.2966,
+            37.2735,
+            37.2808,
+            40.9802,
+            41.5087,
+            43.9463,
+            41.0727,
+            43.9826,
+            37.9923,
+            36.6347,
+            40.6786,
+            42.9963,
+            41.2393,
+            39.3484,
+            38.9494
+          ],
+          "request_elapsed_ns": 642993700,
+          "token_ready_offsets_ns": [
+            38659300,
+            78955900,
+            116229400,
+            153510200,
+            194490400,
+            235999100,
+            279945400,
+            321018100,
+            365000700,
+            402993000,
+            439627700,
+            480306300,
+            523302600,
+            564541900,
+            603890300,
+            642839700
+          ],
+          "total_ms": 642.9937,
+          "ttft_ms": 38.6593,
+          "vram_bytes": {
+            "baseline_allocated": 218148352,
+            "baseline_reserved": 245366784,
+            "end_allocated": 218150912,
+            "end_reserved": 245366784,
+            "peak_allocated": 232797696,
+            "peak_allocated_above_baseline": 14649344,
+            "peak_reserved": 245366784
+          }
+        }
+      ],
+      "summary": {
+        "decode_tokens_per_second": {
+          "count": 5,
+          "max": 25.63617448800714,
+          "mean": 24.925123864960934,
+          "min": 24.089744899237413,
+          "p50": 24.827021863006483,
+          "p95": 25.564796699749746
+        },
+        "next_token_latency_ms": {
+          "count": 75,
+          "max": 60.4314,
+          "mean": 40.137783999999996,
+          "min": 36.6347,
+          "p50": 39.3484,
+          "p95": 44.1845
+        },
+        "overall_tokens_per_second": {
+          "count": 5,
+          "max": 25.395664452164723,
+          "mean": 24.825948084458048,
+          "min": 24.135449348516342,
+          "p50": 24.88360305863028,
+          "p95": 25.32308232049019
+        },
+        "total_ms": {
+          "count": 5,
+          "max": 662.9253,
+          "mean": 644.6698,
+          "min": 630.0288,
+          "p50": 642.9937,
+          "p95": 659.98796
+        },
+        "ttft_ms": {
+          "count": 5,
+          "max": 45.6167,
+          "mean": 42.44314,
+          "min": 38.6593,
+          "p50": 43.0833,
+          "p95": 45.44538
+        },
+        "vram_bytes": {
+          "baseline_allocated": {
+            "max": 218148352,
+            "min": 218148352
+          },
+          "baseline_reserved": {
+            "max": 245366784,
+            "min": 245366784
+          },
+          "end_allocated": {
+            "max": 218150912,
+            "min": 218150912
+          },
+          "end_reserved": {
+            "max": 245366784,
+            "min": 245366784
+          },
+          "peak_allocated": {
+            "max": 232797696,
+            "min": 232797696
+          },
+          "peak_allocated_above_baseline": {
+            "max": 14649344,
+            "min": 14649344
+          },
+          "peak_reserved": {
+            "max": 245366784,
+            "min": 245366784
+          }
+        }
+      },
+      "telemetry_after": "44, 19.72 W, 1890 MHz, 23 %, 1700 MiB",
+      "telemetry_before": "40, 15.05 W, 1890 MHz, 19 %, 1627 MiB",
+      "token_ids_match_reference_so_far": true,
+      "warmup": 2
+    },
+    {
+      "batch_size": 1,
+      "cache_payload_formula_bytes": {
+        "capacity": 144,
+        "kv_capacity_bytes": 5898240,
+        "kv_used_bytes": 5857280,
+        "metadata_capacity_bytes": 1296,
+        "used_columns": 143
+      },
+      "condition_order": 1,
+      "mode": "cached",
+      "new_tokens": 16,
+      "prompt_ids_sha256": "b7a0a3ae37e4eef752da43d35486b2cb0cc26cf52abc115385a1cf3e3eafbcdc",
+      "prompt_length": 128,
+      "repeats": 5,
+      "samples": [
+        {
+          "generated_ids": [
+            [
+              73,
+              123,
+              123,
+              123,
+              123,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40
+            ]
+          ],
+          "next_token_latencies_ms": [
+            41.8999,
+            47.654,
+            46.1446,
+            59.54,
+            52.1699,
+            43.0716,
+            41.5739,
+            45.7917,
+            43.6727,
+            49.0343,
+            43.5959,
+            50.0656,
+            42.5514,
+            42.6291,
+            42.2946
+          ],
+          "request_elapsed_ns": 737979500,
+          "token_ready_offsets_ns": [
+            46086600,
+            87986500,
+            135640500,
+            181785100,
+            241325100,
+            293495000,
+            336566600,
+            378140500,
+            423932200,
+            467604900,
+            516639200,
+            560235100,
+            610300700,
+            652852100,
+            695481200,
+            737775800
+          ],
+          "total_ms": 737.9795,
+          "ttft_ms": 46.0866,
+          "vram_bytes": {
+            "baseline_allocated": 218148352,
+            "baseline_reserved": 251658240,
+            "end_allocated": 218150912,
+            "end_reserved": 251658240,
+            "peak_allocated": 232966144,
+            "peak_allocated_above_baseline": 14817792,
+            "peak_reserved": 251658240
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              73,
+              123,
+              123,
+              123,
+              123,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40
+            ]
+          ],
+          "next_token_latencies_ms": [
+            45.8106,
+            46.4403,
+            45.045,
+            47.4012,
+            47.1657,
+            48.5941,
+            52.3894,
+            46.82,
+            51.647,
+            48.9101,
+            53.3209,
+            47.7967,
+            45.4757,
+            46.074,
+            50.1579
+          ],
+          "request_elapsed_ns": 769731700,
+          "token_ready_offsets_ns": [
+            46404800,
+            92215400,
+            138655700,
+            183700700,
+            231101900,
+            278267600,
+            326861700,
+            379251100,
+            426071100,
+            477718100,
+            526628200,
+            579949100,
+            627745800,
+            673221500,
+            719295500,
+            769453400
+          ],
+          "total_ms": 769.7317,
+          "ttft_ms": 46.4048,
+          "vram_bytes": {
+            "baseline_allocated": 218148352,
+            "baseline_reserved": 251658240,
+            "end_allocated": 218150912,
+            "end_reserved": 251658240,
+            "peak_allocated": 232966144,
+            "peak_allocated_above_baseline": 14817792,
+            "peak_reserved": 251658240
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              73,
+              123,
+              123,
+              123,
+              123,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40
+            ]
+          ],
+          "next_token_latencies_ms": [
+            48.3856,
+            48.6866,
+            48.5014,
+            49.3721,
+            47.0873,
+            46.8869,
+            45.6358,
+            46.9642,
+            49.4218,
+            51.2183,
+            46.4117,
+            44.66,
+            50.376,
+            51.0532,
+            45.9511
+          ],
+          "request_elapsed_ns": 774522100,
+          "token_ready_offsets_ns": [
+            53720200,
+            102105800,
+            150792400,
+            199293800,
+            248665900,
+            295753200,
+            342640100,
+            388275900,
+            435240100,
+            484661900,
+            535880200,
+            582291900,
+            626951900,
+            677327900,
+            728381100,
+            774332200
+          ],
+          "total_ms": 774.5221,
+          "ttft_ms": 53.7202,
+          "vram_bytes": {
+            "baseline_allocated": 218148352,
+            "baseline_reserved": 251658240,
+            "end_allocated": 218150912,
+            "end_reserved": 251658240,
+            "peak_allocated": 232966144,
+            "peak_allocated_above_baseline": 14817792,
+            "peak_reserved": 251658240
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              73,
+              123,
+              123,
+              123,
+              123,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40
+            ]
+          ],
+          "next_token_latencies_ms": [
+            47.2651,
+            46.53,
+            45.7846,
+            49.1723,
+            47.217,
+            47.305,
+            47.1455,
+            48.2418,
+            45.6601,
+            47.0372,
+            45.9619,
+            48.2684,
+            45.5432,
+            47.3902,
+            52.6223
+          ],
+          "request_elapsed_ns": 764674500,
+          "token_ready_offsets_ns": [
+            53320600,
+            100585700,
+            147115700,
+            192900300,
+            242072600,
+            289289600,
+            336594600,
+            383740100,
+            431981900,
+            477642000,
+            524679200,
+            570641100,
+            618909500,
+            664452700,
+            711842900,
+            764465200
+          ],
+          "total_ms": 764.6745,
+          "ttft_ms": 53.3206,
+          "vram_bytes": {
+            "baseline_allocated": 218148352,
+            "baseline_reserved": 251658240,
+            "end_allocated": 218150912,
+            "end_reserved": 251658240,
+            "peak_allocated": 232966144,
+            "peak_allocated_above_baseline": 14817792,
+            "peak_reserved": 251658240
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              73,
+              123,
+              123,
+              123,
+              123,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40,
+              58,
+              40
+            ]
+          ],
+          "next_token_latencies_ms": [
+            49.2802,
+            50.5397,
+            53.6395,
+            57.8058,
+            48.055,
+            56.9239,
+            65.3103,
+            48.411,
+            53.5353,
+            62.0413,
+            49.4682,
+            44.7587,
+            47.3454,
+            45.5867,
+            45.3594
+          ],
+          "request_elapsed_ns": 835218200,
+          "token_ready_offsets_ns": [
+            56969600,
+            106249800,
+            156789500,
+            210429000,
+            268234800,
+            316289800,
+            373213700,
+            438524000,
+            486935000,
+            540470300,
+            602511600,
+            651979800,
+            696738500,
+            744083900,
+            789670600,
+            835030000
+          ],
+          "total_ms": 835.2182,
+          "ttft_ms": 56.9696,
+          "vram_bytes": {
+            "baseline_allocated": 218148352,
+            "baseline_reserved": 251658240,
+            "end_allocated": 218150912,
+            "end_reserved": 251658240,
+            "peak_allocated": 232966144,
+            "peak_allocated_above_baseline": 14817792,
+            "peak_reserved": 251658240
+          }
+        }
+      ],
+      "summary": {
+        "decode_tokens_per_second": {
+          "count": 5,
+          "max": 21.686040493331397,
+          "mean": 20.723727921155888,
+          "min": 19.278708953700765,
+          "p50": 20.81564003929993,
+          "p95": 21.567383727263298
+        },
+        "next_token_latency_ms": {
+          "count": 75,
+          "max": 65.3103,
+          "mean": 48.32739733333332,
+          "min": 41.5739,
+          "p50": 47.3454,
+          "p95": 57.18847
+        },
+        "overall_tokens_per_second": {
+          "count": 5,
+          "max": 21.680819047141554,
+          "mean": 20.6411577727361,
+          "min": 19.1566706759982,
+          "p50": 20.786463647008432,
+          "p95": 21.529442359553975
+        },
+        "total_ms": {
+          "count": 5,
+          "max": 835.2182,
+          "mean": 776.4252,
+          "min": 737.9795,
+          "p50": 769.7317,
+          "p95": 823.07898
+        },
+        "ttft_ms": {
+          "count": 5,
+          "max": 56.9696,
+          "mean": 51.30036,
+          "min": 46.0866,
+          "p50": 53.3206,
+          "p95": 56.31972
+        },
+        "vram_bytes": {
+          "baseline_allocated": {
+            "max": 218148352,
+            "min": 218148352
+          },
+          "baseline_reserved": {
+            "max": 251658240,
+            "min": 251658240
+          },
+          "end_allocated": {
+            "max": 218150912,
+            "min": 218150912
+          },
+          "end_reserved": {
+            "max": 251658240,
+            "min": 251658240
+          },
+          "peak_allocated": {
+            "max": 232966144,
+            "min": 232966144
+          },
+          "peak_allocated_above_baseline": {
+            "max": 14817792,
+            "min": 14817792
+          },
+          "peak_reserved": {
+            "max": 251658240,
+            "min": 251658240
+          }
+        }
+      },
+      "telemetry_after": "41, 8.47 W, 825 MHz, 30 %, 1703 MiB",
+      "telemetry_before": "43, 18.69 W, 1890 MHz, 0 %, 1676 MiB",
+      "token_ids_match_reference_so_far": true,
+      "warmup": 2
+    },
+    {
+      "batch_size": 1,
+      "cache_payload_formula_bytes": {
+        "capacity": 528,
+        "kv_capacity_bytes": 21626880,
+        "kv_used_bytes": 21585920,
+        "metadata_capacity_bytes": 4752,
+        "used_columns": 527
+      },
+      "condition_order": 2,
+      "mode": "cached",
+      "new_tokens": 16,
+      "prompt_ids_sha256": "b94acf3129eae027c01c619bf6453fc66ab51ee3a05d7de9e71646c5a1322d9a",
+      "prompt_length": 512,
+      "repeats": 5,
+      "samples": [
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            43.303,
+            40.8129,
+            41.2805,
+            41.5927,
+            40.3387,
+            40.0527,
+            42.1469,
+            39.8022,
+            44.8307,
+            39.9913,
+            40.0543,
+            44.1977,
+            41.5587,
+            41.3143,
+            45.9046
+          ],
+          "request_elapsed_ns": 682308600,
+          "token_ready_offsets_ns": [
+            54931100,
+            98234100,
+            139047000,
+            180327500,
+            221920200,
+            262258900,
+            302311600,
+            344458500,
+            384260700,
+            429091400,
+            469082700,
+            509137000,
+            553334700,
+            594893400,
+            636207700,
+            682112300
+          ],
+          "total_ms": 682.3086,
+          "ttft_ms": 54.9311,
+          "vram_bytes": {
+            "baseline_allocated": 218151424,
+            "baseline_reserved": 293601280,
+            "end_allocated": 218157568,
+            "end_reserved": 293601280,
+            "peak_allocated": 275872256,
+            "peak_allocated_above_baseline": 57720832,
+            "peak_reserved": 293601280
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            45.4311,
+            49.569,
+            45.1212,
+            42.5553,
+            45.4559,
+            42.0455,
+            42.9704,
+            43.4673,
+            46.8704,
+            44.9068,
+            42.9739,
+            43.9414,
+            43.0956,
+            45.4087,
+            43.0879
+          ],
+          "request_elapsed_ns": 732032500,
+          "token_ready_offsets_ns": [
+            64927100,
+            110358200,
+            159927200,
+            205048400,
+            247603700,
+            293059600,
+            335105100,
+            378075500,
+            421542800,
+            468413200,
+            513320000,
+            556293900,
+            600235300,
+            643330900,
+            688739600,
+            731827500
+          ],
+          "total_ms": 732.0325,
+          "ttft_ms": 64.9271,
+          "vram_bytes": {
+            "baseline_allocated": 218151424,
+            "baseline_reserved": 293601280,
+            "end_allocated": 218157568,
+            "end_reserved": 293601280,
+            "peak_allocated": 275872256,
+            "peak_allocated_above_baseline": 57720832,
+            "peak_reserved": 293601280
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            43.7907,
+            42.2754,
+            41.9535,
+            42.6465,
+            47.4527,
+            45.0733,
+            41.0324,
+            41.9627,
+            41.4471,
+            41.5189,
+            42.9937,
+            48.215,
+            46.245,
+            46.179,
+            42.1815
+          ],
+          "request_elapsed_ns": 721924600,
+          "token_ready_offsets_ns": [
+            66763600,
+            110554300,
+            152829700,
+            194783200,
+            237429700,
+            284882400,
+            329955700,
+            370988100,
+            412950800,
+            454397900,
+            495916800,
+            538910500,
+            587125500,
+            633370500,
+            679549500,
+            721731000
+          ],
+          "total_ms": 721.9246,
+          "ttft_ms": 66.7636,
+          "vram_bytes": {
+            "baseline_allocated": 218151424,
+            "baseline_reserved": 293601280,
+            "end_allocated": 218157568,
+            "end_reserved": 293601280,
+            "peak_allocated": 275872256,
+            "peak_allocated_above_baseline": 57720832,
+            "peak_reserved": 293601280
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            48.4767,
+            43.4218,
+            51.2006,
+            46.6275,
+            46.2324,
+            43.3585,
+            42.0807,
+            44.7319,
+            42.1479,
+            44.4151,
+            43.5958,
+            41.8623,
+            41.4065,
+            45.2163,
+            43.2036
+          ],
+          "request_elapsed_ns": 745609900,
+          "token_ready_offsets_ns": [
+            77441800,
+            125918500,
+            169340300,
+            220540900,
+            267168400,
+            313400800,
+            356759300,
+            398840000,
+            443571900,
+            485719800,
+            530134900,
+            573730700,
+            615593000,
+            656999500,
+            702215800,
+            745419400
+          ],
+          "total_ms": 745.6099,
+          "ttft_ms": 77.4418,
+          "vram_bytes": {
+            "baseline_allocated": 218151424,
+            "baseline_reserved": 293601280,
+            "end_allocated": 218157568,
+            "end_reserved": 293601280,
+            "peak_allocated": 275872256,
+            "peak_allocated_above_baseline": 57720832,
+            "peak_reserved": 293601280
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            41.0344,
+            42.915,
+            45.2611,
+            42.9573,
+            44.59,
+            42.1526,
+            48.2869,
+            46.105,
+            44.2858,
+            41.2156,
+            40.7103,
+            42.5392,
+            41.9078,
+            41.4802,
+            41.8611
+          ],
+          "request_elapsed_ns": 725354100,
+          "token_ready_offsets_ns": [
+            77842900,
+            118877300,
+            161792300,
+            207053400,
+            250010700,
+            294600700,
+            336753300,
+            385040200,
+            431145200,
+            475431000,
+            516646600,
+            557356900,
+            599896100,
+            641803900,
+            683284100,
+            725145200
+          ],
+          "total_ms": 725.3541,
+          "ttft_ms": 77.8429,
+          "vram_bytes": {
+            "baseline_allocated": 218151424,
+            "baseline_reserved": 293601280,
+            "end_allocated": 218157568,
+            "end_reserved": 293601280,
+            "peak_allocated": 275872256,
+            "peak_allocated_above_baseline": 57720832,
+            "peak_reserved": 293601280
+          }
+        }
+      ],
+      "summary": {
+        "decode_tokens_per_second": {
+          "count": 5,
+          "max": 23.91653321241134,
+          "mean": 22.987898416638625,
+          "min": 22.455842830657794,
+          "p50": 22.90190320922843,
+          "p95": 23.767846283160434
+        },
+        "next_token_latency_ms": {
+          "count": 75,
+          "max": 51.2006,
+          "mean": 43.52438533333333,
+          "min": 39.8022,
+          "p50": 42.9937,
+          "p95": 48.23657
+        },
+        "overall_tokens_per_second": {
+          "count": 5,
+          "max": 23.449799694742232,
+          "mean": 22.19737332890713,
+          "min": 21.458942538182498,
+          "p50": 22.058191992021552,
+          "p95": 23.19243562522392
+        },
+        "total_ms": {
+          "count": 5,
+          "max": 745.6099,
+          "mean": 721.44594,
+          "min": 682.3086,
+          "p50": 725.3541,
+          "p95": 742.8944200000001
+        },
+        "ttft_ms": {
+          "count": 5,
+          "max": 77.8429,
+          "mean": 68.3813,
+          "min": 54.9311,
+          "p50": 66.7636,
+          "p95": 77.76268
+        },
+        "vram_bytes": {
+          "baseline_allocated": {
+            "max": 218151424,
+            "min": 218151424
+          },
+          "baseline_reserved": {
+            "max": 293601280,
+            "min": 293601280
+          },
+          "end_allocated": {
+            "max": 218157568,
+            "min": 218157568
+          },
+          "end_reserved": {
+            "max": 293601280,
+            "min": 293601280
+          },
+          "peak_allocated": {
+            "max": 275872256,
+            "min": 275872256
+          },
+          "peak_allocated_above_baseline": {
+            "max": 57720832,
+            "min": 57720832
+          },
+          "peak_reserved": {
+            "max": 293601280,
+            "min": 293601280
+          }
+        }
+      },
+      "telemetry_after": "41, 9.04 W, 600 MHz, 25 %, 1743 MiB",
+      "telemetry_before": "40, 8.51 W, 825 MHz, 0 %, 1673 MiB",
+      "token_ids_match_reference_so_far": true,
+      "warmup": 2
+    },
+    {
+      "batch_size": 1,
+      "cache_payload_formula_bytes": null,
+      "condition_order": 3,
+      "mode": "uncached",
+      "new_tokens": 16,
+      "prompt_ids_sha256": "b94acf3129eae027c01c619bf6453fc66ab51ee3a05d7de9e71646c5a1322d9a",
+      "prompt_length": 512,
+      "repeats": 5,
+      "samples": [
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            51.2001,
+            41.5713,
+            44.6254,
+            43.5763,
+            42.3222,
+            42.0599,
+            42.5467,
+            62.063,
+            42.7301,
+            41.88,
+            45.3127,
+            47.6964,
+            44.8434,
+            45.3904,
+            41.4539
+          ],
+          "request_elapsed_ns": 721295700,
+          "token_ready_offsets_ns": [
+            41878800,
+            93078900,
+            134650200,
+            179275600,
+            222851900,
+            265174100,
+            307234000,
+            349780700,
+            411843700,
+            454573800,
+            496453800,
+            541766500,
+            589462900,
+            634306300,
+            679696700,
+            721150600
+          ],
+          "total_ms": 721.2957,
+          "ttft_ms": 41.8788,
+          "vram_bytes": {
+            "baseline_allocated": 218151424,
+            "baseline_reserved": 295698432,
+            "end_allocated": 218157568,
+            "end_reserved": 295698432,
+            "peak_allocated": 272129536,
+            "peak_allocated_above_baseline": 53978112,
+            "peak_reserved": 295698432
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            41.6224,
+            40.1186,
+            40.0247,
+            46.1581,
+            41.3451,
+            41.094,
+            43.2194,
+            41.0737,
+            39.9174,
+            40.1148,
+            43.0283,
+            40.1648,
+            45.5483,
+            41.2494,
+            43.8716
+          ],
+          "request_elapsed_ns": 669570400,
+          "token_ready_offsets_ns": [
+            40812100,
+            82434500,
+            122553100,
+            162577800,
+            208735900,
+            250081000,
+            291175000,
+            334394400,
+            375468100,
+            415385500,
+            455500300,
+            498528600,
+            538693400,
+            584241700,
+            625491100,
+            669362700
+          ],
+          "total_ms": 669.5704,
+          "ttft_ms": 40.8121,
+          "vram_bytes": {
+            "baseline_allocated": 218151424,
+            "baseline_reserved": 295698432,
+            "end_allocated": 218157568,
+            "end_reserved": 295698432,
+            "peak_allocated": 272129536,
+            "peak_allocated_above_baseline": 53978112,
+            "peak_reserved": 295698432
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            39.7017,
+            42.5922,
+            41.4417,
+            43.1167,
+            41.7346,
+            39.7853,
+            42.7163,
+            41.1764,
+            42.9724,
+            41.5033,
+            41.5811,
+            41.1859,
+            40.9817,
+            42.4052,
+            45.0605
+          ],
+          "request_elapsed_ns": 671189800,
+          "token_ready_offsets_ns": [
+            43012300,
+            82714000,
+            125306200,
+            166747900,
+            209864600,
+            251599200,
+            291384500,
+            334100800,
+            375277200,
+            418249600,
+            459752900,
+            501334000,
+            542519900,
+            583501600,
+            625906800,
+            670967300
+          ],
+          "total_ms": 671.1898,
+          "ttft_ms": 43.0123,
+          "vram_bytes": {
+            "baseline_allocated": 218151424,
+            "baseline_reserved": 295698432,
+            "end_allocated": 218157568,
+            "end_reserved": 295698432,
+            "peak_allocated": 272129536,
+            "peak_allocated_above_baseline": 53978112,
+            "peak_reserved": 295698432
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            40.7007,
+            45.1824,
+            41.2692,
+            40.5331,
+            42.0918,
+            41.1725,
+            45.6499,
+            44.2037,
+            42.8256,
+            41.273,
+            51.8952,
+            42.7576,
+            39.692,
+            41.2497,
+            40.9932
+          ],
+          "request_elapsed_ns": 684811900,
+          "token_ready_offsets_ns": [
+            43181000,
+            83881700,
+            129064100,
+            170333300,
+            210866400,
+            252958200,
+            294130700,
+            339780600,
+            383984300,
+            426809900,
+            468082900,
+            519978100,
+            562735700,
+            602427700,
+            643677400,
+            684670600
+          ],
+          "total_ms": 684.8119,
+          "ttft_ms": 43.181,
+          "vram_bytes": {
+            "baseline_allocated": 218151424,
+            "baseline_reserved": 295698432,
+            "end_allocated": 218157568,
+            "end_reserved": 295698432,
+            "peak_allocated": 272129536,
+            "peak_allocated_above_baseline": 53978112,
+            "peak_reserved": 295698432
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            43.4844,
+            40.6227,
+            41.5614,
+            40.7251,
+            39.5484,
+            42.0743,
+            42.4074,
+            41.7443,
+            43.3809,
+            41.042,
+            42.1869,
+            44.3718,
+            41.6533,
+            45.4446,
+            43.5949
+          ],
+          "request_elapsed_ns": 675504000,
+          "token_ready_offsets_ns": [
+            41497900,
+            84982300,
+            125605000,
+            167166400,
+            207891500,
+            247439900,
+            289514200,
+            331921600,
+            373665900,
+            417046800,
+            458088800,
+            500275700,
+            544647500,
+            586300800,
+            631745400,
+            675340300
+          ],
+          "total_ms": 675.504,
+          "ttft_ms": 41.4979,
+          "vram_bytes": {
+            "baseline_allocated": 218151424,
+            "baseline_reserved": 295698432,
+            "end_allocated": 218157568,
+            "end_reserved": 295698432,
+            "peak_allocated": 272129536,
+            "peak_allocated_above_baseline": 53978112,
+            "peak_reserved": 295698432
+          }
+        }
+      ],
+      "summary": {
+        "decode_tokens_per_second": {
+          "count": 5,
+          "max": 23.8870619710011,
+          "mean": 23.376444992155477,
+          "min": 22.082471258191497,
+          "p50": 23.665188696748586,
+          "p95": 23.882535005595315
+        },
+        "next_token_latency_ms": {
+          "count": 75,
+          "max": 62.063,
+          "mean": 42.81479199999999,
+          "min": 39.5484,
+          "p50": 42.0599,
+          "p95": 46.619589999999995
+        },
+        "overall_tokens_per_second": {
+          "count": 5,
+          "max": 23.895918935484605,
+          "mean": 23.39331698006898,
+          "min": 22.18230331887463,
+          "p50": 23.686018143489896,
+          "p95": 23.88438805372087
+        },
+        "total_ms": {
+          "count": 5,
+          "max": 721.2957,
+          "mean": 684.4743599999999,
+          "min": 669.5704,
+          "p50": 675.504,
+          "p95": 713.9989400000001
+        },
+        "ttft_ms": {
+          "count": 5,
+          "max": 43.181,
+          "mean": 42.076420000000006,
+          "min": 40.8121,
+          "p50": 41.8788,
+          "p95": 43.147259999999996
+        },
+        "vram_bytes": {
+          "baseline_allocated": {
+            "max": 218151424,
+            "min": 218151424
+          },
+          "baseline_reserved": {
+            "max": 295698432,
+            "min": 295698432
+          },
+          "end_allocated": {
+            "max": 218157568,
+            "min": 218157568
+          },
+          "end_reserved": {
+            "max": 295698432,
+            "min": 295698432
+          },
+          "peak_allocated": {
+            "max": 272129536,
+            "min": 272129536
+          },
+          "peak_allocated_above_baseline": {
+            "max": 53978112,
+            "min": 53978112
+          },
+          "peak_reserved": {
+            "max": 295698432,
+            "min": 295698432
+          }
+        }
+      },
+      "telemetry_after": "54, 45.53 W, 2325 MHz, 39 %, 1741 MiB",
+      "telemetry_before": "41, 9.04 W, 600 MHz, 25 %, 1673 MiB",
+      "token_ids_match_reference_so_far": true,
+      "warmup": 2
+    },
+    {
+      "batch_size": 1,
+      "cache_payload_formula_bytes": null,
+      "condition_order": 4,
+      "mode": "uncached",
+      "new_tokens": 16,
+      "prompt_ids_sha256": "96a0344a2128b529f8061c2d55db187435266e7022b2f9acb30bf87d1b381537",
+      "prompt_length": 1024,
+      "repeats": 5,
+      "samples": [
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            72.8988,
+            73.209,
+            73.0789,
+            72.031,
+            73.6032,
+            73.1061,
+            71.7267,
+            71.2217,
+            71.5613,
+            73.5303,
+            73.1254,
+            70.9263,
+            71.1505,
+            71.6375,
+            74.7626
+          ],
+          "request_elapsed_ns": 1162339900,
+          "token_ready_offsets_ns": [
+            74616500,
+            147515300,
+            220724300,
+            293803200,
+            365834200,
+            439437400,
+            512543500,
+            584270200,
+            655491900,
+            727053200,
+            800583500,
+            873708900,
+            944635200,
+            1015785700,
+            1087423200,
+            1162185800
+          ],
+          "total_ms": 1162.3399,
+          "ttft_ms": 74.6165,
+          "vram_bytes": {
+            "baseline_allocated": 218156032,
+            "baseline_reserved": 522190848,
+            "end_allocated": 218166784,
+            "end_reserved": 522190848,
+            "peak_allocated": 377939456,
+            "peak_allocated_above_baseline": 159783424,
+            "peak_reserved": 522190848
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            70.8351,
+            71.1375,
+            73.3715,
+            73.1076,
+            71.2481,
+            70.6737,
+            71.7054,
+            70.1085,
+            73.4539,
+            71.4593,
+            73.5872,
+            71.934,
+            72.1675,
+            71.2501,
+            73.4434
+          ],
+          "request_elapsed_ns": 1149709100,
+          "token_ready_offsets_ns": [
+            70076700,
+            140911800,
+            212049300,
+            285420800,
+            358528400,
+            429776500,
+            500450200,
+            572155600,
+            642264100,
+            715718000,
+            787177300,
+            860764500,
+            932698500,
+            1004866000,
+            1076116100,
+            1149559500
+          ],
+          "total_ms": 1149.7091,
+          "ttft_ms": 70.0767,
+          "vram_bytes": {
+            "baseline_allocated": 218156032,
+            "baseline_reserved": 522190848,
+            "end_allocated": 218166784,
+            "end_reserved": 522190848,
+            "peak_allocated": 377939456,
+            "peak_allocated_above_baseline": 159783424,
+            "peak_reserved": 522190848
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            74.6732,
+            71.6005,
+            71.0317,
+            70.0313,
+            71.4547,
+            70.7231,
+            71.5292,
+            71.1127,
+            74.2843,
+            71.2067,
+            73.3381,
+            71.6984,
+            71.3137,
+            71.3653,
+            74.914
+          ],
+          "request_elapsed_ns": 1150761900,
+          "token_ready_offsets_ns": [
+            70324300,
+            144997500,
+            216598000,
+            287629700,
+            357661000,
+            429115700,
+            499838800,
+            571368000,
+            642480700,
+            716765000,
+            787971700,
+            861309800,
+            933008200,
+            1004321900,
+            1075687200,
+            1150601200
+          ],
+          "total_ms": 1150.7619,
+          "ttft_ms": 70.3243,
+          "vram_bytes": {
+            "baseline_allocated": 218156032,
+            "baseline_reserved": 522190848,
+            "end_allocated": 218166784,
+            "end_reserved": 522190848,
+            "peak_allocated": 377939456,
+            "peak_allocated_above_baseline": 159783424,
+            "peak_reserved": 522190848
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            71.4029,
+            72.3087,
+            71.4829,
+            70.4393,
+            71.7979,
+            69.9801,
+            73.8166,
+            72.8549,
+            72.0717,
+            72.0301,
+            72.3387,
+            71.9063,
+            75.2742,
+            72.4274,
+            75.5935
+          ],
+          "request_elapsed_ns": 1158305200,
+          "token_ready_offsets_ns": [
+            72418600,
+            143821500,
+            216130200,
+            287613100,
+            358052400,
+            429850300,
+            499830400,
+            573647000,
+            646501900,
+            718573600,
+            790603700,
+            862942400,
+            934848700,
+            1010122900,
+            1082550300,
+            1158143800
+          ],
+          "total_ms": 1158.3052,
+          "ttft_ms": 72.4186,
+          "vram_bytes": {
+            "baseline_allocated": 218156032,
+            "baseline_reserved": 522190848,
+            "end_allocated": 218166784,
+            "end_reserved": 522190848,
+            "peak_allocated": 377939456,
+            "peak_allocated_above_baseline": 159783424,
+            "peak_reserved": 522190848
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            71.1062,
+            70.7186,
+            71.3427,
+            70.216,
+            72.2298,
+            73.5267,
+            71.0721,
+            71.5479,
+            71.8193,
+            71.4509,
+            74.6034,
+            72.2369,
+            72.3794,
+            73.2309,
+            72.2782
+          ],
+          "request_elapsed_ns": 1149611500,
+          "token_ready_offsets_ns": [
+            69696300,
+            140802500,
+            211521100,
+            282863800,
+            353079800,
+            425309600,
+            498836300,
+            569908400,
+            641456300,
+            713275600,
+            784726500,
+            859329900,
+            931566800,
+            1003946200,
+            1077177100,
+            1149455300
+          ],
+          "total_ms": 1149.6115,
+          "ttft_ms": 69.6963,
+          "vram_bytes": {
+            "baseline_allocated": 218156032,
+            "baseline_reserved": 522190848,
+            "end_allocated": 218166784,
+            "end_reserved": 522190848,
+            "peak_allocated": 377939456,
+            "peak_allocated_above_baseline": 159783424,
+            "peak_reserved": 522190848
+          }
+        }
+      ],
+      "summary": {
+        "decode_tokens_per_second": {
+          "count": 5,
+          "max": 13.895543310185214,
+          "mean": 13.856147231242385,
+          "min": 13.792224550656222,
+          "p50": 13.885328844854499,
+          "p95": 13.894832420243612
+        },
+        "next_token_latency_ms": {
+          "count": 75,
+          "max": 75.5935,
+          "mean": 72.17084266666664,
+          "min": 69.9801,
+          "p50": 71.8193,
+          "p95": 74.70002
+        },
+        "overall_tokens_per_second": {
+          "count": 5,
+          "max": 13.917745255679854,
+          "mean": 13.863352533871279,
+          "min": 13.765336628296078,
+          "p50": 13.903831887378267,
+          "p95": 13.91750895730891
+        },
+        "total_ms": {
+          "count": 5,
+          "max": 1162.3399,
+          "mean": 1154.14552,
+          "min": 1149.6115,
+          "p50": 1150.7619,
+          "p95": 1161.53296
+        },
+        "ttft_ms": {
+          "count": 5,
+          "max": 74.6165,
+          "mean": 71.42648,
+          "min": 69.6963,
+          "p50": 70.3243,
+          "p95": 74.17692
+        },
+        "vram_bytes": {
+          "baseline_allocated": {
+            "max": 218156032,
+            "min": 218156032
+          },
+          "baseline_reserved": {
+            "max": 522190848,
+            "min": 522190848
+          },
+          "end_allocated": {
+            "max": 218166784,
+            "min": 218166784
+          },
+          "end_reserved": {
+            "max": 522190848,
+            "min": 522190848
+          },
+          "peak_allocated": {
+            "max": 377939456,
+            "min": 377939456
+          },
+          "peak_allocated_above_baseline": {
+            "max": 159783424,
+            "min": 159783424
+          },
+          "peak_reserved": {
+            "max": 522190848,
+            "min": 522190848
+          }
+        }
+      },
+      "telemetry_after": "62, 69.29 W, 2505 MHz, 70 %, 1957 MiB",
+      "telemetry_before": "54, 45.53 W, 2325 MHz, 39 %, 1669 MiB",
+      "token_ids_match_reference_so_far": true,
+      "warmup": 2
+    },
+    {
+      "batch_size": 1,
+      "cache_payload_formula_bytes": {
+        "capacity": 1040,
+        "kv_capacity_bytes": 42598400,
+        "kv_used_bytes": 42557440,
+        "metadata_capacity_bytes": 9360,
+        "used_columns": 1039
+      },
+      "condition_order": 5,
+      "mode": "cached",
+      "new_tokens": 16,
+      "prompt_ids_sha256": "96a0344a2128b529f8061c2d55db187435266e7022b2f9acb30bf87d1b381537",
+      "prompt_length": 1024,
+      "repeats": 5,
+      "samples": [
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            48.1768,
+            42.9664,
+            53.2315,
+            43.3338,
+            41.642,
+            41.5894,
+            41.5024,
+            39.4097,
+            41.173,
+            40.9265,
+            41.5144,
+            40.6156,
+            40.735,
+            43.2384,
+            41.7023
+          ],
+          "request_elapsed_ns": 728200300,
+          "token_ready_offsets_ns": [
+            86261800,
+            134438600,
+            177405000,
+            230636500,
+            273970300,
+            315612300,
+            357201700,
+            398704100,
+            438113800,
+            479286800,
+            520213300,
+            561727700,
+            602343300,
+            643078300,
+            686316700,
+            728019000
+          ],
+          "total_ms": 728.2003,
+          "ttft_ms": 86.2618,
+          "vram_bytes": {
+            "baseline_allocated": 218156032,
+            "baseline_reserved": 408944640,
+            "end_allocated": 218166784,
+            "end_reserved": 408944640,
+            "peak_allocated": 377193984,
+            "peak_allocated_above_baseline": 159037952,
+            "peak_reserved": 408944640
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            41.7846,
+            40.7403,
+            39.8258,
+            41.7925,
+            40.3562,
+            45.3064,
+            43.0893,
+            40.047,
+            40.2255,
+            39.2097,
+            40.6958,
+            39.3574,
+            40.4783,
+            40.8855,
+            40.3734
+          ],
+          "request_elapsed_ns": 696160500,
+          "token_ready_offsets_ns": [
+            81811000,
+            123595600,
+            164335900,
+            204161700,
+            245954200,
+            286310400,
+            331616800,
+            374706100,
+            414753100,
+            454978600,
+            494188300,
+            534884100,
+            574241500,
+            614719800,
+            655605300,
+            695978700
+          ],
+          "total_ms": 696.1605,
+          "ttft_ms": 81.811,
+          "vram_bytes": {
+            "baseline_allocated": 218156032,
+            "baseline_reserved": 408944640,
+            "end_allocated": 218166784,
+            "end_reserved": 408944640,
+            "peak_allocated": 377193984,
+            "peak_allocated_above_baseline": 159037952,
+            "peak_reserved": 408944640
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            41.4607,
+            40.1142,
+            39.5783,
+            43.7734,
+            42.2885,
+            41.9245,
+            41.1963,
+            43.3416,
+            40.2491,
+            40.1436,
+            42.5707,
+            40.8097,
+            40.3181,
+            47.2869,
+            42.2026
+          ],
+          "request_elapsed_ns": 714418200,
+          "token_ready_offsets_ns": [
+            86977200,
+            128437900,
+            168552100,
+            208130400,
+            251903800,
+            294192300,
+            336116800,
+            377313100,
+            420654700,
+            460903800,
+            501047400,
+            543618100,
+            584427800,
+            624745900,
+            672032800,
+            714235400
+          ],
+          "total_ms": 714.4182,
+          "ttft_ms": 86.9772,
+          "vram_bytes": {
+            "baseline_allocated": 218156032,
+            "baseline_reserved": 408944640,
+            "end_allocated": 218166784,
+            "end_reserved": 408944640,
+            "peak_allocated": 377193984,
+            "peak_allocated_above_baseline": 159037952,
+            "peak_reserved": 408944640
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            40.7047,
+            40.2679,
+            42.4342,
+            40.8032,
+            40.0459,
+            42.4144,
+            44.6828,
+            42.3762,
+            46.7388,
+            42.7065,
+            42.047,
+            46.6596,
+            43.6437,
+            41.0095,
+            40.1534
+          ],
+          "request_elapsed_ns": 732349800,
+          "token_ready_offsets_ns": [
+            95475300,
+            136180000,
+            176447900,
+            218882100,
+            259685300,
+            299731200,
+            342145600,
+            386828400,
+            429204600,
+            475943400,
+            518649900,
+            560696900,
+            607356500,
+            651000200,
+            692009700,
+            732163100
+          ],
+          "total_ms": 732.3498,
+          "ttft_ms": 95.4753,
+          "vram_bytes": {
+            "baseline_allocated": 218156032,
+            "baseline_reserved": 408944640,
+            "end_allocated": 218166784,
+            "end_reserved": 408944640,
+            "peak_allocated": 377193984,
+            "peak_allocated_above_baseline": 159037952,
+            "peak_reserved": 408944640
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            42.4936,
+            40.7508,
+            44.9836,
+            41.9599,
+            40.2138,
+            72.9705,
+            69.4555,
+            71.1675,
+            63.6386,
+            48.9387,
+            41.0945,
+            44.3889,
+            41.4014,
+            42.1792,
+            47.009
+          ],
+          "request_elapsed_ns": 846359800,
+          "token_ready_offsets_ns": [
+            93507500,
+            136001100,
+            176751900,
+            221735500,
+            263695400,
+            303909200,
+            376879700,
+            446335200,
+            517502700,
+            581141300,
+            630080000,
+            671174500,
+            715563400,
+            756964800,
+            799144000,
+            846153000
+          ],
+          "total_ms": 846.3598,
+          "ttft_ms": 93.5075,
+          "vram_bytes": {
+            "baseline_allocated": 218156032,
+            "baseline_reserved": 408944640,
+            "end_allocated": 218166784,
+            "end_reserved": 408944640,
+            "peak_allocated": 377193984,
+            "peak_allocated_above_baseline": 159037952,
+            "peak_reserved": 408944640
+          }
+        }
+      ],
+      "summary": {
+        "decode_tokens_per_second": {
+          "count": 5,
+          "max": 24.42329676405972,
+          "mean": 23.03986967592539,
+          "min": 19.92970130028014,
+          "p50": 23.559427399111463,
+          "p95": 24.32135687191007
+        },
+        "next_token_latency_ms": {
+          "count": 75,
+          "max": 72.9705,
+          "mean": 43.63355200000001,
+          "min": 39.2097,
+          "p50": 41.642,
+          "p95": 56.35362999999997
+        },
+        "overall_tokens_per_second": {
+          "count": 5,
+          "max": 22.983205740630215,
+          "mean": 21.62060024945285,
+          "min": 18.904489556332898,
+          "p50": 21.97197666631008,
+          "p95": 22.86573379620027
+        },
+        "total_ms": {
+          "count": 5,
+          "max": 846.3598,
+          "mean": 743.49772,
+          "min": 696.1605,
+          "p50": 728.2003,
+          "p95": 823.5577999999999
+        },
+        "ttft_ms": {
+          "count": 5,
+          "max": 95.4753,
+          "mean": 88.80656,
+          "min": 81.811,
+          "p50": 86.9772,
+          "p95": 95.08174
+        },
+        "vram_bytes": {
+          "baseline_allocated": {
+            "max": 218156032,
+            "min": 218156032
+          },
+          "baseline_reserved": {
+            "max": 408944640,
+            "min": 408944640
+          },
+          "end_allocated": {
+            "max": 218166784,
+            "min": 218166784
+          },
+          "end_reserved": {
+            "max": 408944640,
+            "min": 408944640
+          },
+          "peak_allocated": {
+            "max": 377193984,
+            "min": 377193984
+          },
+          "peak_allocated_above_baseline": {
+            "max": 159037952,
+            "min": 159037952
+          },
+          "peak_reserved": {
+            "max": 408944640,
+            "min": 408944640
+          }
+        }
+      },
+      "telemetry_after": "44, 14.35 W, 1470 MHz, 9 %, 1849 MiB",
+      "telemetry_before": "62, 69.29 W, 2505 MHz, 70 %, 1669 MiB",
+      "token_ids_match_reference_so_far": true,
+      "warmup": 2
+    },
+    {
+      "batch_size": 1,
+      "cache_payload_formula_bytes": {
+        "capacity": 2064,
+        "kv_capacity_bytes": 84541440,
+        "kv_used_bytes": 84500480,
+        "metadata_capacity_bytes": 18576,
+        "used_columns": 2063
+      },
+      "condition_order": 6,
+      "mode": "cached",
+      "new_tokens": 16,
+      "prompt_ids_sha256": "9187f3bc0165e59a9f7461f24a25a5d01e4484eddf5cf5a487cbfb5fe03e6950",
+      "prompt_length": 2048,
+      "repeats": 5,
+      "samples": [
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            47.1023,
+            50.2224,
+            47.9844,
+            49.2348,
+            49.8493,
+            48.8488,
+            45.1834,
+            42.7882,
+            43.6376,
+            44.7749,
+            42.8049,
+            50.5873,
+            58.5499,
+            50.0912,
+            49.6585
+          ],
+          "request_elapsed_ns": 903917000,
+          "token_ready_offsets_ns": [
+            182402400,
+            229504700,
+            279727100,
+            327711500,
+            376946300,
+            426795600,
+            475644400,
+            520827800,
+            563616000,
+            607253600,
+            652028500,
+            694833400,
+            745420700,
+            803970600,
+            854061800,
+            903720300
+          ],
+          "total_ms": 903.917,
+          "ttft_ms": 182.4024,
+          "vram_bytes": {
+            "baseline_allocated": 218165248,
+            "baseline_reserved": 903872512,
+            "end_allocated": 218185216,
+            "end_reserved": 903872512,
+            "peak_allocated": 743201280,
+            "peak_allocated_above_baseline": 525036032,
+            "peak_reserved": 903872512
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            43.0738,
+            41.9872,
+            44.3235,
+            44.921,
+            46.5271,
+            48.1188,
+            52.0382,
+            53.9689,
+            43.8968,
+            42.0317,
+            42.3136,
+            49.1989,
+            50.9851,
+            46.9624,
+            68.5533
+          ],
+          "request_elapsed_ns": 913598000,
+          "token_ready_offsets_ns": [
+            194404000,
+            237477800,
+            279465000,
+            323788500,
+            368709500,
+            415236600,
+            463355400,
+            515393600,
+            569362500,
+            613259300,
+            655291000,
+            697604600,
+            746803500,
+            797788600,
+            844751000,
+            913304300
+          ],
+          "total_ms": 913.598,
+          "ttft_ms": 194.404,
+          "vram_bytes": {
+            "baseline_allocated": 218165248,
+            "baseline_reserved": 903872512,
+            "end_allocated": 218185216,
+            "end_reserved": 903872512,
+            "peak_allocated": 743201280,
+            "peak_allocated_above_baseline": 525036032,
+            "peak_reserved": 903872512
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            45.1178,
+            52.0744,
+            45.4606,
+            44.7662,
+            54.4726,
+            52.1301,
+            45.4256,
+            51.8194,
+            61.7646,
+            64.5022,
+            99.0292,
+            85.9087,
+            70.8398,
+            45.756,
+            43.9178
+          ],
+          "request_elapsed_ns": 1053228000,
+          "token_ready_offsets_ns": [
+            190043700,
+            235161500,
+            287235900,
+            332696500,
+            377462700,
+            431935300,
+            484065400,
+            529491000,
+            581310400,
+            643075000,
+            707577200,
+            806606400,
+            892515100,
+            963354900,
+            1009110900,
+            1053028700
+          ],
+          "total_ms": 1053.228,
+          "ttft_ms": 190.0437,
+          "vram_bytes": {
+            "baseline_allocated": 218165248,
+            "baseline_reserved": 903872512,
+            "end_allocated": 218185216,
+            "end_reserved": 903872512,
+            "peak_allocated": 743201280,
+            "peak_allocated_above_baseline": 525036032,
+            "peak_reserved": 903872512
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            78.1404,
+            82.0835,
+            101.205,
+            47.1341,
+            90.6248,
+            68.378,
+            78.5659,
+            110.7929,
+            118.01,
+            346.6509,
+            147.1658,
+            135.7944,
+            237.026,
+            98.8833,
+            89.8148
+          ],
+          "request_elapsed_ns": 2018191900,
+          "token_ready_offsets_ns": [
+            187621000,
+            265761400,
+            347844900,
+            449049900,
+            496184000,
+            586808800,
+            655186800,
+            733752700,
+            844545600,
+            962555600,
+            1309206500,
+            1456372300,
+            1592166700,
+            1829192700,
+            1928076000,
+            2017890800
+          ],
+          "total_ms": 2018.1919,
+          "ttft_ms": 187.621,
+          "vram_bytes": {
+            "baseline_allocated": 218165248,
+            "baseline_reserved": 903872512,
+            "end_allocated": 218185216,
+            "end_reserved": 903872512,
+            "peak_allocated": 743201280,
+            "peak_allocated_above_baseline": 525036032,
+            "peak_reserved": 903872512
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            82.8493,
+            64.8886,
+            56.4734,
+            93.8762,
+            72.5646,
+            64.0815,
+            87.6582,
+            115.7973,
+            83.168,
+            77.8509,
+            99.9997,
+            102.2085,
+            108.9401,
+            92.795,
+            279.2739
+          ],
+          "request_elapsed_ns": 1746809900,
+          "token_ready_offsets_ns": [
+            263550800,
+            346400100,
+            411288700,
+            467762100,
+            561638300,
+            634202900,
+            698284400,
+            785942600,
+            901739900,
+            984907900,
+            1062758800,
+            1162758500,
+            1264967000,
+            1373907100,
+            1466702100,
+            1745976000
+          ],
+          "total_ms": 1746.8099,
+          "ttft_ms": 263.5508,
+          "vram_bytes": {
+            "baseline_allocated": 218165248,
+            "baseline_reserved": 903872512,
+            "end_allocated": 218185216,
+            "end_reserved": 903872512,
+            "peak_allocated": 743201280,
+            "peak_allocated_above_baseline": 525036032,
+            "peak_reserved": 903872512
+          }
+        }
+      ],
+      "summary": {
+        "decode_tokens_per_second": {
+          "count": 5,
+          "max": 20.86520203149171,
+          "mean": 15.47121383117116,
+          "min": 8.19551303310583,
+          "p50": 17.381530385812038,
+          "p95": 20.85121549034769
+        },
+        "next_token_latency_ms": {
+          "count": 75,
+          "max": 346.6509,
+          "mean": 74.87864266666666,
+          "min": 41.9872,
+          "p50": 53.9689,
+          "p95": 139.20581999999996
+        },
+        "overall_tokens_per_second": {
+          "count": 5,
+          "max": 17.70074022283019,
+          "mean": 13.498549703813719,
+          "min": 7.927888324197515,
+          "p50": 15.191392556977215,
+          "p95": 17.663226816255918
+        },
+        "total_ms": {
+          "count": 5,
+          "max": 2018.1919,
+          "mean": 1327.14896,
+          "min": 903.917,
+          "p50": 1053.228,
+          "p95": 1963.9155
+        },
+        "ttft_ms": {
+          "count": 5,
+          "max": 263.5508,
+          "mean": 203.60438,
+          "min": 182.4024,
+          "p50": 190.0437,
+          "p95": 249.72143999999997
+        },
+        "vram_bytes": {
+          "baseline_allocated": {
+            "max": 218165248,
+            "min": 218165248
+          },
+          "baseline_reserved": {
+            "max": 903872512,
+            "min": 903872512
+          },
+          "end_allocated": {
+            "max": 218185216,
+            "min": 218185216
+          },
+          "end_reserved": {
+            "max": 903872512,
+            "min": 903872512
+          },
+          "peak_allocated": {
+            "max": 743201280,
+            "min": 743201280
+          },
+          "peak_allocated_above_baseline": {
+            "max": 525036032,
+            "min": 525036032
+          },
+          "peak_reserved": {
+            "max": 903872512,
+            "min": 903872512
+          }
+        }
+      },
+      "telemetry_after": "47, 21.45 W, 2520 MHz, 7 %, 2393 MiB",
+      "telemetry_before": "44, 14.35 W, 1470 MHz, 9 %, 1669 MiB",
+      "token_ids_match_reference_so_far": true,
+      "warmup": 2
+    },
+    {
+      "batch_size": 1,
+      "cache_payload_formula_bytes": null,
+      "condition_order": 7,
+      "mode": "uncached",
+      "new_tokens": 16,
+      "prompt_ids_sha256": "9187f3bc0165e59a9f7461f24a25a5d01e4484eddf5cf5a487cbfb5fe03e6950",
+      "prompt_length": 2048,
+      "repeats": 5,
+      "samples": [
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            189.6279,
+            185.7291,
+            182.8265,
+            188.6055,
+            186.8515,
+            191.9368,
+            181.5307,
+            181.3597,
+            183.2298,
+            183.0606,
+            189.7036,
+            192.8497,
+            186.3721,
+            216.0974,
+            200.8673
+          ],
+          "request_elapsed_ns": 3022851100,
+          "token_ready_offsets_ns": [
+            182036400,
+            371664300,
+            557393400,
+            740219900,
+            928825400,
+            1115676900,
+            1307613700,
+            1489144400,
+            1670504100,
+            1853733900,
+            2036794500,
+            2226498100,
+            2419347800,
+            2605719900,
+            2821817300,
+            3022684600
+          ],
+          "total_ms": 3022.8511,
+          "ttft_ms": 182.0364,
+          "vram_bytes": {
+            "baseline_allocated": 218165248,
+            "baseline_reserved": 1094713344,
+            "end_allocated": 218185216,
+            "end_reserved": 1094713344,
+            "peak_allocated": 741322752,
+            "peak_allocated_above_baseline": 523157504,
+            "peak_reserved": 1094713344
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            189.5397,
+            179.9715,
+            183.8504,
+            186.5642,
+            179.9141,
+            186.5779,
+            190.5843,
+            194.3724,
+            213.8419,
+            214.6147,
+            201.5563,
+            188.6673,
+            192.2768,
+            200.2201,
+            194.8338
+          ],
+          "request_elapsed_ns": 3086974700,
+          "token_ready_offsets_ns": [
+            189427400,
+            378967100,
+            558938600,
+            742789000,
+            929353200,
+            1109267300,
+            1295845200,
+            1486429500,
+            1680801900,
+            1894643800,
+            2109258500,
+            2310814800,
+            2499482100,
+            2691758900,
+            2891979000,
+            3086812800
+          ],
+          "total_ms": 3086.9747,
+          "ttft_ms": 189.4274,
+          "vram_bytes": {
+            "baseline_allocated": 218165248,
+            "baseline_reserved": 1094713344,
+            "end_allocated": 218185216,
+            "end_reserved": 1094713344,
+            "peak_allocated": 741322752,
+            "peak_allocated_above_baseline": 523157504,
+            "peak_reserved": 1094713344
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            176.1731,
+            184.9566,
+            186.7055,
+            189.2956,
+            184.6096,
+            189.5849,
+            186.2182,
+            186.1053,
+            198.4335,
+            185.6356,
+            176.3316,
+            201.4396,
+            195.2681,
+            199.0042,
+            184.6755
+          ],
+          "request_elapsed_ns": 3000692800,
+          "token_ready_offsets_ns": [
+            175993000,
+            352166100,
+            537122700,
+            723828200,
+            913123800,
+            1097733400,
+            1287318300,
+            1473536500,
+            1659641800,
+            1858075300,
+            2043710900,
+            2220042500,
+            2421482100,
+            2616750200,
+            2815754400,
+            3000429900
+          ],
+          "total_ms": 3000.6928,
+          "ttft_ms": 175.993,
+          "vram_bytes": {
+            "baseline_allocated": 218165248,
+            "baseline_reserved": 1094713344,
+            "end_allocated": 218185216,
+            "end_reserved": 1094713344,
+            "peak_allocated": 741322752,
+            "peak_allocated_above_baseline": 523157504,
+            "peak_reserved": 1094713344
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            216.9353,
+            200.7095,
+            186.4009,
+            184.0421,
+            182.6849,
+            183.8002,
+            179.5795,
+            198.4553,
+            182.8579,
+            198.4231,
+            193.5741,
+            196.1586,
+            181.8171,
+            183.4498,
+            181.5742
+          ],
+          "request_elapsed_ns": 3056414300,
+          "token_ready_offsets_ns": [
+            205806700,
+            422742000,
+            623451500,
+            809852400,
+            993894500,
+            1176579400,
+            1360379600,
+            1539959100,
+            1738414400,
+            1921272300,
+            2119695400,
+            2313269500,
+            2509428100,
+            2691245200,
+            2874695000,
+            3056269200
+          ],
+          "total_ms": 3056.4143,
+          "ttft_ms": 205.8067,
+          "vram_bytes": {
+            "baseline_allocated": 218165248,
+            "baseline_reserved": 1094713344,
+            "end_allocated": 218185216,
+            "end_reserved": 1094713344,
+            "peak_allocated": 741322752,
+            "peak_allocated_above_baseline": 523157504,
+            "peak_reserved": 1094713344
+          }
+        },
+        {
+          "generated_ids": [
+            [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "next_token_latencies_ms": [
+            220.8489,
+            192.6117,
+            179.9925,
+            207.0194,
+            194.0579,
+            182.6465,
+            186.4329,
+            213.4934,
+            203.7584,
+            180.2242,
+            178.42,
+            184.5422,
+            209.6913,
+            196.2793,
+            198.2454
+          ],
+          "request_elapsed_ns": 3114752100,
+          "token_ready_offsets_ns": [
+            186302200,
+            407151100,
+            599762800,
+            779755300,
+            986774700,
+            1180832600,
+            1363479100,
+            1549912000,
+            1763405400,
+            1967163800,
+            2147388000,
+            2325808000,
+            2510350200,
+            2720041500,
+            2916320800,
+            3114566200
+          ],
+          "total_ms": 3114.7521,
+          "ttft_ms": 186.3022,
+          "vram_bytes": {
+            "baseline_allocated": 218165248,
+            "baseline_reserved": 1094713344,
+            "end_allocated": 218185216,
+            "end_reserved": 1094713344,
+            "peak_allocated": 741322752,
+            "peak_allocated_above_baseline": 523157504,
+            "peak_reserved": 1094713344
+          }
+        }
+      ],
+      "summary": {
+        "decode_tokens_per_second": {
+          "count": 5,
+          "max": 5.310793100033497,
+          "mean": 5.230630456903406,
+          "min": 5.122488955913812,
+          "p50": 5.2623039243631515,
+          "p95": 5.304731465214897
+        },
+        "next_token_latency_ms": {
+          "count": 75,
+          "max": 220.8489,
+          "mean": 191.21596,
+          "min": 176.1731,
+          "p50": 188.6055,
+          "p95": 214.07374000000002
+        },
+        "overall_tokens_per_second": {
+          "count": 5,
+          "max": 5.332101973250977,
+          "mean": 5.235984819865658,
+          "min": 5.136845400955023,
+          "p50": 5.234892403166678,
+          "p95": 5.324284829022213
+        },
+        "total_ms": {
+          "count": 5,
+          "max": 3114.7521,
+          "mean": 3056.337,
+          "min": 3000.6928,
+          "p50": 3056.4143,
+          "p95": 3109.19662
+        },
+        "ttft_ms": {
+          "count": 5,
+          "max": 205.8067,
+          "mean": 187.91313999999997,
+          "min": 175.993,
+          "p50": 186.3022,
+          "p95": 202.53084
+        },
+        "vram_bytes": {
+          "baseline_allocated": {
+            "max": 218165248,
+            "min": 218165248
+          },
+          "baseline_reserved": {
+            "max": 1094713344,
+            "min": 1094713344
+          },
+          "end_allocated": {
+            "max": 218185216,
+            "min": 218185216
+          },
+          "end_reserved": {
+            "max": 1094713344,
+            "min": 1094713344
+          },
+          "peak_allocated": {
+            "max": 741322752,
+            "min": 741322752
+          },
+          "peak_allocated_above_baseline": {
+            "max": 523157504,
+            "min": 523157504
+          },
+          "peak_reserved": {
+            "max": 1094713344,
+            "min": 1094713344
+          }
+        }
+      },
+      "telemetry_after": "64, 69.88 W, 2505 MHz, 85 %, 2641 MiB",
+      "telemetry_before": "47, 20.13 W, 2520 MHz, 7 %, 1724 MiB",
+      "token_ids_match_reference_so_far": true,
+      "warmup": 2
+    }
+  ],
+  "seed": 42,
+  "source_model": {
+    "context_length": 1024,
+    "dropout": 0.0,
+    "ffn_hidden_size": 2048,
+    "hidden_size": 512,
+    "num_heads": 8,
+    "num_layers": 10,
+    "rms_norm_eps": 1e-06,
+    "rope_theta": 10000.0,
+    "tie_embeddings": true,
+    "vocab_size": 8192
+  },
+  "statistics": "p50/p95 use NumPy linear quantiles; next-token latency pools N-1 intervals per repeat; throughput counts batch tokens.",
+  "status": "passed",
+  "timing_scope": "Warm streaming generate API wall clock, synchronize at request/token boundaries; includes validation/cache allocation/forward/selection/output bookkeeping; excludes model load/tokenization/H2D and report writes.",
+  "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+  "weight_source": "provided_strict_model_checkpoint",
+  "work_package": "WP06.5"
+}

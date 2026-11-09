@@ -4,8 +4,8 @@ Repository cho nghiên cứu LLM from scratch theo Hướng C: reasoning và tes
 
 **Trạng thái: WP01+WP02 baseline; WP03 data và WP04 tokenizer đã triển khai.** Đã có config,
 seed, metadata/logs, checkpoint RNG; dataset preparation, benchmark toán, answer extraction,
-split/dedup, fixed pilot và byte BPE tự viết. WP05 đã nghiệm thu kiến trúc; WP06.1–4
-có cached/uncached generation, sampling và EOS. Pretraining/SFT trainer
+split/dedup, fixed pilot và byte BPE tự viết. WP05 đã nghiệm thu kiến trúc;
+WP06 đã nghiệm thu KV cache, generation và profiling thực đo. Pretraining/SFT trainer
 cho corpus và confidence stopping chưa implement.
 Smoke WP02 chỉ dùng RNG/ma trận nhỏ; WP03 chưa đánh giá chất lượng model.
 
@@ -25,7 +25,9 @@ WP06.1 có KV storage/transactions; WP06.2 đã tích hợp cached prefill/token
 [Báo cáo WP06.2](docs/wp06_2_validation.md). WP06.3 có greedy/temperature/top-k/top-p,
 EOS và seeded uncached generation: [báo cáo](docs/wp06_3_validation.md).
 WP06.4 đã đối chiếu cached/uncached logits và generated tokens:
-[nghiệm thu](docs/wp06_4_validation.md). Profiling thực đo tiếp tục ở WP06.5.
+[nghiệm thu](docs/wp06_4_validation.md). WP06.5 đã đo TTFT/next-token latency/tokens/s
+và CUDA allocated/reserved/peak tại L128/512/1024/2048:
+[kết quả](docs/wp06_5_validation.md), [protocol](docs/wp06_profiling.md).
 
 Nguồn kế hoạch: [LLM From Scratch — Hướng C | Project HQ](https://app.notion.com/p/4093badafe55810db45bfcc26b766de9)
 (bản cập nhật 31/10/2026; hạn đồ án 01/12/2026).
