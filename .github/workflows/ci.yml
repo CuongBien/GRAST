@@ -65,6 +65,8 @@ jobs:
         run: uv run --no-sync python scripts/check_generation.py --device cpu
       - name: WP06.4 cached/uncached generation equivalence
         run: uv run --no-sync python scripts/check_generation_equivalence.py --device cpu
+      - name: WP06.5 timing protocol smoke (CPU; no VRAM claim)
+        run: uv run --no-sync python scripts/profile.py --config configs/experiments/wp06_profiling_smoke.toml
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree

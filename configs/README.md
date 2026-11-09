@@ -37,3 +37,9 @@ candidate dùng `draft_35m.toml` với artifact tokenizer WP04 bắt buộc. Xem
 WP04 dùng loader riêng cho `tokenizer/train.toml`, compose `bpe.toml` và khóa manifest WP03.
 `grast train-tokenizer --config configs/tokenizer/train.toml` tạo codec/metrics trong run riêng.
 Không fit trên validation/test. Xem `docs/wp04_tokenizer.md`.
+
+WP06.5 dùng schema riêng `experiments/wp06_profiling.toml`: B1, N16, L128/512/1024/2048,
+FP32, warm-up 2/repeats 5 và explicit inference context 2064. Source baseline context
+1024 không đổi. `wp06_profiling_smoke.toml` dùng model nhỏ trên CPU cho CI, không thay
+thế GPU profiling. Runtime snapshots ghi cả source/effective model configurations;
+xem `docs/wp06_profiling.md`.

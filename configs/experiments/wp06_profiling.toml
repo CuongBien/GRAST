@@ -1,0 +1,23 @@
+schema_version = 1
+model_config = "../model/draft_35m.toml"
+
+[experiment]
+name = "wp06-5-inference-profile"
+
+[profiling]
+prompt_lengths = [128, 512, 1024, 2048]
+new_tokens = 16
+batch_size = 1
+warmup = 2
+repeats = 5
+context_length = 2064
+precision = "float32"
+device = "cuda"
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"

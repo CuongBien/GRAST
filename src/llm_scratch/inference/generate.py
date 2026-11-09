@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
 
 import torch
@@ -33,6 +34,7 @@ def generate(
     seed: int = 42,
     use_cache: bool = False,
     position_offset: int = 0,
+    on_token: Callable[[int, Tensor, Tensor], None] | None = None,
 ) -> GenerationOutput:
     """Generate without changing model mode or global RNG.
 
@@ -44,6 +46,8 @@ def generate(
     Cached mode prefills once then forwards only the last sampled token per step.
     position_offset shifts every physical RoPE position; it never compacts padding.
     Cache is private to this call and not returned (last sampled token is not fed).
+    Optional on_token(step, IDs, valid_rows) observes completed generation steps;
+    borrowed tensors are read-only. Callback overhead belongs to the caller's path.
     """
     if not isinstance(model, CausalLM):
         raise ValueError("model must be CausalLM")
@@ -53,6 +57,8 @@ def generate(
         raise ValueError("use_cache must be boolean")
     if type(position_offset) is not int or position_offset < 0:
         raise ValueError("position_offset must be a nonnegative integer")
+    if on_token is not None and not callable(on_token):
+        raise ValueError("on_token must be callable or None")
     config = GenerationConfig() if config is None else config
     if not isinstance(config, GenerationConfig):
         raise ValueError("config must be GenerationConfig")
@@ -129,7 +135,10 @@ def generate(
         last_valid = torch.where(active, sequences.shape[1] - 1, last_valid)
         if config.eos_token_id is not None:
             finished |= active & (next_ids == config.eos_token_id)
-        if finished.all():
+        done = bool(finished.all())
+        if on_token is not None:
+            on_token(step, next_ids, active)
+        if done:
             break
     generated_mask = mask[:, width:]
     return GenerationOutput(

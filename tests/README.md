@@ -78,3 +78,11 @@ tolerance, exact IDs/masks/lengths/stop reasons; kiểm tra EOS lệch hàng/PAD
 model-derived EOS, prefill/decode projection lengths, unchanged prefix/storage,
 cache masks/positions, request isolation/release, zero budget, context boundary,
 autocast, RNG và hook cleanup khi forward lỗi. 60 cases local: 35 CPU + 25 CUDA.
+
+## WP06.5 profiling
+
+`test_profiling.py` kiểm tra callback không đổi generated tokens, timestamps thật
+monotonic/đủ budget, CUDA allocator peaks, context-only copy không đổi weights/source
+metadata và giữ strict load rules, protocol validation, condition order/input identity,
+quantiles/throughput denominators và stdlib cProfile/torch.optim regression.
+Không có latency/speedup thresholds phụ thuộc phần cứng. CPU timing có VRAM=null.

@@ -34,10 +34,10 @@ probe. Optional `--checkpoint PATH --tokenizer PATH` kiểm tra candidate đã o
 với fixture được encode qua codec WP04. Chưa chạy sampling/generation/profiling.
 
 Các script model/training bên dưới giữ tên theo HQ và hiện exit 1 với thông báo `skeleton only`.
-Chưa có CLI arguments, training, sampling, profiling hay evaluation.
+Chưa có training/evaluation loops cho các entry points còn placeholder.
 
 `pretrain`, `finetune`, `build_sample_bank`, `replay_policies`,
-`evaluate`, `profile`, `demo` sẽ được triển khai theo critical path và có kiểm tra tương ứng.
+`evaluate`, `demo` sẽ được triển khai theo critical path và có kiểm tra tương ứng.
 ## WP06.3 generation
 
 `uv run --no-sync python scripts/check_generation.py --device cpu` chạy greedy và
@@ -56,3 +56,11 @@ như WP06.3; thêm `--position-offset 7` để dịch physical RoPE positions.
 Shared setup nằm trong `check_generation.py`; WP06.3 probe vẫn dùng uncached mặc định.
 Report WP06.4 là `artifacts/generation_equivalence_report.json`; trace hooks copy
 readout logits về CPU, nên không dùng lệnh này để đo latency/VRAM.
+
+## WP06.5 online profiling
+
+`uv run --no-sync python scripts/profile.py --checkpoint PATH/TO/wp05-overfit.pt`
+đo hai modes trên ma trận L128/512/1024/2048 theo config/protocol cố định. Lệnh tương
+đương là `python -m llm_scratch.inference.profiling`. CPU smoke dùng
+`--config configs/experiments/wp06_profiling_smoke.toml`, không báo CPU memory là VRAM.
+Xem `docs/wp06_profiling.md` cho scope timing, metrics, context override và artifacts.

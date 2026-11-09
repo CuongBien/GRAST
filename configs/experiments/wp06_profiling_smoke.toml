@@ -1,0 +1,23 @@
+schema_version = 1
+model_config = "../model/overfit_tiny.toml"
+
+[experiment]
+name = "wp06-5-inference-profile"
+
+[profiling]
+prompt_lengths = [8, 16]
+new_tokens = 4
+batch_size = 1
+warmup = 1
+repeats = 2
+context_length = 128
+precision = "float32"
+device = "cpu"
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"
