@@ -46,3 +46,13 @@ Có `--policy configs/sampling/wp06_generation.toml`, `--seed`, `--output-root`;
 `--checkpoint <wp05-overfit.pt> --tokenizer <wp04-tokenizer-directory>` dùng model
 và codec thật, lưu token IDs và decoded outputs từ authored diagnostic prefixes.
 Không phải quality benchmark, cached generation equivalence hoặc profiling.
+
+## WP06.4 cached generation equivalence
+
+`uv run --no-sync python scripts/check_generation_equivalence.py --device cpu`
+so hai generation paths thật, active readout logits từng bước, token IDs, masks,
+lengths và stop reasons. Có cùng options checkpoint/tokenizer/policy/seed/output-root
+như WP06.3; thêm `--position-offset 7` để dịch physical RoPE positions.
+Shared setup nằm trong `check_generation.py`; WP06.3 probe vẫn dùng uncached mặc định.
+Report WP06.4 là `artifacts/generation_equivalence_report.json`; trace hooks copy
+readout logits về CPU, nên không dùng lệnh này để đo latency/VRAM.

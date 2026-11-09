@@ -1,0 +1,2986 @@
+{
+  "checks": {
+    "cached_uncached_active_readout_logits_close": true,
+    "controlled_sampling_same_rng_schedule_and_replay": true,
+    "generated_tokens_masks_lengths_stop_reasons_exact": true,
+    "prefill_once_single_token_projection_lengths": true,
+    "private_cache_request_isolation_and_release": true,
+    "rope_offsets_context_padding_eos_boundaries": true,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "trace_cleanup_after_failure": true,
+    "wheel_cached_generation_outside_source_tree": true,
+    "wheel_sdist_build": true
+  },
+  "date": "2026-11-09",
+  "implementation_sha256": {
+    "configs/sampling/wp06_generation.toml": "484f7e9a62f76c3a1208f1d9effc4105564f45634e4f9fd102fcc7353938c395",
+    "experiments/wp06_generation_fixture.json": "d4328b3a6e2ea366921a561725c220a09012c377f995f7f734caa6fe9e4e1337",
+    "scripts/check_generation.py": "cea3c7753db139f48b1b46ac1c291cd2b86d80f3271c5af637d246fa1e6097b3",
+    "scripts/check_generation_equivalence.py": "71e2e5f7c7df51fe5317516e368b27f64736f87adee4c68479d00f2ac464f016",
+    "src/llm_scratch/inference/generate.py": "3da8092cb4c5f7d561985c4b8e4477dbf7706fb4da94dcb827dee8ecf9564ed0",
+    "src/llm_scratch/research/generation_equivalence.py": "78d4471fc969a05198c520cc5788f066686f86326e84c40a6b92766d62baebb2"
+  },
+  "limitations": [
+    "Diagnostic authored WP05 overfit prefixes, not held-out evaluation or a benchmark quality claim.",
+    "Token equality for stochastic fixtures does not guarantee arbitrary near-tie/filter-boundary or cross-platform equality.",
+    "Generation supports scalar physical RoPE offset, not arbitrary per-row custom position histories or external cache continuation.",
+    "Last sampled token is not forwarded; cache is private to the call and not returned.",
+    "Acceptance hooks copy logits to CPU; these probes are not latency or VRAM measurements.",
+    "Baseline context remains 1024; no silent context expansion or eviction."
+  ],
+  "remaining_phases": [
+    "WP06.5 measured TTFT/latency/throughput/VRAM L=128/512/1024/2048 with explicit sufficient context configuration"
+  ],
+  "runs": [
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cpu"
+      },
+      "report": {
+        "attention_mask": [
+          [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        "backend": "cached_vs_uncached",
+        "batch_source": "wp04_tokenizer_authored_story_reasoning_prefixes",
+        "checkpoint_sha256": "e756d7a9519d1423a7ee554884afdc2b0ebb98a73188bd40a5554179eaa8de56",
+        "checks": {
+          "eos_mask_length_bookkeeping": true,
+          "global_rng_unchanged": true,
+          "greedy_and_sampled_seeded_replay": true
+        },
+        "device": "cpu",
+        "fixture_sha256": "d4328b3a6e2ea366921a561725c220a09012c377f995f7f734caa6fe9e4e1337",
+        "input_ids": [
+          [
+            1,
+            73,
+            40,
+            1356,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            730,
+            40,
+            284,
+            40,
+            58,
+            40,
+            51,
+            40,
+            59,
+            71,
+            18,
+            4
+          ]
+        ],
+        "limitation": "Diagnostic generation only; no benchmark quality claim or latency/VRAM profiling. Fixed-runtime sampling equivalence is not a cross-platform guarantee.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "outputs": {
+          "greedy": {
+            "cache_equivalence": {
+              "cached_input_lengths": [
+                13,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "checks": {
+                "active_logits_close": true,
+                "masks_lengths_finish_reasons_exact": true,
+                "prefill_once_token_decode": true,
+                "token_ids_exact": true
+              },
+              "finish_reasons": [
+                "eos",
+                "eos"
+              ],
+              "generated_ids": [
+                [
+                  40,
+                  891,
+                  123,
+                  40,
+                  1092,
+                  54,
+                  2
+                ],
+                [
+                  73,
+                  502,
+                  40,
+                  58,
+                  40,
+                  268,
+                  40,
+                  59,
+                  54,
+                  5,
+                  6,
+                  61,
+                  7,
+                  2
+                ]
+              ],
+              "generated_lengths": [
+                7,
+                14
+              ],
+              "generated_mask": [
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ]
+              ],
+              "logit_dtype": "torch.float32",
+              "max_abs_logit_error": 5.7220458984375e-06,
+              "min_reference_top2_gap": 1.2438879013061523,
+              "position_offset": 0,
+              "seed": 42,
+              "settings": {
+                "do_sample": false,
+                "eos_token_id": 2,
+                "max_new_tokens": 16,
+                "pad_token_id": 0,
+                "temperature": 0.8,
+                "top_k": 40,
+                "top_p": 0.95
+              },
+              "status": "passed",
+              "steps": [
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 0.0,
+                  "min_reference_top2_gap": 13.33632230758667,
+                  "step": 0
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.337860107421875e-06,
+                  "min_reference_top2_gap": 1.2438879013061523,
+                  "step": 1
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.337860107421875e-06,
+                  "min_reference_top2_gap": 9.226407527923584,
+                  "step": 2
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 12.504816055297852,
+                  "step": 3
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 2.077906608581543,
+                  "step": 4
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 11.724565029144287,
+                  "step": 5
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.337860107421875e-06,
+                  "min_reference_top2_gap": 12.564399719238281,
+                  "step": 6
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.925494194030762,
+                  "step": 7
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 12.871499061584473,
+                  "step": 8
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.86102294921875e-06,
+                  "min_reference_top2_gap": 12.52721619606018,
+                  "step": 9
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 3.337860107421875e-06,
+                  "min_reference_top2_gap": 12.680802345275879,
+                  "step": 10
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.86102294921875e-06,
+                  "min_reference_top2_gap": 12.893401622772217,
+                  "step": 11
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 5.7220458984375e-06,
+                  "min_reference_top2_gap": 12.535794258117676,
+                  "step": 12
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.86102294921875e-06,
+                  "min_reference_top2_gap": 13.08843445777893,
+                  "step": 13
+                }
+              ],
+              "tolerance": {
+                "atol": 1e-05,
+                "rtol": 0.0001
+              },
+              "uncached_input_lengths": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26
+              ]
+            },
+            "decoded": [
+              " shares story.<eos>",
+              "Add 2 and 3.</think><final>5</final><eos>"
+            ],
+            "finish_reasons": [
+              "eos",
+              "eos"
+            ],
+            "generated_ids": [
+              [
+                40,
+                891,
+                123,
+                40,
+                1092,
+                54,
+                2
+              ],
+              [
+                73,
+                502,
+                40,
+                58,
+                40,
+                268,
+                40,
+                59,
+                54,
+                5,
+                6,
+                61,
+                7,
+                2
+              ]
+            ],
+            "generated_lengths": [
+              7,
+              14
+            ],
+            "generated_mask": [
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ],
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ]
+            ],
+            "seeded_replay_exact": true,
+            "settings": {
+              "do_sample": false,
+              "eos_token_id": 2,
+              "max_new_tokens": 16,
+              "pad_token_id": 0,
+              "temperature": 0.8,
+              "top_k": 40,
+              "top_p": 0.95
+            }
+          },
+          "sampled": {
+            "cache_equivalence": {
+              "cached_input_lengths": [
+                13,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "checks": {
+                "active_logits_close": true,
+                "masks_lengths_finish_reasons_exact": true,
+                "prefill_once_token_decode": true,
+                "token_ids_exact": true
+              },
+              "finish_reasons": [
+                "eos",
+                "eos"
+              ],
+              "generated_ids": [
+                [
+                  40,
+                  891,
+                  123,
+                  40,
+                  1092,
+                  54,
+                  2
+                ],
+                [
+                  73,
+                  502,
+                  40,
+                  58,
+                  40,
+                  268,
+                  40,
+                  59,
+                  54,
+                  5,
+                  6,
+                  61,
+                  7,
+                  2
+                ]
+              ],
+              "generated_lengths": [
+                7,
+                14
+              ],
+              "generated_mask": [
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ]
+              ],
+              "logit_dtype": "torch.float32",
+              "max_abs_logit_error": 5.7220458984375e-06,
+              "min_reference_top2_gap": 1.2438879013061523,
+              "position_offset": 0,
+              "seed": 42,
+              "settings": {
+                "do_sample": true,
+                "eos_token_id": 2,
+                "max_new_tokens": 16,
+                "pad_token_id": 0,
+                "temperature": 0.8,
+                "top_k": 40,
+                "top_p": 0.95
+              },
+              "status": "passed",
+              "steps": [
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 0.0,
+                  "min_reference_top2_gap": 13.33632230758667,
+                  "step": 0
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.337860107421875e-06,
+                  "min_reference_top2_gap": 1.2438879013061523,
+                  "step": 1
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.337860107421875e-06,
+                  "min_reference_top2_gap": 9.226407527923584,
+                  "step": 2
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 12.504816055297852,
+                  "step": 3
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 2.077906608581543,
+                  "step": 4
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 11.724565029144287,
+                  "step": 5
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.337860107421875e-06,
+                  "min_reference_top2_gap": 12.564399719238281,
+                  "step": 6
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.925494194030762,
+                  "step": 7
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 12.871499061584473,
+                  "step": 8
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.86102294921875e-06,
+                  "min_reference_top2_gap": 12.52721619606018,
+                  "step": 9
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 3.337860107421875e-06,
+                  "min_reference_top2_gap": 12.680802345275879,
+                  "step": 10
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.86102294921875e-06,
+                  "min_reference_top2_gap": 12.893401622772217,
+                  "step": 11
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 5.7220458984375e-06,
+                  "min_reference_top2_gap": 12.535794258117676,
+                  "step": 12
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.86102294921875e-06,
+                  "min_reference_top2_gap": 13.08843445777893,
+                  "step": 13
+                }
+              ],
+              "tolerance": {
+                "atol": 1e-05,
+                "rtol": 0.0001
+              },
+              "uncached_input_lengths": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26
+              ]
+            },
+            "decoded": [
+              " shares story.<eos>",
+              "Add 2 and 3.</think><final>5</final><eos>"
+            ],
+            "finish_reasons": [
+              "eos",
+              "eos"
+            ],
+            "generated_ids": [
+              [
+                40,
+                891,
+                123,
+                40,
+                1092,
+                54,
+                2
+              ],
+              [
+                73,
+                502,
+                40,
+                58,
+                40,
+                268,
+                40,
+                59,
+                54,
+                5,
+                6,
+                61,
+                7,
+                2
+              ]
+            ],
+            "generated_lengths": [
+              7,
+              14
+            ],
+            "generated_mask": [
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ],
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ]
+            ],
+            "seeded_replay_exact": true,
+            "settings": {
+              "do_sample": true,
+              "eos_token_id": 2,
+              "max_new_tokens": 16,
+              "pad_token_id": 0,
+              "temperature": 0.8,
+              "top_k": 40,
+              "top_p": 0.95
+            }
+          }
+        },
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "position_offset": 0,
+        "seed": 42,
+        "status": "passed",
+        "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+        "work_package": "WP06.4"
+      },
+      "report_sha256": "3e93022feb9589754dce2475da4d4a5fea6080cd3a8b0b94d8b16fc49c684da7",
+      "run_directory": "artifacts/runs/20261109T033735274759Z-wp06-4-generation-equivalence-seed42-16c7f117"
+    },
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cuda:0"
+      },
+      "report": {
+        "attention_mask": [
+          [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        "backend": "cached_vs_uncached",
+        "batch_source": "wp04_tokenizer_authored_story_reasoning_prefixes",
+        "checkpoint_sha256": "e756d7a9519d1423a7ee554884afdc2b0ebb98a73188bd40a5554179eaa8de56",
+        "checks": {
+          "eos_mask_length_bookkeeping": true,
+          "global_rng_unchanged": true,
+          "greedy_and_sampled_seeded_replay": true
+        },
+        "device": "cuda",
+        "fixture_sha256": "d4328b3a6e2ea366921a561725c220a09012c377f995f7f734caa6fe9e4e1337",
+        "input_ids": [
+          [
+            1,
+            73,
+            40,
+            1356,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            730,
+            40,
+            284,
+            40,
+            58,
+            40,
+            51,
+            40,
+            59,
+            71,
+            18,
+            4
+          ]
+        ],
+        "limitation": "Diagnostic generation only; no benchmark quality claim or latency/VRAM profiling. Fixed-runtime sampling equivalence is not a cross-platform guarantee.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "outputs": {
+          "greedy": {
+            "cache_equivalence": {
+              "cached_input_lengths": [
+                13,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "checks": {
+                "active_logits_close": true,
+                "masks_lengths_finish_reasons_exact": true,
+                "prefill_once_token_decode": true,
+                "token_ids_exact": true
+              },
+              "finish_reasons": [
+                "eos",
+                "eos"
+              ],
+              "generated_ids": [
+                [
+                  40,
+                  891,
+                  123,
+                  40,
+                  1092,
+                  54,
+                  2
+                ],
+                [
+                  73,
+                  502,
+                  40,
+                  58,
+                  40,
+                  268,
+                  40,
+                  59,
+                  54,
+                  5,
+                  6,
+                  61,
+                  7,
+                  2
+                ]
+              ],
+              "generated_lengths": [
+                7,
+                14
+              ],
+              "generated_mask": [
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ]
+              ],
+              "logit_dtype": "torch.float32",
+              "max_abs_logit_error": 4.291534423828125e-06,
+              "min_reference_top2_gap": 1.2438879013061523,
+              "position_offset": 0,
+              "seed": 42,
+              "settings": {
+                "do_sample": false,
+                "eos_token_id": 2,
+                "max_new_tokens": 16,
+                "pad_token_id": 0,
+                "temperature": 0.8,
+                "top_k": 40,
+                "top_p": 0.95
+              },
+              "status": "passed",
+              "steps": [
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 0.0,
+                  "min_reference_top2_gap": 13.336323261260986,
+                  "step": 0
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 4.291534423828125e-06,
+                  "min_reference_top2_gap": 1.2438879013061523,
+                  "step": 1
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 4.291534423828125e-06,
+                  "min_reference_top2_gap": 9.226406574249268,
+                  "step": 2
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 12.504815578460693,
+                  "step": 3
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 2.0779075622558594,
+                  "step": 4
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 11.724564552307129,
+                  "step": 5
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 12.56439757347107,
+                  "step": 6
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.925494194030762,
+                  "step": 7
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.871495246887207,
+                  "step": 8
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.527215957641602,
+                  "step": 9
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 1.9073486328125e-06,
+                  "min_reference_top2_gap": 12.680801391601562,
+                  "step": 10
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 1.9073486328125e-06,
+                  "min_reference_top2_gap": 12.893402576446533,
+                  "step": 11
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 1.9073486328125e-06,
+                  "min_reference_top2_gap": 12.53579568862915,
+                  "step": 12
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 13.088430404663086,
+                  "step": 13
+                }
+              ],
+              "tolerance": {
+                "atol": 1e-05,
+                "rtol": 0.0001
+              },
+              "uncached_input_lengths": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26
+              ]
+            },
+            "decoded": [
+              " shares story.<eos>",
+              "Add 2 and 3.</think><final>5</final><eos>"
+            ],
+            "finish_reasons": [
+              "eos",
+              "eos"
+            ],
+            "generated_ids": [
+              [
+                40,
+                891,
+                123,
+                40,
+                1092,
+                54,
+                2
+              ],
+              [
+                73,
+                502,
+                40,
+                58,
+                40,
+                268,
+                40,
+                59,
+                54,
+                5,
+                6,
+                61,
+                7,
+                2
+              ]
+            ],
+            "generated_lengths": [
+              7,
+              14
+            ],
+            "generated_mask": [
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ],
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ]
+            ],
+            "seeded_replay_exact": true,
+            "settings": {
+              "do_sample": false,
+              "eos_token_id": 2,
+              "max_new_tokens": 16,
+              "pad_token_id": 0,
+              "temperature": 0.8,
+              "top_k": 40,
+              "top_p": 0.95
+            }
+          },
+          "sampled": {
+            "cache_equivalence": {
+              "cached_input_lengths": [
+                13,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "checks": {
+                "active_logits_close": true,
+                "masks_lengths_finish_reasons_exact": true,
+                "prefill_once_token_decode": true,
+                "token_ids_exact": true
+              },
+              "finish_reasons": [
+                "eos",
+                "eos"
+              ],
+              "generated_ids": [
+                [
+                  40,
+                  891,
+                  123,
+                  40,
+                  1092,
+                  54,
+                  2
+                ],
+                [
+                  73,
+                  502,
+                  40,
+                  58,
+                  40,
+                  268,
+                  40,
+                  59,
+                  54,
+                  5,
+                  6,
+                  61,
+                  7,
+                  2
+                ]
+              ],
+              "generated_lengths": [
+                7,
+                14
+              ],
+              "generated_mask": [
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ]
+              ],
+              "logit_dtype": "torch.float32",
+              "max_abs_logit_error": 4.291534423828125e-06,
+              "min_reference_top2_gap": 1.2438879013061523,
+              "position_offset": 0,
+              "seed": 42,
+              "settings": {
+                "do_sample": true,
+                "eos_token_id": 2,
+                "max_new_tokens": 16,
+                "pad_token_id": 0,
+                "temperature": 0.8,
+                "top_k": 40,
+                "top_p": 0.95
+              },
+              "status": "passed",
+              "steps": [
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 0.0,
+                  "min_reference_top2_gap": 13.336323261260986,
+                  "step": 0
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 4.291534423828125e-06,
+                  "min_reference_top2_gap": 1.2438879013061523,
+                  "step": 1
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 4.291534423828125e-06,
+                  "min_reference_top2_gap": 9.226406574249268,
+                  "step": 2
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 12.504815578460693,
+                  "step": 3
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 2.0779075622558594,
+                  "step": 4
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 11.724564552307129,
+                  "step": 5
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 12.56439757347107,
+                  "step": 6
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.925494194030762,
+                  "step": 7
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.871495246887207,
+                  "step": 8
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.527215957641602,
+                  "step": 9
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 1.9073486328125e-06,
+                  "min_reference_top2_gap": 12.680801391601562,
+                  "step": 10
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 1.9073486328125e-06,
+                  "min_reference_top2_gap": 12.893402576446533,
+                  "step": 11
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 1.9073486328125e-06,
+                  "min_reference_top2_gap": 12.53579568862915,
+                  "step": 12
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 13.088430404663086,
+                  "step": 13
+                }
+              ],
+              "tolerance": {
+                "atol": 1e-05,
+                "rtol": 0.0001
+              },
+              "uncached_input_lengths": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26
+              ]
+            },
+            "decoded": [
+              " shares story.<eos>",
+              "Add 2 and 3.</think><final>5</final><eos>"
+            ],
+            "finish_reasons": [
+              "eos",
+              "eos"
+            ],
+            "generated_ids": [
+              [
+                40,
+                891,
+                123,
+                40,
+                1092,
+                54,
+                2
+              ],
+              [
+                73,
+                502,
+                40,
+                58,
+                40,
+                268,
+                40,
+                59,
+                54,
+                5,
+                6,
+                61,
+                7,
+                2
+              ]
+            ],
+            "generated_lengths": [
+              7,
+              14
+            ],
+            "generated_mask": [
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ],
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ]
+            ],
+            "seeded_replay_exact": true,
+            "settings": {
+              "do_sample": true,
+              "eos_token_id": 2,
+              "max_new_tokens": 16,
+              "pad_token_id": 0,
+              "temperature": 0.8,
+              "top_k": 40,
+              "top_p": 0.95
+            }
+          }
+        },
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "position_offset": 0,
+        "seed": 42,
+        "status": "passed",
+        "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+        "work_package": "WP06.4"
+      },
+      "report_sha256": "78ad9cf569e35da3840ef57444fcf5314837bdf1567c1f66e5e578a713d845c4",
+      "run_directory": "artifacts/runs/20261109T033735732565Z-wp06-4-generation-equivalence-seed42-f98115bf"
+    },
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cuda:0"
+      },
+      "report": {
+        "attention_mask": [
+          [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        "backend": "cached_vs_uncached",
+        "batch_source": "wp04_tokenizer_authored_story_reasoning_prefixes",
+        "checkpoint_sha256": "e756d7a9519d1423a7ee554884afdc2b0ebb98a73188bd40a5554179eaa8de56",
+        "checks": {
+          "eos_mask_length_bookkeeping": true,
+          "global_rng_unchanged": true,
+          "greedy_and_sampled_seeded_replay": true
+        },
+        "device": "cuda",
+        "fixture_sha256": "d4328b3a6e2ea366921a561725c220a09012c377f995f7f734caa6fe9e4e1337",
+        "input_ids": [
+          [
+            1,
+            73,
+            40,
+            1356,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            730,
+            40,
+            284,
+            40,
+            58,
+            40,
+            51,
+            40,
+            59,
+            71,
+            18,
+            4
+          ]
+        ],
+        "limitation": "Diagnostic generation only; no benchmark quality claim or latency/VRAM profiling. Fixed-runtime sampling equivalence is not a cross-platform guarantee.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "outputs": {
+          "greedy": {
+            "cache_equivalence": {
+              "cached_input_lengths": [
+                13,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "checks": {
+                "active_logits_close": true,
+                "masks_lengths_finish_reasons_exact": true,
+                "prefill_once_token_decode": true,
+                "token_ids_exact": true
+              },
+              "finish_reasons": [
+                "eos",
+                "eos"
+              ],
+              "generated_ids": [
+                [
+                  40,
+                  891,
+                  123,
+                  40,
+                  1092,
+                  54,
+                  2
+                ],
+                [
+                  73,
+                  502,
+                  40,
+                  58,
+                  40,
+                  268,
+                  40,
+                  59,
+                  54,
+                  5,
+                  6,
+                  61,
+                  7,
+                  2
+                ]
+              ],
+              "generated_lengths": [
+                7,
+                14
+              ],
+              "generated_mask": [
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ]
+              ],
+              "logit_dtype": "torch.float32",
+              "max_abs_logit_error": 5.7220458984375e-06,
+              "min_reference_top2_gap": 1.2438850402832031,
+              "position_offset": 7,
+              "seed": 42,
+              "settings": {
+                "do_sample": false,
+                "eos_token_id": 2,
+                "max_new_tokens": 16,
+                "pad_token_id": 0,
+                "temperature": 0.8,
+                "top_k": 40,
+                "top_p": 0.95
+              },
+              "status": "passed",
+              "steps": [
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 0.0,
+                  "min_reference_top2_gap": 13.336323261260986,
+                  "step": 0
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 4.76837158203125e-06,
+                  "min_reference_top2_gap": 1.2438850402832031,
+                  "step": 1
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 9.226405143737793,
+                  "step": 2
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 5.245208740234375e-06,
+                  "min_reference_top2_gap": 12.50481128692627,
+                  "step": 3
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 2.86102294921875e-06,
+                  "min_reference_top2_gap": 2.0779075622558594,
+                  "step": 4
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 11.724563598632812,
+                  "step": 5
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 5.7220458984375e-06,
+                  "min_reference_top2_gap": 12.564397811889648,
+                  "step": 6
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 12.925494194030762,
+                  "step": 7
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.871493577957153,
+                  "step": 8
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.527215957641602,
+                  "step": 9
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 1.9073486328125e-06,
+                  "min_reference_top2_gap": 12.680803775787354,
+                  "step": 10
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 1.9073486328125e-06,
+                  "min_reference_top2_gap": 12.893403053283691,
+                  "step": 11
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.53579330444336,
+                  "step": 12
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 13.088430404663086,
+                  "step": 13
+                }
+              ],
+              "tolerance": {
+                "atol": 1e-05,
+                "rtol": 0.0001
+              },
+              "uncached_input_lengths": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26
+              ]
+            },
+            "decoded": [
+              " shares story.<eos>",
+              "Add 2 and 3.</think><final>5</final><eos>"
+            ],
+            "finish_reasons": [
+              "eos",
+              "eos"
+            ],
+            "generated_ids": [
+              [
+                40,
+                891,
+                123,
+                40,
+                1092,
+                54,
+                2
+              ],
+              [
+                73,
+                502,
+                40,
+                58,
+                40,
+                268,
+                40,
+                59,
+                54,
+                5,
+                6,
+                61,
+                7,
+                2
+              ]
+            ],
+            "generated_lengths": [
+              7,
+              14
+            ],
+            "generated_mask": [
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ],
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ]
+            ],
+            "seeded_replay_exact": true,
+            "settings": {
+              "do_sample": false,
+              "eos_token_id": 2,
+              "max_new_tokens": 16,
+              "pad_token_id": 0,
+              "temperature": 0.8,
+              "top_k": 40,
+              "top_p": 0.95
+            }
+          },
+          "sampled": {
+            "cache_equivalence": {
+              "cached_input_lengths": [
+                13,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "checks": {
+                "active_logits_close": true,
+                "masks_lengths_finish_reasons_exact": true,
+                "prefill_once_token_decode": true,
+                "token_ids_exact": true
+              },
+              "finish_reasons": [
+                "eos",
+                "eos"
+              ],
+              "generated_ids": [
+                [
+                  40,
+                  891,
+                  123,
+                  40,
+                  1092,
+                  54,
+                  2
+                ],
+                [
+                  73,
+                  502,
+                  40,
+                  58,
+                  40,
+                  268,
+                  40,
+                  59,
+                  54,
+                  5,
+                  6,
+                  61,
+                  7,
+                  2
+                ]
+              ],
+              "generated_lengths": [
+                7,
+                14
+              ],
+              "generated_mask": [
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ]
+              ],
+              "logit_dtype": "torch.float32",
+              "max_abs_logit_error": 5.7220458984375e-06,
+              "min_reference_top2_gap": 1.2438850402832031,
+              "position_offset": 7,
+              "seed": 42,
+              "settings": {
+                "do_sample": true,
+                "eos_token_id": 2,
+                "max_new_tokens": 16,
+                "pad_token_id": 0,
+                "temperature": 0.8,
+                "top_k": 40,
+                "top_p": 0.95
+              },
+              "status": "passed",
+              "steps": [
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 0.0,
+                  "min_reference_top2_gap": 13.336323261260986,
+                  "step": 0
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 4.76837158203125e-06,
+                  "min_reference_top2_gap": 1.2438850402832031,
+                  "step": 1
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 9.226405143737793,
+                  "step": 2
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 5.245208740234375e-06,
+                  "min_reference_top2_gap": 12.50481128692627,
+                  "step": 3
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 2.86102294921875e-06,
+                  "min_reference_top2_gap": 2.0779075622558594,
+                  "step": 4
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 11.724563598632812,
+                  "step": 5
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 5.7220458984375e-06,
+                  "min_reference_top2_gap": 12.564397811889648,
+                  "step": 6
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 12.925494194030762,
+                  "step": 7
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.871493577957153,
+                  "step": 8
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.527215957641602,
+                  "step": 9
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 1.9073486328125e-06,
+                  "min_reference_top2_gap": 12.680803775787354,
+                  "step": 10
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 1.9073486328125e-06,
+                  "min_reference_top2_gap": 12.893403053283691,
+                  "step": 11
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 2.384185791015625e-06,
+                  "min_reference_top2_gap": 12.53579330444336,
+                  "step": 12
+                },
+                {
+                  "active_rows": 1,
+                  "max_abs_logit_error": 3.814697265625e-06,
+                  "min_reference_top2_gap": 13.088430404663086,
+                  "step": 13
+                }
+              ],
+              "tolerance": {
+                "atol": 1e-05,
+                "rtol": 0.0001
+              },
+              "uncached_input_lengths": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26
+              ]
+            },
+            "decoded": [
+              " shares story.<eos>",
+              "Add 2 and 3.</think><final>5</final><eos>"
+            ],
+            "finish_reasons": [
+              "eos",
+              "eos"
+            ],
+            "generated_ids": [
+              [
+                40,
+                891,
+                123,
+                40,
+                1092,
+                54,
+                2
+              ],
+              [
+                73,
+                502,
+                40,
+                58,
+                40,
+                268,
+                40,
+                59,
+                54,
+                5,
+                6,
+                61,
+                7,
+                2
+              ]
+            ],
+            "generated_lengths": [
+              7,
+              14
+            ],
+            "generated_mask": [
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ],
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ]
+            ],
+            "seeded_replay_exact": true,
+            "settings": {
+              "do_sample": true,
+              "eos_token_id": 2,
+              "max_new_tokens": 16,
+              "pad_token_id": 0,
+              "temperature": 0.8,
+              "top_k": 40,
+              "top_p": 0.95
+            }
+          }
+        },
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "position_offset": 7,
+        "seed": 42,
+        "status": "passed",
+        "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+        "work_package": "WP06.4"
+      },
+      "report_sha256": "79d6ebe63a176ccda2d33012c539b60bbc0271264ebee92f061f6e547d16c661",
+      "run_directory": "artifacts/runs/20261109T033809348012Z-wp06-4-generation-equivalence-seed42-f8f2a099"
+    },
+    {
+      "environment": {
+        "cuda_version": "12.8",
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "selected_device": "cpu"
+      },
+      "report": {
+        "attention_mask": [
+          [
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        "backend": "cached_vs_uncached",
+        "batch_source": "fixed_synthetic_prompt_ids",
+        "checkpoint_sha256": null,
+        "checks": {
+          "eos_mask_length_bookkeeping": true,
+          "global_rng_unchanged": true,
+          "greedy_and_sampled_seeded_replay": true
+        },
+        "device": "cpu",
+        "fixture_sha256": null,
+        "input_ids": [
+          [
+            1,
+            9,
+            10,
+            0
+          ],
+          [
+            0,
+            1,
+            11,
+            12
+          ]
+        ],
+        "limitation": "Diagnostic generation only; no benchmark quality claim or latency/VRAM profiling. Fixed-runtime sampling equivalence is not a cross-platform guarantee.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.0,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "outputs": {
+          "greedy": {
+            "cache_equivalence": {
+              "cached_input_lengths": [
+                4,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "checks": {
+                "active_logits_close": true,
+                "masks_lengths_finish_reasons_exact": true,
+                "prefill_once_token_decode": true,
+                "token_ids_exact": true
+              },
+              "finish_reasons": [
+                "max_new_tokens",
+                "max_new_tokens"
+              ],
+              "generated_ids": [
+                [
+                  4863,
+                  4863,
+                  3952,
+                  3952,
+                  3952,
+                  3952,
+                  3952,
+                  3952,
+                  3952,
+                  3952,
+                  3952,
+                  3952,
+                  3952,
+                  3952,
+                  3952,
+                  3952
+                ],
+                [
+                  4862,
+                  4862,
+                  4862,
+                  4862,
+                  4862,
+                  6740,
+                  6740,
+                  6740,
+                  6740,
+                  6740,
+                  6740,
+                  6740,
+                  6740,
+                  6740,
+                  6740,
+                  6740
+                ]
+              ],
+              "generated_lengths": [
+                16,
+                16
+              ],
+              "generated_mask": [
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ]
+              ],
+              "logit_dtype": "torch.float32",
+              "max_abs_logit_error": 1.7583370208740234e-06,
+              "min_reference_top2_gap": 0.004115939140319824,
+              "position_offset": 0,
+              "seed": 42,
+              "settings": {
+                "do_sample": false,
+                "eos_token_id": 2,
+                "max_new_tokens": 16,
+                "pad_token_id": 0,
+                "temperature": 0.8,
+                "top_k": 40,
+                "top_p": 0.95
+              },
+              "status": "passed",
+              "steps": [
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 0.0,
+                  "min_reference_top2_gap": 0.004115939140319824,
+                  "step": 0
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.2814998626708984e-06,
+                  "min_reference_top2_gap": 0.0672159194946289,
+                  "step": 1
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3113021850585938e-06,
+                  "min_reference_top2_gap": 0.1339176893234253,
+                  "step": 2
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3113021850585938e-06,
+                  "min_reference_top2_gap": 0.2035883665084839,
+                  "step": 3
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3113021850585938e-06,
+                  "min_reference_top2_gap": 0.06811988353729248,
+                  "step": 4
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3560056686401367e-06,
+                  "min_reference_top2_gap": 0.03364574909210205,
+                  "step": 5
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3709068298339844e-06,
+                  "min_reference_top2_gap": 0.5167617797851562,
+                  "step": 6
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.430511474609375e-06,
+                  "min_reference_top2_gap": 0.49342894554138184,
+                  "step": 7
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3113021850585938e-06,
+                  "min_reference_top2_gap": 0.4460824728012085,
+                  "step": 8
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3560056686401367e-06,
+                  "min_reference_top2_gap": 0.40289735794067383,
+                  "step": 9
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3113021850585938e-06,
+                  "min_reference_top2_gap": 0.36726927757263184,
+                  "step": 10
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.430511474609375e-06,
+                  "min_reference_top2_gap": 0.32880163192749023,
+                  "step": 11
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.4007091522216797e-06,
+                  "min_reference_top2_gap": 0.2864813804626465,
+                  "step": 12
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.7583370208740234e-06,
+                  "min_reference_top2_gap": 0.24701130390167236,
+                  "step": 13
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.4901161193847656e-06,
+                  "min_reference_top2_gap": 0.2169564962387085,
+                  "step": 14
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.6689300537109375e-06,
+                  "min_reference_top2_gap": 0.197717547416687,
+                  "step": 15
+                }
+              ],
+              "tolerance": {
+                "atol": 1e-05,
+                "rtol": 0.0001
+              },
+              "uncached_input_lengths": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19
+              ]
+            },
+            "decoded": null,
+            "finish_reasons": [
+              "max_new_tokens",
+              "max_new_tokens"
+            ],
+            "generated_ids": [
+              [
+                4863,
+                4863,
+                3952,
+                3952,
+                3952,
+                3952,
+                3952,
+                3952,
+                3952,
+                3952,
+                3952,
+                3952,
+                3952,
+                3952,
+                3952,
+                3952
+              ],
+              [
+                4862,
+                4862,
+                4862,
+                4862,
+                4862,
+                6740,
+                6740,
+                6740,
+                6740,
+                6740,
+                6740,
+                6740,
+                6740,
+                6740,
+                6740,
+                6740
+              ]
+            ],
+            "generated_lengths": [
+              16,
+              16
+            ],
+            "generated_mask": [
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ]
+            ],
+            "seeded_replay_exact": true,
+            "settings": {
+              "do_sample": false,
+              "eos_token_id": 2,
+              "max_new_tokens": 16,
+              "pad_token_id": 0,
+              "temperature": 0.8,
+              "top_k": 40,
+              "top_p": 0.95
+            }
+          },
+          "sampled": {
+            "cache_equivalence": {
+              "cached_input_lengths": [
+                4,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "checks": {
+                "active_logits_close": true,
+                "masks_lengths_finish_reasons_exact": true,
+                "prefill_once_token_decode": true,
+                "token_ids_exact": true
+              },
+              "finish_reasons": [
+                "max_new_tokens",
+                "max_new_tokens"
+              ],
+              "generated_ids": [
+                [
+                  7482,
+                  4849,
+                  2872,
+                  4305,
+                  7853,
+                  5256,
+                  5256,
+                  6823,
+                  4863,
+                  7439,
+                  6386,
+                  6386,
+                  227,
+                  2626,
+                  6232,
+                  1655
+                ],
+                [
+                  4849,
+                  402,
+                  5619,
+                  3112,
+                  7323,
+                  7281,
+                  6471,
+                  3420,
+                  7085,
+                  7085,
+                  402,
+                  2600,
+                  5181,
+                  4143,
+                  1969,
+                  1969
+                ]
+              ],
+              "generated_lengths": [
+                16,
+                16
+              ],
+              "generated_mask": [
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ]
+              ],
+              "logit_dtype": "torch.float32",
+              "max_abs_logit_error": 1.5795230865478516e-06,
+              "min_reference_top2_gap": 0.0015909671783447266,
+              "position_offset": 0,
+              "seed": 42,
+              "settings": {
+                "do_sample": true,
+                "eos_token_id": 2,
+                "max_new_tokens": 16,
+                "pad_token_id": 0,
+                "temperature": 0.8,
+                "top_k": 40,
+                "top_p": 0.95
+              },
+              "status": "passed",
+              "steps": [
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 0.0,
+                  "min_reference_top2_gap": 0.004115939140319824,
+                  "step": 0
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.2516975402832031e-06,
+                  "min_reference_top2_gap": 0.07097923755645752,
+                  "step": 1
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3113021850585938e-06,
+                  "min_reference_top2_gap": 0.0015909671783447266,
+                  "step": 2
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.2665987014770508e-06,
+                  "min_reference_top2_gap": 0.044405460357666016,
+                  "step": 3
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.5795230865478516e-06,
+                  "min_reference_top2_gap": 0.06578433513641357,
+                  "step": 4
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3709068298339844e-06,
+                  "min_reference_top2_gap": 0.004658341407775879,
+                  "step": 5
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3709068298339844e-06,
+                  "min_reference_top2_gap": 0.22271406650543213,
+                  "step": 6
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.385807991027832e-06,
+                  "min_reference_top2_gap": 0.01867818832397461,
+                  "step": 7
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3709068298339844e-06,
+                  "min_reference_top2_gap": 0.0952385663986206,
+                  "step": 8
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3113021850585938e-06,
+                  "min_reference_top2_gap": 0.10270929336547852,
+                  "step": 9
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.341104507446289e-06,
+                  "min_reference_top2_gap": 0.09272289276123047,
+                  "step": 10
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.4007091522216797e-06,
+                  "min_reference_top2_gap": 0.0046149492263793945,
+                  "step": 11
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.3113021850585938e-06,
+                  "min_reference_top2_gap": 0.006659984588623047,
+                  "step": 12
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.5497207641601562e-06,
+                  "min_reference_top2_gap": 0.0036896467208862305,
+                  "step": 13
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.4901161193847656e-06,
+                  "min_reference_top2_gap": 0.02027416229248047,
+                  "step": 14
+                },
+                {
+                  "active_rows": 2,
+                  "max_abs_logit_error": 1.341104507446289e-06,
+                  "min_reference_top2_gap": 0.08600163459777832,
+                  "step": 15
+                }
+              ],
+              "tolerance": {
+                "atol": 1e-05,
+                "rtol": 0.0001
+              },
+              "uncached_input_lengths": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19
+              ]
+            },
+            "decoded": null,
+            "finish_reasons": [
+              "max_new_tokens",
+              "max_new_tokens"
+            ],
+            "generated_ids": [
+              [
+                7482,
+                4849,
+                2872,
+                4305,
+                7853,
+                5256,
+                5256,
+                6823,
+                4863,
+                7439,
+                6386,
+                6386,
+                227,
+                2626,
+                6232,
+                1655
+              ],
+              [
+                4849,
+                402,
+                5619,
+                3112,
+                7323,
+                7281,
+                6471,
+                3420,
+                7085,
+                7085,
+                402,
+                2600,
+                5181,
+                4143,
+                1969,
+                1969
+              ]
+            ],
+            "generated_lengths": [
+              16,
+              16
+            ],
+            "generated_mask": [
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ]
+            ],
+            "seeded_replay_exact": true,
+            "settings": {
+              "do_sample": true,
+              "eos_token_id": 2,
+              "max_new_tokens": 16,
+              "pad_token_id": 0,
+              "temperature": 0.8,
+              "top_k": 40,
+              "top_p": 0.95
+            }
+          }
+        },
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "position_offset": 0,
+        "seed": 42,
+        "status": "passed",
+        "tokenizer_fingerprint": null,
+        "work_package": "WP06.4"
+      },
+      "report_sha256": "20d260984447bef33e0e395cdaf1e44b63cd553a1852d28c19a05452e27cc8cf",
+      "run_directory": "artifacts/runs/20261109T033836495563Z-wp06-4-generation-equivalence-seed42-38557655"
+    }
+  ],
+  "schema_version": 1,
+  "status": "accepted_phase_only",
+  "tests": {
+    "additional_cuda_cases": 25,
+    "cpu_only_ci_skips": "Two existing hardware cases: cross-device cache and wrong-device sampling RNG",
+    "failed": 0,
+    "full_local_passed": 586,
+    "phase_cpu_cases": 35,
+    "phase_local_passed": 60
+  },
+  "work_package": "WP06.4"
+}

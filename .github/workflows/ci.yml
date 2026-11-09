@@ -63,6 +63,8 @@ jobs:
         run: uv run --no-sync python scripts/check_cached_forward.py --device cpu
       - name: WP06.3 greedy and sampled generation smoke
         run: uv run --no-sync python scripts/check_generation.py --device cpu
+      - name: WP06.4 cached/uncached generation equivalence
+        run: uv run --no-sync python scripts/check_generation_equivalence.py --device cpu
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree

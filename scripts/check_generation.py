@@ -18,6 +18,7 @@ from llm_scratch.inference.generate import generate
 from llm_scratch.model.config import ModelConfig
 from llm_scratch.model.transformer import CausalLM
 from llm_scratch.reasoning.formatting import encode_reasoning_prompt
+from llm_scratch.research.generation_equivalence import check_generation_equivalence
 from llm_scratch.utils.config import load_config
 from llm_scratch.utils.environment import inspect_environment
 from llm_scratch.utils.io import write_json
@@ -25,8 +26,14 @@ from llm_scratch.utils.logging import Run
 from llm_scratch.utils.seed import seed_everything
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
+def main(*, compare_cache: bool = False) -> None:
+    parser = argparse.ArgumentParser(
+        description=(
+            "WP06.4 actual cached/uncached generation logits and token equivalence"
+            if compare_cache
+            else __doc__
+        )
+    )
     parser.add_argument("--config", type=Path, default=Path("configs/experiments/local_smoke.toml"))
     parser.add_argument(
         "--policy", type=Path, default=Path("configs/sampling/wp06_generation.toml")
@@ -35,6 +42,7 @@ def main() -> None:
     parser.add_argument("--checkpoint", type=Path)
     parser.add_argument("--tokenizer", type=Path)
     parser.add_argument("--seed", type=int)
+    parser.add_argument("--position-offset", type=int, default=0)
     parser.add_argument("--output-root", type=Path)
     args = parser.parse_args()
     source = args.policy.read_text(encoding="utf-8")
@@ -45,7 +53,9 @@ def main() -> None:
     config = load_config(
         args.config, device=args.device, output_root=args.output_root, seed=args.seed
     )
-    config.data["experiment"]["name"] = "wp06-3-generation"
+    config.data["experiment"]["name"] = (
+        "wp06-4-generation-equivalence" if compare_cache else "wp06-3-generation"
+    )
     architecture = ModelConfig.from_dict(config.data["model"])
     with Run(config) as run:
         (run.path / "config_sources/runtime_generation.toml").write_text(source, encoding="utf-8")
@@ -105,8 +115,34 @@ def main() -> None:
             ("greedy", replace(policy, do_sample=False)),
             ("sampled", replace(policy, do_sample=True)),
         ):
-            output = generate(model, ids, mask, config=settings, seed=seed)
-            replay = generate(model, ids, mask, config=settings, seed=seed)
+            comparison = None
+            if compare_cache:
+                comparison = check_generation_equivalence(
+                    model,
+                    ids,
+                    mask,
+                    config=settings,
+                    seed=seed,
+                    position_offset=args.position_offset,
+                )
+            output = generate(
+                model,
+                ids,
+                mask,
+                config=settings,
+                seed=seed,
+                use_cache=compare_cache,
+                position_offset=args.position_offset,
+            )
+            replay = generate(
+                model,
+                ids,
+                mask,
+                config=settings,
+                seed=seed,
+                use_cache=compare_cache,
+                position_offset=args.position_offset,
+            )
             for field in ("sequences", "attention_mask", "generated_lengths"):
                 torch.testing.assert_close(
                     getattr(output, field), getattr(replay, field), rtol=0, atol=0
@@ -140,16 +176,21 @@ def main() -> None:
                 else None,
                 "seeded_replay_exact": True,
             }
+            if comparison is not None:
+                if generated != comparison["generated_ids"]:
+                    raise AssertionError("Cached replay differs from equivalence trace")
+                outputs[name]["cache_equivalence"] = comparison
         if not torch.equal(cpu_rng, torch.get_rng_state()) or any(
             not torch.equal(a, b)
             for a, b in zip(cuda_rng, torch.cuda.get_rng_state_all(), strict=True)
         ):
             raise AssertionError("Generation advanced global RNG")
         report = {
-            "work_package": "WP06.3",
+            "work_package": "WP06.4" if compare_cache else "WP06.3",
             "status": "passed",
             "device": args.device,
-            "backend": "uncached_full_prefix",
+            "backend": "cached_vs_uncached" if compare_cache else "uncached_full_prefix",
+            "position_offset": args.position_offset,
             "seed": seed,
             "model_config": architecture.to_dict(),
             "parameter_counts": model.parameter_counts(),
@@ -166,11 +207,20 @@ def main() -> None:
                 "global_rng_unchanged": True,
             },
             "limitation": (
-                "Diagnostic generation only; no benchmark quality claim, "
-                "cached equivalence or latency/VRAM profiling."
+                "Diagnostic generation only; no benchmark quality claim or latency/VRAM profiling. "
+                "Fixed-runtime sampling equivalence is not a cross-platform guarantee."
             ),
         }
-        write_json(run.path / "artifacts/generation_report.json", report)
+        report_name = (
+            "generation_equivalence_report.json" if compare_cache else "generation_report.json"
+        )
+        write_json(run.path / "artifacts" / report_name, report)
+        if compare_cache:
+            from llm_scratch.research import generation_equivalence
+
+            run.metadata["equivalence_checker_sha256"] = hashlib.sha256(
+                Path(generation_equivalence.__file__).read_bytes()
+            ).hexdigest()
         run.metadata.update(
             execution_device=args.device,
             tokenizer_fingerprint=model.tokenizer_fingerprint,
@@ -179,7 +229,7 @@ def main() -> None:
         )
         write_json(run.path / "metadata.json", run.metadata)
         run.log(
-            "generation_passed",
+            "generation_equivalence_passed" if compare_cache else "generation_passed",
             checks=report["checks"],
             generated_lengths={k: v["generated_lengths"] for k, v in outputs.items()},
         )

@@ -54,7 +54,6 @@ Hook projection xác minh decode chỉ project token mới và past K không đ�
 
 Các test dự kiến theo HQ, thêm cùng implementation:
 
-- Cached/uncached generated-token integration sẽ được thêm cùng WP06.4.
 - `test_sample_bank.py`: contract, ordering và reproducibility.
 - `test_policy_replay.py`: prefix-only observations, không gold leakage.
 - `test_confidence.py`: confidence signal, stopping và validation-only calibration.
@@ -70,3 +69,12 @@ settings, statistical frequencies, private RNG replay và input/config errors.
 EOS từng hàng và cả batch, EOS/PAD dùng chung ID, mask/length/budget/context boundaries,
 finished rows không tiêu thụ sampling draws và real-model seeded baseline.
 CPU/CUDA được kiểm tra; wrong-device RNG case cần CUDA và skip trên CPU-only CI.
+
+## WP06.4 cached/uncached generation
+
+`test_generation_equivalence.py` chạy hai generation paths thật với các precision,
+padding layouts, sampling policies và scalar RoPE offsets. So active logits theo
+tolerance, exact IDs/masks/lengths/stop reasons; kiểm tra EOS lệch hàng/PAD=EOS,
+model-derived EOS, prefill/decode projection lengths, unchanged prefix/storage,
+cache masks/positions, request isolation/release, zero budget, context boundary,
+autocast, RNG và hook cleanup khi forward lỗi. 60 cases local: 35 CPU + 25 CUDA.

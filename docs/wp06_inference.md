@@ -8,11 +8,11 @@ toàn bộ sau cached/uncached equivalence và profiling thực đo ở phase cu
 | WP06.1 | KV storage theo layer, append transaction, masks/positions, reset, bounds/payload | Copy/concat chính xác, không desync layer, rollback giữ prefix, dtype/device/limit đúng | Đã triển khai |
 | WP06.2 | Tích hợp attention/model với prefill và token/chunk decode | Cached logits khớp full forward, RoPE offset/mask đúng, model ownership/context checks | Đã triển khai |
 | WP06.3 | Greedy, temperature, top-k/top-p, EOS và seeded generation | Sampling/filtering đúng, generated token IDs/masks/context/EOS nhất quán | Đã triển khai |
-| WP06.4 | Cached/uncached generation integration | Logits trong tolerance, greedy tokens giống nhau; sampling fixtures cùng RNG kiểm soát, padding/offset boundaries | Chưa triển khai |
+| WP06.4 | Cached/uncached generation integration | Logits trong tolerance, greedy tokens giống nhau; sampling fixtures cùng RNG kiểm soát, padding/offset boundaries | Đã triển khai |
 | WP06.5 | Online profiling tại prompt L=128/512/1024/2048 | TTFT, next-token latency, tokens/s và allocated/reserved/peak VRAM thực đo, protocol và environment đầy đủ | Chưa triển khai |
 
-Đã hoàn thành WP06.1–WP06.3: cached model forward và uncached generation baseline.
-Generation dùng cache sẽ tích hợp/đối chiếu ở WP06.4. Không dùng cache payload hoặc
+Đã hoàn thành WP06.1–WP06.4: cached model forward, sampling và hai generation paths
+đã đối chiếu logits/token IDs trên fixed fixtures. Không dùng cache payload hoặc
 offline replay làm bằng chứng latency/VRAM; profiling thực đo thuộc WP06.5.
 
 ## Các quyết định tích hợp đã chốt
@@ -191,12 +191,14 @@ tokens = output.generated_ids[0, :output.generated_lengths[0]].tolist()
 text = tokenizer.decode(tokens)
 ```
 
-`generate` là uncached full-prefix baseline ở phase này. Không thay mode của model;
+WP06.3 tạo uncached full-prefix baseline; WP06.4 thêm `use_cache=True` bên dưới.
+Không thay mode của model;
 caller phải `eval()`, hàm tự disable gradients. Prompt IDs là int32/int64 `[B,P]`
 trên model device, mask optional binary `[B,P]`, mỗi hàng phải có ít nhất một valid
 token. Output IDs là int64, masks bool. Không thêm BOS hoặc tokenize tự động:
 ordinary text dùng codec WP04; reasoning dùng `encode_reasoning_prompt` cùng SFT framing.
-Chưa expose custom positions ở generation; positions mặc định theo physical columns.
+Positions theo physical columns; WP06.4 thêm scalar `position_offset`, chưa nhận
+arbitrary per-row custom position histories ở generation.
 
 Initial logits đọc tại **last valid prompt token của từng hàng**, hỗ trợ left/right
 padding và interior gaps. Generated tokens được append sau physical prompt width;
@@ -254,8 +256,71 @@ uv run --no-sync python scripts/check_generation.py --device cpu
 uv run --no-sync python scripts/check_generation.py --device cuda --checkpoint PATH/TO/overfit.pt --tokenizer PATH/TO/artifacts/tokenizer
 ```
 
-Kết quả: [WP06.3 validation](wp06_3_validation.md). WP06.4 tiếp tục cached/uncached
-generation equivalence, WP06.5 mới đo TTFT/latency/throughput/VRAM.
+Kết quả baseline: [WP06.3 validation](wp06_3_validation.md).
+
+## WP06.4 — cached generation và equivalence
+
+```python
+cached = generate(model, prompt_ids, prompt_mask, config=policy, seed=42, use_cache=True)
+reference = generate(model, prompt_ids, prompt_mask, config=policy, seed=42, use_cache=False)
+```
+
+`use_cache` phải là bool, mặc định False để giữ baseline WP06.3. Cached call cấp cache
+riêng theo B/model/device/effective KV dtype, capacity `P + max_new_tokens`. Prefill
+chạy toàn prompt và chọn last-valid readout của từng hàng; sau đó mỗi forward chỉ
+nhận một token mới `[B,1]` và mask `[B,1]`. Offset mặc định dùng committed physical
+length của KV cache. Khác nhau về số valid prompt tokens không được làm mất padding
+columns khỏi cache hoặc thay RoPE convention giữa hai paths.
+
+Một forward sinh một token; khi đã dừng thì không forward token vừa sinh thêm lần
+nữa. Nếu chạy S bước thì cache chỉ chứa P+S-1 physical columns, trong khi output có
+P+S columns. Đây là request-local cache, không expose trong output hoặc cho phép
+external continuation. Call mới luôn prefill/cache mới, kể cả cùng model và seed.
+Budget 0 không allocate cache/forward; EOS tại bước đầu không có decode thừa.
+
+EOS/PAD/sampling contract giữ như WP06.3. EOS đã sinh có mask 1 khi được đưa vào
+forward kế; padding sau khi hàng dừng có mask 0. Finished rows không được sampling
+hoặc reactivated, dù cache vẫn append physical columns cho batch cố định. Logits
+của các rows đó có thể khác reference (zero masked query thay vì EOS readout cũ),
+nên chỉ **active next-token readouts** được dùng để nghiệm thu logits.
+
+Optional `position_offset` là scalar integer >=0 dùng cho cả hai paths. RoPE index
+ở physical column i là `position_offset+i`; prefill và từng append truyền explicit
+positions nhất quán khi offset khác 0. Không lấy offset theo số valid tokens, không
+đoán lịch sử positions tùy biến. Kiểm tra trước cả allocation/forward:
+`position_offset + P + max_new_tokens <= context_length`. Offset không tăng physical
+cache length hoặc đổi capacity. Baseline context vẫn 1024; không tự mở rộng context.
+
+`research.generation_equivalence.check_generation_equivalence` chạy generation thật
+hai lần với cùng settings/seed, dùng temporary
+[forward hooks](https://docs.pytorch.org/docs/2.9/generated/torch.nn.Module.html#torch.nn.Module.register_forward_hook)
+để thu readout logits từng bước và input lengths; hook được remove trong finally.
+Đối chiếu toàn sequences, generated IDs/masks, lengths, finish reasons chính xác;
+active logits theo tolerance FP64 1e-10/1e-12, FP32 1e-4/1e-5,
+FP16 0,005/0,002, BF16 0,02/0,01 (rtol/atol). Kiểm tra forward lengths thật:
+cached `[P,1,...,1]`, uncached `[P,P+1,...]`; lưu per-step errors và reference top-2 gaps.
+
+Greedy tokens và seeded stochastic fixtures đạt exact equality trong kiểm thử.
+Numerically close logits không tự bảo đảm token equality với mọi near-tie, nucleus
+boundary hoặc random draw; không round/ép logits, chỉnh seed hoặc nới tolerance để
+che divergence. Fixture thất bại thì checker raise và run lưu failed. Kết quả chỉ
+áp dụng cho model/precision/device/runtime/batch schedule đã ghi, không hứa sampling
+IDs giống nhau giữa CPU/GPU hoặc arbitrary requests.
+
+```powershell
+uv run --no-sync python scripts/check_generation_equivalence.py --device cpu
+uv run --no-sync python scripts/check_generation_equivalence.py --device cuda --checkpoint PATH/TO/overfit.pt --tokenizer PATH/TO/artifacts/tokenizer
+uv run --no-sync python scripts/check_generation_equivalence.py --device cuda --position-offset 7 --checkpoint PATH/TO/overfit.pt --tokenizer PATH/TO/artifacts/tokenizer
+```
+
+Probe dùng shared setup/policy với WP06.3, chạy greedy và sampled paths, rồi replay
+cached call cùng seed. Ghi report `artifacts/generation_equivalence_report.json`,
+policy/config snapshots, environment, source/checkpoint/tokenizer hashes và log.
+CI dùng random candidate weights/synthetic prompts không tải external data; local
+dùng checkpoint WP05/tokenizer WP04 trên authored diagnostic prefixes, không dùng test
+set hoặc tuyên bố benchmark quality. Trace copy logits về CPU có synchronization:
+**không dùng acceptance probe/hook làm profiling**. Kết quả:
+[WP06.4 validation](wp06_4_validation.md). WP06.5 mới đo TTFT/latency/throughput/VRAM.
 
 ## Protocol profiling cần hoàn tất ở phase 5
 

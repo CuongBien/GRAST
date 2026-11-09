@@ -1,4 +1,4 @@
-"""WP06.3 uncached autoregressive baseline; cache integration follows in WP06.4."""
+"""Autoregressive inference with uncached reference and request-local static KV cache."""
 
 from __future__ import annotations
 
@@ -31,19 +31,28 @@ def generate(
     *,
     config: GenerationConfig | None = None,
     seed: int = 42,
+    use_cache: bool = False,
+    position_offset: int = 0,
 ) -> GenerationOutput:
-    """Generate using full-prefix forwards without changing model mode or global RNG.
+    """Generate without changing model mode or global RNG.
 
     All masks/positions follow physical columns, including padding. Initial readout
     selects each row's last valid prompt token; new tokens append after prompt width.
     EOS is included, padding after EOS is masked out, and finished rows are not sampled.
     Prompt EOS does not finish a request. No implicit BOS or control-token suppression.
     Reject width + budget > context upfront; never truncate or silently reduce budget.
+    Cached mode prefills once then forwards only the last sampled token per step.
+    position_offset shifts every physical RoPE position; it never compacts padding.
+    Cache is private to this call and not returned (last sampled token is not fed).
     """
     if not isinstance(model, CausalLM):
         raise ValueError("model must be CausalLM")
     if any(module.training for module in model.modules()):
         raise ValueError("Generation requires model.eval()")
+    if type(use_cache) is not bool:
+        raise ValueError("use_cache must be boolean")
+    if type(position_offset) is not int or position_offset < 0:
+        raise ValueError("position_offset must be a nonnegative integer")
     config = GenerationConfig() if config is None else config
     if not isinstance(config, GenerationConfig):
         raise ValueError("config must be GenerationConfig")
@@ -63,8 +72,10 @@ def generate(
     if torch.any((input_ids < 0) | (input_ids >= model.config.vocab_size)):
         raise ValueError("input_ids outside vocabulary, including padding columns")
     batch, width = input_ids.shape
-    if width + config.max_new_tokens > model.config.context_length:
-        raise ValueError("Prompt physical width + max_new_tokens exceeds context limit")
+    if position_offset + width + config.max_new_tokens > model.config.context_length:
+        raise ValueError(
+            "RoPE offset + prompt physical width + max_new_tokens exceeds context limit"
+        )
     if attention_mask is None:
         mask = torch.ones_like(input_ids, dtype=torch.bool)
     else:
@@ -87,8 +98,27 @@ def generate(
     rows = torch.arange(batch, device=input_ids.device)
     finished = torch.zeros(batch, dtype=torch.bool, device=input_ids.device)
     generator = torch.Generator(device=input_ids.device).manual_seed(seed)
-    for _ in range(config.max_new_tokens):
-        logits = model(sequences, mask).logits[rows, last_valid]
+    cache = (
+        model.new_cache(batch, max_length=width + config.max_new_tokens)
+        if use_cache and config.max_new_tokens
+        else None
+    )
+    for step in range(config.max_new_tokens):
+        chunk = step > 0 and use_cache
+        model_ids = sequences[:, -1:] if chunk else sequences
+        model_mask = mask[:, -1:] if chunk else mask
+        kwargs = {}
+        if use_cache:
+            kwargs.update(use_cache=True, cache=cache)
+        if position_offset:
+            start = sequences.shape[1] - 1 if chunk else 0
+            kwargs["position_ids"] = torch.arange(
+                position_offset + start,
+                position_offset + sequences.shape[1],
+                device=input_ids.device,
+            )
+        output = model(model_ids, model_mask, **kwargs)
+        logits = output.logits[:, 0] if chunk else output.logits[rows, last_valid]
         active = ~finished
         next_ids = torch.full(
             (batch,), config.pad_token_id, device=input_ids.device, dtype=torch.long

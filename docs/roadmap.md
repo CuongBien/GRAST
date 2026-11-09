@@ -59,9 +59,9 @@ WP06.3 greedy/temperature/top-k/top-p/EOS → WP06.4 cached/uncached equivalence
 WP06.5 online profiling TTFT/latency/throughput/VRAM tại L=128/512/1024/2048.
 Từng phase có báo cáo/commit riêng; chưa chốt toàn WP06 trước equivalence và thực đo.
 Xem [kế hoạch và contracts](wp06_inference.md), [phase 1](wp06_1_validation.md),
-[phase 2](wp06_2_validation.md), [phase 3](wp06_3_validation.md). Đã có cached model
-forward, context/ownership guards và seeded uncached generation với greedy/temperature/
-top-k/top-p/EOS; chưa chốt cached generation equivalence hoặc profiling thực đo.
+[phase 2](wp06_2_validation.md), [phase 3](wp06_3_validation.md),
+[phase 4](wp06_4_validation.md). Đã có cached/uncached generation với greedy/temperature/
+top-k/top-p/EOS, logits/tokens equivalence và RoPE/context guards; chưa chốt profiling thực đo.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 

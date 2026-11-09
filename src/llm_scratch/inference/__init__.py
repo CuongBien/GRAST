@@ -1,1 +1,1 @@
-"""Generation settings, sampling and uncached autoregressive inference."""
+"""Generation settings, sampling and cached/uncached autoregressive inference."""
