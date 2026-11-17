@@ -1,0 +1,455 @@
+{
+  "checks": {
+    "exact_engine_state_and_rng_continuation_with_dropout": true,
+    "fresh_process_checkpoint_resume": true,
+    "installed_wheel_smoke_and_resume": true,
+    "mandatory_stdout_logs": true,
+    "notebook_code_cells_parse": true,
+    "ruff_lint_format": true,
+    "token_weighted_accumulation_matches_combined_reference": true,
+    "unique_tied_parameter_optimizer_groups": true,
+    "warmup_cosine_indexing_and_overflow_skip": true,
+    "wheel_sdist_build": true
+  },
+  "colab": {
+    "executed_by_agent": false,
+    "logging": "Popen forwards stdout/stderr line-by-line, Python -u and flush=True",
+    "notebook": "notebooks/wp07_training_smoke.ipynb",
+    "scope": "GPU tiny engine smoke only; corpus pretraining/SFT notebooks follow in WP07.3/4"
+  },
+  "date": "2026-11-17",
+  "limitations": [
+    "Fixed diagnostic batches; no corpus pretraining, CoT SFT or held-out pilot performed.",
+    "Diagnostic eval loss is evaluated on the same fixture, not validation-set generalization.",
+    "Exact resume scoped to same recipe/runtime/hardware; corpus data cursor/packing/shuffle integration follows WP07.2.",
+    "No A100 execution claim; local CPU/RTX4060 smoke only."
+  ],
+  "remaining_phases": [
+    "WP07.2 corpus data pipeline, validation and full data-order resume",
+    "WP07.3 pretraining Colab runner and corpus loss curves (user long run)",
+    "WP07.4 normalized CoT SFT and Colab runner (user long run)",
+    "WP07.5 multiple-checkpoint capability, text generation and fixed pilot evidence"
+  ],
+  "runs": [
+    {
+      "config_sha256": "0435d485fd25cbd15f91dd528fd979f7a5c76d40b07ca6f88cca8f224db2c8ba",
+      "environment": {
+        "cuda_available": true,
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "numpy_version": "2.4.6",
+        "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, 610.47, 8188 MiB",
+        "platform": "Windows-10-10.0.22631-SP0",
+        "process_environment": {
+          "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+          "MKL_NUM_THREADS": null,
+          "OMP_NUM_THREADS": null,
+          "PYTHONHASHSEED": null
+        },
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "requested_device": "cpu",
+        "selected_device": "cpu",
+        "validation": {
+          "errors": [],
+          "ok": true
+        }
+      },
+      "git": {
+        "branch": "feat/wp07-1-training-engine",
+        "commit": "dda47201a032442f13668f2d1eacf4b5aa88a260",
+        "dirty": false,
+        "state": "committed",
+        "untracked_files": 0
+      },
+      "logged_train_updates_including_replay": 10,
+      "loss_history": [
+        {
+          "diagnostic_eval_loss": 5.009891986846924,
+          "lr": 0.003,
+          "step": 1,
+          "train_loss": 5.70955638885498
+        },
+        {
+          "diagnostic_eval_loss": 4.640563011169434,
+          "lr": 0.003,
+          "step": 2,
+          "train_loss": 5.054348468780518
+        },
+        {
+          "diagnostic_eval_loss": 4.3871262550354,
+          "lr": 0.002604594154601839,
+          "step": 3,
+          "train_loss": 4.675390148162842
+        },
+        {
+          "diagnostic_eval_loss": 4.211676216125488,
+          "lr": 0.0016500000000000002,
+          "step": 4,
+          "train_loss": 4.420640182495117
+        },
+        {
+          "diagnostic_eval_loss": 4.129306125640869,
+          "lr": 0.0006954058453981609,
+          "step": 5,
+          "train_loss": 4.256513500213623
+        },
+        {
+          "diagnostic_eval_loss": 4.0910481929779055,
+          "lr": 0.00030000000000000003,
+          "step": 6,
+          "train_loss": 4.195272636413574
+        }
+      ],
+      "package_source_sha256": "50d7014cfb8a5873c8d992f190d9b6b29383c768526d60c68013f0fd7512631a",
+      "report": {
+        "attempts": 6,
+        "checks": {
+          "exact_resume_model_optimizer_scheduler_scaler": true,
+          "loss_decreased": true,
+          "stdout_logs_always": true,
+          "update_losses_and_lrs_exact": true
+        },
+        "device": "cpu",
+        "final_loss": 4.0910481929779055,
+        "initial_loss": 5.70554485321045,
+        "limitation": "Fixed diagnostic windows, not corpus pretraining/SFT or held-out pilot; data ordering/packing follows in WP07.2.",
+        "model_config": {
+          "context_length": 128,
+          "dropout": 0.1,
+          "ffn_hidden_size": 128,
+          "hidden_size": 64,
+          "num_heads": 4,
+          "num_layers": 2,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 280
+        },
+        "parameter_counts": {
+          "blocks": 82176,
+          "final_norm": 64,
+          "lm_head_unique": 0,
+          "token_embedding": 17920,
+          "total": 100160
+        },
+        "precision": "float32",
+        "status": "passed",
+        "tokenizer_fingerprint": null,
+        "training_config": {
+          "beta1": 0.9,
+          "beta2": 0.95,
+          "eps": 1e-08,
+          "gradient_accumulation_steps": 2,
+          "learning_rate": 0.003,
+          "max_grad_norm": 1.0,
+          "max_steps": 6,
+          "min_lr_ratio": 0.1,
+          "precision": "float32",
+          "stage": "pretrain",
+          "warmup_steps": 1,
+          "weight_decay": 0.1
+        },
+        "updates": 6,
+        "work_package": "WP07.1"
+      },
+      "report_sha256": "e38a099be2fca0f62d87a8ff9d168c9d18b79f59bcc8cc4b7d58977e3dea3a40",
+      "run_directory": "artifacts/runs/20261117T112033446309Z-wp07-1-training-engine-seed42-614dfab0"
+    },
+    {
+      "config_sha256": "d23419b8cc3715b43b4c3d21cce86d719633cb632cb160b7af291a7ca96782b3",
+      "environment": {
+        "cuda_available": true,
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "numpy_version": "2.4.6",
+        "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, 610.47, 8188 MiB",
+        "platform": "Windows-10-10.0.22631-SP0",
+        "process_environment": {
+          "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+          "MKL_NUM_THREADS": null,
+          "OMP_NUM_THREADS": null,
+          "PYTHONHASHSEED": null
+        },
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "requested_device": "cuda",
+        "selected_device": "cuda:0",
+        "validation": {
+          "errors": [],
+          "ok": true
+        }
+      },
+      "git": {
+        "branch": "feat/wp07-1-training-engine",
+        "commit": "dda47201a032442f13668f2d1eacf4b5aa88a260",
+        "dirty": false,
+        "state": "committed",
+        "untracked_files": 0
+      },
+      "logged_train_updates_including_replay": 10,
+      "loss_history": [
+        {
+          "diagnostic_eval_loss": 4.999190330505371,
+          "lr": 0.003,
+          "step": 1,
+          "train_loss": 5.723267650604248
+        },
+        {
+          "diagnostic_eval_loss": 4.592193984985352,
+          "lr": 0.003,
+          "step": 2,
+          "train_loss": 5.06226863861084
+        },
+        {
+          "diagnostic_eval_loss": 4.326439285278321,
+          "lr": 0.002604594154601839,
+          "step": 3,
+          "train_loss": 4.623580741882324
+        },
+        {
+          "diagnostic_eval_loss": 4.157153797149658,
+          "lr": 0.0016500000000000002,
+          "step": 4,
+          "train_loss": 4.37024335861206
+        },
+        {
+          "diagnostic_eval_loss": 4.073013496398926,
+          "lr": 0.0006954058453981609,
+          "step": 5,
+          "train_loss": 4.211221408843994
+        },
+        {
+          "diagnostic_eval_loss": 4.035495615005493,
+          "lr": 0.00030000000000000003,
+          "step": 6,
+          "train_loss": 4.126319885253906
+        }
+      ],
+      "package_source_sha256": "50d7014cfb8a5873c8d992f190d9b6b29383c768526d60c68013f0fd7512631a",
+      "report": {
+        "attempts": 6,
+        "checks": {
+          "exact_resume_model_optimizer_scheduler_scaler": true,
+          "loss_decreased": true,
+          "stdout_logs_always": true,
+          "update_losses_and_lrs_exact": true
+        },
+        "device": "cuda",
+        "final_loss": 4.035495615005493,
+        "initial_loss": 5.705499076843262,
+        "limitation": "Fixed diagnostic windows, not corpus pretraining/SFT or held-out pilot; data ordering/packing follows in WP07.2.",
+        "model_config": {
+          "context_length": 128,
+          "dropout": 0.1,
+          "ffn_hidden_size": 128,
+          "hidden_size": 64,
+          "num_heads": 4,
+          "num_layers": 2,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 280
+        },
+        "parameter_counts": {
+          "blocks": 82176,
+          "final_norm": 64,
+          "lm_head_unique": 0,
+          "token_embedding": 17920,
+          "total": 100160
+        },
+        "precision": "float16",
+        "status": "passed",
+        "tokenizer_fingerprint": null,
+        "training_config": {
+          "beta1": 0.9,
+          "beta2": 0.95,
+          "eps": 1e-08,
+          "gradient_accumulation_steps": 2,
+          "learning_rate": 0.003,
+          "max_grad_norm": 1.0,
+          "max_steps": 6,
+          "min_lr_ratio": 0.1,
+          "precision": "float16",
+          "stage": "pretrain",
+          "warmup_steps": 1,
+          "weight_decay": 0.1
+        },
+        "updates": 6,
+        "work_package": "WP07.1"
+      },
+      "report_sha256": "bb3fa0f84951f477add3a4739b04fa5093d81dbe53d9c6854c33eb330890ab5e",
+      "run_directory": "artifacts/runs/20261117T112033136873Z-wp07-1-training-engine-seed42-21eaccf0"
+    },
+    {
+      "config_sha256": "7041b43488b98939847766b78e291e160fa5a97e82a54a448a1924dd8e50b85c",
+      "environment": {
+        "cuda_available": true,
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "numpy_version": "2.4.6",
+        "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, 610.47, 8188 MiB",
+        "platform": "Windows-10-10.0.22631-SP0",
+        "process_environment": {
+          "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+          "MKL_NUM_THREADS": null,
+          "OMP_NUM_THREADS": null,
+          "PYTHONHASHSEED": null
+        },
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "requested_device": "cuda",
+        "selected_device": "cuda:0",
+        "validation": {
+          "errors": [],
+          "ok": true
+        }
+      },
+      "git": {
+        "branch": "feat/wp07-1-training-engine",
+        "commit": "dda47201a032442f13668f2d1eacf4b5aa88a260",
+        "dirty": false,
+        "state": "committed",
+        "untracked_files": 0
+      },
+      "logged_train_updates_including_replay": 10,
+      "loss_history": [
+        {
+          "diagnostic_eval_loss": 6.643035778632531,
+          "lr": 0.003,
+          "step": 1,
+          "train_loss": 9.071026508624737
+        },
+        {
+          "diagnostic_eval_loss": 4.559206265669602,
+          "lr": 0.003,
+          "step": 2,
+          "train_loss": 6.720212386204646
+        },
+        {
+          "diagnostic_eval_loss": 3.3756829041701097,
+          "lr": 0.002604594154601839,
+          "step": 3,
+          "train_loss": 4.556709876427283
+        },
+        {
+          "diagnostic_eval_loss": 2.9009909813220682,
+          "lr": 0.0016500000000000002,
+          "step": 4,
+          "train_loss": 3.392434285237239
+        },
+        {
+          "diagnostic_eval_loss": 2.7432032181666446,
+          "lr": 0.0006954058453981609,
+          "step": 5,
+          "train_loss": 2.9146918883690467
+        },
+        {
+          "diagnostic_eval_loss": 2.693683917705829,
+          "lr": 0.00030000000000000003,
+          "step": 6,
+          "train_loss": 2.757356882095337
+        }
+      ],
+      "package_source_sha256": "50d7014cfb8a5873c8d992f190d9b6b29383c768526d60c68013f0fd7512631a",
+      "report": {
+        "attempts": 6,
+        "checks": {
+          "exact_resume_model_optimizer_scheduler_scaler": true,
+          "loss_decreased": true,
+          "stdout_logs_always": true,
+          "update_losses_and_lrs_exact": true
+        },
+        "device": "cuda",
+        "final_loss": 2.693683917705829,
+        "initial_loss": 8.976757196279673,
+        "limitation": "Fixed diagnostic windows, not corpus pretraining/SFT or held-out pilot; data ordering/packing follows in WP07.2.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.1,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "precision": "bfloat16",
+        "status": "passed",
+        "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+        "training_config": {
+          "beta1": 0.9,
+          "beta2": 0.95,
+          "eps": 1e-08,
+          "gradient_accumulation_steps": 2,
+          "learning_rate": 0.003,
+          "max_grad_norm": 1.0,
+          "max_steps": 6,
+          "min_lr_ratio": 0.1,
+          "precision": "bfloat16",
+          "stage": "pretrain",
+          "warmup_steps": 1,
+          "weight_decay": 0.1
+        },
+        "updates": 6,
+        "work_package": "WP07.1"
+      },
+      "report_sha256": "34fb056c2895d9a7a864629b8794cf77c97ad09498a57a380aa99a24e1c1f2c8",
+      "run_directory": "artifacts/runs/20261117T112033879934Z-wp07-1-training-engine-seed42-47332438"
+    }
+  ],
+  "schema_version": 1,
+  "status": "accepted_phase_only",
+  "tests": {
+    "additional_cuda_cases": 5,
+    "cpu_only_ci_skips": "Three hardware cases repository-wide, including new FP16 overflow case",
+    "failed": 0,
+    "full_local_passed": 639,
+    "phase_cpu_cases": 22,
+    "phase_local_passed": 27
+  },
+  "work_package": "WP07.1",
+  "wp07_status": "in_progress"
+}
