@@ -1,0 +1,499 @@
+{
+  "bundle": {
+    "contents": {
+      "block_size": 64,
+      "dataset_fingerprint": "1adc3dd1a9815cdb08ca60f12373e835b4da7ad8e499eef9f4c1234e1e4ecea3",
+      "files": {
+        "pretraining_data/manifest.json": "d77f5e83577710647874e19929021584dbaca8f09c4e2fc79c3f298e40de22ac",
+        "pretraining_data/train.u32": "e3e7855b433b7a9ed9a0906e26ae3e5b115257987f29adc50a0c360d46bbebce",
+        "pretraining_data/validation.u32": "37b53450da5b37c5a0f57ae39125e941752f1e687394d4d1cdacd25a42599613",
+        "tokenizer/merges.json": "7a631cf8143b67db9c4246ed83a54d680f5300e55236851a1429d46551d0d8ed",
+        "tokenizer/tokenizer_config.json": "fae3d75d7ddb0fda306c7608f6caff65b47f5a33a4b2a486174c7b597d2a8210",
+        "tokenizer/tokenizer_manifest.json": "b98d98bdb58c7c7fe4e1fa2d6e7759449e84ab02a504777fa8a8738c94a30268",
+        "tokenizer/vocab.json": "9f5cf82719d7e2edc94b95937c1c699a25db6566e12c03958785f2aec5aee7b6"
+      },
+      "schema_version": 1,
+      "scope": "WP03 TinyStories train/validation only + frozen WP04 tokenizer",
+      "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3"
+    },
+    "path": "dist/grast-wp07-data-block64-1adc3dd1a981.zip",
+    "sha256": "3f7ef9d0e477738fa7592e793f3c355cf5eeb367345a98936fc1554f1cba4152",
+    "size_bytes": 3330604,
+    "verification": "ZIP CRC and SHA256 of every entry verified; ignored local artifact, not committed raw corpus"
+  },
+  "checks": {
+    "all_supervised_pairs_preserved_exactly_once": true,
+    "amp_skip_consumes_data_without_optimizer_update": true,
+    "consumed_window_commit_abort_partial_epoch_contract": true,
+    "data_preflight_before_model_optimizer_rng_load": true,
+    "fresh_process_relocated_corpus_resume": true,
+    "full_engine_cursor_and_next_batches_losses_exact": true,
+    "immutable_portable_dataset_tokenizer_packing_identity": true,
+    "independent_preparation_fingerprints_and_resume_traces_match": true,
+    "installed_wheel_data_resume_smoke": true,
+    "no_test_reads_duplicate_checksum_guards": true,
+    "private_cpu_shuffle_independent_of_global_rng_and_default_device": true,
+    "ruff_lint_format": true,
+    "validation_does_not_advance_train_cursor": true,
+    "wheel_sdist_build": true
+  },
+  "date": "2026-11-17",
+  "limitations": [
+    "Only short four-update pretraining-data verification plus two-update replay; no long corpus baseline or CoT SFT.",
+    "Validation smoke is a fixed two-batch prefix, not full validation-set quality or pilot reasoning.",
+    "Continuous pretraining blocks allow attention across documents; no block-diagonal document isolation.",
+    "Single-process pull only; no worker/DDP/prefetch exact-resume claim.",
+    "Local CPU/RTX4060 verify; Colab corpus training follows in WP07.3."
+  ],
+  "remaining_phases": [
+    "WP07.3 long pretraining Colab runner, checkpoint persistence and curves",
+    "WP07.4 normalized CoT SFT and Colab training",
+    "WP07.5 multiple-checkpoint capability, text generation and fixed pilot evidence"
+  ],
+  "runs": [
+    {
+      "config_sha256": "aaa31954c05b865706c39a7c41a6c380c20bc55a09af9c999877fba270d93e0d",
+      "environment": {
+        "cuda_available": true,
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "numpy_version": "2.4.6",
+        "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, 610.47, 8188 MiB",
+        "platform": "Windows-10-10.0.22631-SP0",
+        "process_environment": {
+          "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+          "MKL_NUM_THREADS": null,
+          "OMP_NUM_THREADS": null,
+          "PYTHONHASHSEED": null
+        },
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "requested_device": "cpu",
+        "selected_device": "cpu",
+        "validation": {
+          "errors": [],
+          "ok": true
+        }
+      },
+      "git": {
+        "branch": "feat/wp07-2-data-resume",
+        "commit": "ab45104cba56a69fc659e83371291d07c9f30022",
+        "dirty": false,
+        "state": "committed",
+        "untracked_files": 0
+      },
+      "logged_committed_windows_including_replay": 6,
+      "package_source_sha256": "2803545c1d2edabdd93eb3e43d09fc1baa7b23b3899889bcf387490626dc406d",
+      "report": {
+        "checks": {
+          "heldout_validation_order_and_loss_exact": true,
+          "model_optimizer_scheduler_scaler_cursor_exact": true,
+          "next_batch_token_ids_and_losses_exact": true,
+          "no_test_set_read": true,
+          "stdout_logs_always": true
+        },
+        "corpus_manifest": {
+          "block_size": 32,
+          "bos_token_id": 1,
+          "dtype": "<u4",
+          "eos_token_id": 2,
+          "fingerprint": "c027b6f21125d4e568da95f416807d75e0730616ed3c0fd7d7c6af4696d45932",
+          "packing": "continuous-bos-eos-overlap1-ignore-bos-target-v1",
+          "pad_token_id": 0,
+          "schema_version": 1,
+          "scope": "pretraining_train_validation_only",
+          "source_dataset_fingerprint": "5f520ed3d7149f65fce21ee6468070fe11dcd7e83da68f9111cc681cdf8bc7ca",
+          "source_origin": "authored_offline_fixture",
+          "splits": {
+            "train": {
+              "blocks": 10,
+              "documents": 3,
+              "file": "train.u32",
+              "sha256": "ba76e2aeba2f7ec062126e96273e5132de51b68dee04f3301e2d1eb602843b88",
+              "size_bytes": 1184,
+              "source_file": "tinystories/train.jsonl",
+              "source_sha256": "6e8d051a43dd441ed692b3e96f48c67a8ee5ec85a10066de6eaceb4e07c1fb40",
+              "supervised_pairs": 293,
+              "tokens": 296
+            },
+            "validation": {
+              "blocks": 5,
+              "documents": 2,
+              "file": "validation.u32",
+              "sha256": "feba38b3f49ea04d376f33a39e71af7b0895be44ff7ec22a9fde7ac409a8d806",
+              "size_bytes": 548,
+              "source_file": "tinystories/validation.jsonl",
+              "source_sha256": "de7405f0927878ff79ec0b05ecd51e3f5ddbca06618dcd2ac906f5841e9e0d45",
+              "supervised_pairs": 135,
+              "tokens": 137
+            }
+          },
+          "tokenizer_fingerprint": "f2c4336ad294950cb8cda33ed8a6ba1027a3e745054e8031429e4c5b45b3ea17",
+          "vocab_size": 264,
+          "work_package": "WP07.2"
+        },
+        "device": "cpu",
+        "final_train_cursor": {
+          "contract": {
+            "accumulation_steps": 2,
+            "batch_size": 2,
+            "corpus": {
+              "block_size": 32,
+              "fingerprint": "c027b6f21125d4e568da95f416807d75e0730616ed3c0fd7d7c6af4696d45932",
+              "split": "train",
+              "tokenizer_fingerprint": "f2c4336ad294950cb8cda33ed8a6ba1027a3e745054e8031429e4c5b45b3ea17",
+              "vocab_size": 264
+            },
+            "schema_version": 1,
+            "seed": 42,
+            "shuffle": "private-cpu-randperm-per-epoch-v1",
+            "torch": "2.9.1+cu128"
+          },
+          "epoch": 1,
+          "offset": 4,
+          "order_sha256": "df1b06cb55fa3c562fd603c3123c640e26ccd92c632567bda51157ec911b1dd5",
+          "windows_consumed": 4
+        },
+        "final_validation_loss": 5.420897952909392,
+        "history": [
+          {
+            "batch_sha256": "fc4ab5f3aa7a6dd2cad34bd4216ecdae810411d41379a94e99b40ed66573392f",
+            "step": 1,
+            "train_loss": 5.586162225986884,
+            "validation_loss": 5.505936917250718
+          },
+          {
+            "batch_sha256": "9b5617324010a7df8ef9d3732228f6eeca6101ad3417323dd8034446d8b3c8a3",
+            "step": 2,
+            "train_loss": 5.522302093855831,
+            "validation_loss": 5.451509223720891
+          },
+          {
+            "batch_sha256": "4d4a75b37cffbc75ce3e19fca5f4debef1c7f9ddbb432f000ed08bd21a0c4930",
+            "step": 3,
+            "train_loss": 5.568922519683838,
+            "validation_loss": 5.425647282018894
+          },
+          {
+            "batch_sha256": "4ace6bca2ba11229dfed85b2e14bc26292ec1ddd81c63896bb7229b3bfa0a0cd",
+            "step": 4,
+            "train_loss": 5.482393656319719,
+            "validation_loss": 5.420897952909392
+          }
+        ],
+        "initial_validation_loss": 5.561959266662598,
+        "limitation": "Short data/resume verification only; no corpus baseline, CoT SFT, pilot or Colab execution claim.",
+        "model_config": {
+          "context_length": 128,
+          "dropout": 0.1,
+          "ffn_hidden_size": 128,
+          "hidden_size": 64,
+          "num_heads": 4,
+          "num_layers": 2,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 264
+        },
+        "parameter_counts": {
+          "blocks": 82176,
+          "final_norm": 64,
+          "lm_head_unique": 0,
+          "token_embedding": 16896,
+          "total": 99136
+        },
+        "precision": "float32",
+        "prepared_root": "D:\\GRAST\\artifacts\\runs\\20261117T121627336559Z-wp07-2-data-resume-seed42-e03b925e\\artifacts\\pretraining_data",
+        "resume_trace": [
+          {
+            "amp_scale": 1.0,
+            "attempt": 3,
+            "batch_sha256": "4d4a75b37cffbc75ce3e19fca5f4debef1c7f9ddbb432f000ed08bd21a0c4930",
+            "block_indices": [
+              [
+                6,
+                8
+              ]
+            ],
+            "learning_rates": [
+              0.000165,
+              0.000165
+            ],
+            "loss": 5.568922519683838,
+            "skipped": false,
+            "step": 3
+          },
+          {
+            "amp_scale": 1.0,
+            "attempt": 4,
+            "batch_sha256": "4ace6bca2ba11229dfed85b2e14bc26292ec1ddd81c63896bb7229b3bfa0a0cd",
+            "block_indices": [
+              [
+                6,
+                5
+              ],
+              [
+                8,
+                2
+              ]
+            ],
+            "learning_rates": [
+              2.9999999999999997e-05,
+              2.9999999999999997e-05
+            ],
+            "loss": 5.482393656319719,
+            "skipped": false,
+            "step": 4
+          }
+        ],
+        "source_mode": "authored_offline_fixture",
+        "status": "passed",
+        "validation_max_batches": 2,
+        "work_package": "WP07.2"
+      },
+      "report_sha256": "16fd695396aaa7469abc86ea47dfb67f242c46f48207ea1a03d744abcc5054f5",
+      "run_directory": "artifacts/runs/20261117T121627336559Z-wp07-2-data-resume-seed42-e03b925e"
+    },
+    {
+      "config_sha256": "37a5bf99426dc2bf364f11bbc8a05df81217e8f8195ee1f16d6ff90d5266ac3c",
+      "environment": {
+        "cuda_available": true,
+        "cuda_version": "12.8",
+        "cudnn_version": 91002,
+        "gpus": [
+          {
+            "compute_capability": [
+              8,
+              9
+            ],
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_memory_bytes": 8585216000
+          }
+        ],
+        "numpy_version": "2.4.6",
+        "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, 610.47, 8188 MiB",
+        "platform": "Windows-10-10.0.22631-SP0",
+        "process_environment": {
+          "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+          "MKL_NUM_THREADS": null,
+          "OMP_NUM_THREADS": null,
+          "PYTHONHASHSEED": null
+        },
+        "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+        "pytorch_version": "2.9.1+cu128",
+        "requested_device": "cuda",
+        "selected_device": "cuda:0",
+        "validation": {
+          "errors": [],
+          "ok": true
+        }
+      },
+      "git": {
+        "branch": "feat/wp07-2-data-resume",
+        "commit": "ab45104cba56a69fc659e83371291d07c9f30022",
+        "dirty": false,
+        "state": "committed",
+        "untracked_files": 0
+      },
+      "logged_committed_windows_including_replay": 6,
+      "package_source_sha256": "2803545c1d2edabdd93eb3e43d09fc1baa7b23b3899889bcf387490626dc406d",
+      "report": {
+        "checks": {
+          "heldout_validation_order_and_loss_exact": true,
+          "model_optimizer_scheduler_scaler_cursor_exact": true,
+          "next_batch_token_ids_and_losses_exact": true,
+          "no_test_set_read": true,
+          "stdout_logs_always": true
+        },
+        "corpus_manifest": {
+          "block_size": 64,
+          "bos_token_id": 1,
+          "dtype": "<u4",
+          "eos_token_id": 2,
+          "fingerprint": "1adc3dd1a9815cdb08ca60f12373e835b4da7ad8e499eef9f4c1234e1e4ecea3",
+          "packing": "continuous-bos-eos-overlap1-ignore-bos-target-v1",
+          "pad_token_id": 0,
+          "schema_version": 1,
+          "scope": "pretraining_train_validation_only",
+          "source_dataset_fingerprint": "79ff92320ebb64e283ce342076c5e570989ef5433d8791231b2d78f370baf485",
+          "source_origin": "wp03_prepared_sources",
+          "splits": {
+            "train": {
+              "blocks": 59394,
+              "documents": 10000,
+              "file": "train.u32",
+              "sha256": "e3e7855b433b7a9ed9a0906e26ae3e5b115257987f29adc50a0c360d46bbebce",
+              "size_bytes": 14967188,
+              "source_file": "tinystories/train.jsonl",
+              "source_sha256": "92e562218a2db37f9d6804dd7a565820785c003dd622f6a82184c4318e3fb8b9",
+              "supervised_pairs": 3731797,
+              "tokens": 3741797
+            },
+            "validation": {
+              "blocks": 5439,
+              "documents": 1000,
+              "file": "validation.u32",
+              "sha256": "37b53450da5b37c5a0f57ae39125e941752f1e687394d4d1cdacd25a42599613",
+              "size_bytes": 1370500,
+              "source_file": "tinystories/validation.jsonl",
+              "source_sha256": "3650487dd48e82aeed5262fd6c881cdace7e5c44265d0966c38005f34da479d6",
+              "supervised_pairs": 341625,
+              "tokens": 342625
+            }
+          },
+          "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+          "vocab_size": 8192,
+          "work_package": "WP07.2"
+        },
+        "device": "cuda",
+        "final_train_cursor": {
+          "contract": {
+            "accumulation_steps": 2,
+            "batch_size": 2,
+            "corpus": {
+              "block_size": 64,
+              "fingerprint": "1adc3dd1a9815cdb08ca60f12373e835b4da7ad8e499eef9f4c1234e1e4ecea3",
+              "split": "train",
+              "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+              "vocab_size": 8192
+            },
+            "schema_version": 1,
+            "seed": 42,
+            "shuffle": "private-cpu-randperm-per-epoch-v1",
+            "torch": "2.9.1+cu128"
+          },
+          "epoch": 0,
+          "offset": 16,
+          "order_sha256": "aeead640a7df2df441142093403d2f529b97dba56bf065d45a4a6251adb73080",
+          "windows_consumed": 4
+        },
+        "final_validation_loss": 5.465444803237915,
+        "history": [
+          {
+            "batch_sha256": "de219981e173bd7090de3c8ab49ea62a802944c38678fcda62b60bb64874682d",
+            "step": 1,
+            "train_loss": 9.153629302978516,
+            "validation_loss": 6.9861955642700195
+          },
+          {
+            "batch_sha256": "7512a468c392443524da715a7b2c8a87a1ffe05f685ead5391ee65cb54e53b38",
+            "step": 2,
+            "train_loss": 7.0307183265686035,
+            "validation_loss": 5.636293888092041
+          },
+          {
+            "batch_sha256": "c7712c5e2adef0e88ba41e0b4cddd3c8b41ef84442664bb17c222225818242a8",
+            "step": 3,
+            "train_loss": 5.750472144776606,
+            "validation_loss": 5.503596067428589
+          },
+          {
+            "batch_sha256": "8e9fc2ea0445b3702b04846179c07919d4d20f7c67e9583a5fde97984b8d5ca9",
+            "step": 4,
+            "train_loss": 5.480960369110107,
+            "validation_loss": 5.465444803237915
+          }
+        ],
+        "initial_validation_loss": 9.073519706726074,
+        "limitation": "Short data/resume verification only; no corpus baseline, CoT SFT, pilot or Colab execution claim.",
+        "model_config": {
+          "context_length": 1024,
+          "dropout": 0.1,
+          "ffn_hidden_size": 2048,
+          "hidden_size": 512,
+          "num_heads": 8,
+          "num_layers": 10,
+          "rms_norm_eps": 1e-06,
+          "rope_theta": 10000.0,
+          "tie_embeddings": true,
+          "vocab_size": 8192
+        },
+        "parameter_counts": {
+          "blocks": 41953280,
+          "final_norm": 512,
+          "lm_head_unique": 0,
+          "token_embedding": 4194304,
+          "total": 46148096
+        },
+        "precision": "bfloat16",
+        "prepared_root": "D:\\GRAST\\artifacts\\runs\\20261117T121626968367Z-wp07-2-data-resume-seed42-7d058dad\\artifacts\\pretraining_data",
+        "resume_trace": [
+          {
+            "amp_scale": 1.0,
+            "attempt": 3,
+            "batch_sha256": "c7712c5e2adef0e88ba41e0b4cddd3c8b41ef84442664bb17c222225818242a8",
+            "block_indices": [
+              [
+                33206,
+                2350
+              ],
+              [
+                14655,
+                51088
+              ]
+            ],
+            "learning_rates": [
+              0.000165,
+              0.000165
+            ],
+            "loss": 5.750472144776606,
+            "skipped": false,
+            "step": 3
+          },
+          {
+            "amp_scale": 1.0,
+            "attempt": 4,
+            "batch_sha256": "8e9fc2ea0445b3702b04846179c07919d4d20f7c67e9583a5fde97984b8d5ca9",
+            "block_indices": [
+              [
+                46951,
+                50897
+              ],
+              [
+                32230,
+                20226
+              ]
+            ],
+            "learning_rates": [
+              2.9999999999999997e-05,
+              2.9999999999999997e-05
+            ],
+            "loss": 5.480960369110107,
+            "skipped": false,
+            "step": 4
+          }
+        ],
+        "source_mode": "wp03_prepared_sources",
+        "status": "passed",
+        "validation_max_batches": 2,
+        "work_package": "WP07.2"
+      },
+      "report_sha256": "d6bbad1eed0ce4e8808d613ce428935cffc9887f9b7cafe90479f35bdb44a39b",
+      "run_directory": "artifacts/runs/20261117T121626968367Z-wp07-2-data-resume-seed42-7d058dad"
+    }
+  ],
+  "schema_version": 1,
+  "status": "accepted_phase_only",
+  "tests": {
+    "additional_cuda_cases": 2,
+    "cpu_only_ci_skips": "Four hardware cases repository-wide including new FP16 consumed-data skip case",
+    "failed": 0,
+    "full_local_passed": 665,
+    "phase_cpu_cases": 24,
+    "phase_local_passed": 26
+  },
+  "work_package": "WP07.2",
+  "wp07_status": "in_progress"
+}

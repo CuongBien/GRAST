@@ -113,9 +113,10 @@ uv run --no-sync python -u scripts/check_training_data.py --device cuda --precis
 uv run --no-sync python -u scripts/check_training_data.py --device cuda --precision bfloat16 --profile candidate --block-size 64 --prepared-root PATH/TO/pretraining-data
 ```
 
-Run có config/source/environment/Git metadata, prepared manifest, start/progress logs,
-window indices/token-batch hashes, train/validation loss history, resume trace và full
+Run có config/source/environment/Git metadata, prepared manifest, engine/data-window
+file logs, window indices/token-batch hashes, train/validation loss history, resume trace và full
 resume.pt/final.pt. Các checkpoint lớn và raw data ở artifacts (gitignore), evidence
-nhỏ được version hóa. Data folder có thể upload nguyên vẹn lên Colab ở WP07.3;
+nhỏ được version hóa. Preprocessing start/progress được stream ra stdout; có thể tee
+ra file khi cần lưu toàn bộ console. Data folder có thể upload nguyên vẹn lên Colab ở WP07.3;
 hash validation không phụ thuộc source path trên máy local. Luôn in logs trực tiếp;
 agent chỉ verify short runs theo yêu cầu user, chưa chạy pretraining corpus dài.
