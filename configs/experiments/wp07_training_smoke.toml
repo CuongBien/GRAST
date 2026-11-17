@@ -1,0 +1,35 @@
+schema_version = 1
+fixture = "../../experiments/wp05_overfit_fixture.json"
+
+[experiment]
+name = "wp07-1-training-engine"
+
+[profiles]
+tiny = "../model/overfit_tiny.toml"
+candidate = "../model/draft_35m.toml"
+
+[training]
+stage = "pretrain"
+max_steps = 6
+gradient_accumulation_steps = 2
+learning_rate = 0.003
+weight_decay = 0.1
+beta1 = 0.9
+beta2 = 0.95
+eps = 1e-8
+warmup_steps = 1
+min_lr_ratio = 0.1
+max_grad_norm = 1.0
+precision = "float32"
+
+[diagnostic]
+checkpoint_step = 2
+dropout = 0.1
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"

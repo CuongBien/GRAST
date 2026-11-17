@@ -64,3 +64,12 @@ readout logits về CPU, nên không dùng lệnh này để đo latency/VRAM.
 đương là `python -m llm_scratch.inference.profiling`. CPU smoke dùng
 `--config configs/experiments/wp06_profiling_smoke.toml`, không báo CPU memory là VRAM.
 Xem `docs/wp06_profiling.md` cho scope timing, metrics, context override và artifacts.
+
+## WP07.1 training engine smoke
+
+`uv run --no-sync python -u scripts/check_training_loop.py --device cpu` verify sáu
+updates và exact engine resume sau step 2; mọi update/validation/checkpoint luôn in log.
+Có `--device cuda --precision float16|bfloat16`; candidate thêm `--profile candidate
+--tokenizer PATH/TO/wp04-tokenizer`. Không train corpus ở smoke này. Loss history là
+diagnostic same-fixture eval; data cursor/packing/full corpus resume thuộc WP07.2.
+Colab tiny notebook: `notebooks/wp07_training_smoke.ipynb`.

@@ -43,3 +43,9 @@ FP32, warm-up 2/repeats 5 và explicit inference context 2064. Source baseline c
 1024 không đổi. `wp06_profiling_smoke.toml` dùng model nhỏ trên CPU cho CI, không thay
 thế GPU profiling. Runtime snapshots ghi cả source/effective model configurations;
 xem `docs/wp06_profiling.md`.
+
+WP07.1 dùng schema engine riêng `TrainingConfig` và runner config
+`experiments/wp07_training_smoke.toml`, không thay schema WP02 debug configs.
+Diagnostic chỉ 6 updates, dropout 0,1, accumulation 2, checkpoint step 2; CLI chọn
+FP32/BF16/FP16 và tiny/candidate. Các hyperparameters ở đây để verify engine, không
+phải recipe pretraining corpus hoặc SFT cuối. Xem `docs/wp07_training.md`.

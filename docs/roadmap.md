@@ -65,6 +65,15 @@ top-k/top-p/EOS, logits/tokens equivalence và RoPE/context guards.
 [WP06.5](wp06_5_validation.md) lưu raw timing/VRAM và protocol RTX 4060 Laptop,
 B1/N16/FP32, L128/512/1024/2048, explicit inference context 2064; baseline 1024 giữ nguyên.
 
+## WP07 — Pretraining & CoT SFT (theo phase)
+
+WP07.1 training engine/optimizer/scheduler/AMP/accumulation/log → WP07.2 data và full
+corpus resume → WP07.3 pretraining Colab → WP07.4 CoT formatting/SFT Colab → WP07.5
+checkpoint capability/curves/pilot. Theo yêu cầu 17/11/2026, agent verify chạy ngắn;
+user chạy train dài trên Colab, mọi runner luôn in progress logs. Không đóng WP07
+khi chỉ có fixed-fixture smoke hoặc chưa có artifacts từ corpus training.
+Xem [contracts/phases](wp07_training.md), [nghiệm thu WP07.1](wp07_1_validation.md).
+
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 
 *When Does Confidence-Gated Test-Time Scaling Fail? A Study of Reliability and

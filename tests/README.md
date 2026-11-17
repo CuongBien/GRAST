@@ -86,3 +86,12 @@ monotonic/đủ budget, CUDA allocator peaks, context-only copy không đổi we
 metadata và giữ strict load rules, protocol validation, condition order/input identity,
 quantiles/throughput denominators và stdlib cProfile/torch.optim regression.
 Không có latency/speedup thresholds phụ thuộc phần cứng. CPU timing có VRAM=null.
+
+## WP07.1 training engine
+
+`test_training_engine.py` kiểm độc lập accumulated gradients/updates với combined
+token-weighted reference, decay/tied Parameter dedup, warmup/cosine endpoints, finite
+loss và logging, exact continuation với dropout + RNG/Adam slots/scheduler/scaler,
+FP16 overflow không tăng scheduler, failed-state recovery, zero supervision/partial
+windows, validation và config/runtime/boundary guards. Colab long training chưa được
+thay bằng những unit tests này; dataset cursor integration thuộc WP07.2.
