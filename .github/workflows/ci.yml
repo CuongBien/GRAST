@@ -69,6 +69,8 @@ jobs:
         run: uv run --no-sync python scripts/profile.py --config configs/experiments/wp06_profiling_smoke.toml
       - name: WP07.1 training engine and exact checkpoint resume smoke
         run: uv run --no-sync python -u scripts/check_training_loop.py --device cpu
+      - name: WP07.2 data order and full checkpoint resume smoke
+        run: uv run --no-sync python -u scripts/check_training_data.py --device cpu
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree

@@ -95,3 +95,11 @@ loss và logging, exact continuation với dropout + RNG/Adam slots/scheduler/sc
 FP16 overflow không tăng scheduler, failed-state recovery, zero supervision/partial
 windows, validation và config/runtime/boundary guards. Colab long training chưa được
 thay bằng những unit tests này; dataset cursor integration thuộc WP07.2.
+
+## WP07.2 pretraining data/full resume
+
+`test_training_data.py` kiểm target coverage/Unicode/EOS/BOS/tail/overlap, no test-set
+reads, checksums/duplicates/relocation/immutability, pending-window commit/abort và
+epoch coverage, mismatches bị chặn trước weights/RNG, actual next-batch/loss/Adam
+resume, validation không dịch cursor, failures sau optimizer, FP16 skips tiêu thụ
+data, model/stage compatibility và fresh-process resume sau khi đổi data-root path.

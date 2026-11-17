@@ -49,3 +49,8 @@ WP07.1 dùng schema engine riêng `TrainingConfig` và runner config
 Diagnostic chỉ 6 updates, dropout 0,1, accumulation 2, checkpoint step 2; CLI chọn
 FP32/BF16/FP16 và tiny/candidate. Các hyperparameters ở đây để verify engine, không
 phải recipe pretraining corpus hoặc SFT cuối. Xem `docs/wp07_training.md`.
+
+`experiments/wp07_data_smoke.toml` verify WP07.2 với 4 updates, checkpoint step 2,
+batch 2/accumulation 2/block 32, validation fixed-prefix 2 batches. CLI có thể dùng
+block 64 và actual WP03/WP04/candidate để verify local GPU. Không phải recipe corpus
+baseline. Cache metadata/cursor khóa block/batch/shuffle/tokenizer/dataset identities.

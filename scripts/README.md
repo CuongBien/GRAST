@@ -73,3 +73,13 @@ Có `--device cuda --precision float16|bfloat16`; candidate thêm `--profile can
 --tokenizer PATH/TO/wp04-tokenizer`. Không train corpus ở smoke này. Loss history là
 diagnostic same-fixture eval; data cursor/packing/full corpus resume thuộc WP07.2.
 Colab tiny notebook: `notebooks/wp07_training_smoke.ipynb`.
+
+## WP07.2 pretraining data/full resume
+
+`prepare_training_data.py --dataset-root PATH --tokenizer PATH --output NEW_PATH
+--block-size 1024` chuẩn bị immutable train/validation tokens và manifest, không train.
+`check_training_data.py --device cpu` verify packing/order/resume với authored offline
+fixtures; real data thêm `--dataset-root PATH --tokenizer PATH`, candidate thêm
+`--profile candidate --device cuda --precision bfloat16`. Có `--prepared-root PATH`
+và `--block-size` để reuse đúng block contract. Mọi bước train/preprocessing in log.
+Xem `docs/wp07_data.md`; long Colab pretraining runner tiếp tục ở WP07.3.

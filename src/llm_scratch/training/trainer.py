@@ -256,7 +256,9 @@ class TrainingEngine:
         save_checkpoint(path, state, generator=self.generator)
         self._emit("checkpoint_saved", step=self.step, path=str(path))
 
-    def load(self, path: str | Path) -> dict:
+    def load(
+        self, path: str | Path, *, data_validator: Callable[[dict, int], None] | None = None
+    ) -> dict:
         if self._busy:
             raise RuntimeError("Cannot load during update")
         payload = torch.load(path, map_location="cpu", weights_only=True)
@@ -282,6 +284,8 @@ class TrainingEngine:
             or not isinstance(state.get("data_state"), dict)
         ):
             raise ValueError("Invalid checkpoint progress/data state")
+        if data_validator is not None:
+            data_validator(state["data_state"], state["attempts"])
         try:
             self.model.load_state_dict(state["model"])
             self.optimizer.load_state_dict(state["optimizer"])

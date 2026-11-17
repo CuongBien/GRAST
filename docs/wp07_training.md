@@ -7,14 +7,15 @@ Không coi diagnostic fixed-batch loss là kết quả corpus hoặc pilot reaso
 | Phase | Phạm vi | Gate | Trạng thái |
 | --- | --- | --- | --- |
 | WP07.1 | Engine, AdamW, warmup/cosine, AMP, clipping, accumulation, mandatory log, engine-state checkpoint | Token-weighted gradients đúng; FP32/BF16/FP16 chạy được; engine resume exact | Đã triển khai/verify local |
-| WP07.2 | WP03/WP04 data pipeline, deterministic train order/packing, validation, full resume với data cursor | Dataset/tokenizer identities khóa; checkpoint khôi phục cả vị trí đọc; không test leakage | Chưa triển khai |
+| WP07.2 | WP03/WP04 data pipeline, deterministic train order/packing, validation, full resume với data cursor | Dataset/tokenizer identities khóa; checkpoint khôi phục cả vị trí đọc; không test leakage | Đã triển khai/verify local |
 | WP07.3 | Pretraining runner/config/Colab, periodic checkpoints, train/validation loss curves | Local smoke ổn; notebook log luôn hiển thị; user chạy corpus baseline trên Colab | Chưa triển khai |
 | WP07.4 | Chuẩn hóa prompt/reasoning/final, CoT SFT từ pretrained checkpoint, Colab runner | Prompt mask/target formatting đúng, validation và milestone checkpoints; user train dài | Chưa triển khai |
 | WP07.5 | Phân tích checkpoint nhiều giai đoạn, curves, text generation, fixed pilot reasoning | Checkpoint reload; text samples; pilot result/artifact manifest và evidence từ Colab | Chưa triển khai |
 
 WP07 chỉ đóng khi có model checkpoint thực từ pretraining/SFT, curves và pilot.
 Việc chạy corpus dài được giao cho user; nếu chưa có artifacts thì ghi pending thay
-vì báo là đã train. Scope hiện tại dừng ở WP07.1. [Nghiệm thu phase 1](wp07_1_validation.md).
+vì báo là đã train. Đã hoàn tất WP07.1–2: [phase 1](wp07_1_validation.md),
+[data/resume contract](wp07_data.md), [phase 2](wp07_2_validation.md).
 
 ## WP07.1 — engine API
 
@@ -87,9 +88,9 @@ device/precision/Torch/hardware/flags/thread count và dropout, không hứa bit
 giữa CPU/GPU hoặc runtime khác. Source Git/packages được ghi ở run metadata. Checkpoint
 inference có thể đọc model state với CPU mapping mà không restore training RNG.
 
-`data_state` ở WP07.1 là cursor diagnostic do caller cung cấp. **Corpus resume chưa
-nghiệm thu**: WP07.2 phải bổ sung dataset/hash/packing/shuffle/sampler cursor, xác minh
-next records và phân biệt prefetched vs consumed batches. Không được bỏ data state
+`data_state` ở WP07.1 là cursor diagnostic do caller cung cấp. WP07.2 đã bổ sung full
+`PretrainingSession` với dataset/hash/packing/shuffle/consumed cursor và next-block
+verification; dùng [session API](wp07_data.md) để resume data. Không được bỏ data state
 hoặc đổi tokenizer/recipe rồi gọi đó là exact continuation. Đổi stage sang SFT là
 explicit warm-start recipe ở WP07.4, không resume optimizer pretrain tùy ý.
 
