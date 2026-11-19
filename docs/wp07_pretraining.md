@@ -1,5 +1,7 @@
 # WP07.3 — Pretraining runner và Colab
 
+Chạy nền trên Kaggle: [notebook và hướng dẫn riêng](wp07_kaggle.md).
+
 Runner đã triển khai; agent chỉ verify chạy ngắn. User chạy corpus baseline trên
 Colab. Chưa có bằng chứng training dài hoặc kết quả chất lượng từ A100.
 

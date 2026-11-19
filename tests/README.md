@@ -112,3 +112,7 @@ curves/CSV; kiểm periodic/milestone/final, completed no-op resume, recipe/hist
 Drive write failure, boundary/failed-update interrupts, CUDA FP16 skipped-attempt
 durability, input ZIP checksum/path/duplicate guards và notebook syntax/live logging.
 Quality/corpus baseline/A100 training chưa được thay bằng các tests này.
+
+`test_kaggle_notebook.py` thực thi helpers từ notebook phát hành, kiểm tra input ZIP/
+expanded, corruption, precision selection, launch smoke/full/resume và real CUDA probe.
+Không thay thế execution evidence từ Kaggle; adapter không thay core runner/model.

@@ -12,6 +12,7 @@ AdamW/scheduler/AMP/accumulation, WP03/WP04 packing, validation và full data re
 [kế hoạch và cách dùng](docs/wp07_training.md). Đã có [corpus pretraining runner](docs/wp07_pretraining.md),
 periodic checkpoints, loss curves và notebook Colab luôn in log. Train dài do user chạy;
 chưa có corpus baseline/SFT quality result.
+Chạy nền Kaggle có [notebook và hướng dẫn riêng](docs/wp07_kaggle.md).
 Smoke WP02 chỉ dùng RNG/ma trận nhỏ; WP03 chưa đánh giá chất lượng model.
 
 WP02 đã nghiệm thu CPU, RTX 4060 và Colab A100; xem [evidence](docs/wp02_validation.md).
