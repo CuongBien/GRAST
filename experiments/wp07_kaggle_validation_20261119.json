@@ -1,0 +1,142 @@
+{
+  "actual_bundle_sha256": "9f08cdc7ba7c8a4825ce90470fd19fc3ed6da7d6d3bfd742097a389d1aab949d",
+  "adapter_commit": "a00487ce8520f9a669dff680ccc0994561b13786",
+  "date": "2026-11-19",
+  "format": "passed",
+  "kaggle_execution_status": "not_executed",
+  "limitations": [
+    "Local RTX 4060 verification is not execution evidence for Kaggle/T4/P100.",
+    "No full 2000-update pretraining or SFT/pilot quality claim.",
+    "Exact resume still requires compatible source/recipe/GPU/runtime/precision."
+  ],
+  "lint": "passed",
+  "local_smoke": {
+    "attempts": 4,
+    "checkpoint_sha256": "167e6c2f650322c462c8f5df5df751d443960b9159c42af402fa4bc13a67d56a",
+    "console_log_sha256": "d982629b3f877352505668d080cab0a70bc860cf75531e13942d30d4d515fd10",
+    "dataset_fingerprint": "17971c0168e4367b183ebb0a3abc7c1309ffe5095cdc67899bce13ffc4298faa",
+    "git": {
+      "branch": "feat/wp07-3-kaggle-notebook",
+      "commit": "a00487ce8520f9a669dff680ccc0994561b13786",
+      "dirty": false,
+      "state": "committed",
+      "untracked_files": 0
+    },
+    "history": {
+      "train": [
+        {
+          "amp_scale": 65536.0,
+          "attempt": 1,
+          "batch_sha256": "8569b35f3a41256ca9b0b3558d757637e50ca5434bd3a7361c45b9141d2007cb",
+          "learning_rates": [
+            2.9999999999999997e-06,
+            2.9999999999999997e-06
+          ],
+          "loss": 9.139140138218785,
+          "loss_tokens": 4074,
+          "skipped": false,
+          "step": 1,
+          "tokens_optimized": 4074,
+          "tokens_seen": 4074
+        },
+        {
+          "amp_scale": 65536.0,
+          "attempt": 2,
+          "batch_sha256": "12cf7a889051736120a1f0f2e67ba841bf200153ee3a778520f0f7ce6ac3ac36",
+          "learning_rates": [
+            5.999999999999999e-06,
+            5.999999999999999e-06
+          ],
+          "loss": 8.95868643682088,
+          "loss_tokens": 4065,
+          "skipped": false,
+          "step": 2,
+          "tokens_optimized": 8139,
+          "tokens_seen": 8139
+        },
+        {
+          "amp_scale": 65536.0,
+          "attempt": 3,
+          "batch_sha256": "6e1bff032ddc88cf08ee6fa9bf8b804807405e86867b211fca09b32f2912a962",
+          "learning_rates": [
+            8.999999999999999e-06,
+            8.999999999999999e-06
+          ],
+          "loss": 8.623151432448081,
+          "loss_tokens": 4068,
+          "skipped": false,
+          "step": 3,
+          "tokens_optimized": 12207,
+          "tokens_seen": 12207
+        },
+        {
+          "amp_scale": 65536.0,
+          "attempt": 4,
+          "batch_sha256": "060a80b9eaa7cb9b33e20b8b135b5c50a6aa3b2a8fded0a89b88350946e24e84",
+          "learning_rates": [
+            1.1999999999999999e-05,
+            1.1999999999999999e-05
+          ],
+          "loss": 8.170766614947238,
+          "loss_tokens": 4067,
+          "skipped": false,
+          "step": 4,
+          "tokens_optimized": 16274,
+          "tokens_seen": 16274
+        }
+      ],
+      "validation": [
+        {
+          "attempt": 0,
+          "loss": 9.16691627150702,
+          "loss_tokens": 341625,
+          "step": 0
+        },
+        {
+          "attempt": 4,
+          "loss": 7.663098180765989,
+          "loss_tokens": 341625,
+          "step": 4
+        }
+      ]
+    },
+    "parameter_counts": {
+      "blocks": 41953280,
+      "final_norm": 512,
+      "lm_head_unique": 0,
+      "token_embedding": 4194304,
+      "total": 46148096
+    },
+    "precision": "float16",
+    "report_sha256": "219e3b1d2264dccc9122df16b78a62f746db556f04c39f00fb82492326ff1d57",
+    "run_directory": ".cache/kaggle-local-verification/runs/20261119T114705260010Z-wp07-pretrain-tinystories-seed42-1f412c54",
+    "runtime": {
+      "capability": [
+        8,
+        9
+      ],
+      "cuda": "12.8",
+      "cudnn_tf32": false,
+      "deterministic": true,
+      "device": "cuda:0",
+      "gpu_count": 1,
+      "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "matmul_tf32": false,
+      "num_threads": 1,
+      "torch": "2.9.1+cu128"
+    },
+    "status": "stopped_at_boundary",
+    "step": 4,
+    "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+    "tokens_optimized": 16274
+  },
+  "notebook_sha256": "ebb85e90e86d7e6e3e05a08ab7ffb6ac5e82b6bcad79029aac5b4a49893bd77f",
+  "pinned_runner_commit": "aa4be36b33ca025701421ef48715a22b43c4e8db",
+  "schema_version": 1,
+  "scope": "WP07.3 Kaggle notebook adapter local verification",
+  "targeted_tests": {
+    "existing_colab_syntax_case": 1,
+    "new_kaggle_cases": 13,
+    "passed": 14
+  }
+}

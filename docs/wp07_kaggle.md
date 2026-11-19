@@ -72,3 +72,10 @@ command smoke/full/resume, native precision selection và CUDA forward/backward 
 Chưa chạy trên Kaggle/T4/P100; không gọi local verification là Kaggle acceptance.
 Ước tính thời gian A100 trước đó không áp trực tiếp cho GPU Kaggle; dùng logs100
 updates đầu để ước lượng. [WP07.3 local evidence](wp07_3_validation.md).
+
+Local adapter verification19/11/2026:14 targeted tests pass (13 mới + Colab syntax),
+lint/format pass. Thực thi chính helpers của notebook để tìm/giải nén bundle thật,
+tạo lệnh và stream subprocess FP16 trên RTX4060: model46.148.096 parameters,
+4successful updates, full1.000-story validation loss9,166916→7,663098, checkpoint
+được lưu. Đây là local smoke, không phải chạy thực tế trên Kaggle/T4/P100.
+[Evidence JSON](../experiments/wp07_kaggle_validation_20261119.json).
