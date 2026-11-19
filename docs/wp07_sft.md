@@ -124,6 +124,9 @@ Kaggle resume cần Add Input output của version trước và dùng path thự
 `/kaggle/input/`; Colab dùng path Drive. Không cần checkpoint pretraining khi resume.
 Giữ source pin/runtime/precision/recipe tương thích cho exact continuation.
 
+Native precision selection giống adapter pretraining: capability major>=8 và BF16
+supported mới chọn BF16; T4/P100 dùng FP16 kể cả runtime báo có BF16 emulation.
+
 Summary ZIP chỉ có logs/config/metadata/report/curves. Giữ latest/final/milestone weights
 cho WP07.5. Agent chưa chạy đủ500 updates trên Colab/Kaggle. SFT loss tốt chưa thay thế
 generation/pilot reasoning evaluation; việc đó thuộc WP07.5.

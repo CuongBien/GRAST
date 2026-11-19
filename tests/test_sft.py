@@ -1,5 +1,6 @@
 """CoT gold normalization, literal framing, masked targets and pretrained SFT continuation."""
 
+import ast
 import copy
 import json
 import shutil
@@ -382,7 +383,26 @@ def test_sft_notebook_cells_compile_and_have_live_logs_and_stage_arguments():
         source = "".join("".join(c["source"]) for c in nb["cells"])
         for cell in nb["cells"]:
             if cell["cell_type"] == "code":
-                compile("".join(cell["source"]), cell["id"], "exec")
+                cell_source = "".join(cell["source"])
+                compile(cell_source, cell["id"], "exec")
+                if "def select_precision" in cell_source:
+                    function = next(
+                        n
+                        for n in ast.parse(cell_source).body
+                        if isinstance(n, ast.FunctionDef) and n.name == "select_precision"
+                    )
+                    namespace = {}
+                    exec(
+                        compile(ast.Module(body=[function], type_ignores=[]), cell["id"], "exec"),
+                        namespace,
+                    )
+                    for major, supported, expected in (
+                        (7, True, "float16"),
+                        (6, False, "float16"),
+                        (8, True, "bfloat16"),
+                        (8, False, "float16"),
+                    ):
+                        assert namespace["select_precision"](major, supported) == expected
         assert "subprocess.Popen" in source and "flush=True" in source
         assert (
             "--init-checkpoint" in source and "--resume" in source and "SMOKE_ONLY = True" in source

@@ -45,6 +45,8 @@ ngoài source tree: pass. Sdist không chứa cache/run payloads hoặc weights.
 ZIP round-trip/corruption/path guards pass; bundle thật được extract/verify lại.
 Notebook cells compile; **thực thi chính input-discovery và command cells của Kaggle**
 với ZIP/expanded layouts, fresh SFT/resume sau khi xóa parent checkpoint: pass.
+Notebook precision helper đã test native capability guard: T4/P100→FP16,
+Ampere trở lên chỉ BF16 khi runtime hỗ trợ; không chọn BF16 emulation trên T4.
 Chưa thực thi SFT notebook trong Colab/Kaggle; local helper tests không thay execution
 evidence trên những dịch vụ đó. Curves PNG đã kiểm tra trực quan.
 
