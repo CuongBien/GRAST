@@ -83,3 +83,14 @@ fixtures; real data thêm `--dataset-root PATH --tokenizer PATH`, candidate thê
 `--profile candidate --device cuda --precision bfloat16`. Có `--prepared-root PATH`
 và `--block-size` để reuse đúng block contract. Mọi bước train/preprocessing in log.
 Xem `docs/wp07_data.md`; long Colab pretraining runner tiếp tục ở WP07.3.
+
+## WP07.3 pretraining runner
+
+`pretrain.py` hiện chạy corpus runner thật. Cần `--config`, `--prepared-root`,
+`--tokenizer`, `--device cuda`; dùng `--stop-after 4` để verify ngắn và `--resume PATH`
+để tiếp tục đúng recipe/runtime. Mọi update/checkpoint luôn in log.
+`check_pretraining_runner.py --device cpu` đối chiếu full state/history trên authored
+fixture, bounded2..8 updates. Bundle CLI:
+`python -m llm_scratch.data.training_bundle create|extract`.
+Notebook `notebooks/wp07_pretraining_colab.ipynb` lưu trực tiếp Drive, mặc định smoke4.
+Xem `docs/wp07_pretraining.md` cho lệnh/recovery contract. SFT chờ WP07.4.

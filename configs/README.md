@@ -54,3 +54,9 @@ phải recipe pretraining corpus hoặc SFT cuối. Xem `docs/wp07_training.md`.
 batch 2/accumulation 2/block 32, validation fixed-prefix 2 batches. CLI có thể dùng
 block 64 và actual WP03/WP04/candidate để verify local GPU. Không phải recipe corpus
 baseline. Cache metadata/cursor khóa block/batch/shuffle/tokenizer/dataset identities.
+
+WP07.3: `training/wp07_pretrain.toml` là recipe khởi đầu TinyStories/candidate46,15M,
+block256/B2/G8, BF16,2.000updates, warmup100 và full validation/checkpoint mỗi100.
+`training/wp07_pretrain_smoke.toml` dành riêng authored fixtures/CI, không tối ưu quality.
+Loader riêng `training.pretrain.load_recipe` khóa recipe/model/data/repro khi resume.
+`--stop-after` chỉ dừng sớm, không thay lịch LR. Xem `docs/wp07_pretraining.md`.

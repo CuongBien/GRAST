@@ -36,7 +36,7 @@ jobs:
       - name: Install pinned Python
         run: uv python install
       - name: Install locked development environment
-        run: uv sync --locked --extra cpu --extra data
+        run: uv sync --locked --extra cpu --extra data --extra training
       - name: Lint
         run: uv run --no-sync ruff check .
       - name: Check formatting
@@ -71,6 +71,8 @@ jobs:
         run: uv run --no-sync python -u scripts/check_training_loop.py --device cpu
       - name: WP07.2 data order and full checkpoint resume smoke
         run: uv run --no-sync python -u scripts/check_training_data.py --device cpu
+      - name: WP07.3 corpus runner, loss curves and checkpoint restart smoke
+        run: uv run --no-sync python -u scripts/check_pretraining_runner.py --device cpu
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree

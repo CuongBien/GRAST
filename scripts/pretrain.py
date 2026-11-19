@@ -1,4 +1,6 @@
-"""Reserved pretrain entry point; intentionally unavailable in step 1."""
+"""Launch the installed, always-logged WP07 pretraining runner."""
+
+from llm_scratch.training.pretrain import main
 
 if __name__ == "__main__":
-    raise SystemExit("pretrain: skeleton only; implementation is deferred.")
+    main()

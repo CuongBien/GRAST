@@ -1,0 +1,46 @@
+# Initial bounded TinyStories recipe; tune on validation, never on test/pilot.
+schema_version = 1
+
+[experiment]
+name = "wp07-pretrain-tinystories"
+
+[model]
+vocab_size = 8192
+context_length = 1024
+hidden_size = 512
+num_layers = 10
+num_heads = 8
+ffn_hidden_size = 2048
+dropout = 0.0
+tie_embeddings = true
+
+[training]
+stage = "pretrain"
+max_steps = 2000
+gradient_accumulation_steps = 8
+learning_rate = 0.0003
+weight_decay = 0.1
+warmup_steps = 100
+min_lr_ratio = 0.1
+max_grad_norm = 1.0
+precision = "bfloat16"
+
+[data]
+block_size = 256
+batch_size = 2
+shuffle_seed = 42
+validation_batches = 0 # full held-out validation, fixed order
+
+[runner]
+validate_every = 100
+checkpoint_every = 100
+milestones = [100, 500, 1000, 2000]
+max_attempts_per_step = 16
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"

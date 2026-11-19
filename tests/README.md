@@ -103,3 +103,12 @@ reads, checksums/duplicates/relocation/immutability, pending-window commit/abort
 epoch coverage, mismatches bị chặn trước weights/RNG, actual next-batch/loss/Adam
 resume, validation không dịch cursor, failures sau optimizer, FP16 skips tiêu thụ
 data, model/stage compatibility và fresh-process resume sau khi đổi data-root path.
+
+## WP07.3 pretraining runner
+
+`test_pretraining_runner.py` chạy full runner và restart bằng Python process mới,
+so model/Adam/scheduler/scaler/data cursor/RNG/history exact, xóa run cũ vẫn dựng lại
+curves/CSV; kiểm periodic/milestone/final, completed no-op resume, recipe/history guards,
+Drive write failure, boundary/failed-update interrupts, CUDA FP16 skipped-attempt
+durability, input ZIP checksum/path/duplicate guards và notebook syntax/live logging.
+Quality/corpus baseline/A100 training chưa được thay bằng các tests này.

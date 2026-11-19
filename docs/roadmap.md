@@ -75,6 +75,8 @@ khi chỉ có fixed-fixture smoke hoặc chưa có artifacts từ corpus trainin
 Xem [contracts/phases](wp07_training.md), [nghiệm thu WP07.1](wp07_1_validation.md).
 WP07.2 đã có [pretraining data + consumed-cursor resume](wp07_data.md),
 [evidence](wp07_2_validation.md); mới verify vài updates, chưa phải corpus baseline.
+WP07.3 có [runner/config/Colab](wp07_pretraining.md), checkpoints định kỳ và curves;
+local short-run verification không thay thế corpus baseline từ user.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 

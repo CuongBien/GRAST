@@ -88,18 +88,24 @@ class PretrainingSession:
         )
         return result
 
-    def save(self, path):
+    def save(self, path, *, extra_state: dict | None = None):
         if self._failed or self.engine.attempts != self.train.windows_consumed:
             raise RuntimeError("Cannot save failed/desynchronized session")
-        self.engine.save(
-            path,
-            data_state={"session_contract": self.contract, "train_cursor": self.train.state_dict()},
-        )
+        state = {"session_contract": self.contract, "train_cursor": self.train.state_dict()}
+        if extra_state is not None:
+            if not isinstance(extra_state, dict):
+                raise ValueError("extra_state must be a dictionary")
+            state["extra_state"] = extra_state
+        self.engine.save(path, data_state=state)
 
     def _validate_data(self, state, attempts):
         if (
             not isinstance(state, dict)
-            or set(state) != {"session_contract", "train_cursor"}
+            or set(state)
+            not in (
+                {"session_contract", "train_cursor"},
+                {"session_contract", "train_cursor", "extra_state"},
+            )
             or state["session_contract"] != self.contract
         ):
             raise ValueError("Checkpoint dataset/tokenizer/packing/validation identity mismatch")
@@ -107,10 +113,16 @@ class PretrainingSession:
         if state["train_cursor"]["windows_consumed"] != attempts:
             raise ValueError("Checkpoint engine/data cursor counters disagree")
 
-    def load(self, path):
+    def load(self, path, *, extra_validator=None):
         if self.train._pending is not None:
             raise RuntimeError("Cannot load during pending data window")
-        state = self.engine.load(path, data_validator=self._validate_data)
+
+        def validate(state, attempts):
+            self._validate_data(state, attempts)
+            if extra_validator is not None:
+                extra_validator(state.get("extra_state"), attempts)
+
+        state = self.engine.load(path, data_validator=validate)
         self.train.load_state_dict(state["train_cursor"])
         self._failed = False
         self.engine._emit(
@@ -120,3 +132,4 @@ class PretrainingSession:
             next_offset=self.train.offset,
             dataset_fingerprint=self.train.corpus.meta["fingerprint"],
         )
+        return state.get("extra_state")
