@@ -16,7 +16,8 @@ WP07 chỉ đóng khi có model checkpoint thực từ pretraining/SFT, curves v
 Việc chạy corpus dài được giao cho user; nếu chưa có artifacts thì ghi pending thay
 vì báo là đã train. Đã hoàn tất WP07.1–2: [phase 1](wp07_1_validation.md),
 [data/resume contract](wp07_data.md), [phase 2](wp07_2_validation.md).
-WP07.3: [runner, checkpoint và Colab](wp07_pretraining.md).
+WP07.3: [runner, checkpoint và Colab](wp07_pretraining.md),
+[local acceptance](wp07_3_validation.md). Đã verify4 updates; corpus baseline pending.
 
 ## WP07.1 — engine API
 

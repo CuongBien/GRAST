@@ -1,0 +1,770 @@
+{
+  "bundle": {
+    "manifest": {
+      "block_size": 256,
+      "bos_token_id": 1,
+      "dtype": "<u4",
+      "eos_token_id": 2,
+      "fingerprint": "17971c0168e4367b183ebb0a3abc7c1309ffe5095cdc67899bce13ffc4298faa",
+      "packing": "continuous-bos-eos-overlap1-ignore-bos-target-v1",
+      "pad_token_id": 0,
+      "schema_version": 1,
+      "scope": "pretraining_train_validation_only",
+      "source_dataset_fingerprint": "79ff92320ebb64e283ce342076c5e570989ef5433d8791231b2d78f370baf485",
+      "source_origin": "wp03_prepared_sources",
+      "splits": {
+        "train": {
+          "blocks": 14674,
+          "documents": 10000,
+          "file": "train.u32",
+          "sha256": "e3e7855b433b7a9ed9a0906e26ae3e5b115257987f29adc50a0c360d46bbebce",
+          "size_bytes": 14967188,
+          "source_file": "tinystories/train.jsonl",
+          "source_sha256": "92e562218a2db37f9d6804dd7a565820785c003dd622f6a82184c4318e3fb8b9",
+          "supervised_pairs": 3731797,
+          "tokens": 3741797
+        },
+        "validation": {
+          "blocks": 1344,
+          "documents": 1000,
+          "file": "validation.u32",
+          "sha256": "37b53450da5b37c5a0f57ae39125e941752f1e687394d4d1cdacd25a42599613",
+          "size_bytes": 1370500,
+          "source_file": "tinystories/validation.jsonl",
+          "source_sha256": "3650487dd48e82aeed5262fd6c881cdace7e5c44265d0966c38005f34da479d6",
+          "supervised_pairs": 341625,
+          "tokens": 342625
+        }
+      },
+      "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+      "vocab_size": 8192,
+      "work_package": "WP07.2"
+    },
+    "path": "dist/grast-wp07-data-block256-17971c0168e4.zip",
+    "sha256": "9f08cdc7ba7c8a4825ce90470fd19fc3ed6da7d6d3bfd742097a389d1aab949d",
+    "size_bytes": 3330568
+  },
+  "cases": {
+    "cpu": {
+      "acceptance_report": "artifacts/runs/20261119T105126959000Z-wp07-3-runner-smoke-seed42-5cf24cb3/artifacts/pretraining_acceptance.json",
+      "acceptance_report_sha256": "39fbc011d217d08eb4ddb6cb177861af36c612a38ff2560816e5100a7060e8c2",
+      "checks": {
+        "checkpoint_owned_history_recovered": true,
+        "common_validation_losses_exact": true,
+        "model_optimizer_scheduler_scaler_cursor_rng_exact": true,
+        "per_attempt_batch_loss_lr_amp_trace_exact": true
+      },
+      "runs": {
+        "first_run": {
+          "attempts": 2,
+          "checkpoint_bytes": 1233005,
+          "checkpoint_sha256": "12b85865e295d73a031f13c562923d77b897662011d0311be4b2b0322399c4db",
+          "curves_png_sha256": "1bd661a684c73cd994f5a9190ff32c13aa65b9ed946222a12c13d6991f9b0f9a",
+          "dataset_fingerprint": "c027b6f21125d4e568da95f416807d75e0730616ed3c0fd7d7c6af4696d45932",
+          "git": {
+            "branch": "feat/wp07-3-pretraining-runner",
+            "commit": "aa4be36b33ca025701421ef48715a22b43c4e8db",
+            "dirty": false,
+            "state": "committed",
+            "untracked_files": 0
+          },
+          "history": {
+            "train": [
+              {
+                "amp_scale": 1.0,
+                "attempt": 1,
+                "batch_sha256": "fc4ab5f3aa7a6dd2cad34bd4216ecdae810411d41379a94e99b40ed66573392f",
+                "learning_rates": [
+                  0.0003,
+                  0.0003
+                ],
+                "loss": 5.586162225986884,
+                "loss_tokens": 123,
+                "skipped": false,
+                "step": 1,
+                "tokens_optimized": 123,
+                "tokens_seen": 123
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 2,
+                "batch_sha256": "9b5617324010a7df8ef9d3732228f6eeca6101ad3417323dd8034446d8b3c8a3",
+                "learning_rates": [
+                  0.0003,
+                  0.0003
+                ],
+                "loss": 5.522302093855831,
+                "loss_tokens": 109,
+                "skipped": false,
+                "step": 2,
+                "tokens_optimized": 232,
+                "tokens_seen": 232
+              }
+            ],
+            "validation": [
+              {
+                "attempt": 0,
+                "loss": 5.561959266662598,
+                "loss_tokens": 123,
+                "step": 0
+              },
+              {
+                "attempt": 2,
+                "loss": 5.451509223720891,
+                "loss_tokens": 123,
+                "step": 2
+              }
+            ]
+          },
+          "parameter_counts": {
+            "blocks": 82176,
+            "final_norm": 64,
+            "lm_head_unique": 0,
+            "token_embedding": 16896,
+            "total": 99136
+          },
+          "report_sha256": "03e619ae59f1814b24b99a40961576e1d37935ed6e803d4f248fe3a3eaaf80e7",
+          "run_directory": "artifacts/runs/20261119T105126959000Z-wp07-3-runner-smoke-seed42-5cf24cb3/artifacts/runner_runs/20261119T105132221284Z-wp07-3-runner-smoke-seed42-0aa956dc",
+          "runtime": {
+            "capability": null,
+            "cuda": "12.8",
+            "cudnn_tf32": false,
+            "deterministic": true,
+            "device": "cpu",
+            "gpu_count": 1,
+            "gpu_name": null,
+            "matmul_tf32": false,
+            "num_threads": 1,
+            "torch": "2.9.1+cu128"
+          },
+          "source_origin": "authored_offline_fixture",
+          "step": 2,
+          "tokenizer_fingerprint": "f2c4336ad294950cb8cda33ed8a6ba1027a3e745054e8031429e4c5b45b3ea17",
+          "tokens_optimized": 232,
+          "validation_batches": 2
+        },
+        "full_run": {
+          "attempts": 4,
+          "checkpoint_bytes": 1233453,
+          "checkpoint_sha256": "21deeba76ee8b15f04113d57ef0b35984e5beaf1c3bc531bdf4bed8c2ddad3f0",
+          "curves_png_sha256": "ce2923e2e0b0dcc28e69f2e67b37e20ffa7290718d99599ce9e3df2ffb7afc89",
+          "dataset_fingerprint": "c027b6f21125d4e568da95f416807d75e0730616ed3c0fd7d7c6af4696d45932",
+          "git": {
+            "branch": "feat/wp07-3-pretraining-runner",
+            "commit": "aa4be36b33ca025701421ef48715a22b43c4e8db",
+            "dirty": false,
+            "state": "committed",
+            "untracked_files": 0
+          },
+          "history": {
+            "train": [
+              {
+                "amp_scale": 1.0,
+                "attempt": 1,
+                "batch_sha256": "fc4ab5f3aa7a6dd2cad34bd4216ecdae810411d41379a94e99b40ed66573392f",
+                "learning_rates": [
+                  0.0003,
+                  0.0003
+                ],
+                "loss": 5.586162225986884,
+                "loss_tokens": 123,
+                "skipped": false,
+                "step": 1,
+                "tokens_optimized": 123,
+                "tokens_seen": 123
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 2,
+                "batch_sha256": "9b5617324010a7df8ef9d3732228f6eeca6101ad3417323dd8034446d8b3c8a3",
+                "learning_rates": [
+                  0.0003,
+                  0.0003
+                ],
+                "loss": 5.522302093855831,
+                "loss_tokens": 109,
+                "skipped": false,
+                "step": 2,
+                "tokens_optimized": 232,
+                "tokens_seen": 232
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 3,
+                "batch_sha256": "4d4a75b37cffbc75ce3e19fca5f4debef1c7f9ddbb432f000ed08bd21a0c4930",
+                "learning_rates": [
+                  0.0002604594154601839,
+                  0.0002604594154601839
+                ],
+                "loss": 5.568922519683838,
+                "loss_tokens": 61,
+                "skipped": false,
+                "step": 3,
+                "tokens_optimized": 293,
+                "tokens_seen": 293
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 4,
+                "batch_sha256": "4ace6bca2ba11229dfed85b2e14bc26292ec1ddd81c63896bb7229b3bfa0a0cd",
+                "learning_rates": [
+                  0.000165,
+                  0.000165
+                ],
+                "loss": 5.4649603463769925,
+                "loss_tokens": 123,
+                "skipped": false,
+                "step": 4,
+                "tokens_optimized": 416,
+                "tokens_seen": 416
+              }
+            ],
+            "validation": [
+              {
+                "attempt": 0,
+                "loss": 5.561959266662598,
+                "loss_tokens": 123,
+                "step": 0
+              },
+              {
+                "attempt": 2,
+                "loss": 5.451509223720891,
+                "loss_tokens": 123,
+                "step": 2
+              },
+              {
+                "attempt": 4,
+                "loss": 5.3860450372463315,
+                "loss_tokens": 123,
+                "step": 4
+              }
+            ]
+          },
+          "parameter_counts": {
+            "blocks": 82176,
+            "final_norm": 64,
+            "lm_head_unique": 0,
+            "token_embedding": 16896,
+            "total": 99136
+          },
+          "report_sha256": "2293470616c70e5919c825d88c2cacc2a005d675d6ce9c1b4e09a2f6fe57ebe7",
+          "run_directory": "artifacts/runs/20261119T105126959000Z-wp07-3-runner-smoke-seed42-5cf24cb3/artifacts/runner_runs/20261119T105127784614Z-wp07-3-runner-smoke-seed42-f3a4687d",
+          "runtime": {
+            "capability": null,
+            "cuda": "12.8",
+            "cudnn_tf32": false,
+            "deterministic": true,
+            "device": "cpu",
+            "gpu_count": 1,
+            "gpu_name": null,
+            "matmul_tf32": false,
+            "num_threads": 1,
+            "torch": "2.9.1+cu128"
+          },
+          "source_origin": "authored_offline_fixture",
+          "step": 4,
+          "tokenizer_fingerprint": "f2c4336ad294950cb8cda33ed8a6ba1027a3e745054e8031429e4c5b45b3ea17",
+          "tokens_optimized": 416,
+          "validation_batches": 2
+        },
+        "resumed_run": {
+          "attempts": 4,
+          "checkpoint_bytes": 1233645,
+          "checkpoint_sha256": "221d626d34dcf575715be80e49f2bd6b39824a514bf6841d7b63c20dbd452004",
+          "curves_png_sha256": "ce2923e2e0b0dcc28e69f2e67b37e20ffa7290718d99599ce9e3df2ffb7afc89",
+          "dataset_fingerprint": "c027b6f21125d4e568da95f416807d75e0730616ed3c0fd7d7c6af4696d45932",
+          "git": {
+            "branch": "feat/wp07-3-pretraining-runner",
+            "commit": "aa4be36b33ca025701421ef48715a22b43c4e8db",
+            "dirty": false,
+            "state": "committed",
+            "untracked_files": 0
+          },
+          "history": {
+            "train": [
+              {
+                "amp_scale": 1.0,
+                "attempt": 1,
+                "batch_sha256": "fc4ab5f3aa7a6dd2cad34bd4216ecdae810411d41379a94e99b40ed66573392f",
+                "learning_rates": [
+                  0.0003,
+                  0.0003
+                ],
+                "loss": 5.586162225986884,
+                "loss_tokens": 123,
+                "skipped": false,
+                "step": 1,
+                "tokens_optimized": 123,
+                "tokens_seen": 123
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 2,
+                "batch_sha256": "9b5617324010a7df8ef9d3732228f6eeca6101ad3417323dd8034446d8b3c8a3",
+                "learning_rates": [
+                  0.0003,
+                  0.0003
+                ],
+                "loss": 5.522302093855831,
+                "loss_tokens": 109,
+                "skipped": false,
+                "step": 2,
+                "tokens_optimized": 232,
+                "tokens_seen": 232
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 3,
+                "batch_sha256": "4d4a75b37cffbc75ce3e19fca5f4debef1c7f9ddbb432f000ed08bd21a0c4930",
+                "learning_rates": [
+                  0.0002604594154601839,
+                  0.0002604594154601839
+                ],
+                "loss": 5.568922519683838,
+                "loss_tokens": 61,
+                "skipped": false,
+                "step": 3,
+                "tokens_optimized": 293,
+                "tokens_seen": 293
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 4,
+                "batch_sha256": "4ace6bca2ba11229dfed85b2e14bc26292ec1ddd81c63896bb7229b3bfa0a0cd",
+                "learning_rates": [
+                  0.000165,
+                  0.000165
+                ],
+                "loss": 5.4649603463769925,
+                "loss_tokens": 123,
+                "skipped": false,
+                "step": 4,
+                "tokens_optimized": 416,
+                "tokens_seen": 416
+              }
+            ],
+            "validation": [
+              {
+                "attempt": 0,
+                "loss": 5.561959266662598,
+                "loss_tokens": 123,
+                "step": 0
+              },
+              {
+                "attempt": 2,
+                "loss": 5.451509223720891,
+                "loss_tokens": 123,
+                "step": 2
+              },
+              {
+                "attempt": 4,
+                "loss": 5.3860450372463315,
+                "loss_tokens": 123,
+                "step": 4
+              }
+            ]
+          },
+          "parameter_counts": {
+            "blocks": 82176,
+            "final_norm": 64,
+            "lm_head_unique": 0,
+            "token_embedding": 16896,
+            "total": 99136
+          },
+          "report_sha256": "9e19912424f83a22ce8e4edfa8520972f16419bf6d5bdf27195034d8d111c944",
+          "run_directory": "artifacts/runs/20261119T105126959000Z-wp07-3-runner-smoke-seed42-5cf24cb3/artifacts/runner_runs/20261119T105133073743Z-wp07-3-runner-smoke-seed42-aa18db95",
+          "runtime": {
+            "capability": null,
+            "cuda": "12.8",
+            "cudnn_tf32": false,
+            "deterministic": true,
+            "device": "cpu",
+            "gpu_count": 1,
+            "gpu_name": null,
+            "matmul_tf32": false,
+            "num_threads": 1,
+            "torch": "2.9.1+cu128"
+          },
+          "source_origin": "authored_offline_fixture",
+          "step": 4,
+          "tokenizer_fingerprint": "f2c4336ad294950cb8cda33ed8a6ba1027a3e745054e8031429e4c5b45b3ea17",
+          "tokens_optimized": 416,
+          "validation_batches": 2
+        }
+      }
+    },
+    "cuda_bfloat16_candidate": {
+      "acceptance_report": "artifacts/runs/20261119T105146024625Z-wp07-pretrain-tinystories-seed42-db0c908f/artifacts/pretraining_acceptance.json",
+      "acceptance_report_sha256": "2ad0143d4dcd502f5e32920425f5c192b8862fa04d44c71bec32e296a507c342",
+      "checks": {
+        "checkpoint_owned_history_recovered": true,
+        "common_validation_losses_exact": true,
+        "model_optimizer_scheduler_scaler_cursor_rng_exact": true,
+        "per_attempt_batch_loss_lr_amp_trace_exact": true
+      },
+      "runs": {
+        "first_run": {
+          "attempts": 2,
+          "checkpoint_bytes": 553911131,
+          "checkpoint_sha256": "f30dd192377d30b9263f7151c1178c5fb4b86606d3efed2ee15a5bbb0469c6f4",
+          "curves_png_sha256": "4ef1271732e82f6affb7c196170cedbd087a188f905cb6fdf1ae360a9b270867",
+          "dataset_fingerprint": "17971c0168e4367b183ebb0a3abc7c1309ffe5095cdc67899bce13ffc4298faa",
+          "git": {
+            "branch": "feat/wp07-3-pretraining-runner",
+            "commit": "aa4be36b33ca025701421ef48715a22b43c4e8db",
+            "dirty": false,
+            "state": "committed",
+            "untracked_files": 0
+          },
+          "history": {
+            "train": [
+              {
+                "amp_scale": 1.0,
+                "attempt": 1,
+                "batch_sha256": "8569b35f3a41256ca9b0b3558d757637e50ca5434bd3a7361c45b9141d2007cb",
+                "learning_rates": [
+                  2.9999999999999997e-06,
+                  2.9999999999999997e-06
+                ],
+                "loss": 9.139145543075509,
+                "loss_tokens": 4074,
+                "skipped": false,
+                "step": 1,
+                "tokens_optimized": 4074,
+                "tokens_seen": 4074
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 2,
+                "batch_sha256": "12cf7a889051736120a1f0f2e67ba841bf200153ee3a778520f0f7ce6ac3ac36",
+                "learning_rates": [
+                  5.999999999999999e-06,
+                  5.999999999999999e-06
+                ],
+                "loss": 8.957909089260875,
+                "loss_tokens": 4065,
+                "skipped": false,
+                "step": 2,
+                "tokens_optimized": 8139,
+                "tokens_seen": 8139
+              }
+            ],
+            "validation": [
+              {
+                "attempt": 0,
+                "loss": 9.166838798802107,
+                "loss_tokens": 341625,
+                "step": 0
+              },
+              {
+                "attempt": 2,
+                "loss": 8.636508794293926,
+                "loss_tokens": 341625,
+                "step": 2
+              }
+            ]
+          },
+          "parameter_counts": {
+            "blocks": 41953280,
+            "final_norm": 512,
+            "lm_head_unique": 0,
+            "token_embedding": 4194304,
+            "total": 46148096
+          },
+          "report_sha256": "f8db6ed008813e51eb00f3581da546efb3f6d4ed049fcbceff855cb96a82c49d",
+          "run_directory": "artifacts/runs/20261119T105146024625Z-wp07-pretrain-tinystories-seed42-db0c908f/artifacts/runner_runs/20261119T105310087339Z-wp07-pretrain-tinystories-seed42-e4d62612",
+          "runtime": {
+            "capability": [
+              8,
+              9
+            ],
+            "cuda": "12.8",
+            "cudnn_tf32": false,
+            "deterministic": true,
+            "device": "cuda:0",
+            "gpu_count": 1,
+            "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "matmul_tf32": false,
+            "num_threads": 1,
+            "torch": "2.9.1+cu128"
+          },
+          "source_origin": "wp03_prepared_sources",
+          "step": 2,
+          "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+          "tokens_optimized": 8139,
+          "validation_batches": null
+        },
+        "full_run": {
+          "attempts": 4,
+          "checkpoint_bytes": 553911515,
+          "checkpoint_sha256": "dd8e21e4dd02c98f8dc2f8fad47d5ed04cb2106cc160858d26a120d18410e6c7",
+          "curves_png_sha256": "4b167091d347721086e5ec35857ad3df30816d4f843a975211848066973f49ae",
+          "dataset_fingerprint": "17971c0168e4367b183ebb0a3abc7c1309ffe5095cdc67899bce13ffc4298faa",
+          "git": {
+            "branch": "feat/wp07-3-pretraining-runner",
+            "commit": "aa4be36b33ca025701421ef48715a22b43c4e8db",
+            "dirty": false,
+            "state": "committed",
+            "untracked_files": 0
+          },
+          "history": {
+            "train": [
+              {
+                "amp_scale": 1.0,
+                "attempt": 1,
+                "batch_sha256": "8569b35f3a41256ca9b0b3558d757637e50ca5434bd3a7361c45b9141d2007cb",
+                "learning_rates": [
+                  2.9999999999999997e-06,
+                  2.9999999999999997e-06
+                ],
+                "loss": 9.139145543075509,
+                "loss_tokens": 4074,
+                "skipped": false,
+                "step": 1,
+                "tokens_optimized": 4074,
+                "tokens_seen": 4074
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 2,
+                "batch_sha256": "12cf7a889051736120a1f0f2e67ba841bf200153ee3a778520f0f7ce6ac3ac36",
+                "learning_rates": [
+                  5.999999999999999e-06,
+                  5.999999999999999e-06
+                ],
+                "loss": 8.957909089260875,
+                "loss_tokens": 4065,
+                "skipped": false,
+                "step": 2,
+                "tokens_optimized": 8139,
+                "tokens_seen": 8139
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 3,
+                "batch_sha256": "6e1bff032ddc88cf08ee6fa9bf8b804807405e86867b211fca09b32f2912a962",
+                "learning_rates": [
+                  8.999999999999999e-06,
+                  8.999999999999999e-06
+                ],
+                "loss": 8.623186119186492,
+                "loss_tokens": 4068,
+                "skipped": false,
+                "step": 3,
+                "tokens_optimized": 12207,
+                "tokens_seen": 12207
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 4,
+                "batch_sha256": "060a80b9eaa7cb9b33e20b8b135b5c50a6aa3b2a8fded0a89b88350946e24e84",
+                "learning_rates": [
+                  1.1999999999999999e-05,
+                  1.1999999999999999e-05
+                ],
+                "loss": 8.168652002190617,
+                "loss_tokens": 4067,
+                "skipped": false,
+                "step": 4,
+                "tokens_optimized": 16274,
+                "tokens_seen": 16274
+              }
+            ],
+            "validation": [
+              {
+                "attempt": 0,
+                "loss": 9.166838798802107,
+                "loss_tokens": 341625,
+                "step": 0
+              },
+              {
+                "attempt": 4,
+                "loss": 7.66257223474312,
+                "loss_tokens": 341625,
+                "step": 4
+              }
+            ]
+          },
+          "parameter_counts": {
+            "blocks": 41953280,
+            "final_norm": 512,
+            "lm_head_unique": 0,
+            "token_embedding": 4194304,
+            "total": 46148096
+          },
+          "report_sha256": "4bb367f31b237a6660fec428c4ed8eb8a58aed79c3ba85a31844e9d1056305fb",
+          "run_directory": "artifacts/runs/20261119T105146024625Z-wp07-pretrain-tinystories-seed42-db0c908f/artifacts/runner_runs/20261119T105146776738Z-wp07-pretrain-tinystories-seed42-7619b70e",
+          "runtime": {
+            "capability": [
+              8,
+              9
+            ],
+            "cuda": "12.8",
+            "cudnn_tf32": false,
+            "deterministic": true,
+            "device": "cuda:0",
+            "gpu_count": 1,
+            "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "matmul_tf32": false,
+            "num_threads": 1,
+            "torch": "2.9.1+cu128"
+          },
+          "source_origin": "wp03_prepared_sources",
+          "step": 4,
+          "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+          "tokens_optimized": 16274,
+          "validation_batches": null
+        },
+        "resumed_run": {
+          "attempts": 4,
+          "checkpoint_bytes": 553911771,
+          "checkpoint_sha256": "a11fa78a4b1beb952290187b782679161aad5c647f3447b193d4bb1ae1cfa551",
+          "curves_png_sha256": "13a6364af317ef0787e865fb79790325308add51952b950c705cc89230670cde",
+          "dataset_fingerprint": "17971c0168e4367b183ebb0a3abc7c1309ffe5095cdc67899bce13ffc4298faa",
+          "git": {
+            "branch": "feat/wp07-3-pretraining-runner",
+            "commit": "aa4be36b33ca025701421ef48715a22b43c4e8db",
+            "dirty": false,
+            "state": "committed",
+            "untracked_files": 0
+          },
+          "history": {
+            "train": [
+              {
+                "amp_scale": 1.0,
+                "attempt": 1,
+                "batch_sha256": "8569b35f3a41256ca9b0b3558d757637e50ca5434bd3a7361c45b9141d2007cb",
+                "learning_rates": [
+                  2.9999999999999997e-06,
+                  2.9999999999999997e-06
+                ],
+                "loss": 9.139145543075509,
+                "loss_tokens": 4074,
+                "skipped": false,
+                "step": 1,
+                "tokens_optimized": 4074,
+                "tokens_seen": 4074
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 2,
+                "batch_sha256": "12cf7a889051736120a1f0f2e67ba841bf200153ee3a778520f0f7ce6ac3ac36",
+                "learning_rates": [
+                  5.999999999999999e-06,
+                  5.999999999999999e-06
+                ],
+                "loss": 8.957909089260875,
+                "loss_tokens": 4065,
+                "skipped": false,
+                "step": 2,
+                "tokens_optimized": 8139,
+                "tokens_seen": 8139
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 3,
+                "batch_sha256": "6e1bff032ddc88cf08ee6fa9bf8b804807405e86867b211fca09b32f2912a962",
+                "learning_rates": [
+                  8.999999999999999e-06,
+                  8.999999999999999e-06
+                ],
+                "loss": 8.623186119186492,
+                "loss_tokens": 4068,
+                "skipped": false,
+                "step": 3,
+                "tokens_optimized": 12207,
+                "tokens_seen": 12207
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 4,
+                "batch_sha256": "060a80b9eaa7cb9b33e20b8b135b5c50a6aa3b2a8fded0a89b88350946e24e84",
+                "learning_rates": [
+                  1.1999999999999999e-05,
+                  1.1999999999999999e-05
+                ],
+                "loss": 8.168652002190617,
+                "loss_tokens": 4067,
+                "skipped": false,
+                "step": 4,
+                "tokens_optimized": 16274,
+                "tokens_seen": 16274
+              }
+            ],
+            "validation": [
+              {
+                "attempt": 0,
+                "loss": 9.166838798802107,
+                "loss_tokens": 341625,
+                "step": 0
+              },
+              {
+                "attempt": 2,
+                "loss": 8.636508794293926,
+                "loss_tokens": 341625,
+                "step": 2
+              },
+              {
+                "attempt": 4,
+                "loss": 7.66257223474312,
+                "loss_tokens": 341625,
+                "step": 4
+              }
+            ]
+          },
+          "parameter_counts": {
+            "blocks": 41953280,
+            "final_norm": 512,
+            "lm_head_unique": 0,
+            "token_embedding": 4194304,
+            "total": 46148096
+          },
+          "report_sha256": "b07ecc1908de4cdca5b17404ec79a581566b3547ecbfc63f07b689fb60b2719c",
+          "run_directory": "artifacts/runs/20261119T105146024625Z-wp07-pretrain-tinystories-seed42-db0c908f/artifacts/runner_runs/20261119T105427549535Z-wp07-pretrain-tinystories-seed42-96349213",
+          "runtime": {
+            "capability": [
+              8,
+              9
+            ],
+            "cuda": "12.8",
+            "cudnn_tf32": false,
+            "deterministic": true,
+            "device": "cuda:0",
+            "gpu_count": 1,
+            "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "matmul_tf32": false,
+            "num_threads": 1,
+            "torch": "2.9.1+cu128"
+          },
+          "source_origin": "wp03_prepared_sources",
+          "step": 4,
+          "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+          "tokens_optimized": 16274,
+          "validation_batches": null
+        }
+      }
+    }
+  },
+  "checks": {
+    "bundle_actual_extraction": "passed",
+    "installed_wheel_restart_smoke_outside_source": "passed",
+    "new_runner_tests": 24,
+    "notebook_code_cells_compile": "passed",
+    "pytest_passed": 689,
+    "ruff_format": "passed",
+    "ruff_lint": "passed",
+    "wheel_sdist_build": "passed"
+  },
+  "date": "2026-11-19",
+  "implementation_commit": "aa4be36b33ca025701421ef48715a22b43c4e8db",
+  "limitations": [
+    "Only 4 successful updates; not the planned 2000-update corpus baseline.",
+    "No A100/Colab execution evidence or SFT/pilot quality result.",
+    "CPU fixture validation is a fixed 2-batch diagnostic prefix.",
+    "CUDA candidate validation covers the full 1000-story held-out validation split.",
+    "Exact continuation requires the same recipe/implementation/runtime; no cross-device claim."
+  ],
+  "schema_version": 1,
+  "status": "local_runner_acceptance_passed_colab_training_pending",
+  "work_package": "WP07.3"
+}
