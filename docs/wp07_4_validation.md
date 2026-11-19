@@ -36,6 +36,10 @@ Warm-start không restore parent RNG/Adam/cursor; incompatible metadata/tensor/N
 weights bị chặn trước mutation. CPU/FP16-CUDA resume exact và restart process mới
 không còn parent checkpoint/run cũ vẫn phục hồi full state/history/curves.
 
+CI Ubuntu phát hiện khác biệt1ULP (~4,77e-7) khi so hai cách reduce FP32. Test CE
+đã dùng reference FP64 độc lập với rtol/atol1e-6; exact same-runtime resume vẫn giữ
+bitwise/state equality. Không thay đổi model, masking hoặc training implementation.
+
 Lint/format, wheel/sdist build pass. Wheel cài vào target riêng rồi chạy acceptance
 ngoài source tree: pass. Sdist không chứa cache/run payloads hoặc weights.
 ZIP round-trip/corruption/path guards pass; bundle thật được extract/verify lại.

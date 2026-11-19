@@ -100,8 +100,13 @@ def test_prompt_and_padding_mask_match_independent_shifted_ce(inputs):
     model = job(inputs).session.engine.model.eval()
     output = model(**batch)
     selected = batch["labels"][:, 1:] != -100
-    reference = F.cross_entropy(output.logits[:, :-1][selected], batch["labels"][:, 1:][selected])
-    torch.testing.assert_close(output.loss, reference, rtol=0, atol=0)
+    # A separate FP64 reduction is an independent numeric reference. The model's
+    # full-mask FP32 reduction can differ by an ULP from selected-token reduction
+    # on another CPU backend; exact equality is only required for same-runtime resume.
+    reference = F.cross_entropy(
+        output.logits[:, :-1][selected].double(), batch["labels"][:, 1:][selected]
+    )
+    torch.testing.assert_close(output.loss.double(), reference, rtol=1e-6, atol=1e-6)
     assert output.num_loss_tokens == int(selected.sum())
     altered = {k: v.clone() for k, v in batch.items()}
     altered["input_ids"][1] = 8

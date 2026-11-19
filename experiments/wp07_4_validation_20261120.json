@@ -902,6 +902,13 @@
   "verification": {
     "additional_notebook_input_cases_passed": 2,
     "full_suite_passed": 728,
+    "independent_ce_reference": {
+      "atol": 1e-06,
+      "dtype": "float64",
+      "reason": "FP32 masked reduction vs selected-token reduction differs by 1 ULP on Ubuntu CPU backend.",
+      "rtol": 1e-06,
+      "same_runtime_resume_equality": "exact_unchanged"
+    },
     "installed_wheel_sft_restart_outside_source": "passed",
     "new_sft_cases": 28,
     "new_sft_cpu_cases": 27,
