@@ -19,7 +19,8 @@ vì báo là đã train. Đã hoàn tất WP07.1–2: [phase 1](wp07_1_validatio
 WP07.3: [runner, checkpoint và Colab](wp07_pretraining.md),
 [local acceptance](wp07_3_validation.md). Ngày20/11 đã nhận và verify
 [corpus checkpoint 2.000 updates](../experiments/wp07_pretraining_completed_20261120.json).
-WP07.4: [CoT SFT/data/warm-start/notebooks](wp07_sft.md).
+WP07.4: [CoT SFT/data/warm-start/notebooks](wp07_sft.md),
+[local acceptance](wp07_4_validation.md). SFT dài và pilot vẫn pending.
 
 ## WP07.1 — engine API
 

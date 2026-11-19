@@ -1,0 +1,917 @@
+{
+  "bundle": {
+    "dataset_manifest": {
+      "block_size": 512,
+      "filtered_examples": 0,
+      "fingerprint": "78f779a7d367a91f505332a804edbe40a0286ed5fb932269103c18819d35395b",
+      "protocol": "cot-independent-bos-question-lf-think-reasoning-final-eos-prompt-masked-v1",
+      "schema_version": 1,
+      "scope": "cot_sft_train_validation_only",
+      "source_dataset_fingerprint": "79ff92320ebb64e283ce342076c5e570989ef5433d8791231b2d78f370baf485",
+      "source_files": {
+        "math/train.jsonl": {
+          "records": 1500,
+          "sha256": "148688f520b73088c61969954900361a296a800cba66b617196cef05ea9cf0c8",
+          "size_bytes": 1216582
+        },
+        "math/validation.jsonl": {
+          "records": 300,
+          "sha256": "522472eae2e6f64e8f121b5502aa2d5d1555e575a1a5d1d174c9a842622af0d8",
+          "size_bytes": 244681
+        }
+      },
+      "source_origin": "wp03_prepared_sources",
+      "sources": [
+        "math"
+      ],
+      "splits": {
+        "train": {
+          "counts": {
+            "math/easy": 500,
+            "math/hard": 500,
+            "math/medium": 500
+          },
+          "file": "train.jsonl",
+          "max_length": 387,
+          "min_length": 61,
+          "prompt_tokens": 209570,
+          "records": 1500,
+          "sha256": "b2cddc9e347f7654a1aedc2b803e14ffa8e311cb3bf6afd49449758bd2134e84",
+          "size_bytes": 3832346,
+          "target_tokens": 94915
+        },
+        "validation": {
+          "counts": {
+            "math/easy": 100,
+            "math/hard": 100,
+            "math/medium": 100
+          },
+          "file": "validation.jsonl",
+          "max_length": 387,
+          "min_length": 61,
+          "prompt_tokens": 41880,
+          "records": 300,
+          "sha256": "ff5d53400180dc203467a12a4c3b9b719d888c64ec1164e0bc3ec533022e7c8c",
+          "size_bytes": 767231,
+          "target_tokens": 18971
+        }
+      },
+      "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+      "truncated_examples": 0,
+      "vocab_size": 8192,
+      "work_package": "WP07.4"
+    },
+    "path": "dist/grast-wp07-sft-math-78f779a7d367.zip",
+    "sha256": "100296172c05aff2bb99a4cc314cadf6dece5c65e0d7d7bb846a323794e7296e",
+    "size_bytes": 410509
+  },
+  "cases": {
+    "cpu_fixture": {
+      "acceptance_report": "artifacts/runs/20261119T195129202416Z-wp07-4-sft-smoke-seed42-548c6711/artifacts/sft_acceptance.json",
+      "checks": {
+        "common_validation_losses_exact": true,
+        "model_optimizer_scheduler_scaler_cursor_rng_exact": true,
+        "per_attempt_batch_loss_lr_amp_trace_exact": true,
+        "source_checkpoint_unchanged": true
+      },
+      "runs": {
+        "first_run": {
+          "attempts": 2,
+          "checkpoint_bytes": 393965,
+          "checkpoint_sha256": "2a5b9fc9c6d030d7f1c9dd7cc160222d202ee8658823d23f18df8dd57e5942fc",
+          "curves_png_sha256": "9b98a740289b6f76db3a5c1397b9208e835e0b3ac18c72732b1e588ea67d7ba2",
+          "dataset_fingerprint": "cc331a9f9e4a63df2cb5134b49c1aee401a7eff1a6664c30042cafdd0a65f5f4",
+          "git": {
+            "branch": "feat/wp07-4-cot-sft",
+            "commit": "db0da482c3516d99b3fa6c3b6e6f566a65bf2c2f",
+            "dirty": false,
+            "state": "committed",
+            "untracked_files": 0
+          },
+          "history": {
+            "train": [
+              {
+                "amp_scale": 1.0,
+                "attempt": 1,
+                "batch_sha256": "fcf063dfbc87572746499aee593aa417e62ce9525895bc48c3f06e5b50e6bbb1",
+                "learning_rates": [
+                  0.0003,
+                  0.0003
+                ],
+                "loss": 5.51845044278084,
+                "loss_tokens": 94,
+                "skipped": false,
+                "step": 1,
+                "tokens_optimized": 94,
+                "tokens_seen": 94
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 2,
+                "batch_sha256": "74600ca686872be30ca99ffbf9377d051dad64c4334347565c09042005416ff7",
+                "learning_rates": [
+                  0.0003,
+                  0.0003
+                ],
+                "loss": 5.51059512253646,
+                "loss_tokens": 91,
+                "skipped": false,
+                "step": 2,
+                "tokens_optimized": 185,
+                "tokens_seen": 185
+              }
+            ],
+            "validation": [
+              {
+                "attempt": 0,
+                "loss": 5.537389620490696,
+                "loss_tokens": 92,
+                "step": 0
+              },
+              {
+                "attempt": 2,
+                "loss": 5.494109044904294,
+                "loss_tokens": 92,
+                "step": 2
+              }
+            ]
+          },
+          "initialization": {
+            "checkpoint_sha256": "748ab584ac46eb9d7d98cf65a0532345a2f639603852eeb4bea37b904d12f3ef",
+            "kind": "pretrain_weights_only_fresh_sft_optimizer_rng_cursor",
+            "source_attempts": 1,
+            "source_runtime": {
+              "capability": null,
+              "cuda": "12.8",
+              "cudnn_tf32": false,
+              "deterministic": true,
+              "device": "cpu",
+              "gpu_count": 1,
+              "gpu_name": null,
+              "matmul_tf32": false,
+              "num_threads": 1,
+              "torch": "2.9.1+cu128"
+            },
+            "source_stage": "pretrain",
+            "source_step": 1,
+            "source_tokens_optimized": 30
+          },
+          "parameter_counts": {
+            "blocks": 20608,
+            "final_norm": 32,
+            "lm_head_unique": 0,
+            "token_embedding": 8448,
+            "total": 29088
+          },
+          "report_sha256": "c927cacd8821e0beb1ea1f3cdd3492127671ccb21f8e2237d0fb7718f4f1755e",
+          "run_directory": "artifacts/runs/20261119T195129202416Z-wp07-4-sft-smoke-seed42-548c6711/artifacts/sft_runs/20261119T195134427831Z-wp07-4-sft-smoke-seed42-1112f227",
+          "runtime": {
+            "capability": null,
+            "cuda": "12.8",
+            "cudnn_tf32": false,
+            "deterministic": true,
+            "device": "cpu",
+            "gpu_count": 1,
+            "gpu_name": null,
+            "matmul_tf32": false,
+            "num_threads": 1,
+            "torch": "2.9.1+cu128"
+          },
+          "step": 2,
+          "tokenizer_fingerprint": "f2c4336ad294950cb8cda33ed8a6ba1027a3e745054e8031429e4c5b45b3ea17",
+          "tokens_optimized": 185,
+          "validation_batches": 2
+        },
+        "full_run": {
+          "attempts": 4,
+          "checkpoint_bytes": 394413,
+          "checkpoint_sha256": "4b099143bea2dd21fe2bc7cb6b56db2950ef3fd14ca3098be2ab20681a2d2363",
+          "curves_png_sha256": "5ea003d61714347478ae4ebe8223166c02fb454df3df7551e084ef0032d5cacd",
+          "dataset_fingerprint": "cc331a9f9e4a63df2cb5134b49c1aee401a7eff1a6664c30042cafdd0a65f5f4",
+          "git": {
+            "branch": "feat/wp07-4-cot-sft",
+            "commit": "db0da482c3516d99b3fa6c3b6e6f566a65bf2c2f",
+            "dirty": false,
+            "state": "committed",
+            "untracked_files": 0
+          },
+          "history": {
+            "train": [
+              {
+                "amp_scale": 1.0,
+                "attempt": 1,
+                "batch_sha256": "fcf063dfbc87572746499aee593aa417e62ce9525895bc48c3f06e5b50e6bbb1",
+                "learning_rates": [
+                  0.0003,
+                  0.0003
+                ],
+                "loss": 5.51845044278084,
+                "loss_tokens": 94,
+                "skipped": false,
+                "step": 1,
+                "tokens_optimized": 94,
+                "tokens_seen": 94
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 2,
+                "batch_sha256": "74600ca686872be30ca99ffbf9377d051dad64c4334347565c09042005416ff7",
+                "learning_rates": [
+                  0.0003,
+                  0.0003
+                ],
+                "loss": 5.51059512253646,
+                "loss_tokens": 91,
+                "skipped": false,
+                "step": 2,
+                "tokens_optimized": 185,
+                "tokens_seen": 185
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 3,
+                "batch_sha256": "a5e44e1cbd2c693c62ce5280a258e3f1b1efed8d1baddc5bc2e5b860f03209ce",
+                "learning_rates": [
+                  0.0002604594154601839,
+                  0.0002604594154601839
+                ],
+                "loss": 5.4753313064575195,
+                "loss_tokens": 53,
+                "skipped": false,
+                "step": 3,
+                "tokens_optimized": 238,
+                "tokens_seen": 238
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 4,
+                "batch_sha256": "6b459a0fecd22d63295c007ef205d2ff5bfea0fa2cb45a912606754e1b1ea21b",
+                "learning_rates": [
+                  0.000165,
+                  0.000165
+                ],
+                "loss": 5.467169599330171,
+                "loss_tokens": 94,
+                "skipped": false,
+                "step": 4,
+                "tokens_optimized": 332,
+                "tokens_seen": 332
+              }
+            ],
+            "validation": [
+              {
+                "attempt": 0,
+                "loss": 5.537389620490696,
+                "loss_tokens": 92,
+                "step": 0
+              },
+              {
+                "attempt": 2,
+                "loss": 5.494109044904294,
+                "loss_tokens": 92,
+                "step": 2
+              },
+              {
+                "attempt": 4,
+                "loss": 5.463809640511222,
+                "loss_tokens": 92,
+                "step": 4
+              }
+            ]
+          },
+          "initialization": {
+            "checkpoint_sha256": "748ab584ac46eb9d7d98cf65a0532345a2f639603852eeb4bea37b904d12f3ef",
+            "kind": "pretrain_weights_only_fresh_sft_optimizer_rng_cursor",
+            "source_attempts": 1,
+            "source_runtime": {
+              "capability": null,
+              "cuda": "12.8",
+              "cudnn_tf32": false,
+              "deterministic": true,
+              "device": "cpu",
+              "gpu_count": 1,
+              "gpu_name": null,
+              "matmul_tf32": false,
+              "num_threads": 1,
+              "torch": "2.9.1+cu128"
+            },
+            "source_stage": "pretrain",
+            "source_step": 1,
+            "source_tokens_optimized": 30
+          },
+          "parameter_counts": {
+            "blocks": 20608,
+            "final_norm": 32,
+            "lm_head_unique": 0,
+            "token_embedding": 8448,
+            "total": 29088
+          },
+          "report_sha256": "5462243bd18309527f1185c92856b88a1da796c9b9fc5c109d89a7cbc8a05653",
+          "run_directory": "artifacts/runs/20261119T195129202416Z-wp07-4-sft-smoke-seed42-548c6711/artifacts/sft_runs/20261119T195132744970Z-wp07-4-sft-smoke-seed42-79ec1123",
+          "runtime": {
+            "capability": null,
+            "cuda": "12.8",
+            "cudnn_tf32": false,
+            "deterministic": true,
+            "device": "cpu",
+            "gpu_count": 1,
+            "gpu_name": null,
+            "matmul_tf32": false,
+            "num_threads": 1,
+            "torch": "2.9.1+cu128"
+          },
+          "step": 4,
+          "tokenizer_fingerprint": "f2c4336ad294950cb8cda33ed8a6ba1027a3e745054e8031429e4c5b45b3ea17",
+          "tokens_optimized": 332,
+          "validation_batches": 2
+        },
+        "resumed_run": {
+          "attempts": 4,
+          "checkpoint_bytes": 394605,
+          "checkpoint_sha256": "22e133107cfadc477937166cdcdd71d471c27e91fe88766bd948fad9d1a1d39e",
+          "curves_png_sha256": "5ea003d61714347478ae4ebe8223166c02fb454df3df7551e084ef0032d5cacd",
+          "dataset_fingerprint": "cc331a9f9e4a63df2cb5134b49c1aee401a7eff1a6664c30042cafdd0a65f5f4",
+          "git": {
+            "branch": "feat/wp07-4-cot-sft",
+            "commit": "db0da482c3516d99b3fa6c3b6e6f566a65bf2c2f",
+            "dirty": false,
+            "state": "committed",
+            "untracked_files": 0
+          },
+          "history": {
+            "train": [
+              {
+                "amp_scale": 1.0,
+                "attempt": 1,
+                "batch_sha256": "fcf063dfbc87572746499aee593aa417e62ce9525895bc48c3f06e5b50e6bbb1",
+                "learning_rates": [
+                  0.0003,
+                  0.0003
+                ],
+                "loss": 5.51845044278084,
+                "loss_tokens": 94,
+                "skipped": false,
+                "step": 1,
+                "tokens_optimized": 94,
+                "tokens_seen": 94
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 2,
+                "batch_sha256": "74600ca686872be30ca99ffbf9377d051dad64c4334347565c09042005416ff7",
+                "learning_rates": [
+                  0.0003,
+                  0.0003
+                ],
+                "loss": 5.51059512253646,
+                "loss_tokens": 91,
+                "skipped": false,
+                "step": 2,
+                "tokens_optimized": 185,
+                "tokens_seen": 185
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 3,
+                "batch_sha256": "a5e44e1cbd2c693c62ce5280a258e3f1b1efed8d1baddc5bc2e5b860f03209ce",
+                "learning_rates": [
+                  0.0002604594154601839,
+                  0.0002604594154601839
+                ],
+                "loss": 5.4753313064575195,
+                "loss_tokens": 53,
+                "skipped": false,
+                "step": 3,
+                "tokens_optimized": 238,
+                "tokens_seen": 238
+              },
+              {
+                "amp_scale": 1.0,
+                "attempt": 4,
+                "batch_sha256": "6b459a0fecd22d63295c007ef205d2ff5bfea0fa2cb45a912606754e1b1ea21b",
+                "learning_rates": [
+                  0.000165,
+                  0.000165
+                ],
+                "loss": 5.467169599330171,
+                "loss_tokens": 94,
+                "skipped": false,
+                "step": 4,
+                "tokens_optimized": 332,
+                "tokens_seen": 332
+              }
+            ],
+            "validation": [
+              {
+                "attempt": 0,
+                "loss": 5.537389620490696,
+                "loss_tokens": 92,
+                "step": 0
+              },
+              {
+                "attempt": 2,
+                "loss": 5.494109044904294,
+                "loss_tokens": 92,
+                "step": 2
+              },
+              {
+                "attempt": 4,
+                "loss": 5.463809640511222,
+                "loss_tokens": 92,
+                "step": 4
+              }
+            ]
+          },
+          "initialization": {
+            "checkpoint_sha256": "748ab584ac46eb9d7d98cf65a0532345a2f639603852eeb4bea37b904d12f3ef",
+            "kind": "pretrain_weights_only_fresh_sft_optimizer_rng_cursor",
+            "source_attempts": 1,
+            "source_runtime": {
+              "capability": null,
+              "cuda": "12.8",
+              "cudnn_tf32": false,
+              "deterministic": true,
+              "device": "cpu",
+              "gpu_count": 1,
+              "gpu_name": null,
+              "matmul_tf32": false,
+              "num_threads": 1,
+              "torch": "2.9.1+cu128"
+            },
+            "source_stage": "pretrain",
+            "source_step": 1,
+            "source_tokens_optimized": 30
+          },
+          "parameter_counts": {
+            "blocks": 20608,
+            "final_norm": 32,
+            "lm_head_unique": 0,
+            "token_embedding": 8448,
+            "total": 29088
+          },
+          "report_sha256": "29112c143846a7d29ff727a370339802a4a133bfa8de9592ccce246fcb9fcaeb",
+          "run_directory": "artifacts/runs/20261119T195129202416Z-wp07-4-sft-smoke-seed42-548c6711/artifacts/sft_runs/20261119T195135353405Z-wp07-4-sft-smoke-seed42-6225f53d",
+          "runtime": {
+            "capability": null,
+            "cuda": "12.8",
+            "cudnn_tf32": false,
+            "deterministic": true,
+            "device": "cpu",
+            "gpu_count": 1,
+            "gpu_name": null,
+            "matmul_tf32": false,
+            "num_threads": 1,
+            "torch": "2.9.1+cu128"
+          },
+          "step": 4,
+          "tokenizer_fingerprint": "f2c4336ad294950cb8cda33ed8a6ba1027a3e745054e8031429e4c5b45b3ea17",
+          "tokens_optimized": 332,
+          "validation_batches": 2
+        }
+      }
+    },
+    "cuda_fp16_real_pretrained": {
+      "acceptance_report": "artifacts/runs/20261119T195128946697Z-wp07-cot-sft-math-seed42-826208f8/artifacts/sft_acceptance.json",
+      "checks": {
+        "common_validation_losses_exact": true,
+        "model_optimizer_scheduler_scaler_cursor_rng_exact": true,
+        "per_attempt_batch_loss_lr_amp_trace_exact": true,
+        "source_checkpoint_unchanged": true
+      },
+      "runs": {
+        "first_run": {
+          "attempts": 2,
+          "checkpoint_bytes": 553912859,
+          "checkpoint_sha256": "12bef2ba888a6572315ba00924ef791063570af724a9ce96f5f994a2de449d2c",
+          "curves_png_sha256": "d7ec8d06fe272552e01d9d52b7953731a067802013a8cd58d22f37573c3bddf3",
+          "dataset_fingerprint": "78f779a7d367a91f505332a804edbe40a0286ed5fb932269103c18819d35395b",
+          "git": {
+            "branch": "feat/wp07-4-cot-sft",
+            "commit": "db0da482c3516d99b3fa6c3b6e6f566a65bf2c2f",
+            "dirty": false,
+            "state": "committed",
+            "untracked_files": 0
+          },
+          "history": {
+            "train": [
+              {
+                "amp_scale": 65536.0,
+                "attempt": 1,
+                "batch_sha256": "31e960f391777ae6655423bb724ba8ecc7ab6a4e0648e6b6568974200ba8bd64",
+                "learning_rates": [
+                  2.0000000000000003e-06,
+                  2.0000000000000003e-06
+                ],
+                "loss": 7.698546911145116,
+                "loss_tokens": 444,
+                "skipped": false,
+                "step": 1,
+                "tokens_optimized": 444,
+                "tokens_seen": 444
+              },
+              {
+                "amp_scale": 65536.0,
+                "attempt": 2,
+                "batch_sha256": "cc088d89d740a41c9ef6b4e529241931d3277ae6a0cf13065aa64a05fc1681c6",
+                "learning_rates": [
+                  4.000000000000001e-06,
+                  4.000000000000001e-06
+                ],
+                "loss": 7.070732147651806,
+                "loss_tokens": 570,
+                "skipped": false,
+                "step": 2,
+                "tokens_optimized": 1014,
+                "tokens_seen": 1014
+              }
+            ],
+            "validation": [
+              {
+                "attempt": 0,
+                "loss": 7.390736998594792,
+                "loss_tokens": 18971,
+                "step": 0
+              },
+              {
+                "attempt": 2,
+                "loss": 7.031268694977511,
+                "loss_tokens": 18971,
+                "step": 2
+              }
+            ]
+          },
+          "initialization": {
+            "checkpoint_sha256": "27cf2d9cb9774b0023d4db09e2735fd666452f5a945468bc71722bb3c69b5309",
+            "kind": "pretrain_weights_only_fresh_sft_optimizer_rng_cursor",
+            "source_attempts": 2000,
+            "source_runtime": {
+              "capability": [
+                7,
+                5
+              ],
+              "cuda": "13.0",
+              "cudnn_tf32": false,
+              "deterministic": true,
+              "device": "cuda:0",
+              "gpu_count": 2,
+              "gpu_name": "Tesla T4",
+              "matmul_tf32": false,
+              "num_threads": 1,
+              "torch": "2.11.0+cu130"
+            },
+            "source_stage": "pretrain",
+            "source_step": 2000,
+            "source_tokens_optimized": 8130916
+          },
+          "parameter_counts": {
+            "blocks": 41953280,
+            "final_norm": 512,
+            "lm_head_unique": 0,
+            "token_embedding": 4194304,
+            "total": 46148096
+          },
+          "report_sha256": "7e84160d2e3d4ba07de7e0e95ffa2fbb00f365f57bf514626c55889e467cca6f",
+          "run_directory": "artifacts/runs/20261119T195128946697Z-wp07-cot-sft-math-seed42-826208f8/artifacts/sft_runs/20261119T195154456677Z-wp07-cot-sft-math-seed42-e9ed586c",
+          "runtime": {
+            "capability": [
+              8,
+              9
+            ],
+            "cuda": "12.8",
+            "cudnn_tf32": false,
+            "deterministic": true,
+            "device": "cuda:0",
+            "gpu_count": 1,
+            "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "matmul_tf32": false,
+            "num_threads": 1,
+            "torch": "2.9.1+cu128"
+          },
+          "step": 2,
+          "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+          "tokens_optimized": 1014,
+          "validation_batches": null
+        },
+        "full_run": {
+          "attempts": 4,
+          "checkpoint_bytes": 553913243,
+          "checkpoint_sha256": "749e37911158febe7ded5980dc8c098a5a9f8f8289bda93a000417942938a1e8",
+          "curves_png_sha256": "af488dabad524ac31a606205b9785dae887e8010fabff31c72e46562c2fdf6a3",
+          "dataset_fingerprint": "78f779a7d367a91f505332a804edbe40a0286ed5fb932269103c18819d35395b",
+          "git": {
+            "branch": "feat/wp07-4-cot-sft",
+            "commit": "db0da482c3516d99b3fa6c3b6e6f566a65bf2c2f",
+            "dirty": false,
+            "state": "committed",
+            "untracked_files": 0
+          },
+          "history": {
+            "train": [
+              {
+                "amp_scale": 65536.0,
+                "attempt": 1,
+                "batch_sha256": "31e960f391777ae6655423bb724ba8ecc7ab6a4e0648e6b6568974200ba8bd64",
+                "learning_rates": [
+                  2.0000000000000003e-06,
+                  2.0000000000000003e-06
+                ],
+                "loss": 7.698546911145116,
+                "loss_tokens": 444,
+                "skipped": false,
+                "step": 1,
+                "tokens_optimized": 444,
+                "tokens_seen": 444
+              },
+              {
+                "amp_scale": 65536.0,
+                "attempt": 2,
+                "batch_sha256": "cc088d89d740a41c9ef6b4e529241931d3277ae6a0cf13065aa64a05fc1681c6",
+                "learning_rates": [
+                  4.000000000000001e-06,
+                  4.000000000000001e-06
+                ],
+                "loss": 7.070732147651806,
+                "loss_tokens": 570,
+                "skipped": false,
+                "step": 2,
+                "tokens_optimized": 1014,
+                "tokens_seen": 1014
+              },
+              {
+                "amp_scale": 65536.0,
+                "attempt": 3,
+                "batch_sha256": "417e13f8d96c5a7bbb5bd48dbe547ca35bb5a37dbba904a374dbb28d1083af68",
+                "learning_rates": [
+                  6e-06,
+                  6e-06
+                ],
+                "loss": 7.304423205447831,
+                "loss_tokens": 489,
+                "skipped": false,
+                "step": 3,
+                "tokens_optimized": 1503,
+                "tokens_seen": 1503
+              },
+              {
+                "amp_scale": 65536.0,
+                "attempt": 4,
+                "batch_sha256": "e60ea24b5c6ecc63afb88bb3e366137c02a4663b7acadc17ce11483eb182d93b",
+                "learning_rates": [
+                  8.000000000000001e-06,
+                  8.000000000000001e-06
+                ],
+                "loss": 6.658939219592662,
+                "loss_tokens": 534,
+                "skipped": false,
+                "step": 4,
+                "tokens_optimized": 2037,
+                "tokens_seen": 2037
+              }
+            ],
+            "validation": [
+              {
+                "attempt": 0,
+                "loss": 7.390736998594792,
+                "loss_tokens": 18971,
+                "step": 0
+              },
+              {
+                "attempt": 4,
+                "loss": 6.52853699905784,
+                "loss_tokens": 18971,
+                "step": 4
+              }
+            ]
+          },
+          "initialization": {
+            "checkpoint_sha256": "27cf2d9cb9774b0023d4db09e2735fd666452f5a945468bc71722bb3c69b5309",
+            "kind": "pretrain_weights_only_fresh_sft_optimizer_rng_cursor",
+            "source_attempts": 2000,
+            "source_runtime": {
+              "capability": [
+                7,
+                5
+              ],
+              "cuda": "13.0",
+              "cudnn_tf32": false,
+              "deterministic": true,
+              "device": "cuda:0",
+              "gpu_count": 2,
+              "gpu_name": "Tesla T4",
+              "matmul_tf32": false,
+              "num_threads": 1,
+              "torch": "2.11.0+cu130"
+            },
+            "source_stage": "pretrain",
+            "source_step": 2000,
+            "source_tokens_optimized": 8130916
+          },
+          "parameter_counts": {
+            "blocks": 41953280,
+            "final_norm": 512,
+            "lm_head_unique": 0,
+            "token_embedding": 4194304,
+            "total": 46148096
+          },
+          "report_sha256": "1867f444d238b1de7da66b928a9a8fda46409e5d0c7a0adf0ec119dbf2f88951",
+          "run_directory": "artifacts/runs/20261119T195128946697Z-wp07-cot-sft-math-seed42-826208f8/artifacts/sft_runs/20261119T195131958362Z-wp07-cot-sft-math-seed42-52c07815",
+          "runtime": {
+            "capability": [
+              8,
+              9
+            ],
+            "cuda": "12.8",
+            "cudnn_tf32": false,
+            "deterministic": true,
+            "device": "cuda:0",
+            "gpu_count": 1,
+            "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "matmul_tf32": false,
+            "num_threads": 1,
+            "torch": "2.9.1+cu128"
+          },
+          "step": 4,
+          "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+          "tokens_optimized": 2037,
+          "validation_batches": null
+        },
+        "resumed_run": {
+          "attempts": 4,
+          "checkpoint_bytes": 553913499,
+          "checkpoint_sha256": "0f880b55d83ccbf1707f64716298260b0a2eccbdeecd28ee6f229d022aeb65b7",
+          "curves_png_sha256": "01288e01a8b276aa4950315c7e4118bb11558824581542107c597781316f79e6",
+          "dataset_fingerprint": "78f779a7d367a91f505332a804edbe40a0286ed5fb932269103c18819d35395b",
+          "git": {
+            "branch": "feat/wp07-4-cot-sft",
+            "commit": "db0da482c3516d99b3fa6c3b6e6f566a65bf2c2f",
+            "dirty": false,
+            "state": "committed",
+            "untracked_files": 0
+          },
+          "history": {
+            "train": [
+              {
+                "amp_scale": 65536.0,
+                "attempt": 1,
+                "batch_sha256": "31e960f391777ae6655423bb724ba8ecc7ab6a4e0648e6b6568974200ba8bd64",
+                "learning_rates": [
+                  2.0000000000000003e-06,
+                  2.0000000000000003e-06
+                ],
+                "loss": 7.698546911145116,
+                "loss_tokens": 444,
+                "skipped": false,
+                "step": 1,
+                "tokens_optimized": 444,
+                "tokens_seen": 444
+              },
+              {
+                "amp_scale": 65536.0,
+                "attempt": 2,
+                "batch_sha256": "cc088d89d740a41c9ef6b4e529241931d3277ae6a0cf13065aa64a05fc1681c6",
+                "learning_rates": [
+                  4.000000000000001e-06,
+                  4.000000000000001e-06
+                ],
+                "loss": 7.070732147651806,
+                "loss_tokens": 570,
+                "skipped": false,
+                "step": 2,
+                "tokens_optimized": 1014,
+                "tokens_seen": 1014
+              },
+              {
+                "amp_scale": 65536.0,
+                "attempt": 3,
+                "batch_sha256": "417e13f8d96c5a7bbb5bd48dbe547ca35bb5a37dbba904a374dbb28d1083af68",
+                "learning_rates": [
+                  6e-06,
+                  6e-06
+                ],
+                "loss": 7.304423205447831,
+                "loss_tokens": 489,
+                "skipped": false,
+                "step": 3,
+                "tokens_optimized": 1503,
+                "tokens_seen": 1503
+              },
+              {
+                "amp_scale": 65536.0,
+                "attempt": 4,
+                "batch_sha256": "e60ea24b5c6ecc63afb88bb3e366137c02a4663b7acadc17ce11483eb182d93b",
+                "learning_rates": [
+                  8.000000000000001e-06,
+                  8.000000000000001e-06
+                ],
+                "loss": 6.658939219592662,
+                "loss_tokens": 534,
+                "skipped": false,
+                "step": 4,
+                "tokens_optimized": 2037,
+                "tokens_seen": 2037
+              }
+            ],
+            "validation": [
+              {
+                "attempt": 0,
+                "loss": 7.390736998594792,
+                "loss_tokens": 18971,
+                "step": 0
+              },
+              {
+                "attempt": 2,
+                "loss": 7.031268694977511,
+                "loss_tokens": 18971,
+                "step": 2
+              },
+              {
+                "attempt": 4,
+                "loss": 6.52853699905784,
+                "loss_tokens": 18971,
+                "step": 4
+              }
+            ]
+          },
+          "initialization": {
+            "checkpoint_sha256": "27cf2d9cb9774b0023d4db09e2735fd666452f5a945468bc71722bb3c69b5309",
+            "kind": "pretrain_weights_only_fresh_sft_optimizer_rng_cursor",
+            "source_attempts": 2000,
+            "source_runtime": {
+              "capability": [
+                7,
+                5
+              ],
+              "cuda": "13.0",
+              "cudnn_tf32": false,
+              "deterministic": true,
+              "device": "cuda:0",
+              "gpu_count": 2,
+              "gpu_name": "Tesla T4",
+              "matmul_tf32": false,
+              "num_threads": 1,
+              "torch": "2.11.0+cu130"
+            },
+            "source_stage": "pretrain",
+            "source_step": 2000,
+            "source_tokens_optimized": 8130916
+          },
+          "parameter_counts": {
+            "blocks": 41953280,
+            "final_norm": 512,
+            "lm_head_unique": 0,
+            "token_embedding": 4194304,
+            "total": 46148096
+          },
+          "report_sha256": "b0d12c48f7fb59601efc1eccf99f18940305caff1b2c2b1f28a59fe6fd1a7632",
+          "run_directory": "artifacts/runs/20261119T195128946697Z-wp07-cot-sft-math-seed42-826208f8/artifacts/sft_runs/20261119T195214155902Z-wp07-cot-sft-math-seed42-b96173cf",
+          "runtime": {
+            "capability": [
+              8,
+              9
+            ],
+            "cuda": "12.8",
+            "cudnn_tf32": false,
+            "deterministic": true,
+            "device": "cuda:0",
+            "gpu_count": 1,
+            "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "matmul_tf32": false,
+            "num_threads": 1,
+            "torch": "2.9.1+cu128"
+          },
+          "step": 4,
+          "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+          "tokens_optimized": 2037,
+          "validation_batches": null
+        }
+      }
+    }
+  },
+  "date": "2026-11-20",
+  "implementation_commit": "db0da482c3516d99b3fa6c3b6e6f566a65bf2c2f",
+  "limitations": [
+    "Only four successful SFT updates per branch; not the planned 500-update SFT.",
+    "Actual parent is user pretraining 2000-update T4 checkpoint; local SFT verification uses RTX4060.",
+    "Pretraining Torch2.11/CUDA13 -> local Torch2.9.1/CUDA12.8 is weights-only warm-start, not exact training resume.",
+    "No Colab/Kaggle long-SFT execution or generated reasoning/pilot result claimed.",
+    "SFT target loss on arithmetic is not directly comparable to TinyStories pretraining loss."
+  ],
+  "pretraining_baseline_evidence": "experiments/wp07_pretraining_completed_20261120.json",
+  "schema_version": 1,
+  "status": "local_implementation_accepted_long_sft_pending_user",
+  "verification": {
+    "additional_notebook_input_cases_passed": 2,
+    "full_suite_passed": 728,
+    "installed_wheel_sft_restart_outside_source": "passed",
+    "new_sft_cases": 28,
+    "new_sft_cpu_cases": 27,
+    "new_sft_cuda_cases": 1,
+    "notebook_cells_compile_and_kaggle_helpers_execute": "passed",
+    "real_bundle_extraction": "passed",
+    "ruff_format": "passed",
+    "ruff_lint": "passed",
+    "unique_local_cases_passed": 730,
+    "wheel_sdist_build": "passed"
+  },
+  "work_package": "WP07.4"
+}

@@ -93,7 +93,7 @@ Xem `docs/wp07_data.md`; long Colab pretraining runner tiếp tục ở WP07.3.
 fixture, bounded2..8 updates. Bundle CLI:
 `python -m llm_scratch.data.training_bundle create|extract`.
 Notebook `notebooks/wp07_pretraining_colab.ipynb` lưu trực tiếp Drive, mặc định smoke4.
-Xem `docs/wp07_pretraining.md` cho lệnh/recovery contract. SFT chờ WP07.4.
+Xem `docs/wp07_pretraining.md` cho lệnh/recovery contract; SFT ở WP07.4 phía dưới.
 
 ## WP07.4 CoT SFT
 
