@@ -60,3 +60,9 @@ block256/B2/G8, BF16,2.000updates, warmup100 và full validation/checkpoint mỗ
 `training/wp07_pretrain_smoke.toml` dành riêng authored fixtures/CI, không tối ưu quality.
 Loader riêng `training.pretrain.load_recipe` khóa recipe/model/data/repro khi resume.
 `--stop-after` chỉ dừng sớm, không thay lịch LR. Xem `docs/wp07_pretraining.md`.
+
+WP07.4: `training/wp07_sft.toml` là recipe arithmetic CoT SFT500updates, LR5e-5,
+warmup25, batch2/accumulation4/max_length512, full validation/latest mỗi25updates.
+`wp07_sft_smoke.toml` chỉ dùng authored fixtures/CI. Shared loader nhận explicit
+stage=sft; warm-start phải khớp kiến trúc/tokenizer, còn optimizer/RNG/cursor khởi tạo
+mới. Exact SFT resume khóa recipe/runtime/implementation. Xem `docs/wp07_sft.md`.

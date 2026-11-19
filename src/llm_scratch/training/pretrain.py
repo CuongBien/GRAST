@@ -28,7 +28,7 @@ from llm_scratch.utils.logging import Run
 from llm_scratch.utils.seed import seed_everything
 
 
-def load_recipe(path: Path) -> LoadedConfig:
+def load_recipe(path: Path, *, stage="pretrain") -> LoadedConfig:
     source = path.read_text(encoding="utf-8")
     data = tomllib.loads(source)
     keys = {
@@ -62,8 +62,8 @@ def load_recipe(path: Path) -> LoadedConfig:
     ):
         raise ValueError("Invalid experiment name")
     cfg, model = TrainingConfig.from_dict(data["training"]), ModelConfig.from_dict(data["model"])
-    if cfg.stage != "pretrain":
-        raise ValueError("This runner requires stage=pretrain")
+    if stage not in ("pretrain", "sft") or cfg.stage != stage:
+        raise ValueError(f"This runner requires stage={stage}")
     dc, rc, repro = data["data"], data["runner"], data["reproducibility"]
     for label, value, minimum in [
         ("block_size", dc["block_size"], 3),

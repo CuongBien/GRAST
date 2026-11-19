@@ -6,3 +6,8 @@ Chỉ `.gitkeep` và tài liệu này được versioned. Lưu output bền vữ
 WP02 smoke tạo `runs/<UTC-name-seed-unique-id>/` gồm config snapshot, metadata,
 logs, checkpoints RNG và kết quả probe. Đây không phải checkpoint model hoặc benchmark.
 Xem `docs/reproducibility.md` để biết protocol và cấu trúc cụ thể.
+
+Checkpoint pretraining2.000updates do user cung cấp đã sắp tại
+`checkpoints/wp07-pretrain-tinystories-2000/final.pt`; cạnh đó có `provenance.json`
+và `evidence/` từ summary. Hash/evidence nhỏ được versioned trong `experiments/`;
+weights không vào Git. Prepared CoT SFT local tại `wp07-4/sft_data/`.

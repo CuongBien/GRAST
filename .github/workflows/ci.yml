@@ -73,6 +73,8 @@ jobs:
         run: uv run --no-sync python -u scripts/check_training_data.py --device cpu
       - name: WP07.3 corpus runner, loss curves and checkpoint restart smoke
         run: uv run --no-sync python -u scripts/check_pretraining_runner.py --device cpu
+      - name: WP07.4 pretrained warm-start and CoT SFT restart smoke
+        run: uv run --no-sync python -u scripts/check_sft.py --device cpu
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree

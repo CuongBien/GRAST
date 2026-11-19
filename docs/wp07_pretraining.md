@@ -2,8 +2,10 @@
 
 Chạy nền trên Kaggle: [notebook và hướng dẫn riêng](wp07_kaggle.md).
 
-Runner đã triển khai; agent chỉ verify chạy ngắn. User chạy corpus baseline trên
-Colab. Chưa có bằng chứng training dài hoặc kết quả chất lượng từ A100.
+Runner đã triển khai; agent verify chạy ngắn. Ngày20/11/2026 đã nhận/verify checkpoint
+user train đủ2.000updates trên TeslaT4/FP16, validation loss1,56740, perplexity4,79415.
+Xem [evidence](../experiments/wp07_pretraining_completed_20261120.json).
+Chưa có A100 execution claim hoặc reasoning/pilot quality result.
 
 ## Recipe khởi đầu
 

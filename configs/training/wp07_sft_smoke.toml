@@ -1,0 +1,45 @@
+schema_version = 1
+
+[experiment]
+name = "wp07-4-sft-smoke"
+
+[model]
+vocab_size = 264
+context_length = 512
+hidden_size = 32
+num_layers = 2
+num_heads = 4
+ffn_hidden_size = 64
+dropout = 0.1
+tie_embeddings = true
+
+[training]
+stage = "sft"
+max_steps = 6
+gradient_accumulation_steps = 2
+learning_rate = 0.0003
+weight_decay = 0.1
+warmup_steps = 1
+min_lr_ratio = 0.1
+max_grad_norm = 1.0
+precision = "float32"
+
+[data]
+block_size = 512
+batch_size = 2
+shuffle_seed = 42
+validation_batches = 2 # diagnostic fixed prefix, not full-corpus validation
+
+[runner]
+validate_every = 2
+checkpoint_every = 2
+milestones = [2, 4, 6]
+max_attempts_per_step = 16
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"

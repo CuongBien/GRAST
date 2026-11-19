@@ -1,0 +1,46 @@
+# Initial arithmetic CoT SFT recipe; tune on validation, never on test/pilot.
+schema_version = 1
+
+[experiment]
+name = "wp07-cot-sft-math"
+
+[model]
+vocab_size = 8192
+context_length = 1024
+hidden_size = 512
+num_layers = 10
+num_heads = 8
+ffn_hidden_size = 2048
+dropout = 0.0
+tie_embeddings = true
+
+[training]
+stage = "sft"
+max_steps = 500
+gradient_accumulation_steps = 4
+learning_rate = 0.00005
+weight_decay = 0.1
+warmup_steps = 25
+min_lr_ratio = 0.1
+max_grad_norm = 1.0
+precision = "float16"
+
+[data]
+block_size = 512
+batch_size = 2
+shuffle_seed = 42
+validation_batches = 0 # full held-out validation, fixed order
+
+[runner]
+validate_every = 25
+checkpoint_every = 25
+milestones = [50, 100, 250, 500]
+max_attempts_per_step = 16
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"

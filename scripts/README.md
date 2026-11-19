@@ -94,3 +94,14 @@ fixture, bounded2..8 updates. Bundle CLI:
 `python -m llm_scratch.data.training_bundle create|extract`.
 Notebook `notebooks/wp07_pretraining_colab.ipynb` lưu trực tiếp Drive, mặc định smoke4.
 Xem `docs/wp07_pretraining.md` cho lệnh/recovery contract. SFT chờ WP07.4.
+
+## WP07.4 CoT SFT
+
+`prepare_sft_data.py` tạo train/validation prompt/reasoning/final và token/mask snapshots
+theo WP03/WP04; default chỉ arithmetic. `finetune.py --prepared-root PATH --tokenizer
+PATH --init-checkpoint PRETRAIN_FINAL --device cuda --stop-after 4` verify warm-start
+và SFT ngắn; bỏ stop flag để chạy budget. Tiếp tục bằng `--resume SFT_LATEST` thay
+init-checkpoint. `check_sft.py --device cpu` tạo tiny pretrained fixture và đối chiếu
+full4/stop2/resume4 (bounded2..8); không train dài. Bundle:
+`python -m llm_scratch.data.sft_bundle --prepared-root PATH --tokenizer PATH --output NEW.zip`.
+Xem `docs/wp07_sft.md` và notebooks Colab/Kaggle, luôn stream log.

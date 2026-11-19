@@ -1,5 +1,10 @@
 # WP07.3 — Local runner acceptance, 19/11/2026
 
+Cập nhật20/11/2026: đã nhận/verify checkpoint user train đủ2.000updates trên T4/FP16;
+[evidence mới](../experiments/wp07_pretraining_completed_20261120.json) ghi SHA256,
+loss/perplexity/token counts và nguồn summary. Báo cáo local4updates phía dưới giữ
+nguyên phạm vi lịch sử; corpus baseline không còn pending. CoT SFT/pilot vẫn chưa đóng.
+
 Đã triển khai và verify runner pretraining, checkpoint định kỳ/mốc/final, loss
 history/CSV/PNG/SVG và notebook Colab lưu trực tiếp Drive, luôn stream log.
 **Corpus baseline 2.000 updates trên Colab vẫn pending user chạy.** Chưa có CoT SFT,

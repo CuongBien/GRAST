@@ -1,5 +1,11 @@
 # WP07.3 — Chạy nền trên Kaggle
 
+Cập nhật20/11/2026: đã nhận checkpoint pretraining T4/FP16 đủ2.000updates, val loss
+1,56740 và kiểm trực tiếp weights/metadata/summary; xem
+[evidence](../experiments/wp07_pretraining_completed_20261120.json).
+Các ghi chú local-only phía dưới mô tả kiểm chứng adapter ngày19/11.
+SFT tiếp theo có [notebook và contract WP07.4](wp07_sft.md).
+
 Notebook: `notebooks/wp07_pretraining_kaggle.ipynb`. Bản Colab giữ riêng.
 Runner/model/recipe vẫn pin source `aa4be36b33ca025701421ef48715a22b43c4e8db`;
 không đổi thuật toán train hoặc budget để chuyển môi trường.

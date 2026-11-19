@@ -1,0 +1,62 @@
+{
+  "amp_skips": 0,
+  "attempts": 2000,
+  "checkpoint": "artifacts/checkpoints/wp07-pretrain-tinystories-2000/final.pt",
+  "checkpoint_bytes": 554303513,
+  "checkpoint_sha256": "27cf2d9cb9774b0023d4db09e2735fd666452f5a945468bc71722bb3c69b5309",
+  "dataset_fingerprint": "17971c0168e4367b183ebb0a3abc7c1309ffe5095cdc67899bce13ffc4298faa",
+  "final_validation": {
+    "attempt": 2000,
+    "loss": 1.5673957146677044,
+    "loss_tokens": 341625,
+    "step": 2000
+  },
+  "initial_validation": {
+    "attempt": 0,
+    "loss": 9.166974492527737,
+    "loss_tokens": 341625,
+    "step": 0
+  },
+  "last_100_train_loss_mean": 1.447815685562958,
+  "notes": [
+    "Single-device runner uses cuda:0; gpu_count=2 is visible GPUs, not two-GPU training.",
+    "Pretraining text loss does not establish reasoning/pilot capability; SFT follows WP07.4."
+  ],
+  "parameter_counts": {
+    "blocks": 41953280,
+    "final_norm": 512,
+    "lm_head_unique": 0,
+    "token_embedding": 4194304,
+    "total": 46148096
+  },
+  "run_lifecycle": {
+    "error": null,
+    "finished_at": "2026-11-19T19:08:55.815047+00:00",
+    "started_at": "2026-11-19T18:34:26.163506+00:00",
+    "status": "completed"
+  },
+  "runtime": {
+    "capability": [
+      7,
+      5
+    ],
+    "cuda": "13.0",
+    "cudnn_tf32": false,
+    "deterministic": true,
+    "device": "cuda:0",
+    "gpu_count": 2,
+    "gpu_name": "Tesla T4",
+    "matmul_tf32": false,
+    "num_threads": 1,
+    "torch": "2.11.0+cu130"
+  },
+  "schema_version": 1,
+  "status": "corpus_pretraining_completed_artifact_verified",
+  "step": 2000,
+  "summary_zip": "20261119T183426163519Z-wp07-pretrain-tinystories-seed42-fb5cfe2a-summary.zip",
+  "summary_zip_sha256": "1ec22bb7871e37047ef47d9a1df19d9c5dbd8003330b81a35853aeb285867827",
+  "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+  "tokens_optimized": 8130916,
+  "validation_perplexity": 4.794146596315872,
+  "work_package": "WP07.3"
+}

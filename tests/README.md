@@ -116,3 +116,13 @@ Quality/corpus baseline/A100 training chưa được thay bằng các tests này
 `test_kaggle_notebook.py` thực thi helpers từ notebook phát hành, kiểm tra input ZIP/
 expanded, corruption, precision selection, launch smoke/full/resume và real CUDA probe.
 Không thay thế execution evidence từ Kaggle; adapter không thay core runner/model.
+
+## WP07.4 CoT SFT
+
+`test_sft.py` kiểm reasoning Fraction/postorder, numeric normalization/GSM8K split,
+prompt/padding masks với CE reference độc lập, example isolation, Unicode/literal
+special strings, no test/pilot/default-GSM8K reads, no truncation/reuse, data guards,
+warm-start chỉ weights và fresh optimizer/RNG/cursor, preflight incompatible tensors,
+CPU/CUDA-FP16 exact SFT resume, restart tiến trình mới không còn parent checkpoint,
+validation token count/RNG/cursor invariance, overlap, bundle corruption và notebooks.
+Long SFT/generation/pilot acceptance vẫn cần artifacts thực từ user.

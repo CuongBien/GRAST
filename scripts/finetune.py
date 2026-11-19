@@ -1,4 +1,6 @@
-"""Reserved finetune entry point; intentionally unavailable in step 1."""
+"""Launch logged, checkpoint-resumable CoT SFT from pretrained model weights."""
+
+from llm_scratch.training.sft import main
 
 if __name__ == "__main__":
-    raise SystemExit("finetune: skeleton only; implementation is deferred.")
+    main()

@@ -8,8 +8,8 @@ Không coi diagnostic fixed-batch loss là kết quả corpus hoặc pilot reaso
 | --- | --- | --- | --- |
 | WP07.1 | Engine, AdamW, warmup/cosine, AMP, clipping, accumulation, mandatory log, engine-state checkpoint | Token-weighted gradients đúng; FP32/BF16/FP16 chạy được; engine resume exact | Đã triển khai/verify local |
 | WP07.2 | WP03/WP04 data pipeline, deterministic train order/packing, validation, full resume với data cursor | Dataset/tokenizer identities khóa; checkpoint khôi phục cả vị trí đọc; không test leakage | Đã triển khai/verify local |
-| WP07.3 | Pretraining runner/config/Colab, periodic checkpoints, train/validation loss curves | Local smoke ổn; notebook log luôn hiển thị; user chạy corpus baseline trên Colab | Đã triển khai/verify local; Colab baseline pending |
-| WP07.4 | Chuẩn hóa prompt/reasoning/final, CoT SFT từ pretrained checkpoint, Colab runner | Prompt mask/target formatting đúng, validation và milestone checkpoints; user train dài | Chưa triển khai |
+| WP07.3 | Pretraining runner/config/Colab, periodic checkpoints, train/validation loss curves | Local smoke ổn; notebook log luôn hiển thị; user chạy corpus baseline | Đã nhận/verify checkpoint 2.000 updates T4 |
+| WP07.4 | Chuẩn hóa prompt/reasoning/final, CoT SFT từ pretrained checkpoint, Colab/Kaggle runner | Prompt mask/target formatting đúng, validation và milestone checkpoints; user train dài | Đã triển khai/verify local; SFT dài pending |
 | WP07.5 | Phân tích checkpoint nhiều giai đoạn, curves, text generation, fixed pilot reasoning | Checkpoint reload; text samples; pilot result/artifact manifest và evidence từ Colab | Chưa triển khai |
 
 WP07 chỉ đóng khi có model checkpoint thực từ pretraining/SFT, curves và pilot.
@@ -17,7 +17,9 @@ Việc chạy corpus dài được giao cho user; nếu chưa có artifacts thì
 vì báo là đã train. Đã hoàn tất WP07.1–2: [phase 1](wp07_1_validation.md),
 [data/resume contract](wp07_data.md), [phase 2](wp07_2_validation.md).
 WP07.3: [runner, checkpoint và Colab](wp07_pretraining.md),
-[local acceptance](wp07_3_validation.md). Đã verify4 updates; corpus baseline pending.
+[local acceptance](wp07_3_validation.md). Ngày20/11 đã nhận và verify
+[corpus checkpoint 2.000 updates](../experiments/wp07_pretraining_completed_20261120.json).
+WP07.4: [CoT SFT/data/warm-start/notebooks](wp07_sft.md).
 
 ## WP07.1 — engine API
 

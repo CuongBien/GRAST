@@ -76,7 +76,9 @@ Xem [contracts/phases](wp07_training.md), [nghiệm thu WP07.1](wp07_1_validatio
 WP07.2 đã có [pretraining data + consumed-cursor resume](wp07_data.md),
 [evidence](wp07_2_validation.md); mới verify vài updates, chưa phải corpus baseline.
 WP07.3 có [runner/config/Colab](wp07_pretraining.md), checkpoints định kỳ và curves;
-local short-run verification không thay thế corpus baseline từ user.
+đã nhận/verify corpus checkpoint2.000updates T4 ngày20/11/2026, val loss1,56740.
+WP07.4 có [CoT SFT/data/warm-start/Colab/Kaggle](wp07_sft.md); agent verify ngắn,
+user chạy SFT dài. Generation và fixed pilot analysis tiếp tục ở WP07.5.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 

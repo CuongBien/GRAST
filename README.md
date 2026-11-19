@@ -5,13 +5,14 @@ Repository cho nghiên cứu LLM from scratch theo Hướng C: reasoning và tes
 **Trạng thái: WP01+WP02 baseline; WP03 data và WP04 tokenizer đã triển khai.** Đã có config,
 seed, metadata/logs, checkpoint RNG; dataset preparation, benchmark toán, answer extraction,
 split/dedup, fixed pilot và byte BPE tự viết. WP05 đã nghiệm thu kiến trúc;
-WP06 đã nghiệm thu KV cache, generation và profiling thực đo. CoT SFT và confidence
-stopping chưa implement. WP07 chia 5 phase; WP07.1–3 có engine
+WP06 đã nghiệm thu KV cache, generation và profiling thực đo. Confidence stopping
+chưa implement. WP07 chia 5 phase; WP07.1–4 có engine
 AdamW/scheduler/AMP/accumulation, WP03/WP04 packing, validation và full data resume,
 đã verify smoke ngắn:
 [kế hoạch và cách dùng](docs/wp07_training.md). Đã có [corpus pretraining runner](docs/wp07_pretraining.md),
-periodic checkpoints, loss curves và notebook Colab luôn in log. Train dài do user chạy;
-chưa có corpus baseline/SFT quality result.
+periodic checkpoints, loss curves và notebook Colab luôn in log. Đã nhận/verify checkpoint
+pretraining 2.000 updates T4 (validation loss1,56740). [CoT SFT](docs/wp07_sft.md) có
+data/masking, pretrained warm-start, runner và Colab/Kaggle notebooks; SFT dài/pilot còn pending.
 Chạy nền Kaggle có [notebook và hướng dẫn riêng](docs/wp07_kaggle.md).
 Smoke WP02 chỉ dùng RNG/ma trận nhỏ; WP03 chưa đánh giá chất lượng model.
 
