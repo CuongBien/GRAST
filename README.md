@@ -18,6 +18,8 @@ SFT 500 updates T4 (target validation loss 0,54306). [WP07.5](docs/wp07_capabili
 (0,67%)**, format100%; [kết quả/audit](docs/wp07_5_validation.md). Hạ tầng WP07 đủ
 artifacts nghiệm thu chức năng; baseline reasoning còn yếu, confidence stopping chưa triển khai.
 Chạy nền Kaggle có [notebook và hướng dẫn riêng](docs/wp07_kaggle.md).
+WP07.6.1 bổ sung [copy/arithmetic overfit và sampled validation coverage](docs/wp07_feasibility.md)
+để kiểm tra feasibility trước khi chọn bước tiếp theo; không dùng lại test để chọn recipe.
 Smoke WP02 chỉ dùng RNG/ma trận nhỏ; WP03 chưa đánh giá chất lượng model.
 
 WP02 đã nghiệm thu CPU, RTX 4060 và Colab A100; xem [evidence](docs/wp02_validation.md).

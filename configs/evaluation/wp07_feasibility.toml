@@ -1,0 +1,38 @@
+# WP07.6.1: validation-only feasibility, frozen before generation/training.
+schema_version = 1
+
+[experiment]
+name = "wp07-6-1-reasoning-feasibility"
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"
+
+[checkpoint]
+path = "../../artifacts/checkpoints/wp07-cot-sft-math-500/final.pt"
+sha256 = "5f75909261c79e9f7f0c6e37a7e9d76ba5670be8b4be5133b6e148e0cd06ff42"
+
+[coverage]
+per_difficulty = 10
+candidates = 16
+batch_size = 8
+precision = "float32"
+max_new_tokens = 256
+temperature = 0.8
+top_k = 40
+top_p = 0.95
+
+[overfit]
+train_pairs = 32
+validation_pairs = 8
+batch_size = 8
+max_steps = 200
+eval_steps = [0, 25, 50, 100, 200]
+learning_rate = 0.0003
+precision = "bfloat16"
+generation_precision = "float32"
+max_new_tokens = 80
