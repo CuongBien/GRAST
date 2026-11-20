@@ -463,6 +463,13 @@ def test_kaggle_sft_notebook_discovers_inputs_and_builds_fresh_resume_commands(
     )
     exec(compile(command_code, "notebook-launch", "exec"), namespace)
     assert "--init-checkpoint" in commands[-1] and "--stop-after" in commands[-1]
+    # A user path set before the input cell must not be reset to automatic discovery.
+    outside = tmp_path / "manually-selected-pretrained.pt"
+    parent.rename(outside)
+    parent = outside
+    namespace["PRETRAIN_CHECKPOINT"] = str(parent)
+    exec(compile(input_code, "notebook-explicit-input", "exec"), namespace)
+    assert namespace["PRETRAIN_CHECKPOINT"] == parent
     parent.unlink()
     resume = tmp_path / "sft-latest.pt"
     resume.write_bytes(b"existence-only-command-test")

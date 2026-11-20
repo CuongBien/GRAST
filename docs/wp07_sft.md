@@ -154,3 +154,20 @@ Nếu chưa có biến `REPO`, chạy setup trước. Với notebook mới, ch�
 cho editable install mới; nếu kernel đã cache package ở vị trí khác, setup báo rõ
 cần restart kernel rồi chạy lại từ đầu. Source pin, recipe và checkpoints SFT giữ
 cùng contract; sửa này chỉ thay import bootstrap của notebook.
+
+## Kaggle không tìm thấy pretraining checkpoint
+
+File local `artifacts/checkpoints/wp07-pretrain-tinystories-2000/final.pt` chưa tự
+xuất hiện trong `/kaggle/input`. Add Input output của lượt pretraining, hoặc tạo
+Kaggle Dataset từ chính `final.pt` (554.303.513 bytes), rồi Add Input dataset đó.
+SFT bundle410KB và summary ZIP không chứa weights; không thể dùng chúng thay final.pt.
+
+Cell input mới ưu tiên tìm `final.pt`, rồi nhận các file `.pt` bị đổi tên nếu đúng
+SHA256 đã xác minh. Có thể đặt `PRETRAIN_CHECKPOINT` thành path thực trước cell input;
+cell không ghi đè lựa chọn đó. Nếu dùng notebook cũ, sửa trực tiếp dòng
+`PRETRAIN_CHECKPOINT = ""` trong cell input thành đường dẫn thật dưới `/kaggle/input`.
+
+Không có `.pt`: lỗi nói rõ cần Add Input weights. Có files nhưng hash không khớp:
+lỗi riêng báo expected SHA256 và log candidate path/size/hash để kiểm tra đã gắn
+đúng bản2.000updates. Fresh SFT vẫn chỉ nhận checkpoint đã xác minh; SFT resume dùng
+`RESUME` và không yêu cầu parent pretraining còn tồn tại.

@@ -132,3 +132,7 @@ bằng Python `-S` với site-packages chỉ trên PYTHONPATH: trước setup im
 sau activation import thật datasets/SFT bundle/runner ở cả kernel và subprocess.
 Kiểm tra idempotence, giữ dependency paths, checkout thiếu và cached package khác
 vị trí; cả Colab/Kaggle dùng chính helper trong notebook phát hành.
+
+`test_sft_checkpoint_discovery.py` chạy helper thật trong notebook Kaggle: thiếu
+weights/summary-only, filename bị đổi nhưng đúng hash, sai hash khác lỗi thiếu file,
+explicit path không fallback. Input-cell tests kiểm tra giữ path user đặt trước cell.
