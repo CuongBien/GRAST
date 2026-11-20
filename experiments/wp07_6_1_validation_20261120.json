@@ -1,0 +1,705 @@
+{
+  "archive": {
+    "crc_check": "passed",
+    "includes_weights": false,
+    "path": "dist/grast-wp07-6-1-feasibility-20261120-2d13c96a.zip",
+    "sha256": "3032c930116ec953e85d73a9dfad9585eadd059262dca0f50eabbe9f916f408e",
+    "size_bytes": 373720
+  },
+  "artifact_files": {
+    "artifacts/correct_final_trace_audit.json": {
+      "sha256": "36598e37088a04860d15a3de3b9180bc488787c9133fd56ca24f41db9c59f47e",
+      "size_bytes": 2618
+    },
+    "artifacts/coverage.predictions.jsonl": {
+      "sha256": "10d572409e5ae4db183e489354803bc640223d39b09730a7cd88cab6a7fd0421",
+      "size_bytes": 399683
+    },
+    "artifacts/coverage.questions.json": {
+      "sha256": "bbd88765483f7350812e78cdc7259a34991c31e2d1caa1d6b3824731eba75ec1",
+      "size_bytes": 15052
+    },
+    "artifacts/coverage.scored.jsonl": {
+      "sha256": "e93c4bc653e581438ffc95077808142e81788c19f51225a1f383288bb5790856",
+      "size_bytes": 447528
+    },
+    "artifacts/feasibility.png": {
+      "sha256": "51bf18df3a53abd5e267593c5fb55e613d785b04acb0e4ac78d91dac429db018",
+      "size_bytes": 149716
+    },
+    "artifacts/feasibility.svg": {
+      "sha256": "70e50695816a2d51e4bf2c453596b2d17660548606d3ad958d6e719bb4b30d93",
+      "size_bytes": 92378
+    },
+    "artifacts/feasibility_report.json": {
+      "sha256": "e7340c73c10ca8840f1353c91b84683750a34b18c7917ebd1fe262803284f547",
+      "size_bytes": 12183
+    },
+    "artifacts/overfit/evaluations.json": {
+      "sha256": "9e17d255d20b1dd888205365385be1dba0d7715862e9e15a691f5fca6e8fe8bb",
+      "size_bytes": 6730
+    },
+    "artifacts/overfit/report.json": {
+      "sha256": "317b898eb6b6820ab06b121ffead3c332e82273703221897165eafd9f0ee62d6",
+      "size_bytes": 8002
+    },
+    "artifacts/overfit/step-0000-train.predictions.jsonl": {
+      "sha256": "08c5f4bf6eb90ca5eb77beec7fac828bce579aa11884d83a5a3a7a08c6158276",
+      "size_bytes": 30216
+    },
+    "artifacts/overfit/step-0000-train.scored.jsonl": {
+      "sha256": "f8354ea6f72e82d8ff95ecb4ba871e0d8aa3d1e59425553a54f9beb7dc1adc31",
+      "size_bytes": 45769
+    },
+    "artifacts/overfit/step-0000-validation.predictions.jsonl": {
+      "sha256": "7f9a434a389bd031e005ea985f06e40cd0ddd91dcf1e8f000cf9cb425800547b",
+      "size_bytes": 7716
+    },
+    "artifacts/overfit/step-0000-validation.scored.jsonl": {
+      "sha256": "006ccef27c974052462a465b90b2ccba7daf0ce17fdcf55f427882d325e990fc",
+      "size_bytes": 11606
+    },
+    "artifacts/overfit/step-0025-train.predictions.jsonl": {
+      "sha256": "80b276675fee3939943b232e80f5aaabb07e18260b05a660910272111989f290",
+      "size_bytes": 30920
+    },
+    "artifacts/overfit/step-0025-train.scored.jsonl": {
+      "sha256": "4dba42a831773de53c39331fd353be1fc008d93a6dd1dc9b927fe9d379c3140c",
+      "size_bytes": 46552
+    },
+    "artifacts/overfit/step-0025-validation.predictions.jsonl": {
+      "sha256": "2a3fd5aa0a75b25416d8124b6ac162d8e5fac2719c4893b898c7105e8d48f35a",
+      "size_bytes": 7892
+    },
+    "artifacts/overfit/step-0025-validation.scored.jsonl": {
+      "sha256": "8399b1f0be6b1480eba362ee3a4a6f8968700fdf9c05618cd37b6c1ec5410477",
+      "size_bytes": 11802
+    },
+    "artifacts/overfit/step-0050-train.predictions.jsonl": {
+      "sha256": "56674c100d73a06b70b97adb038b7bc3b33e131c8f1825b3caf3bed2a24c1290",
+      "size_bytes": 30904
+    },
+    "artifacts/overfit/step-0050-train.scored.jsonl": {
+      "sha256": "0351864cc4834f6418c840e31bfce890b8c3a2ea4b3bf1712d4845a195cbf69c",
+      "size_bytes": 46512
+    },
+    "artifacts/overfit/step-0050-validation.predictions.jsonl": {
+      "sha256": "9f59669d8ea6d7f672b9023e6684d329d7a58a2c026705fab90ece1387d579b2",
+      "size_bytes": 7892
+    },
+    "artifacts/overfit/step-0050-validation.scored.jsonl": {
+      "sha256": "37e57b4f60a93df70ef7ce8bf63f28fa2683737490dee3fad234e4394267a2da",
+      "size_bytes": 11802
+    },
+    "artifacts/overfit/step-0100-train.predictions.jsonl": {
+      "sha256": "cb7c12eb8522a81dd31270d733ea442dce1f2be3705b55e1fdd6f1f48decb221",
+      "size_bytes": 30820
+    },
+    "artifacts/overfit/step-0100-train.scored.jsonl": {
+      "sha256": "139e8dc3c200e90717634e4e22ce77af768f098d840e3cf0f8001ade3f084b4e",
+      "size_bytes": 46314
+    },
+    "artifacts/overfit/step-0100-validation.predictions.jsonl": {
+      "sha256": "8e34cfab638b17993041e7b1a473569594d2c2b29a381d4357464434a6f90c1e",
+      "size_bytes": 7884
+    },
+    "artifacts/overfit/step-0100-validation.scored.jsonl": {
+      "sha256": "f31b2f4c1b710bcf6fa96261e75e98b13480eb5cf2db29f5fa2c86f6a234a2e7",
+      "size_bytes": 11791
+    },
+    "artifacts/overfit/step-0200-train.predictions.jsonl": {
+      "sha256": "cb7c12eb8522a81dd31270d733ea442dce1f2be3705b55e1fdd6f1f48decb221",
+      "size_bytes": 30820
+    },
+    "artifacts/overfit/step-0200-train.scored.jsonl": {
+      "sha256": "139e8dc3c200e90717634e4e22ce77af768f098d840e3cf0f8001ade3f084b4e",
+      "size_bytes": 46314
+    },
+    "artifacts/overfit/step-0200-validation.predictions.jsonl": {
+      "sha256": "adaabed1e32d51045a424a0670d8c3eec796db025541299c74402cdc8af66b7c",
+      "size_bytes": 7884
+    },
+    "artifacts/overfit/step-0200-validation.scored.jsonl": {
+      "sha256": "5d26940e6bfade188adc420e2938d0031faefcd58ced223de2652c264a622193",
+      "size_bytes": 11791
+    },
+    "artifacts/overfit/train.jsonl": {
+      "sha256": "ed5c9fa6d681b66035a36cb46cdeff4e327ddfff73af97c644a729605862fc71",
+      "size_bytes": 28406
+    },
+    "artifacts/overfit/validation.jsonl": {
+      "sha256": "e5cef62e1ad0adb5d5ab0f68b2afc293d97252c324245cd341dcfdf82150b137",
+      "size_bytes": 7264
+    },
+    "artifacts/protocol.json": {
+      "sha256": "dad7470e1820649f4c5c88ccb8997eb0b35219f1dd66a6c78e47484f159affe7",
+      "size_bytes": 9806
+    },
+    "artifacts/selected_validation.questions.jsonl": {
+      "sha256": "cbf1041f18af7ae6cb2455d51eccc38b3ead7eadd8b6ce34da2d51665b2337ad",
+      "size_bytes": 16052
+    },
+    "artifacts/selected_validation_greedy_comparison.json": {
+      "sha256": "7036e9a903bec0169ca94af093936b67b15ad95564bd1982620acf30b17d5988",
+      "size_bytes": 611
+    },
+    "artifacts/validation_replay.json": {
+      "sha256": "cf749ee8ee9e4edd8e2334d7999472c72ec294530c888237063e63bab99b486c",
+      "size_bytes": 984
+    },
+    "artifacts/validation_replay.py": {
+      "sha256": "a51f67675e293428850f50721d57434de575f6f1d5be47f3e4be874eecde5e4c",
+      "size_bytes": 3748
+    },
+    "config.json": {
+      "sha256": "f6798eb29ef05f6105406d8bf48b6be5c7bc3708ecdcf69a5997f18a30e4ec31",
+      "size_bytes": 3887
+    },
+    "config_sources/feasibility.toml": {
+      "sha256": "c8cc49f60cfe62849711285e1c5a8dfe737e90350ad045cd4058d2dfa0a3b510",
+      "size_bytes": 816
+    },
+    "logs/events.jsonl": {
+      "sha256": "08bafc18e322937425a782b58b1b0e000220711fdc0c8ba8b4bc0ad1fe3d07fe",
+      "size_bytes": 158078
+    },
+    "logs/run.log": {
+      "sha256": "b8cd03481b29f271e08be8cc37e28b89bb0794929cac0e732de6c5f9930f0f10",
+      "size_bytes": 138180
+    },
+    "logs/validation_replay.jsonl": {
+      "sha256": "f1901469fee5dc1bb45c57e9920296a8dcf318421ab0195a6ca041aa23b496eb",
+      "size_bytes": 1274
+    },
+    "metadata.json": {
+      "sha256": "b6c4d817a356765a74bafec15d71b345797d745283a6f3fe21d4493e989c4bff",
+      "size_bytes": 9290
+    },
+    "run.json": {
+      "sha256": "c3f5a99d9f7bfbb419a3c3e6b07d877dd360e4349a3a181681863312ca56bcc4",
+      "size_bytes": 150
+    }
+  },
+  "correct_final_trace_audit": [
+    {
+      "candidate_index": 13,
+      "difficulty": "easy",
+      "first_equation_arithmetic_correct": false,
+      "generated_text": "R1 = 11 - 11 = -3.</think><final>-3</final><eos>",
+      "question": "R1 is the difference of 18 and 21. What is R1? Give only the numeric answer.",
+      "question_id": "math-2326b088fb625bec1227ed363013c830664d11820ac17609c392ec698679799b",
+      "reference": "-3"
+    },
+    {
+      "candidate_index": 6,
+      "difficulty": "easy",
+      "first_equation_arithmetic_correct": false,
+      "generated_text": "R1 = 17 - 17 = -2.</think><final>-2</final><eos>",
+      "question": "R1 is the difference of 15 and 17. What is R1? Give only the numeric answer.",
+      "question_id": "math-4e4c10ddcef62addfd31c23daed2e85db4886c9381370e334c39efa649d8f069",
+      "reference": "-2"
+    },
+    {
+      "candidate_index": 13,
+      "difficulty": "easy",
+      "first_equation_arithmetic_correct": false,
+      "generated_text": "R1 = 27 + 21 = 45.</think><final>42</final><eos>",
+      "question": "R1 is the sum of 28 and 14. What is R1? Give only the numeric answer.",
+      "question_id": "math-8792739106a98bf2a01454234f824cf8ccf898d9ececea2a0bc2bd8018f1480a",
+      "reference": "42"
+    },
+    {
+      "candidate_index": 11,
+      "difficulty": "medium",
+      "first_equation_arithmetic_correct": false,
+      "generated_text": "R1 = 18 + 13 = 23.\nR2 = 14 + 2 = 11.\nR3 = R1 - R2 = 19.</think><final>14</final><eos>",
+      "question": "A student writes quantities on a worksheet. Follow the definitions in order. R1 is the sum of 13 and 19. R2 is the sum of 1 and 17. R3 is the difference of R1 and R2. What is R3? Give only the numeric answer.",
+      "question_id": "math-02b3f1c59f84ce472c04f68273aaebb1e65806559929c63a66c702045baf9af1",
+      "reference": "14"
+    },
+    {
+      "candidate_index": 5,
+      "difficulty": "medium",
+      "first_equation_arithmetic_correct": false,
+      "generated_text": "R1 = 13 + 8 = 16.\nR2 = 12 - 11 = 6.\nR3 = R1 + R2 = 19.</think><final>16</final><eos>",
+      "question": "A student writes quantities on a worksheet. Follow the definitions in order. R1 is the sum of 5 and 7. R2 is the difference of 19 and 15. R3 is the sum of R1 and R2. What is R3? Give only the numeric answer.",
+      "question_id": "math-54fa6fa7c067df694b892c5c19bac796cba6f4c593c0fec3ea2e69f14da489f2",
+      "reference": "16"
+    }
+  ],
+  "coverage": {
+    "by_difficulty": {
+      "easy": {
+        "answer_valid_rate": 1.0,
+        "budget_exhausted": 0,
+        "candidate_accuracy": 0.01875,
+        "candidates": 160,
+        "candidates_per_question": 16,
+        "correct_candidates": 3,
+        "covered_questions": 3,
+        "format_valid_rate": 1.0,
+        "generated_tokens": 3814,
+        "observed_coverage_at_k": 0.3,
+        "questions": 10
+      },
+      "hard": {
+        "answer_valid_rate": 1.0,
+        "budget_exhausted": 0,
+        "candidate_accuracy": 0.0,
+        "candidates": 160,
+        "candidates_per_question": 16,
+        "correct_candidates": 0,
+        "covered_questions": 0,
+        "format_valid_rate": 1.0,
+        "generated_tokens": 17346,
+        "observed_coverage_at_k": 0.0,
+        "questions": 10
+      },
+      "medium": {
+        "answer_valid_rate": 1.0,
+        "budget_exhausted": 0,
+        "candidate_accuracy": 0.0125,
+        "candidates": 160,
+        "candidates_per_question": 16,
+        "correct_candidates": 2,
+        "covered_questions": 2,
+        "format_valid_rate": 1.0,
+        "generated_tokens": 9951,
+        "observed_coverage_at_k": 0.2,
+        "questions": 10
+      }
+    },
+    "overall": {
+      "answer_valid_rate": 1.0,
+      "budget_exhausted": 0,
+      "candidate_accuracy": 0.010416666666666666,
+      "candidates": 480,
+      "candidates_per_question": 16,
+      "correct_candidates": 5,
+      "covered_questions": 5,
+      "format_valid_rate": 1.0,
+      "generated_tokens": 31111,
+      "observed_coverage_at_k": 0.16666666666666666,
+      "questions": 30
+    }
+  },
+  "date": "2026-11-20",
+  "elapsed_seconds": 638.3420248999901,
+  "git": {
+    "branch": "feat/wp07-6-1-reasoning-feasibility",
+    "commit": "0b26d6817232d5baee566cc7b23f0dc4d29bfb52",
+    "dirty": false,
+    "state": "committed",
+    "untracked_files": 0
+  },
+  "limits": [
+    "Observed coverage on a fixed validation subset, not majority accuracy or held-out test performance.",
+    "Authored overfit measures memorization; tiny held-out task split is not WP03 pilot validation.",
+    "Final-answer EM does not verify an entire reasoning trace.",
+    "No test data read, calibration threshold fit, corpus SFT v2, or baseline checkpoint replacement."
+  ],
+  "overfit": {
+    "amp_skips": 0,
+    "attempts": 200,
+    "budget_completed": true,
+    "checkpoint_sha256": "688b96820571b654e0377699e60b8f3fd74eee88d964da2634cea76a84373f86",
+    "data_fingerprint": "308a74db29fb287d7a49850058ab038b0b27bc30aa6eee5a12cb4a4d16e709cf",
+    "evaluations": [
+      {
+        "attempt": 0,
+        "step": 0,
+        "train": {
+          "loss": 3.435603173930993,
+          "tasks": {
+            "arithmetic": {
+              "answer_valid_rate": 1.0,
+              "correct": 1,
+              "exact_match": 0.03125,
+              "first_equation_arithmetic_correct": 0,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": 0,
+              "questions": 32
+            },
+            "copy": {
+              "answer_valid_rate": 0.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "first_equation_arithmetic_correct": null,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": null,
+              "questions": 32
+            }
+          }
+        },
+        "validation": {
+          "loss": 3.3410006601419022,
+          "tasks": {
+            "arithmetic": {
+              "answer_valid_rate": 1.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "first_equation_arithmetic_correct": 0,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": 0,
+              "questions": 8
+            },
+            "copy": {
+              "answer_valid_rate": 0.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "first_equation_arithmetic_correct": null,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": null,
+              "questions": 8
+            }
+          }
+        }
+      },
+      {
+        "attempt": 25,
+        "step": 25,
+        "train": {
+          "loss": 0.6289664331298047,
+          "tasks": {
+            "arithmetic": {
+              "answer_valid_rate": 1.0,
+              "correct": 1,
+              "exact_match": 0.03125,
+              "first_equation_arithmetic_correct": 0,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": 1,
+              "questions": 32
+            },
+            "copy": {
+              "answer_valid_rate": 1.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "first_equation_arithmetic_correct": null,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": null,
+              "questions": 32
+            }
+          }
+        },
+        "validation": {
+          "loss": 0.7091297765276325,
+          "tasks": {
+            "arithmetic": {
+              "answer_valid_rate": 1.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "first_equation_arithmetic_correct": 0,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": 0,
+              "questions": 8
+            },
+            "copy": {
+              "answer_valid_rate": 1.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "first_equation_arithmetic_correct": null,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": null,
+              "questions": 8
+            }
+          }
+        }
+      },
+      {
+        "attempt": 50,
+        "step": 50,
+        "train": {
+          "loss": 0.28770601302943427,
+          "tasks": {
+            "arithmetic": {
+              "answer_valid_rate": 1.0,
+              "correct": 9,
+              "exact_match": 0.28125,
+              "first_equation_arithmetic_correct": 4,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": 6,
+              "questions": 32
+            },
+            "copy": {
+              "answer_valid_rate": 1.0,
+              "correct": 5,
+              "exact_match": 0.15625,
+              "first_equation_arithmetic_correct": null,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": null,
+              "questions": 32
+            }
+          }
+        },
+        "validation": {
+          "loss": 0.7560772273077894,
+          "tasks": {
+            "arithmetic": {
+              "answer_valid_rate": 1.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "first_equation_arithmetic_correct": 0,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": 0,
+              "questions": 8
+            },
+            "copy": {
+              "answer_valid_rate": 1.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "first_equation_arithmetic_correct": null,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": null,
+              "questions": 8
+            }
+          }
+        }
+      },
+      {
+        "attempt": 100,
+        "step": 100,
+        "train": {
+          "loss": 0.0003721025176799755,
+          "tasks": {
+            "arithmetic": {
+              "answer_valid_rate": 1.0,
+              "correct": 32,
+              "exact_match": 1.0,
+              "first_equation_arithmetic_correct": 32,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": 32,
+              "questions": 32
+            },
+            "copy": {
+              "answer_valid_rate": 1.0,
+              "correct": 32,
+              "exact_match": 1.0,
+              "first_equation_arithmetic_correct": null,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": null,
+              "questions": 32
+            }
+          }
+        },
+        "validation": {
+          "loss": 0.9762863682870248,
+          "tasks": {
+            "arithmetic": {
+              "answer_valid_rate": 1.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "first_equation_arithmetic_correct": 0,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": 1,
+              "questions": 8
+            },
+            "copy": {
+              "answer_valid_rate": 1.0,
+              "correct": 1,
+              "exact_match": 0.125,
+              "first_equation_arithmetic_correct": null,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": null,
+              "questions": 8
+            }
+          }
+        }
+      },
+      {
+        "attempt": 200,
+        "step": 200,
+        "train": {
+          "loss": 0.00012054655101731916,
+          "tasks": {
+            "arithmetic": {
+              "answer_valid_rate": 1.0,
+              "correct": 32,
+              "exact_match": 1.0,
+              "first_equation_arithmetic_correct": 32,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": 32,
+              "questions": 32
+            },
+            "copy": {
+              "answer_valid_rate": 1.0,
+              "correct": 32,
+              "exact_match": 1.0,
+              "first_equation_arithmetic_correct": null,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": null,
+              "questions": 32
+            }
+          }
+        },
+        "validation": {
+          "loss": 0.9944763281452123,
+          "tasks": {
+            "arithmetic": {
+              "answer_valid_rate": 1.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "first_equation_arithmetic_correct": 0,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": 1,
+              "questions": 8
+            },
+            "copy": {
+              "answer_valid_rate": 1.0,
+              "correct": 1,
+              "exact_match": 0.125,
+              "first_equation_arithmetic_correct": null,
+              "format_valid_rate": 1.0,
+              "operands_and_operator_correct": null,
+              "questions": 8
+            }
+          }
+        }
+      }
+    ],
+    "initial_step": 0,
+    "optimizer_initial_state_entries": 0,
+    "purpose": "Bounded memorization diagnostic; not a replacement SFT baseline",
+    "steps": 200,
+    "train_memorized": true,
+    "training_config": {
+      "beta1": 0.9,
+      "beta2": 0.95,
+      "eps": 1e-08,
+      "gradient_accumulation_steps": 8,
+      "learning_rate": 0.0003,
+      "max_grad_norm": 1.0,
+      "max_steps": 200,
+      "min_lr_ratio": 0.1,
+      "precision": "bfloat16",
+      "stage": "sft",
+      "warmup_steps": 0,
+      "weight_decay": 0.0
+    }
+  },
+  "protocol_sha256": "0f9bae11c1cfffea68e6d5fb19b23c88455d4c44fb651f4253713699533be4aa",
+  "run_directory": "artifacts/runs/20261120T145114388704Z-wp07-6-1-reasoning-feasibility-seed42-2d13c96a",
+  "schema_version": 1,
+  "selected_validation_greedy": {
+    "by_difficulty": {
+      "easy": {
+        "correct": 1,
+        "questions": 10
+      },
+      "hard": {
+        "correct": 0,
+        "questions": 10
+      },
+      "medium": {
+        "correct": 0,
+        "questions": 10
+      }
+    },
+    "correct": 1,
+    "questions": 30,
+    "selection": "Same 30 fixed validation question IDs, existing WP07.5 greedy predictions; no new generation or test read.",
+    "source": "artifacts\\runs\\20261120T083644233178Z-wp07-5-checkpoint-capability-seed42-85ecc9db\\artifacts\\sft-500\\validation.scored.jsonl",
+    "source_sha256": "f70acb9a064142eb17ad5532c58b005c091402e6770e2a4528ebd6dd468829f1"
+  },
+  "source_checkpoint": {
+    "attempts": 500,
+    "checkpoint_sha256": "5f75909261c79e9f7f0c6e37a7e9d76ba5670be8b4be5133b6e148e0cd06ff42",
+    "initialization": {
+      "checkpoint_sha256": "27cf2d9cb9774b0023d4db09e2735fd666452f5a945468bc71722bb3c69b5309",
+      "kind": "pretrain_weights_only_fresh_sft_optimizer_rng_cursor",
+      "source_attempts": 2000,
+      "source_runtime": {
+        "capability": [
+          7,
+          5
+        ],
+        "cuda": "13.0",
+        "cudnn_tf32": false,
+        "deterministic": true,
+        "device": "cuda:0",
+        "gpu_count": 2,
+        "gpu_name": "Tesla T4",
+        "matmul_tf32": false,
+        "num_threads": 1,
+        "torch": "2.11.0+cu130"
+      },
+      "source_stage": "pretrain",
+      "source_step": 2000,
+      "source_tokens_optimized": 8130916
+    },
+    "model_config": {
+      "context_length": 1024,
+      "dropout": 0.0,
+      "ffn_hidden_size": 2048,
+      "hidden_size": 512,
+      "num_heads": 8,
+      "num_layers": 10,
+      "rms_norm_eps": 1e-06,
+      "rope_theta": 10000.0,
+      "tie_embeddings": true,
+      "vocab_size": 8192
+    },
+    "parameter_counts": {
+      "blocks": 41953280,
+      "final_norm": 512,
+      "lm_head_unique": 0,
+      "token_embedding": 4194304,
+      "total": 46148096
+    },
+    "source_runtime": {
+      "capability": [
+        7,
+        5
+      ],
+      "cuda": "13.0",
+      "cudnn_tf32": false,
+      "deterministic": true,
+      "device": "cuda:0",
+      "gpu_count": 2,
+      "gpu_name": "Tesla T4",
+      "matmul_tf32": false,
+      "num_threads": 1,
+      "torch": "2.11.0+cu130"
+    },
+    "stage": "sft",
+    "step": 500,
+    "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+    "tokens_optimized": 253174
+  },
+  "source_checkpoint_unchanged": true,
+  "validation_replay": {
+    "baseline_sampling_replay": [
+      {
+        "candidates": 8,
+        "difficulty": "easy",
+        "exact_generated_ids_and_finish_reasons": true,
+        "question_id": "math-e73db1b23d7ebe5f6c68cafcfa81957237e9ba6a8ef1dc4d4b1fa3e08516f301"
+      },
+      {
+        "candidates": 8,
+        "difficulty": "hard",
+        "exact_generated_ids_and_finish_reasons": true,
+        "question_id": "math-7586cf514a023fa17fbc742ca635d241075027231c025e833d461280abebbf41"
+      }
+    ],
+    "diagnostic_checkpoint_reload": {
+      "checkpoint_sha256": "688b96820571b654e0377699e60b8f3fd74eee88d964da2634cea76a84373f86",
+      "exact_generated_ids_and_finish_reasons": true,
+      "examples": 8,
+      "step": 200
+    },
+    "elapsed_seconds": 17.23777939999127,
+    "replay_script_sha256": "a51f67675e293428850f50721d57434de575f6f1d5be47f3e4be874eecde5e4c",
+    "scope": "Two fixed validation batches and first authored train batch; not all questions/hardware. No updates or test reads.",
+    "source_checkpoint_unchanged": true
+  },
+  "verification": {
+    "build": "wheel/sdist passed; no training weights/runs/cache included",
+    "ci_result": "success on Ubuntu and Windows",
+    "implementation_ci": "https://github.com/CuongBien/GRAST/actions/runs/44757513512",
+    "installed_wheel_smoke": ".cache/wp07-6-1-wheel-runs/20261120T145014649510Z-wp07-6-1-reasoning-feasibility-seed42-99039553",
+    "local_tests_passed": 785,
+    "new_tests": 15,
+    "ruff": "passed"
+  },
+  "work_package": "WP07.6.1"
+}
