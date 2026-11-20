@@ -51,8 +51,8 @@ không fallback bare number và không sửa output thiếu markers. Decimal/fra
 đương được normalize chính xác bằng rational; malformed/invalid là sai, vẫn nằm trong
 denominator. Literal marker strings bằng byte tokens không thay thế framing IDs.
 
-`answer_valid_rate` đếm final numeric hợp lệ; `format_valid_rate` kiểm thêm reasoning
-không rỗng trước `</think>`, adjacent final block và EOS kết thúc. Final hoàn chỉnh ở
+`answer_valid_rate` đếm final numeric hợp lệ; `format_valid_rate` kiểm thêm có token
+trước `</think>`, adjacent final block và EOS kết thúc. Final hoàn chỉnh ở
 token budget cuối có thể chấm đúng đáp án nhưng thiếu EOS nên format chưa hoàn chỉnh.
 Scorer không xác minh logic của từng dòng reasoning. Báo cáo overall và từng mức gồm
 EM, valid/format/EOS/budget-exhausted rates và generated-token counts.

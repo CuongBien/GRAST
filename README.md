@@ -14,7 +14,9 @@ periodic checkpoints, loss curves và notebook Colab luôn in log. Đã nhận/v
 pretraining 2.000 updates T4 (validation loss1,56740). [CoT SFT](docs/wp07_sft.md) có
 data/masking, pretrained warm-start, runner và Colab/Kaggle notebooks. Đã nhận/verify
 SFT 500 updates T4 (target validation loss 0,54306). [WP07.5](docs/wp07_capability.md)
-đang nghiệm thu checkpoint/text generation và fixed pilot, chưa triển khai confidence stopping.
+đã có checkpoint/text generation, loss curves và full fixed pilot: SFT đúng **1/150 test
+(0,67%)**, format100%; [kết quả/audit](docs/wp07_5_validation.md). Hạ tầng WP07 đủ
+artifacts nghiệm thu chức năng; baseline reasoning còn yếu, confidence stopping chưa triển khai.
 Chạy nền Kaggle có [notebook và hướng dẫn riêng](docs/wp07_kaggle.md).
 Smoke WP02 chỉ dùng RNG/ma trận nhỏ; WP03 chưa đánh giá chất lượng model.
 
@@ -50,7 +52,7 @@ Nguồn kế hoạch: [LLM From Scratch — Hướng C | Project HQ](https://app
    Policies under Shared GPU Budgets.* Chỉ mở khi workload đồng thời thật sự tạo memory
    contention; RL không nằm trong critical path đồ án và chưa có implementation trong repo.
 
-Mục tiêu tiếp theo là pretraining, generation và KV cache bằng PyTorch.
+Feasibility reasoning cần được kiểm tra/cải thiện trên validation trước nghiên cứu confidence.
 Candidate 46,15M đã overfit batch chẩn đoán; corpus training feasibility vẫn cần kiểm chứng.
 Không dùng `AutoModelForCausalLM` làm kiến trúc chính.
 

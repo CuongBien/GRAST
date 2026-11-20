@@ -77,8 +77,10 @@ WP07.2 đã có [pretraining data + consumed-cursor resume](wp07_data.md),
 [evidence](wp07_2_validation.md); mới verify vài updates, chưa phải corpus baseline.
 WP07.3 có [runner/config/Colab](wp07_pretraining.md), checkpoints định kỳ và curves;
 đã nhận/verify corpus checkpoint2.000updates T4 ngày20/11/2026, val loss1,56740.
-WP07.4 có [CoT SFT/data/warm-start/Colab/Kaggle](wp07_sft.md); agent verify ngắn,
-user chạy SFT dài. Generation và fixed pilot analysis tiếp tục ở WP07.5.
+WP07.4 đã nhận/verify SFT500updates T4, target val loss0,54306.
+WP07.5 đã có [checkpoint/text/full pilot](wp07_5_validation.md): SFT val2/150,
+test1/150, format test100%. Artifacts kỹ thuật đủ; reasoning feasibility chưa thiết lập.
+Không fit threshold hoặc chọn recipe dựa vào test vừa đo.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 
