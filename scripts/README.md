@@ -105,3 +105,12 @@ init-checkpoint. `check_sft.py --device cpu` tạo tiny pretrained fixture và �
 full4/stop2/resume4 (bounded2..8); không train dài. Bundle:
 `python -m llm_scratch.data.sft_bundle --prepared-root PATH --tokenizer PATH --output NEW.zip`.
 Xem `docs/wp07_sft.md` và notebooks Colab/Kaggle, luôn stream log.
+
+## WP07.5 checkpoint capability
+
+`evaluate_capability.py --dataset-root PATH --tokenizer PATH --device cuda --split both`
+so checkpoint trong inventory cùng frozen pilot, lưu predictions trước scorer-only
+gold reads, EM theo difficulty, text samples và stage loss curves. Default chỉ
+validation; `--diagnostic-limit` cũng validation-only. `check_capability.py` verify
+pipeline với tiny authored fixtures, không đọc checkpoint/pilot thật. Không train
+hoặc fit threshold. Xem `docs/wp07_capability.md`.

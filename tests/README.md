@@ -127,6 +127,14 @@ CPU/CUDA-FP16 exact SFT resume, restart tiến trình mới không còn parent c
 validation token count/RNG/cursor invariance, overlap, bundle corruption và notebooks.
 Long SFT/generation/pilot acceptance vẫn cần artifacts thực từ user.
 
+## WP07.5 checkpoint capability
+
+`test_capability.py` kiểm checkpoint SHA/metadata/history/finiteness/tied weights và
+RNG preservation, generation schema không có gold, hash/count/strata/duplicate guards,
+marked-final numeric-v1/rational EM, invalid-as-wrong denominator, EOS/format riêng,
+left padding/cache/replay, frozen greedy protocol và no-test-subset rules. Full tiny
+runner test xác nhận predictions được lưu trước khi đọc references và export curves/CSV.
+
 `test_notebook_bootstrap.py` tái hiện kernel chưa xử lý `.pth` của editable install
 bằng Python `-S` với site-packages chỉ trên PYTHONPATH: trước setup import fail,
 sau activation import thật datasets/SFT bundle/runner ở cả kernel và subprocess.

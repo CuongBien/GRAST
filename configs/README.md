@@ -66,3 +66,8 @@ warmup25, batch2/accumulation4/max_length512, full validation/latest mỗi25upda
 `wp07_sft_smoke.toml` chỉ dùng authored fixtures/CI. Shared loader nhận explicit
 stage=sft; warm-start phải khớp kiến trúc/tokenizer, còn optimizer/RNG/cursor khởi tạo
 mới. Exact SFT resume khóa recipe/runtime/implementation. Xem `docs/wp07_sft.md`.
+
+WP07.5: `evaluation/wp07_capability.toml` khóa inventory hai checkpoint thật,
+greedy K=1/256tokens/batch8/FP32 và pilot WP03 150 câu/split. Ba text prefixes có
+sampling policy riêng cho minh họa. Loader từ chối key adaptive/threshold không biết;
+test không nhận diagnostic subsets. Xem `docs/wp07_capability.md`.

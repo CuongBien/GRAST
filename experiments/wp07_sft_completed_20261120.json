@@ -1,0 +1,81 @@
+{
+  "amp_skips": 0,
+  "attempts": 500,
+  "checkpoint": "artifacts/checkpoints/wp07-cot-sft-math-500/final.pt",
+  "checkpoint_bytes": 554010585,
+  "checkpoint_sha256": "5f75909261c79e9f7f0c6e37a7e9d76ba5670be8b4be5133b6e148e0cd06ff42",
+  "dataset_fingerprint": "78f779a7d367a91f505332a804edbe40a0286ed5fb932269103c18819d35395b",
+  "final_validation": {
+    "attempt": 500,
+    "loss": 0.543062089788198,
+    "loss_tokens": 18971,
+    "step": 500
+  },
+  "initial_validation": {
+    "attempt": 0,
+    "loss": 7.390747695320817,
+    "loss_tokens": 18971,
+    "step": 0
+  },
+  "initialization": {
+    "checkpoint_sha256": "27cf2d9cb9774b0023d4db09e2735fd666452f5a945468bc71722bb3c69b5309",
+    "kind": "pretrain_weights_only_fresh_sft_optimizer_rng_cursor",
+    "source_attempts": 2000,
+    "source_runtime": {
+      "capability": [
+        7,
+        5
+      ],
+      "cuda": "13.0",
+      "cudnn_tf32": false,
+      "deterministic": true,
+      "device": "cuda:0",
+      "gpu_count": 2,
+      "gpu_name": "Tesla T4",
+      "matmul_tf32": false,
+      "num_threads": 1,
+      "torch": "2.11.0+cu130"
+    },
+    "source_stage": "pretrain",
+    "source_step": 2000,
+    "source_tokens_optimized": 8130916
+  },
+  "last_100_train_loss_mean": 0.5458658315106448,
+  "parameter_counts": {
+    "blocks": 41953280,
+    "final_norm": 512,
+    "lm_head_unique": 0,
+    "token_embedding": 4194304,
+    "total": 46148096
+  },
+  "run_lifecycle": {
+    "error": null,
+    "finished_at": "2026-11-20T05:27:45.986338+00:00",
+    "started_at": "2026-11-20T05:20:41.338541+00:00",
+    "status": "completed"
+  },
+  "runtime": {
+    "capability": [
+      7,
+      5
+    ],
+    "cuda": "13.0",
+    "cudnn_tf32": false,
+    "deterministic": true,
+    "device": "cuda:0",
+    "gpu_count": 2,
+    "gpu_name": "Tesla T4",
+    "matmul_tf32": false,
+    "num_threads": 1,
+    "torch": "2.11.0+cu130"
+  },
+  "schema_version": 1,
+  "status": "long_sft_completed_artifact_verified",
+  "step": 500,
+  "summary_zip": "20261120T052041338569Z-wp07-cot-sft-math-seed42-bd89143c-summary.zip",
+  "summary_zip_sha256": "4dc059118acfa2025df7113cb7cbde6dcc30e9d8959ed692846b3c07746d1a78",
+  "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+  "tokens_optimized": 253174,
+  "validation_target_perplexity": 1.7212694824699168,
+  "work_package": "WP07.4"
+}

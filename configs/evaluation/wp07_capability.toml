@@ -1,0 +1,48 @@
+# Freeze before pilot evaluation; never fit policy/thresholds on held-out test.
+schema_version = 1
+
+[experiment]
+name = "wp07-5-checkpoint-capability"
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"
+
+[evaluation]
+batch_size = 8
+precision = "float32"
+expected_questions = 150
+cache_check_tokens = 8
+
+[generation]
+max_new_tokens = 256
+do_sample = false
+temperature = 1.0
+top_k = 0
+top_p = 1.0
+
+[text]
+prefixes = ["Once upon a time, there was a little girl named Lily. She", "Tom found a small box under the tree. Inside it was", "It was a rainy day. A little rabbit"]
+max_new_tokens = 96
+seed = 42
+temperature = 0.8
+top_k = 40
+top_p = 0.95
+
+[[checkpoints]]
+label = "pretrain-2000"
+path = "../../artifacts/checkpoints/wp07-pretrain-tinystories-2000/final.pt"
+sha256 = "27cf2d9cb9774b0023d4db09e2735fd666452f5a945468bc71722bb3c69b5309"
+stage = "pretrain"
+step = 2000
+
+[[checkpoints]]
+label = "sft-500"
+path = "../../artifacts/checkpoints/wp07-cot-sft-math-500/final.pt"
+sha256 = "5f75909261c79e9f7f0c6e37a7e9d76ba5670be8b4be5133b6e148e0cd06ff42"
+stage = "sft"
+step = 500

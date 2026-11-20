@@ -75,6 +75,8 @@ jobs:
         run: uv run --no-sync python -u scripts/check_pretraining_runner.py --device cpu
       - name: WP07.4 pretrained warm-start and CoT SFT restart smoke
         run: uv run --no-sync python -u scripts/check_sft.py --device cpu
+      - name: WP07.5 checkpoint/text/frozen pilot smoke (authored offline inputs)
+        run: uv run --no-sync python -u scripts/check_capability.py
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree

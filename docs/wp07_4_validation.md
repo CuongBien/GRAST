@@ -1,5 +1,9 @@
 # WP07.4 — Local CoT SFT acceptance, 20/11/2026
 
+Cập nhật cùng ngày: đã nhận checkpoint thật 500 updates và summary, kiểm metadata,
+SHA256 và parent pretraining; xem [long SFT evidence](../experiments/wp07_sft_completed_20261120.json).
+Phần dưới giữ phạm vi local smoke ban đầu; pilot tiếp tục ở WP07.5.
+
 Đã triển khai data normalization, independent-example prompt masking, pretrained
 warm-start, SFT runner/checkpoints/curves và notebooks Colab/Kaggle luôn stream log.
 **SFT dài500updates do user chạy; generation/pilot capability thuộc WP07.5.**

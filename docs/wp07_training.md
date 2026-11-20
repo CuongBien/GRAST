@@ -9,8 +9,8 @@ Không coi diagnostic fixed-batch loss là kết quả corpus hoặc pilot reaso
 | WP07.1 | Engine, AdamW, warmup/cosine, AMP, clipping, accumulation, mandatory log, engine-state checkpoint | Token-weighted gradients đúng; FP32/BF16/FP16 chạy được; engine resume exact | Đã triển khai/verify local |
 | WP07.2 | WP03/WP04 data pipeline, deterministic train order/packing, validation, full resume với data cursor | Dataset/tokenizer identities khóa; checkpoint khôi phục cả vị trí đọc; không test leakage | Đã triển khai/verify local |
 | WP07.3 | Pretraining runner/config/Colab, periodic checkpoints, train/validation loss curves | Local smoke ổn; notebook log luôn hiển thị; user chạy corpus baseline | Đã nhận/verify checkpoint 2.000 updates T4 |
-| WP07.4 | Chuẩn hóa prompt/reasoning/final, CoT SFT từ pretrained checkpoint, Colab/Kaggle runner | Prompt mask/target formatting đúng, validation và milestone checkpoints; user train dài | Đã triển khai/verify local; SFT dài pending |
-| WP07.5 | Phân tích checkpoint nhiều giai đoạn, curves, text generation, fixed pilot reasoning | Checkpoint reload; text samples; pilot result/artifact manifest và evidence từ Colab | Chưa triển khai |
+| WP07.4 | Chuẩn hóa prompt/reasoning/final, CoT SFT từ pretrained checkpoint, Colab/Kaggle runner | Prompt mask/target formatting đúng, validation và milestone checkpoints; user train dài | Đã nhận/verify SFT 500 updates T4 |
+| WP07.5 | Phân tích checkpoint nhiều giai đoạn, curves, text generation, fixed pilot reasoning | Checkpoint reload; text samples; pilot result/artifact manifest và training evidence từ user | Đã triển khai evaluator; đang nghiệm thu pilot |
 
 WP07 chỉ đóng khi có model checkpoint thực từ pretraining/SFT, curves và pilot.
 Việc chạy corpus dài được giao cho user; nếu chưa có artifacts thì ghi pending thay
@@ -20,7 +20,8 @@ WP07.3: [runner, checkpoint và Colab](wp07_pretraining.md),
 [local acceptance](wp07_3_validation.md). Ngày20/11 đã nhận và verify
 [corpus checkpoint 2.000 updates](../experiments/wp07_pretraining_completed_20261120.json).
 WP07.4: [CoT SFT/data/warm-start/notebooks](wp07_sft.md),
-[local acceptance](wp07_4_validation.md). SFT dài và pilot vẫn pending.
+[local acceptance](wp07_4_validation.md). Đã nhận [SFT 500 updates](../experiments/wp07_sft_completed_20261120.json).
+WP07.5: [protocol và evaluator](wp07_capability.md); pilot đang nghiệm thu.
 
 ## WP07.1 — engine API
 

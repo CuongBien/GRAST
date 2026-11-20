@@ -1,5 +1,9 @@
 # WP07.4 — CoT formatting và SFT
 
+Đã nhận/verify checkpoint user train đủ 500 updates trên T4/FP16: 253.174 targets,
+validation loss 0,543062 và không AMP skip. [Evidence](../experiments/wp07_sft_completed_20261120.json).
+Đánh giá chuỗi model tự sinh tiếp tục tại [WP07.5](wp07_capability.md).
+
 SFT dùng model/tokenizer của pretraining, nạp **trọng số** rồi tạo optimizer/scheduler/
 scaler/RNG và data cursor mới. Đây là chuyển stage có chủ đích; không resume optimizer
 pretraining. Sau khi đã có SFT checkpoint, `--resume` khôi phục đầy đủ state của SFT.

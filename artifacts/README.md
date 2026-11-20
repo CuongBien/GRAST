@@ -11,3 +11,7 @@ Checkpoint pretraining2.000updates do user cung cấp đã sắp tại
 `checkpoints/wp07-pretrain-tinystories-2000/final.pt`; cạnh đó có `provenance.json`
 và `evidence/` từ summary. Hash/evidence nhỏ được versioned trong `experiments/`;
 weights không vào Git. Prepared CoT SFT local tại `wp07-4/sft_data/`.
+
+Checkpoint SFT đủ 500 updates tại `checkpoints/wp07-cot-sft-math-500/final.pt`,
+có provenance và summary evidence cạnh weights. Evaluator WP07.5 dùng hai checkpoint
+pretrain/SFT thật, lưu predictions/score/text/curves trong run mới; không sửa weights.

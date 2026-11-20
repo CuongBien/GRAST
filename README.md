@@ -12,7 +12,9 @@ AdamW/scheduler/AMP/accumulation, WP03/WP04 packing, validation và full data re
 [kế hoạch và cách dùng](docs/wp07_training.md). Đã có [corpus pretraining runner](docs/wp07_pretraining.md),
 periodic checkpoints, loss curves và notebook Colab luôn in log. Đã nhận/verify checkpoint
 pretraining 2.000 updates T4 (validation loss1,56740). [CoT SFT](docs/wp07_sft.md) có
-data/masking, pretrained warm-start, runner và Colab/Kaggle notebooks; SFT dài/pilot còn pending.
+data/masking, pretrained warm-start, runner và Colab/Kaggle notebooks. Đã nhận/verify
+SFT 500 updates T4 (target validation loss 0,54306). [WP07.5](docs/wp07_capability.md)
+đang nghiệm thu checkpoint/text generation và fixed pilot, chưa triển khai confidence stopping.
 Chạy nền Kaggle có [notebook và hướng dẫn riêng](docs/wp07_kaggle.md).
 Smoke WP02 chỉ dùng RNG/ma trận nhỏ; WP03 chưa đánh giá chất lượng model.
 
