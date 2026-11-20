@@ -126,3 +126,9 @@ warm-start chỉ weights và fresh optimizer/RNG/cursor, preflight incompatible 
 CPU/CUDA-FP16 exact SFT resume, restart tiến trình mới không còn parent checkpoint,
 validation token count/RNG/cursor invariance, overlap, bundle corruption và notebooks.
 Long SFT/generation/pilot acceptance vẫn cần artifacts thực từ user.
+
+`test_notebook_bootstrap.py` tái hiện kernel chưa xử lý `.pth` của editable install
+bằng Python `-S` với site-packages chỉ trên PYTHONPATH: trước setup import fail,
+sau activation import thật datasets/SFT bundle/runner ở cả kernel và subprocess.
+Kiểm tra idempotence, giữ dependency paths, checkout thiếu và cached package khác
+vị trí; cả Colab/Kaggle dùng chính helper trong notebook phát hành.

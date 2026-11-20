@@ -130,3 +130,27 @@ supported mới chọn BF16; T4/P100 dùng FP16 kể cả runtime báo có BF16 
 Summary ZIP chỉ có logs/config/metadata/report/curves. Giữ latest/final/milestone weights
 cho WP07.5. Agent chưa chạy đủ500 updates trên Colab/Kaggle. SFT loss tốt chưa thay thế
 generation/pilot reasoning evaluation; việc đó thuộc WP07.5.
+
+## Khắc phục `ModuleNotFoundError: llm_scratch`
+
+Editable install tạo `.pth` cho Python khởi động sau; kernel notebook đang chạy
+không tự nạp lại file này. Setup mới kích hoạt `REPO/src` trong `sys.path`, chuyển
+đường dẫn qua `PYTHONPATH` cho subprocess, invalidate import caches và kiểm tra cả
+kernel lẫn subprocess. Cần thấy hai dòng `Kernel imports verified:` và
+`Subprocess imports verified:` trước khi chạy input/training cells.
+
+Nếu đang mở notebook cũ và setup đã cài package xong, chạy cell sau rồi chạy lại
+cell input bị lỗi:
+
+```python
+import importlib
+import sys
+
+sys.path.insert(0, str((REPO / "src").resolve()))
+importlib.invalidate_caches()
+```
+
+Nếu chưa có biến `REPO`, chạy setup trước. Với notebook mới, chạy lại setup là đủ
+cho editable install mới; nếu kernel đã cache package ở vị trí khác, setup báo rõ
+cần restart kernel rồi chạy lại từ đầu. Source pin, recipe và checkpoints SFT giữ
+cùng contract; sửa này chỉ thay import bootstrap của notebook.
