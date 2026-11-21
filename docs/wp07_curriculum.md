@@ -3,6 +3,7 @@
 WP07.6.1 cho thấy model có thể học thuộc64 mẫu nhưng áp dụng yếu sang cặp số mới.
 Phase này chuẩn bị dữ liệu có độ phủ lớn hơn, curriculum tích lũy và notebook Colab.
 Agent chỉ verify lượt ngắn; **chưa chạy đủ recipe hoặc khẳng định reasoning cải thiện**.
+Đã có [báo cáo kiểm chứng local và handoff](wp07_6_2_validation.md).
 
 ## Dữ liệu và split
 

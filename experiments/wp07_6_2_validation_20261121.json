@@ -1,0 +1,610 @@
+{
+  "artifact_files": {
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/best_selection.json": {
+      "sha256": "e931bcc6e1b7760c23e5c8a67e3bbe4bf1f99491c11c717782c3f6d5486ae018",
+      "size_bytes": 611
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/curriculum_report.json": {
+      "sha256": "2ba5c039c89cd6f2a7a47b8d102cd2b0a3eabc0eb0e2600558f345d4a6076a65",
+      "size_bytes": 1497
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/dataset_manifest.json": {
+      "sha256": "e26d2ee9f37808028638e8eff3f4681676459f991bbca907e8add37c4cac6d14",
+      "size_bytes": 2370
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/environment.json": {
+      "sha256": "69a437aae861e48829017ed7de1ba033ab52bccab1c3178185fe5e1bd364a396",
+      "size_bytes": 815
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/generated_accuracy.png": {
+      "sha256": "ce8c8cc0bddaab79b9a0fdc65b0a30d090a2f706b91fd658307751c41312f4b4",
+      "size_bytes": 41481
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/generated_accuracy.svg": {
+      "sha256": "b6be981e12d68641b917ad0e35ef828ca6b27da1aed14f76dce6404c9b41a556",
+      "size_bytes": 41444
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/generated_validation.json": {
+      "sha256": "016f3987728055822848d66fe6ec56c81ba151a16c8265c2670ef39d061726ae",
+      "size_bytes": 723
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/history.json": {
+      "sha256": "8dd59a58618386691f8fe1a05005bb4de4fffcc1fb3ddd81f91787476600a302",
+      "size_bytes": 1008
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/loss_curves.png": {
+      "sha256": "11b57b663dd7d68ab12ffc7257521959a120f86bcd8455a924050b05eaee2c57",
+      "size_bytes": 45049
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/loss_curves.svg": {
+      "sha256": "1d6041ef654457c4cd2b48f4d5981db8b63d081c5392a0f9cf0ee9aa7f024c6e",
+      "size_bytes": 41686
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/losses.csv": {
+      "sha256": "b698adf19d2ee9ae421674cc487f311ef4a36780d09124b6235a7370ca4a350c",
+      "size_bytes": 172
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/selected_validation_ids.json": {
+      "sha256": "8a8223874e6df8709c44b1016d433b1da8358273cc612c9a548c372c169af81a",
+      "size_bytes": 3891
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/step-00000000.predictions.jsonl": {
+      "sha256": "1451808c3a429d12b8fff9547714789c2c45a702363c88b2bfd76162b719582f",
+      "size_bytes": 30924
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/step-00000000.scored.jsonl": {
+      "sha256": "7bdfae5ad441557906c23071576a4a6da32ed02ee269dc400fcbbf2d1c5f9bc3",
+      "size_bytes": 37318
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/tokenizer/merges.json": {
+      "sha256": "7a631cf8143b67db9c4246ed83a54d680f5300e55236851a1429d46551d0d8ed",
+      "size_bytes": 368396
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/tokenizer/tokenizer_config.json": {
+      "sha256": "fae3d75d7ddb0fda306c7608f6caff65b47f5a33a4b2a486174c7b597d2a8210",
+      "size_bytes": 413
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/tokenizer/tokenizer_manifest.json": {
+      "sha256": "b98d98bdb58c7c7fe4e1fa2d6e7759449e84ab02a504777fa8a8738c94a30268",
+      "size_bytes": 408
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/tokenizer/vocab.json": {
+      "sha256": "9f5cf82719d7e2edc94b95937c1c699a25db6566e12c03958785f2aec5aee7b6",
+      "size_bytes": 468220
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/artifacts/training_contract.json": {
+      "sha256": "c5acadcfd9243acc581d7f2da010f60cfc6d345d32aedbe0e5bf1934fe825732",
+      "size_bytes": 11915
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/config.json": {
+      "sha256": "621c71cb856d187ce5ad1f4f62f798311d6bb0a7b978bc47c8861ca5ec7ab927",
+      "size_bytes": 2244
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/config_sources/curriculum.toml": {
+      "sha256": "9eaeb16bae6dabedbdacac67004f6d6445921944c6f0f3381ad8ac7f81c223dc",
+      "size_bytes": 1143
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/logs/events.jsonl": {
+      "sha256": "bd9aa405760b960cedaf192c7c3bcce1fe82e6b6ecd63669cd5bbb6b9d782ade",
+      "size_bytes": 11449
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/logs/run.log": {
+      "sha256": "5d0f1a5de109625264e2c8ac70504215742931779b31474b1811b3679fa72cd6",
+      "size_bytes": 9911
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/metadata.json": {
+      "sha256": "59cdefe5bc86cf0bb9d904e0f4e177bf5d859b282e66f3e4cec0f14f191b350e",
+      "size_bytes": 10354
+    },
+    "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8/run.json": {
+      "sha256": "3d1544fa693d2e6f38d687bb171b0a79c8f0f90ab34c404e2d9dc9d80cd731f7",
+      "size_bytes": 150
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/best_selection.json": {
+      "sha256": "e931bcc6e1b7760c23e5c8a67e3bbe4bf1f99491c11c717782c3f6d5486ae018",
+      "size_bytes": 611
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/curriculum_report.json": {
+      "sha256": "acd7ef5df37248b22d8bb5b01ddfb227ddde56ff36a5d2e530c7ee1f46c540ad",
+      "size_bytes": 1497
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/dataset_manifest.json": {
+      "sha256": "e26d2ee9f37808028638e8eff3f4681676459f991bbca907e8add37c4cac6d14",
+      "size_bytes": 2370
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/environment.json": {
+      "sha256": "69a437aae861e48829017ed7de1ba033ab52bccab1c3178185fe5e1bd364a396",
+      "size_bytes": 815
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/generated_accuracy.png": {
+      "sha256": "ce8c8cc0bddaab79b9a0fdc65b0a30d090a2f706b91fd658307751c41312f4b4",
+      "size_bytes": 41481
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/generated_accuracy.svg": {
+      "sha256": "1e05cd185c74e02740adca71265a738ddf73afe67bc7a42baf328814230c4eeb",
+      "size_bytes": 41444
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/generated_validation.json": {
+      "sha256": "016f3987728055822848d66fe6ec56c81ba151a16c8265c2670ef39d061726ae",
+      "size_bytes": 723
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/history.json": {
+      "sha256": "f88edebc669ebb5ad3afc27cb4f2edb5637dc5bd0de5863fa3225ca43e10326b",
+      "size_bytes": 1832
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/loss_curves.png": {
+      "sha256": "384f9f4415c0e52bc7867561e5bcbbcf09f2aeac293b50730ff4c3775f0229f7",
+      "size_bytes": 50759
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/loss_curves.svg": {
+      "sha256": "6f8e1fae5373cc8a198fbbd7b57a07d3e55b397f10398d0d684e96603d71aa13",
+      "size_bytes": 40862
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/losses.csv": {
+      "sha256": "7ea34808be6bfd4d07fba289ee74a6e458e5fa52c4fb58974f987b53b120ebfc",
+      "size_bytes": 250
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/selected_validation_ids.json": {
+      "sha256": "8a8223874e6df8709c44b1016d433b1da8358273cc612c9a548c372c169af81a",
+      "size_bytes": 3891
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/step-00000000.predictions.jsonl": {
+      "sha256": "1451808c3a429d12b8fff9547714789c2c45a702363c88b2bfd76162b719582f",
+      "size_bytes": 30924
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/step-00000000.scored.jsonl": {
+      "sha256": "7bdfae5ad441557906c23071576a4a6da32ed02ee269dc400fcbbf2d1c5f9bc3",
+      "size_bytes": 37318
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/tokenizer/merges.json": {
+      "sha256": "7a631cf8143b67db9c4246ed83a54d680f5300e55236851a1429d46551d0d8ed",
+      "size_bytes": 368396
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/tokenizer/tokenizer_config.json": {
+      "sha256": "fae3d75d7ddb0fda306c7608f6caff65b47f5a33a4b2a486174c7b597d2a8210",
+      "size_bytes": 413
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/tokenizer/tokenizer_manifest.json": {
+      "sha256": "b98d98bdb58c7c7fe4e1fa2d6e7759449e84ab02a504777fa8a8738c94a30268",
+      "size_bytes": 408
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/tokenizer/vocab.json": {
+      "sha256": "9f5cf82719d7e2edc94b95937c1c699a25db6566e12c03958785f2aec5aee7b6",
+      "size_bytes": 468220
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/artifacts/training_contract.json": {
+      "sha256": "c5acadcfd9243acc581d7f2da010f60cfc6d345d32aedbe0e5bf1934fe825732",
+      "size_bytes": 11915
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/config.json": {
+      "sha256": "bb45dc7e702b4b65b427fa84880b1af9b9b53cbf2d8b0511e49314dd47c6e0eb",
+      "size_bytes": 2249
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/config_sources/curriculum.toml": {
+      "sha256": "9eaeb16bae6dabedbdacac67004f6d6445921944c6f0f3381ad8ac7f81c223dc",
+      "size_bytes": 1143
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/logs/events.jsonl": {
+      "sha256": "29a451771a33421b0921f370e8a00057b23ffb66d5ed8589a740a21cfb09b0c4",
+      "size_bytes": 5595
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/logs/run.log": {
+      "sha256": "16743e1cec1afacb8077609dd5d11708cc2c99a140e3784cf5e8dba772d72f15",
+      "size_bytes": 5056
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/metadata.json": {
+      "sha256": "9b259e16091aa33e795f1f94d1d9d06be0401c81640354ce2b446dd083ae6835",
+      "size_bytes": 10034
+    },
+    "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995/run.json": {
+      "sha256": "a8a1898e6afaa85c681ed61418d91325a76a99e35ed95ec5b146282daf5bc9f8",
+      "size_bytes": 150
+    },
+    "artifacts/wp07-6-2/curriculum_data/manifest.json": {
+      "sha256": "e26d2ee9f37808028638e8eff3f4681676459f991bbca907e8add37c4cac6d14",
+      "size_bytes": 2370
+    },
+    "artifacts/wp07-6-2/evidence/gpu_audit.py": {
+      "sha256": "f67f5ccdc8b4924ccf6f67971fed3c1ce1688e5be349988fc054d5a29be7b162",
+      "size_bytes": 3474
+    },
+    "artifacts/wp07-6-2/gpu_audit.json": {
+      "sha256": "3e61ddfc0ddfaac010eb0f8b2b366a5c6aa1c411c439e41d110ec1125c3521fc",
+      "size_bytes": 835
+    }
+  },
+  "bundle": {
+    "path": "dist/grast-wp07-curriculum-0a891fda1dc3.zip",
+    "sha256": "02c9e6a9d969365921d00cc119e614295a25f1d1bde53fb7808141f2ffcee217",
+    "size_bytes": 3059243
+  },
+  "dataset_manifest": {
+    "block_size": 512,
+    "config": {
+      "max_length": 512,
+      "multi_train_per_level": 1500,
+      "multi_validation_per_level": 300,
+      "operand_max": 99,
+      "operand_min": 31,
+      "schema_version": 1,
+      "seed": 42,
+      "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+      "validation_percent": 20,
+      "wp03_fingerprint": "79ff92320ebb64e283ce342076c5e570989ef5433d8791231b2d78f370baf485"
+    },
+    "fingerprint": "0a891fda1dc3325a85f73a7022cef14fb6ce1b2d27467c1a7fbd42a7a0d16b56",
+    "protocol": "independent-bos-question-think-masked-v1",
+    "schema_version": 1,
+    "scope": "curriculum_train_validation_only",
+    "source_files": {
+      "math/train.jsonl": {
+        "path": "math/train.jsonl",
+        "records": 1500,
+        "role": "training_or_evaluation",
+        "sha256": "148688f520b73088c61969954900361a296a800cba66b617196cef05ea9cf0c8",
+        "size_bytes": 1216582
+      },
+      "math/validation.jsonl": {
+        "path": "math/validation.jsonl",
+        "records": 300,
+        "role": "training_or_evaluation",
+        "sha256": "522472eae2e6f64e8f121b5502aa2d5d1555e575a1a5d1d174c9a842622af0d8",
+        "size_bytes": 244681
+      }
+    },
+    "split_policy": "Authored unordered pairs shared across copy/single; sorted leaf tuples for multi. WP03 original semantic splits unchanged.",
+    "splits": {
+      "train": {
+        "file": "train.jsonl",
+        "max_tokens": 387,
+        "origins": {
+          "authored": 12476,
+          "wp03": 1500
+        },
+        "records": 13976,
+        "sha256": "438cf14861884fa43787df060ecd9ef0e559756cfabd25fc9eed48a3311099fb",
+        "size_bytes": 24486303,
+        "target_tokens": 494027,
+        "tasks": {
+          "copy": 3780,
+          "multi": 4000,
+          "single": 6196
+        }
+      },
+      "validation": {
+        "file": "validation.jsonl",
+        "max_tokens": 387,
+        "origins": {
+          "authored": 3061,
+          "wp03": 300
+        },
+        "records": 3361,
+        "sha256": "d363cdcf56d4615d09ff75dac5e820f697236b9124db8bbceeb45c3523edb19b",
+        "size_bytes": 5681869,
+        "target_tokens": 112788,
+        "tasks": {
+          "copy": 981,
+          "multi": 800,
+          "single": 1580
+        }
+      }
+    },
+    "test_files_read": false,
+    "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+    "truncated_examples": 0,
+    "vocab_size": 8192,
+    "work_package": "WP07.6.2"
+  },
+  "date": "2026-11-21",
+  "gpu_audit": {
+    "full_resume_from_single_file": true,
+    "generated_ids_and_finish_reasons_exact": true,
+    "initial_run": "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8",
+    "initial_step": 2,
+    "no_unscheduled_validation_on_resume": true,
+    "prefix_history_exact": true,
+    "resumed_run": "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995",
+    "resumed_step": 4,
+    "scope": "Execution smoke only: four successful updates in copy stage, not full curriculum quality.",
+    "script_sha256": "f67f5ccdc8b4924ccf6f67971fed3c1ce1688e5be349988fc054d5a29be7b162",
+    "selected_model_reloads": true,
+    "selected_model_sha256": "4309711fbe9374ca0170ceebe5b52575d6d9bac77c77c9ce99cc598a859eecf9",
+    "selected_validation_replay_examples": 8,
+    "source_checkpoint_unchanged": true,
+    "status": "passed"
+  },
+  "gpu_runs": [
+    {
+      "git": {
+        "branch": "feat/wp07-6-2-curriculum-sft",
+        "commit": "224c266f23977ea1e117dc4d636923beaea71b64",
+        "dirty": false,
+        "state": "committed",
+        "untracked_files": 0
+      },
+      "latest_checkpoint_bytes": 755344545,
+      "latest_checkpoint_sha256": "2222fdf7eaea21be4af0f531a2a298e0488c2354f74de5f67f1b2d888a058982",
+      "report": {
+        "amp_skips": 0,
+        "attempts": 2,
+        "best": {
+          "macro_exact_match": 0.0,
+          "step": 0,
+          "tasks": {
+            "copy": {
+              "answer_valid_rate": 0.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "format_valid_rate": 1.0,
+              "questions": 16
+            },
+            "multi": {
+              "answer_valid_rate": 1.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "format_valid_rate": 1.0,
+              "questions": 16
+            },
+            "single": {
+              "answer_valid_rate": 1.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "format_valid_rate": 1.0,
+              "questions": 16
+            }
+          },
+          "weights_sha256": "6d5a8b39b01896f72a237fb6860ec88e390955b5fd78c25abb5dd8cb36783e64"
+        },
+        "dataset_fingerprint": "0a891fda1dc3325a85f73a7022cef14fb6ce1b2d27467c1a7fbd42a7a0d16b56",
+        "improved_over_initial": false,
+        "phase_windows": {
+          "copy": 2,
+          "multi": 0,
+          "single": 0
+        },
+        "planned_steps": 2800,
+        "quality_scope": "Local smoke is execution evidence only; full curriculum and downstream pilot require user training.",
+        "selection_rule": "Maximum fixed generated-validation macro EM across copy/single/multi; earliest step on ties",
+        "source_initialization": {
+          "checkpoint_sha256": "5f75909261c79e9f7f0c6e37a7e9d76ba5670be8b4be5133b6e148e0cd06ff42",
+          "kind": "sft_weights_only_fresh_curriculum_optimizer_rng_cursor",
+          "source_stage": "sft",
+          "source_step": 500
+        },
+        "status": "controlled_stop",
+        "step": 2,
+        "work_package": "WP07.6.2"
+      },
+      "run_directory": "artifacts/runs/20261121T133617264503Z-wp07-6-2-curriculum-sft-seed42-c86c74d8",
+      "selected_model_bytes": 201411596,
+      "selected_model_sha256": "99bb1bd554099ae1df92fae622025f82bb0bec1bcf1c86433d8d06f13e7a6f92",
+      "train_history": [
+        {
+          "amp_scale": 65536.0,
+          "attempt": 1,
+          "batch_sha256": "56e4d00fd9b9a50e80860d79da2731d050a3a98125ca997207d51b826fbe68bf",
+          "learning_rates": [
+            2.0000000000000003e-06,
+            2.0000000000000003e-06
+          ],
+          "loss": 5.522784948348999,
+          "loss_tokens": 400,
+          "phase": "copy",
+          "skipped": false,
+          "step": 1,
+          "tokens_optimized": 400,
+          "tokens_seen": 400
+        },
+        {
+          "amp_scale": 65536.0,
+          "attempt": 2,
+          "batch_sha256": "d63e483f0323cba4e17b78a81333a91a1b20cbf64be0c197bdaee8ebcca31835",
+          "learning_rates": [
+            4.000000000000001e-06,
+            4.000000000000001e-06
+          ],
+          "loss": 5.363860845565796,
+          "loss_tokens": 400,
+          "phase": "copy",
+          "skipped": false,
+          "step": 2,
+          "tokens_optimized": 800,
+          "tokens_seen": 800
+        }
+      ],
+      "validation_history": [
+        {
+          "attempt": 0,
+          "loss": 2.1565083407557095,
+          "loss_tokens": 112788,
+          "step": 0
+        }
+      ]
+    },
+    {
+      "git": {
+        "branch": "feat/wp07-6-2-curriculum-sft",
+        "commit": "224c266f23977ea1e117dc4d636923beaea71b64",
+        "dirty": false,
+        "state": "committed",
+        "untracked_files": 0
+      },
+      "latest_checkpoint_bytes": 755349281,
+      "latest_checkpoint_sha256": "9da0ed91876e3d06b48ba21e92582146f74994db1a34a8d261ca8c6fdf12cea4",
+      "report": {
+        "amp_skips": 0,
+        "attempts": 4,
+        "best": {
+          "macro_exact_match": 0.0,
+          "step": 0,
+          "tasks": {
+            "copy": {
+              "answer_valid_rate": 0.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "format_valid_rate": 1.0,
+              "questions": 16
+            },
+            "multi": {
+              "answer_valid_rate": 1.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "format_valid_rate": 1.0,
+              "questions": 16
+            },
+            "single": {
+              "answer_valid_rate": 1.0,
+              "correct": 0,
+              "exact_match": 0.0,
+              "format_valid_rate": 1.0,
+              "questions": 16
+            }
+          },
+          "weights_sha256": "6d5a8b39b01896f72a237fb6860ec88e390955b5fd78c25abb5dd8cb36783e64"
+        },
+        "dataset_fingerprint": "0a891fda1dc3325a85f73a7022cef14fb6ce1b2d27467c1a7fbd42a7a0d16b56",
+        "improved_over_initial": false,
+        "phase_windows": {
+          "copy": 4,
+          "multi": 0,
+          "single": 0
+        },
+        "planned_steps": 2800,
+        "quality_scope": "Local smoke is execution evidence only; full curriculum and downstream pilot require user training.",
+        "selection_rule": "Maximum fixed generated-validation macro EM across copy/single/multi; earliest step on ties",
+        "source_initialization": {
+          "checkpoint_sha256": "5f75909261c79e9f7f0c6e37a7e9d76ba5670be8b4be5133b6e148e0cd06ff42",
+          "kind": "sft_weights_only_fresh_curriculum_optimizer_rng_cursor",
+          "source_stage": "sft",
+          "source_step": 500
+        },
+        "status": "controlled_stop",
+        "step": 4,
+        "work_package": "WP07.6.2"
+      },
+      "run_directory": "artifacts/runs/20261121T133826365321Z-wp07-6-2-curriculum-sft-seed42-24ec4995",
+      "selected_model_bytes": 201411852,
+      "selected_model_sha256": "4309711fbe9374ca0170ceebe5b52575d6d9bac77c77c9ce99cc598a859eecf9",
+      "train_history": [
+        {
+          "amp_scale": 65536.0,
+          "attempt": 1,
+          "batch_sha256": "56e4d00fd9b9a50e80860d79da2731d050a3a98125ca997207d51b826fbe68bf",
+          "learning_rates": [
+            2.0000000000000003e-06,
+            2.0000000000000003e-06
+          ],
+          "loss": 5.522784948348999,
+          "loss_tokens": 400,
+          "phase": "copy",
+          "skipped": false,
+          "step": 1,
+          "tokens_optimized": 400,
+          "tokens_seen": 400
+        },
+        {
+          "amp_scale": 65536.0,
+          "attempt": 2,
+          "batch_sha256": "d63e483f0323cba4e17b78a81333a91a1b20cbf64be0c197bdaee8ebcca31835",
+          "learning_rates": [
+            4.000000000000001e-06,
+            4.000000000000001e-06
+          ],
+          "loss": 5.363860845565796,
+          "loss_tokens": 400,
+          "phase": "copy",
+          "skipped": false,
+          "step": 2,
+          "tokens_optimized": 800,
+          "tokens_seen": 800
+        },
+        {
+          "amp_scale": 65536.0,
+          "attempt": 3,
+          "batch_sha256": "891d1cfa8abe57ea6b3dd367539cad927cd384bc643c787d20982506fbeb438b",
+          "learning_rates": [
+            6e-06,
+            6e-06
+          ],
+          "loss": 4.857062578201294,
+          "loss_tokens": 400,
+          "phase": "copy",
+          "skipped": false,
+          "step": 3,
+          "tokens_optimized": 1200,
+          "tokens_seen": 1200
+        },
+        {
+          "amp_scale": 65536.0,
+          "attempt": 4,
+          "batch_sha256": "db574391844b996e06040094f8506a4430ff36e742cec35919da3f576c48c48f",
+          "learning_rates": [
+            8.000000000000001e-06,
+            8.000000000000001e-06
+          ],
+          "loss": 4.608235836029053,
+          "loss_tokens": 400,
+          "phase": "copy",
+          "skipped": false,
+          "step": 4,
+          "tokens_optimized": 1600,
+          "tokens_seen": 1600
+        }
+      ],
+      "validation_history": [
+        {
+          "attempt": 0,
+          "loss": 2.1565083407557095,
+          "loss_tokens": 112788,
+          "step": 0
+        }
+      ]
+    }
+  ],
+  "interrupted_attempt": {
+    "reason": "Tool execution session lost during initial validation; no optimizer update/checkpoint completed. Marked interrupted and rerun successfully.",
+    "run_directory": "artifacts/runs/20261121T084529841820Z-wp07-6-2-curriculum-sft-seed42-e07de0f9"
+  },
+  "limits": [
+    "Full 2800-update recipe has not been trained by agent. User runs Colab.",
+    "Real-model smoke reaches step4 in copy phase only; all-stage exact resume verified on tiny dropout fixture.",
+    "48-question generated evaluation in real smoke is step0 baseline only; no unscheduled evaluation at controlled stops2/4.",
+    "No test data read or confidence threshold fit. No improved reasoning baseline claimed."
+  ],
+  "notebook_commit": "224c266f23977ea1e117dc4d636923beaea71b64",
+  "schema_version": 1,
+  "source_checkpoint_unchanged": true,
+  "source_commit": "2383ab9a2900dc276eec7305a7e7d8cdfc5f2903",
+  "status": "implementation_and_bounded_verification_passed_user_training_pending",
+  "summary_archive": {
+    "crc_check": "passed",
+    "includes_weights": false,
+    "path": "dist/grast-wp07-6-2-smoke-20261121-24ec4995.zip",
+    "sha256": "4cf0d540937f3cc947bfc838da424a8800502461300b3039d3e735f33a722131",
+    "size_bytes": 507371
+  },
+  "verification": {
+    "build": "passed wheel/sdist; no cache/runs/weights",
+    "ci": "https://github.com/CuongBien/GRAST/actions/runs/44886344914",
+    "ci_status": "success Windows and Ubuntu",
+    "current_collected_tests": 811,
+    "installed_wheel_outside_source": {
+      "all_stages": {
+        "copy": 2,
+        "multi": 2,
+        "single": 2
+      },
+      "bundle_verified": true,
+      "full_vs_resume_exact": true,
+      "run_directory": "D:\\GRAST\\.cache\\wp07-6-2-final-wheel-runs\\437c20ea\\runs\\20261121T133535472785Z-wp07-6-2-curriculum-sft-seed42-368ccefc",
+      "scope": "Tiny authored fixture; not corpus reasoning quality",
+      "selected_model_reloads": true,
+      "selected_step": 0,
+      "status": "passed"
+    },
+    "lint_and_format": "passed",
+    "local_full_tests_before_progress_logging": 809,
+    "local_targeted_curriculum_notebook_tests_after_logging": 26
+  },
+  "work_package": "WP07.6.2"
+}

@@ -31,6 +31,8 @@ WP07.6.1: [protocol chẩn đoán và cách chạy](wp07_feasibility.md),
 WP07.6.1 chỉ dùng authored train và validation; chưa triển khai confidence stopping.
 WP07.6.2 đã bổ sung [curriculum SFT và notebook Colab](wp07_curriculum.md). Các kiểm tra
 ngắn chỉ xác minh pipeline; chưa thay SFT500 thành một baseline reasoning đã cải thiện.
+Đã [verify model thật FP16/resume tới step4](wp07_6_2_validation.md), cùng fixture đủ
+ba stage và selected-model reload. Phần train2.800 updates chờ user chạy Colab.
 
 ## WP07.1 — engine API
 
