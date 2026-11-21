@@ -242,6 +242,15 @@ def test_best_uses_generated_macro_not_loss_and_ties_keep_earliest(inputs, monke
 
 def test_generator_receives_question_only_rows(inputs, monkeypatch):
     job = job_from(inputs)
+    job.recipe["data"]["batch_size"] = 1
+    events = []
+    original_emit = job.engine._emit
+
+    def emit(event, **fields):
+        events.append((event, fields))
+        return original_emit(event, **fields)
+
+    monkeypatch.setattr(job.engine, "_emit", emit)
     seen = []
 
     def generate(model, codec, questions, *args, **kwargs):
@@ -259,6 +268,11 @@ def test_generator_receives_question_only_rows(inputs, monkeypatch):
     monkeypatch.setattr(evaluation, "generate_questions", generate)
     job.evaluate()
     assert len(seen) == 12
+    assert [
+        fields["completed_batches"]
+        for event, fields in events
+        if event == "curriculum_validation_progress"
+    ] == [0, 50]
 
 
 @pytest.mark.parametrize("mutation", ["recipe", "cursor", "history", "best", "best_weights"])

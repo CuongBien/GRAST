@@ -227,9 +227,25 @@ class CurriculumJob:
         if self.generated and self.generated[-1]["step"] == self.engine.step:
             return False
         before = [c.state_dict() for c in self.cursors]
-        loss = self.engine.evaluate(
-            self.validation.view().validation_batches(self.recipe["data"]["batch_size"])
+        size = self.recipe["data"]["batch_size"]
+        view = self.validation.view()
+        total = math.ceil(len(view) / size)
+        self.engine._emit(
+            "curriculum_validation_started", step=self.engine.step, records=len(view), batches=total
         )
+
+        def batches():
+            for index, batch in enumerate(view.validation_batches(size)):
+                if index % 50 == 0:
+                    self.engine._emit(
+                        "curriculum_validation_progress",
+                        step=self.engine.step,
+                        completed_batches=index,
+                        total_batches=total,
+                    )
+                yield batch
+
+        loss = self.engine.evaluate(batches())
         self.history["validation"].append(
             {k: loss[k] for k in ("step", "loss", "loss_tokens")}
             | {"attempt": self.engine.attempts}
