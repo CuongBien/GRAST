@@ -1,0 +1,68 @@
+schema_version = 1
+
+[experiment]
+name = "wp07-6-2-curriculum-sft"
+
+[model]
+vocab_size = 8192
+context_length = 1024
+hidden_size = 512
+num_layers = 10
+num_heads = 8
+ffn_hidden_size = 2048
+dropout = 0.0
+tie_embeddings = true
+
+[initialization]
+sha256 = "5f75909261c79e9f7f0c6e37a7e9d76ba5670be8b4be5133b6e148e0cd06ff42"
+
+[training]
+stage = "sft"
+max_steps = 2800
+gradient_accumulation_steps = 4
+learning_rate = 0.0001
+weight_decay = 0.01
+warmup_steps = 50
+min_lr_ratio = 0.1
+max_grad_norm = 1.0
+precision = "float16"
+
+[data]
+batch_size = 4
+max_length = 512
+shuffle_seed = 42
+
+[[phases]]
+name = "copy"
+end_step = 400
+tasks = ["copy"]
+
+[[phases]]
+name = "single"
+end_step = 1600
+tasks = ["copy", "single"]
+
+[[phases]]
+name = "multi"
+end_step = 2800
+tasks = ["copy", "single", "multi"]
+
+[runner]
+validate_every = 200
+checkpoint_every = 100
+max_attempts_per_step = 16
+
+[evaluation]
+per_task = 16
+batch_size = 8
+max_new_tokens = 256
+precision = "float32"
+selection_seed = 42
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"

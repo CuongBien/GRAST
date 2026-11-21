@@ -1,0 +1,10 @@
+schema_version = 1
+seed = 42
+operand_min = 31
+operand_max = 99
+validation_percent = 20
+multi_train_per_level = 1500
+multi_validation_per_level = 300
+max_length = 512
+wp03_fingerprint = "79ff92320ebb64e283ce342076c5e570989ef5433d8791231b2d78f370baf485"
+tokenizer_fingerprint = "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3"

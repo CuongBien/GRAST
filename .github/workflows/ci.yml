@@ -79,6 +79,8 @@ jobs:
         run: uv run --no-sync python -u scripts/check_capability.py
       - name: WP07.6.1 bounded copy/arithmetic and validation coverage smoke
         run: uv run --no-sync python -u -m llm_scratch.research.feasibility_acceptance
+      - name: WP07.6.2 all-stage curriculum, generated selection and exact resume smoke
+        run: uv run --no-sync python -u -m llm_scratch.curriculum.acceptance
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree
