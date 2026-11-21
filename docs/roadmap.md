@@ -85,6 +85,8 @@ WP07.6.1 đã [đo copy/arithmetic và coverage@16](wp07_6_1_validation.md): dia
 train64/64, authored validation copy1/8 và arithmetic0/8; SFT gốc covered5/30 câu
 validation nhưng chỉ5/480 candidates đúng, cả năm có trace sai. Bước tiếp theo là
 WP07.6.2 curriculum/data coverage với generated validation EM; chưa train SFT v2.
+WP07.6.2 đã có [data/runner/Colab](wp07_curriculum.md), recipe400/1.200/1.200 updates,
+fixed generated-validation48 và selected inference export; user chưa chạy đủ recipe.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 

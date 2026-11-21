@@ -12,6 +12,7 @@ Không coi diagnostic fixed-batch loss là kết quả corpus hoặc pilot reaso
 | WP07.4 | Chuẩn hóa prompt/reasoning/final, CoT SFT từ pretrained checkpoint, Colab/Kaggle runner | Prompt mask/target formatting đúng, validation và milestone checkpoints; user train dài | Đã nhận/verify SFT 500 updates T4 |
 | WP07.5 | Phân tích checkpoint nhiều giai đoạn, curves, text generation, fixed pilot reasoning | Checkpoint reload; text samples; pilot result/artifact manifest và training evidence từ user | Đã chạy full pilot; SFT test1/150, reasoning feasibility chưa thiết lập |
 | WP07.6.1 | Tách copy/arithmetic, overfit64 train examples và validation coverage@16 | Chấm đáp án tự sinh; nguồn SFT bất biến; không đọc test | Đã đo local: train64/64; authored val copy1/8, arithmetic0/8; coverage5/30 |
+| WP07.6.2 | Grouped curriculum data, cumulative stages, generated-validation model selection và Colab | Data/split đúng; stage và full resume chạy được; user train recipe dài | Đã chuẩn bị13.976/3.361 examples; chờ kết quả train dài |
 
 WP07 đã có model checkpoints thực, curves, text samples và full pilot artifacts để
 nghiệm thu chức năng. Baseline hiện chưa chứng minh feasibility reasoning cho đồ án:
@@ -27,7 +28,9 @@ WP07.4: [CoT SFT/data/warm-start/notebooks](wp07_sft.md),
 WP07.5: [protocol và evaluator](wp07_capability.md), [kết quả/audit](wp07_5_validation.md).
 WP07.6.1: [protocol chẩn đoán và cách chạy](wp07_feasibility.md),
 [kết quả/audit](wp07_6_1_validation.md). Model học thuộc64 mẫu; generalization vẫn yếu.
-Chỉ dùng authored train và validation; chưa triển khai curriculum SFT v2 hoặc confidence stopping.
+WP07.6.1 chỉ dùng authored train và validation; chưa triển khai confidence stopping.
+WP07.6.2 đã bổ sung [curriculum SFT và notebook Colab](wp07_curriculum.md). Các kiểm tra
+ngắn chỉ xác minh pipeline; chưa thay SFT500 thành một baseline reasoning đã cải thiện.
 
 ## WP07.1 — engine API
 

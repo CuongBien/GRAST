@@ -22,6 +22,9 @@ WP07.6.1 bổ sung [copy/arithmetic overfit và sampled validation coverage](doc
 để kiểm tra feasibility: train64/64, authored val copy1/8 và arithmetic0/8;
 coverage@16 của SFT gốc5/30 câu nhưng chỉ5/480 candidates đúng.
 [Báo cáo WP07.6.1](docs/wp07_6_1_validation.md); không dùng lại test để chọn recipe.
+WP07.6.2 có [curriculum data/runner và Colab](docs/wp07_curriculum.md):13.976 train,
+3.361 validation, ba stage tích lũy và chọn model theo48 câu validation tự sinh.
+Đây là hạ tầng/recipe để user train; chưa có bằng chứng curriculum cải thiện reasoning.
 Smoke WP02 chỉ dùng RNG/ma trận nhỏ; WP03 chưa đánh giá chất lượng model.
 
 WP02 đã nghiệm thu CPU, RTX 4060 và Colab A100; xem [evidence](docs/wp02_validation.md).
