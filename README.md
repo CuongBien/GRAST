@@ -26,6 +26,8 @@ WP07.6.2 có [curriculum data/runner và Colab](docs/wp07_curriculum.md):13.976 
 3.361 validation, ba stage tích lũy và chọn model theo48 câu validation tự sinh.
 Đây là hạ tầng/recipe để user train; chưa có bằng chứng curriculum cải thiện reasoning.
 Đã [verify smoke/resume và đóng gói Colab](docs/wp07_6_2_validation.md); chờ user train đủ recipe.
+Curriculum có [bản Kaggle và hướng dẫn chạy nền](docs/wp07_curriculum_kaggle.md),
+giữ cùng source/data/recipe với Colab.
 Smoke WP02 chỉ dùng RNG/ma trận nhỏ; WP03 chưa đánh giá chất lượng model.
 
 WP02 đã nghiệm thu CPU, RTX 4060 và Colab A100; xem [evidence](docs/wp02_validation.md).

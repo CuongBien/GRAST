@@ -1,5 +1,9 @@
 # WP07.3 — Chạy nền trên Kaggle
 
+**Curriculum WP07.6.2 hiện tại:** dùng
+[wp07_curriculum_kaggle.ipynb và hướng dẫn riêng](wp07_curriculum_kaggle.md).
+Các phần dưới là notebook pretraining WP07.3, không phải curriculum SFT.
+
 Cập nhật20/11/2026: đã nhận checkpoint pretraining T4/FP16 đủ2.000updates, val loss
 1,56740 và kiểm trực tiếp weights/metadata/summary; xem
 [evidence](../experiments/wp07_pretraining_completed_20261120.json).
