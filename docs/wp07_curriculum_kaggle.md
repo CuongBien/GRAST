@@ -113,3 +113,13 @@ cải thiện; smoke chỉ kiểm tra chạy và checkpoint. [Contracts và qual
 Adapter đã có local tests cho ZIP/expanded/corrupt/ambiguous input, nhận weights theo
 hash, smoke/full/resume commands, live logs/cancellation, và pipeline tiny CPU qua
 chính helpers notebook. Local GPU probe không thay cho một lần chạy thực tế Kaggle.
+
+Kiểm chứng22/11/2026:36 targeted tests passed (26 tests adapter mới), Ruff lint/format
+qua. Helpers đã kiểm bundle thật cả ZIP và expanded, SFT500 theo SHA và header của
+checkpoint curriculum step4. RTX4060 local forward/backward probe qua với BF16 cho
+fresh run và FP16 khi resume; lệnh smoke resume từ step4 nhắm step6. Chỉ build lệnh
+model thật, không launch train dài; luồng launch/resume qua đủ ba stage dùng fixture
+tiny CPU. Source training/config khớp pin, không sửa thuật toán hoặc recipe để lên Kaggle.
+[Evidence local](../experiments/wp07_curriculum_kaggle_validation_20261122.json).
+[CI adapter](https://github.com/CuongBien/GRAST/actions/runs/45038234769) đã xanh trên
+Windows và Ubuntu; kết quả này không phải phiên Kaggle.
