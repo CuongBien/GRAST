@@ -4,6 +4,8 @@ Notebook: `notebooks/wp07_curriculum_kaggle.ipynb`. Đây là bản Kaggle của
 [curriculum Colab](wp07_curriculum.md), giữ nguyên source pin
 `2383ab9a2900dc276eec7305a7e7d8cdfc5f2903`, tokenizer, data và recipe2.800 updates.
 Mặc định smoke2 updates; agent chỉ verify adapter local, chưa chạy thực tế Kaggle.
+Ngày25/11 đã nhận user output của lượt Kaggle đủ2.800 updates,0 AMP skips; source pin
+giữ đúng và selected step2.200. Xem [receipt và validation mới](wp07_6_3_validation.md).
 
 ## Chuẩn bị hai input
 

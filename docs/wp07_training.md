@@ -12,7 +12,8 @@ Không coi diagnostic fixed-batch loss là kết quả corpus hoặc pilot reaso
 | WP07.4 | Chuẩn hóa prompt/reasoning/final, CoT SFT từ pretrained checkpoint, Colab/Kaggle runner | Prompt mask/target formatting đúng, validation và milestone checkpoints; user train dài | Đã nhận/verify SFT 500 updates T4 |
 | WP07.5 | Phân tích checkpoint nhiều giai đoạn, curves, text generation, fixed pilot reasoning | Checkpoint reload; text samples; pilot result/artifact manifest và training evidence từ user | Đã chạy full pilot; SFT test1/150, reasoning feasibility chưa thiết lập |
 | WP07.6.1 | Tách copy/arithmetic, overfit64 train examples và validation coverage@16 | Chấm đáp án tự sinh; nguồn SFT bất biến; không đọc test | Đã đo local: train64/64; authored val copy1/8, arithmetic0/8; coverage5/30 |
-| WP07.6.2 | Grouped curriculum data, cumulative stages, generated-validation model selection và Colab | Data/split đúng; stage và full resume chạy được; user train recipe dài | Đã chuẩn bị13.976/3.361 examples; chờ kết quả train dài |
+| WP07.6.2 | Grouped curriculum data, cumulative stages, generated-validation model selection và Colab | Data/split đúng; stage và full resume chạy được; user train recipe dài | Đã nhận/verify2.800 updates T4/FP16,0 skip; selected2200 |
+| WP07.6.3 | Audit trained export/summary, replay và validation rộng hơn | Model khớp summary; scope selection tách rõ; không đọc test | Replay48 exact; copy32/32, single5/32, multi0/32; pilot5/150 |
 
 WP07 đã có model checkpoints thực, curves, text samples và full pilot artifacts để
 nghiệm thu chức năng. Baseline hiện chưa chứng minh feasibility reasoning cho đồ án:
@@ -32,7 +33,8 @@ WP07.6.1 chỉ dùng authored train và validation; chưa triển khai confidenc
 WP07.6.2 đã bổ sung [curriculum SFT và notebook Colab](wp07_curriculum.md). Các kiểm tra
 ngắn chỉ xác minh pipeline; chưa thay SFT500 thành một baseline reasoning đã cải thiện.
 Đã [verify model thật FP16/resume tới step4](wp07_6_2_validation.md), cùng fixture đủ
-ba stage và selected-model reload. Phần train2.800 updates chờ user chạy Colab.
+ba stage và selected-model reload. Ngày25/11 đã nhận [lượt train2.800 updates](../experiments/wp07_curriculum_completed_20261125.json)
+và [đo WP07.6.3](wp07_6_3_validation.md). Copy cải thiện rõ; tính toán còn yếu.
 
 ## WP07.1 — engine API
 

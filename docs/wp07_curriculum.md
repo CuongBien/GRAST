@@ -2,7 +2,10 @@
 
 WP07.6.1 cho thấy model có thể học thuộc64 mẫu nhưng áp dụng yếu sang cặp số mới.
 Phase này chuẩn bị dữ liệu có độ phủ lớn hơn, curriculum tích lũy và notebook Colab.
-Agent chỉ verify lượt ngắn; **chưa chạy đủ recipe hoặc khẳng định reasoning cải thiện**.
+Agent verify lượt ngắn; user đã train đủ2.800 updates trên Kaggle. Ngày25/11 nhận model/summary và
+[đánh giá validation WP07.6.3](wp07_6_3_validation.md). Copy32/32, single5/32, multi0/32
+ở additional validation; pilot5/150. Các smoke checks dưới đây xác minh pipeline,
+không thay bằng chứng quality từ lượt train và evaluation thực.
 Đã có [báo cáo kiểm chứng local và handoff](wp07_6_2_validation.md).
 Kaggle: [notebook và hướng dẫn Save & Run All/resume](wp07_curriculum_kaggle.md).
 

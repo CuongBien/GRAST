@@ -1,5 +1,8 @@
 # WP07.6.2 — Curriculum sẵn sàng cho user train, ngày21/11/2026
 
+**Cập nhật25/11:** đã nhận/verify user train đủ recipe; xem [WP07.6.3](wp07_6_3_validation.md).
+Báo cáo dưới đây giữ evidence chuẩn bị/smoke ngày21/11, không phải kết quả train dài.
+
 Đã có grouped dataset, ba stage tích lũy, chọn model theo đáp án tự sinh và notebook
 Colab có log trực tiếp. **Mới verify execution ngắn; chưa chạy đủ2.800 updates hoặc
 chứng minh curriculum cải thiện reasoning.** [Cách dùng/contracts](wp07_curriculum.md),
