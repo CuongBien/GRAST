@@ -1,0 +1,99 @@
+{
+  "checkpoint": "artifacts/checkpoints/wp07-curriculum-2800-selected-2200/selected_model.pt",
+  "dataset_fingerprint": "0a891fda1dc3325a85f73a7022cef14fb6ce1b2d27467c1a7fbd42a7a0d16b56",
+  "initialization": {
+    "checkpoint_sha256": "5f75909261c79e9f7f0c6e37a7e9d76ba5670be8b4be5133b6e148e0cd06ff42",
+    "kind": "sft_weights_only_fresh_curriculum_optimizer_rng_cursor",
+    "source_stage": "sft",
+    "source_step": 500
+  },
+  "limitations": [
+    "Selection48 includes copy; macro EM39.58% is not arithmetic accuracy.",
+    "Only selected inference weights were supplied, not the final full optimizer checkpoint.",
+    "Previous-run reproducibility check compares summaries and their reported best-weight digest; first-run weights were not supplied.",
+    "Broader validation evaluation tracked separately in WP07.6.3."
+  ],
+  "model_parameters": 46148096,
+  "provenance": {
+    "amp_skips": 0,
+    "checkpoint_sha256": "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8",
+    "repeat_summary_check": {
+      "entire_checkpoint_owned_history_equal": true,
+      "generated_validation_equal": true,
+      "previous_summary_sha256": "f61805a88a2b2fbad57f3a298f25d85eb4a06316be72d7e8bceafde8aa60c260",
+      "reported_best_weight_digest_equal": true,
+      "scope": "Comparison of two downloaded summaries; first run weights were not supplied."
+    },
+    "selected_step": 2200,
+    "summary_sha256": "d6d3714d7e9ab1cc3abf2eefd86ab4351ce0734dfab3415226a20cae208ef5fc",
+    "tokens_optimized": 1315393,
+    "total_updates": 2800
+  },
+  "received_date": "2026-11-25",
+  "run_id": "20261124T175140666380Z-wp07-6-2-curriculum-sft-seed42-0db55cf3",
+  "runtime": {
+    "cuda": "13.0",
+    "gpu_used": "Tesla T4",
+    "numpy": "2.1.3",
+    "precision": "float16",
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "selected_device": "cuda:0",
+    "torch": "2.11.0+cu130",
+    "visible_gpu_count": 2
+  },
+  "schema_version": 1,
+  "selection": {
+    "macro_exact_match": 0.3958333333333333,
+    "step": 2200,
+    "tasks": {
+      "copy": {
+        "answer_valid_rate": 1.0,
+        "correct": 16,
+        "exact_match": 1.0,
+        "format_valid_rate": 1.0,
+        "questions": 16
+      },
+      "multi": {
+        "answer_valid_rate": 1.0,
+        "correct": 1,
+        "exact_match": 0.0625,
+        "format_valid_rate": 1.0,
+        "questions": 16
+      },
+      "single": {
+        "answer_valid_rate": 1.0,
+        "correct": 2,
+        "exact_match": 0.125,
+        "format_valid_rate": 1.0,
+        "questions": 16
+      }
+    },
+    "weights_sha256": "e0ac6861efd2be5c2db9bf84e3370bf2101999a96377e5544e0295779e5bb4b7"
+  },
+  "source_commit": {
+    "branch": null,
+    "commit": "2383ab9a2900dc276eec7305a7e7d8cdfc5f2903",
+    "dirty": false,
+    "state": "committed",
+    "untracked_files": 0
+  },
+  "status": "user_training_completed_verified",
+  "training": {
+    "amp_skips": 0,
+    "attempts": 2800,
+    "elapsed_seconds_from_events": 1906.834653,
+    "mean_last100_train_loss": 0.11712171997042597,
+    "phase_windows": {
+      "copy": 400,
+      "multi": 1200,
+      "single": 1200
+    },
+    "target_tokens_optimized": 1315393,
+    "updates": 2800,
+    "validation_loss_final": 0.11452070686629416,
+    "validation_loss_initial": 2.1565467448747295,
+    "validation_loss_selected_step": 0.13948402801042978
+  },
+  "verification": "load_selected passed finite/shape/tied/vocab/tokenizer and best weight digest; all archived generated scores recomputed; history/counters/earliest best selection verified.",
+  "work_package": "WP07.6.2"
+}

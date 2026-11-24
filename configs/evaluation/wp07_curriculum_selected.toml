@@ -1,0 +1,32 @@
+schema_version = 1
+
+[experiment]
+name = "wp07-6-3-curriculum-validation"
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"
+
+[checkpoint]
+path = "../../artifacts/checkpoints/wp07-curriculum-2800-selected-2200/selected_model.pt"
+sha256 = "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8"
+
+[summary]
+path = "../../artifacts/checkpoints/wp07-curriculum-2800-selected-2200/evidence/20261124T175140666380Z-wp07-6-2-curriculum-sft-seed42-0db55cf3-summary.zip"
+sha256 = "d6d3714d7e9ab1cc3abf2eefd86ab4351ce0734dfab3415226a20cae208ef5fc"
+
+[evaluation]
+batch_size = 8
+precision = "float32"
+max_new_tokens = 256
+expected_pilot_questions = 150
+holdout_per_task = 32
+selection_seed = 42
+
+[baseline]
+path = "../../artifacts/runs/20261120T083644233178Z-wp07-5-checkpoint-capability-seed42-85ecc9db/artifacts/sft-500/validation.scored.jsonl"
+sha256 = "f70acb9a064142eb17ad5532c58b005c091402e6770e2a4528ebd6dd468829f1"
