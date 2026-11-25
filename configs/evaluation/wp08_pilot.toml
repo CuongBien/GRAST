@@ -1,0 +1,11 @@
+schema_version = 1
+bank_config = "../experiments/wp08_pilot_bank.toml"
+dataset = "../../artifacts/runs/20261105T112412535097Z-wp03-data-pilot-seed42-fe698f01/artifacts/datasets"
+curriculum = "../../artifacts/wp07-6-2/curriculum_data"
+tokenizer = "../../artifacts/runs/20261105T154939888754Z-wp04-byte-bpe-seed42-4102afe0/artifacts/tokenizer"
+wp03_fingerprint = "79ff92320ebb64e283ce342076c5e570989ef5433d8791231b2d78f370baf485"
+curriculum_fingerprint = "0a891fda1dc3325a85f73a7022cef14fb6ce1b2d27467c1a7fbd42a7a0d16b56"
+tokenizer_fingerprint = "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3"
+expected_questions = 150
+per_difficulty = 10
+selection_seed = 20261125

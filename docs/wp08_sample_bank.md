@@ -10,6 +10,8 @@ chưa đồng nghĩa reasoning đã đủ tốt hoặc đã đạt nghiệm thu 
 | WP08.3 | Offline replay trên các prefix của cùng bank | Các policy dùng cùng ứng viên, không nhận gold/future samples |
 | WP08.4 | Báo cáo feasibility và quyết định benchmark | Có bằng chứng giữ GSM8K hay ưu tiên bài dễ; tách validation/test |
 
+WP08.2 đang triển khai theo [protocol pilot đã khóa](wp08_pilot.md).
+
 WP08.1 chỉ dùng hai câu tự soạn để kiểm tra kỹ thuật. Chưa chọn pilot, threshold,
 calibration hoặc benchmark theo kết quả smoke. Pilot WP08.2 cần loại các prompt/group
 đã dùng selection trong WP07.6 trước khi xem đáp án; không dùng test để chọn threshold.

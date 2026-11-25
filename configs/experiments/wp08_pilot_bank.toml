@@ -1,0 +1,37 @@
+schema_version = 1
+
+[experiment]
+name = "wp08-2-feasibility-pilot"
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"
+
+[bank]
+candidates_per_question = 16
+batch_size = 8
+trial_seeds = [42, 43, 44]
+precision = "float32"
+
+[generation]
+max_new_tokens = 256
+do_sample = true
+temperature = 0.8
+top_k = 40
+top_p = 0.95
+
+[[checkpoints]]
+id = "sft-500"
+kind = "engine"
+path = "../../artifacts/checkpoints/wp07-cot-sft-math-500/final.pt"
+sha256 = "5f75909261c79e9f7f0c6e37a7e9d76ba5670be8b4be5133b6e148e0cd06ff42"
+
+[[checkpoints]]
+id = "curriculum-selected-2200"
+kind = "curriculum_selected"
+path = "../../artifacts/checkpoints/wp07-curriculum-2800-selected-2200/selected_model.pt"
+sha256 = "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8"
