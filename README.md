@@ -57,11 +57,13 @@ Nguồn kế hoạch: [LLM From Scratch — Hướng C | Project HQ](https://app
 
 ## Hai giai đoạn
 
-WP08 đang triển khai theo [bốn phase](docs/wp08_sample_bank.md): WP08.1 dựng ordered
-sample bank, điểm log-prob từ model và tách gold; pilot feasibility/replay sẽ làm sau.
+WP08 triển khai theo [bốn phase](docs/wp08_sample_bank.md): WP08.1 dựng ordered
+sample bank, điểm log-prob từ model và tách gold; WP08.3 sẽ làm offline replay.
 Smoke ngắn: `uv run --no-sync python -u scripts/check_sample_bank.py`.
 [WP08.1 đã qua nghiệm thu kỹ thuật](docs/wp08_1_validation.md): 879 tests,
 hai bank lặp exact trên CPU và selected2200/RTX4060.
+[WP08.2 đã thu đủ2.880 ứng viên](docs/wp08_2_validation.md), pilot30 câu/2 checkpoints/3 seeds/K16.
+Selected2200 easy coverage@16 trung bình56,7%; medium/hard chưa có trace được verified.
 
 1. **Đồ án:** *When Does Confidence-Gated Test-Time Scaling Fail? A Study of
    Reliability and Compute Efficiency in Small Language Models.* Nghiên cứu confidence

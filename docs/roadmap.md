@@ -96,7 +96,8 @@ Arithmetic feasibility còn yếu. Chưa đo sample bankK16 của model mới ho
 [WP08.1](wp08_sample_bank.md) dựng bank có checksum, thứ tự ứng viên/seed/checkpoint,
 raw-model log-probability và tách gold khỏi policy observations. Đã đạt
 [smoke kỹ thuật CPU/checkpoint thật](wp08_1_validation.md); chưa chạy full pilot.
-WP08.2 khóa pilot validation và nhiều seed/checkpoint tối đaK16;
+WP08.2 đã [khóa30 câu và thu đủ2.880 ứng viên](wp08_2_validation.md),2 checkpoints/3 seeds/K16.
+Selected2200 easy coverage56,7%; medium/hard chưa có trace được verified.
 WP08.3 replay các policy trên cùng prefix; WP08.4 báo cáo feasibility/quyết định GSM8K.
 Không fit stopping/calibration trên test và không gọi replay cost là online latency.
 

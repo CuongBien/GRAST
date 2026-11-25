@@ -1,5 +1,7 @@
 # WP08.2 — Frozen validation pilot
 
+Đã chạy đủ pilot, xem [kết quả và bằng chứng](wp08_2_validation.md).
+
 Protocol khóa trước khi sinh mẫu: **30 câu WP03 validation, 10 easy/10 medium/10 hard**,
 SFT500 và curriculum selected2200, trial seeds42/43/44, K16, batch8, FP32,
 temperature0,8/top-k40/top-p0,95, budget256 token. Tổng **2.880 ứng viên**; không train.
