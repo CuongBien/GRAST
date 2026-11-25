@@ -1,0 +1,81 @@
+# Frozen heuristic comparison. No threshold search or confidence calibration.
+schema_version = 1
+
+[experiment]
+name = "wp08-3-offline-replay"
+
+[reproducibility]
+seed = 42
+
+[artifacts]
+root = "../../artifacts/runs"
+
+[inputs]
+bank = "../../artifacts/runs/20261125T120930824002Z-wp08-2-feasibility-pilot-seed42-333b2fdc/artifacts/bank"
+bank_fingerprint = "6941830812e5fe91ba583553556cbc68a10ecf9b84dcad2bb5850c97cab1c809"
+references = "../../artifacts/runs/20261125T120930824002Z-wp08-2-feasibility-pilot-seed42-333b2fdc/artifacts/pilot.references.jsonl"
+references_sha256 = "2eefb33bfa7323d8015bd7cf3d8a9eabe6e4d734fe5d52d3f7a8762d4e2929b4"
+
+[[policies]]
+id = "fixed-k1"
+kind = "fixed"
+min_draws = 1
+max_draws = 1
+threshold_numerator = 1
+threshold_denominator = 1
+
+[[policies]]
+id = "fixed-k2"
+kind = "fixed"
+min_draws = 2
+max_draws = 2
+threshold_numerator = 1
+threshold_denominator = 1
+
+[[policies]]
+id = "fixed-k4"
+kind = "fixed"
+min_draws = 4
+max_draws = 4
+threshold_numerator = 1
+threshold_denominator = 1
+
+[[policies]]
+id = "fixed-k8"
+kind = "fixed"
+min_draws = 8
+max_draws = 8
+threshold_numerator = 1
+threshold_denominator = 1
+
+[[policies]]
+id = "fixed-k16"
+kind = "fixed"
+min_draws = 16
+max_draws = 16
+threshold_numerator = 1
+threshold_denominator = 1
+
+[[policies]]
+id = "unanimous-min2"
+kind = "agreement"
+min_draws = 2
+max_draws = 16
+threshold_numerator = 1
+threshold_denominator = 1
+
+[[policies]]
+id = "unanimous-min4"
+kind = "agreement"
+min_draws = 4
+max_draws = 16
+threshold_numerator = 1
+threshold_denominator = 1
+
+[[policies]]
+id = "vote80-min4"
+kind = "agreement"
+min_draws = 4
+max_draws = 16
+threshold_numerator = 4
+threshold_denominator = 5

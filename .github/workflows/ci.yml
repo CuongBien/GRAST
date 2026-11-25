@@ -85,6 +85,8 @@ jobs:
         run: uv run --no-sync python -u scripts/check_sample_bank.py
       - name: WP08.2 frozen validation pilot and multi-checkpoint coverage smoke
         run: uv run --no-sync python -u -m llm_scratch.research.pilot_acceptance
+      - name: WP08.3 gold-free prefix policies and deterministic offline replay smoke
+        run: uv run --no-sync python -u -m llm_scratch.research.replay_acceptance
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree

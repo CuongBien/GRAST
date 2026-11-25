@@ -1,4 +1,6 @@
-"""Reserved replay_policies entry point; intentionally unavailable in step 1."""
+"""Replay fixed declarative policies on a frozen bank with live progress logs."""
+
+from llm_scratch.research.policy_replay import main
 
 if __name__ == "__main__":
-    raise SystemExit("replay_policies: skeleton only; implementation is deferred.")
+    main()
