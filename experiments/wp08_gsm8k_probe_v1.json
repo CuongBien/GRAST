@@ -1,0 +1,55 @@
+{
+  "contract": {
+    "checkpoints": [
+      {
+        "id": "sft-500",
+        "kind": "engine",
+        "sha256": "5f75909261c79e9f7f0c6e37a7e9d76ba5670be8b4be5133b6e148e0cd06ff42"
+      },
+      {
+        "id": "curriculum-selected-2200",
+        "kind": "curriculum_selected",
+        "sha256": "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8"
+      }
+    ],
+    "context_length": 1024,
+    "gsm_probe": {
+      "batch_size": 8,
+      "expected_validation_records": 500,
+      "max_new_tokens": 256,
+      "precision": "float32",
+      "questions": 16,
+      "selection_seed": 20261126
+    },
+    "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+    "wp03_fingerprint": "79ff92320ebb64e283ce342076c5e570989ef5433d8791231b2d78f370baf485"
+  },
+  "eligible_records": 500,
+  "fingerprint": "52a75efb827d355f6bff301ee6f754aab1205e5f49e27ca125b2f0a1d09f8aa9",
+  "over_context_records": 0,
+  "question_ids": [
+    "gsm8k-5adc7f7c410707aaaaaed730d3061c90f5898dfaccdfc1a0459a9109a6df2c85",
+    "gsm8k-5d2360014c88ec5a48eb3e57e2771cb7276809cebf68ba853efd5aa77f99a15d",
+    "gsm8k-69d8007e6d52f662cfb4cacf27794ca320b44ca9fa41d7bcb227a70e2b31ee56",
+    "gsm8k-c8c9725932207f3d947fb5a6487b6f59c110a8c3d3628523782b975ced9c3456",
+    "gsm8k-6db6a3728a3c921543cda6dcc0e9b1fd97b449a329ad3b00fa045fa817f80ff5",
+    "gsm8k-8260eb64813c10be9d3a813812c2a425c2e76310047fb4a549757fb5d1778bb3",
+    "gsm8k-1f877a8967be902347332154c71dddcede5c5bc9315123eca8f5262f6892be20",
+    "gsm8k-f3317a9ff1173b6f1e24ecbf22a32f6b16452afd2410be128aefcb74ef2b137e",
+    "gsm8k-f50f4c177775496af90cd460dada0f8cfad70c91e8c427cf997df7554afad9c6",
+    "gsm8k-6008e3ed35dcdf0f231dd60a4f03f155dab3308fd44c7e4dc565c310d7057d0e",
+    "gsm8k-a9dae85b896063510627e0202e480659f33b64b9a9ec6c0b26c81712ad86634c",
+    "gsm8k-92000dfaaa85041544ee9f64363562360fee45c8e2c1cd88ec1f82d0fbbac924",
+    "gsm8k-16f6fcb8aefdfa414b86ec98e616e30b3af4e4071ed694e36d1e51c168bf3b15",
+    "gsm8k-18acaeead40d3585b546615f59f636cd6066706878794ddbbe4ff29f88411a02",
+    "gsm8k-d06c2e6019e06a5ff14be5c7621ee2a7e5888d5da77e15db895b174acb2fd5e0",
+    "gsm8k-30433658663920b02bdc65e56e9b51a9b9e889b317b672d8e48955b795301922"
+  ],
+  "questions_sha256": "3f1b6d05dd7bbb348a9d036502838928be015a7c064614838e7024688a5149d1",
+  "schema_version": 1,
+  "scope": "gsm8k-official-train-derived-validation-only",
+  "selection_protocol": "question-id-hash-context-eligible-v1",
+  "validation_records": 500,
+  "validation_source_sha256": "87d005b55956f683b14e434c66b561db9cde0e90e0369cc762f3531a9bced338",
+  "work_package": "WP08.4"
+}

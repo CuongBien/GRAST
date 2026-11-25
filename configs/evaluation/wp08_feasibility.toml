@@ -1,0 +1,32 @@
+schema_version = 1
+
+[experiment]
+name = "wp08-4-feasibility-review"
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"
+
+[inputs]
+project_root = "../.."
+pilot_receipt = "../../experiments/wp08_2_validation_20261125.json"
+pilot_receipt_fingerprint = "c1d9f1641a82bcb9925dfc9fbeb9b7f5300f9e24227301427affc3c8897a0276"
+replay_receipt = "../../experiments/wp08_3_validation_20261126.json"
+replay_receipt_fingerprint = "ba90d0ac49dc6a56d506fc36904c4cb0492910799b5aed129170d1771a089d72"
+dataset = "../../artifacts/runs/20261105T112412535097Z-wp03-data-pilot-seed42-fe698f01/artifacts/datasets"
+wp03_fingerprint = "79ff92320ebb64e283ce342076c5e570989ef5433d8791231b2d78f370baf485"
+tokenizer = "../../artifacts/runs/20261105T154939888754Z-wp04-byte-bpe-seed42-4102afe0/artifacts/tokenizer"
+tokenizer_fingerprint = "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3"
+checkpoint_config = "../experiments/wp08_pilot_bank.toml"
+
+[gsm_probe]
+questions = 16
+selection_seed = 20261126
+expected_validation_records = 500
+batch_size = 8
+max_new_tokens = 256
+precision = "float32"
