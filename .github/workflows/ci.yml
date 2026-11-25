@@ -81,6 +81,8 @@ jobs:
         run: uv run --no-sync python -u -m llm_scratch.research.feasibility_acceptance
       - name: WP07.6.2 all-stage curriculum, generated selection and exact resume smoke
         run: uv run --no-sync python -u -m llm_scratch.curriculum.acceptance
+      - name: WP08.1 ordered gold-free sample bank and deterministic repeat smoke
+        run: uv run --no-sync python -u scripts/check_sample_bank.py
       - name: Build wheel and source distribution
         run: uv build
       - name: Verify installed wheel outside source tree

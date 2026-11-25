@@ -22,6 +22,7 @@ class GenerationOutput:
     generated_lengths: Tensor
     finish_reasons: tuple[str, ...]
     seed: int
+    generated_logprobs: Tensor | None = None
 
 
 @torch.no_grad()
@@ -35,6 +36,7 @@ def generate(
     use_cache: bool = False,
     position_offset: int = 0,
     on_token: Callable[[int, Tensor, Tensor], None] | None = None,
+    return_logprobs: bool = False,
 ) -> GenerationOutput:
     """Generate without changing model mode or global RNG.
 
@@ -48,6 +50,9 @@ def generate(
     Cache is private to this call and not returned (last sampled token is not fed).
     Optional on_token(step, IDs, valid_rows) observes completed generation steps;
     borrowed tensors are read-only. Callback overhead belongs to the caller's path.
+    Optional logprobs use FP32 log_softmax of unmodified model logits (natural logs),
+    before temperature/top-k/top-p; include EOS and use zero at masked tail positions.
+    These are model likelihoods, not probabilities under the filtered sampling policy.
     """
     if not isinstance(model, CausalLM):
         raise ValueError("model must be CausalLM")
@@ -55,6 +60,8 @@ def generate(
         raise ValueError("Generation requires model.eval()")
     if type(use_cache) is not bool:
         raise ValueError("use_cache must be boolean")
+    if type(return_logprobs) is not bool:
+        raise ValueError("return_logprobs must be boolean")
     if type(position_offset) is not int or position_offset < 0:
         raise ValueError("position_offset must be a nonnegative integer")
     if on_token is not None and not callable(on_token):
@@ -103,6 +110,7 @@ def generate(
     last_valid = columns.masked_fill(~mask, -1).max(-1).values
     rows = torch.arange(batch, device=input_ids.device)
     finished = torch.zeros(batch, dtype=torch.bool, device=input_ids.device)
+    logprob_steps = []
     generator = torch.Generator(device=input_ids.device).manual_seed(seed)
     cache = (
         model.new_cache(batch, max_length=width + config.max_new_tokens)
@@ -130,6 +138,14 @@ def generate(
             (batch,), config.pad_token_id, device=input_ids.device, dtype=torch.long
         )
         next_ids[active] = sample_next_token(logits[active], config, generator=generator)
+        if return_logprobs:
+            values = torch.zeros(batch, dtype=torch.float32, device=input_ids.device)
+            values[active] = (
+                logits[active].float().log_softmax(-1).gather(1, next_ids[active, None]).squeeze(1)
+            )
+            if not torch.isfinite(values[active]).all():
+                raise ValueError("Selected token has nonfinite FP32 raw-model logprob")
+            logprob_steps.append(values)
         sequences = torch.cat((sequences, next_ids[:, None]), -1)
         mask = torch.cat((mask, active[:, None]), -1)
         last_valid = torch.where(active, sequences.shape[1] - 1, last_valid)
@@ -149,4 +165,11 @@ def generate(
         generated_lengths=generated_mask.sum(-1),
         finish_reasons=tuple("eos" if done else "max_new_tokens" for done in finished.tolist()),
         seed=seed,
+        generated_logprobs=(
+            torch.stack(logprob_steps, dim=1)
+            if logprob_steps
+            else torch.empty((batch, 0), dtype=torch.float32, device=input_ids.device)
+        )
+        if return_logprobs
+        else None,
     )

@@ -91,6 +91,14 @@ Ngày25/11 user đã train đủ2.800 updates,0 skip; [WP07.6.3](wp07_6_3_valida
 đã verify selected2200 và đo validation: copy32/32, single5/32, multi0/32; pilot5/150.
 Arithmetic feasibility còn yếu. Chưa đo sample bankK16 của model mới hoặc fit confidence.
 
+## WP08 — Feasibility Test & Sample Bank (theo phase)
+
+[WP08.1](wp08_sample_bank.md) dựng bank có checksum, thứ tự ứng viên/seed/checkpoint,
+raw-model log-probability và tách gold khỏi policy observations. Smoke kỹ thuật giới hạn;
+chưa chạy full pilot. WP08.2 khóa pilot validation và nhiều seed/checkpoint tối đaK16;
+WP08.3 replay các policy trên cùng prefix; WP08.4 báo cáo feasibility/quyết định GSM8K.
+Không fit stopping/calibration trên test và không gọi replay cost là online latency.
+
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 
 *When Does Confidence-Gated Test-Time Scaling Fail? A Study of Reliability and

@@ -1,0 +1,32 @@
+# Engineering smoke only. Freeze a separate pilot protocol in WP08.2.
+schema_version = 1
+
+[experiment]
+name = "wp08-1-sample-bank-smoke"
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"
+
+[bank]
+candidates_per_question = 2
+batch_size = 2
+trial_seeds = [42, 43]
+precision = "float32"
+
+[generation]
+max_new_tokens = 64
+do_sample = true
+temperature = 0.8
+top_k = 40
+top_p = 0.95
+
+[[checkpoints]]
+id = "curriculum-selected-2200"
+kind = "curriculum_selected"
+path = "../../artifacts/checkpoints/wp07-curriculum-2800-selected-2200/selected_model.pt"
+sha256 = "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8"
