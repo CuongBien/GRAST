@@ -1,0 +1,512 @@
+{
+  "work_package": "WP08.1",
+  "date": "2026-11-25",
+  "status": "passed",
+  "implementation_commit": "94c31685191bf9d261341c42e2fe1b052f1bcdd5",
+  "branch": "feat/wp08-1-sample-bank-foundation",
+  "scope": "Sample-bank foundation only; no full pilot/replay/threshold fit/test evaluation",
+  "tests": {
+    "passed": 879,
+    "elapsed_seconds": 177.69,
+    "new_tests": 31,
+    "ruff_check": "passed",
+    "ruff_format": "passed",
+    "git_diff_check": "passed"
+  },
+  "distribution": {
+    "contents_checked": true,
+    "runtime_artifacts_excluded": true
+  },
+  "runs": {
+    "cpu": {
+      "path": "artifacts/runs/20261125T112528490948Z-wp08-1-sample-bank-smoke-seed42-7845d3a7",
+      "report": {
+        "bank_fingerprint": "66090c6ff68a0d6e8a8452f8b6d5e82424c8c4c79986ba817ddf96f5361b6f07",
+        "device": "cpu",
+        "generated_tokens_per_bank": 127,
+        "gold_outside_bank": true,
+        "mode": "tiny-offline",
+        "ordered_groups": 8,
+        "records_per_bank": 16,
+        "repeated_banks_exact": true,
+        "scope": "Engineering reproducibility only; no feasibility or benchmark decision",
+        "status": "passed",
+        "work_package": "WP08.1"
+      },
+      "git": {
+        "branch": "feat/wp08-1-sample-bank-foundation",
+        "commit": "94c31685191bf9d261341c42e2fe1b052f1bcdd5",
+        "dirty": false,
+        "state": "committed",
+        "untracked_files": 0
+      },
+      "files": {
+        "artifacts/bank-0/candidates.jsonl": {
+          "sha256": "07bdb2f2052294280836e47468ff4f3f0939d1e01116c339d0f78f28221b424b",
+          "size_bytes": 11317
+        },
+        "artifacts/bank-0/manifest.json": {
+          "sha256": "740f3e3975baf6b7dd9f908fbfe2fb560b93d5eb503f47a3706965791cb398c5",
+          "size_bytes": 10414
+        },
+        "artifacts/bank-0/questions.jsonl": {
+          "sha256": "7d22d1c44dc50abcd92f5069c43ddbaf7e0df34371debef0850f63d452c9500e",
+          "size_bytes": 470
+        },
+        "artifacts/bank-0/tokenizer/merges.json": {
+          "sha256": "a57081ed6082727c731b66e3b0c29813b4855f90914b5d3ba230ba46ff5aa355",
+          "size_bytes": 42
+        },
+        "artifacts/bank-0/tokenizer/tokenizer_config.json": {
+          "sha256": "05c53f4eec3ad547d6a0f4a368fc7c6cb68b3290bc77f839c3450e9c908c756e",
+          "size_bytes": 411
+        },
+        "artifacts/bank-0/tokenizer/tokenizer_manifest.json": {
+          "sha256": "eece8729e758a433d764d73df10ca0e722184ab47e062867fdb760349455e13f",
+          "size_bytes": 408
+        },
+        "artifacts/bank-0/tokenizer/vocab.json": {
+          "sha256": "003cfa0852b460aa99833aa7209813dc7dbfffef1a622387751b0a5eab04b449",
+          "size_bytes": 12672
+        },
+        "artifacts/bank-1/candidates.jsonl": {
+          "sha256": "07bdb2f2052294280836e47468ff4f3f0939d1e01116c339d0f78f28221b424b",
+          "size_bytes": 11317
+        },
+        "artifacts/bank-1/manifest.json": {
+          "sha256": "740f3e3975baf6b7dd9f908fbfe2fb560b93d5eb503f47a3706965791cb398c5",
+          "size_bytes": 10414
+        },
+        "artifacts/bank-1/questions.jsonl": {
+          "sha256": "7d22d1c44dc50abcd92f5069c43ddbaf7e0df34371debef0850f63d452c9500e",
+          "size_bytes": 470
+        },
+        "artifacts/bank-1/tokenizer/merges.json": {
+          "sha256": "a57081ed6082727c731b66e3b0c29813b4855f90914b5d3ba230ba46ff5aa355",
+          "size_bytes": 42
+        },
+        "artifacts/bank-1/tokenizer/tokenizer_config.json": {
+          "sha256": "05c53f4eec3ad547d6a0f4a368fc7c6cb68b3290bc77f839c3450e9c908c756e",
+          "size_bytes": 411
+        },
+        "artifacts/bank-1/tokenizer/tokenizer_manifest.json": {
+          "sha256": "eece8729e758a433d764d73df10ca0e722184ab47e062867fdb760349455e13f",
+          "size_bytes": 408
+        },
+        "artifacts/bank-1/tokenizer/vocab.json": {
+          "sha256": "003cfa0852b460aa99833aa7209813dc7dbfffef1a622387751b0a5eab04b449",
+          "size_bytes": 12672
+        },
+        "artifacts/engineering.references.jsonl": {
+          "sha256": "9125f3a07a2dde27820645e0afe8ec0b76f7b8ba4942dccdd4c52aa9c394c4e7",
+          "size_bytes": 162
+        },
+        "artifacts/environment.json": {
+          "sha256": "cd18da81382eb26b4674353d15bdd6b0c86f1f57cd42086f1e6636cc264221bd",
+          "size_bytes": 646
+        },
+        "artifacts/external-scoring/report.json": {
+          "sha256": "6235da4dc96d42958dab7ee09b9d4b46919da283f4bea286bf0433daf33cd8a7",
+          "size_bytes": 383
+        },
+        "artifacts/external-scoring/scored.jsonl": {
+          "sha256": "82ad78d7012658a1482d9f60ad311595a9f7237565c9b73302e0fb0befcaaa0d",
+          "size_bytes": 2696
+        },
+        "artifacts/fixture/datasets/manifest.json": {
+          "sha256": "dd57c2e810d536977e359b83f428b03b995065f011e102fe97474d6235397f92",
+          "size_bytes": 1554
+        },
+        "artifacts/fixture/datasets/pilot/test.questions.jsonl": {
+          "sha256": "cc66aa237914f157c30670ea8211b698d46f2e7038c779e5d1c4f1693a367d5a",
+          "size_bytes": 806
+        },
+        "artifacts/fixture/datasets/pilot/test.references.jsonl": {
+          "sha256": "0fbc95f07e0dbc557e1cd53ec38f69bdafe56bef4cf187d94a3c12bc782c6e2f",
+          "size_bytes": 216
+        },
+        "artifacts/fixture/datasets/pilot/validation.questions.jsonl": {
+          "sha256": "1a302a9398390f36b8b426259c9cbfbba8204b97f28306fe2c84ac091621d3fc",
+          "size_bytes": 839
+        },
+        "artifacts/fixture/datasets/pilot/validation.references.jsonl": {
+          "sha256": "aab8343babe2d1b47fc4e9247c9082722e6f54bc908850387e38aa8df7fdfc4b",
+          "size_bytes": 249
+        },
+        "artifacts/fixture/fixture.toml": {
+          "sha256": "178a6e829af8bd3b2c77c2b8659d509d94a819d2cd9c2dc0ecf2add22bc985a7",
+          "size_bytes": 1279
+        },
+        "artifacts/fixture/tokenizer/merges.json": {
+          "sha256": "a57081ed6082727c731b66e3b0c29813b4855f90914b5d3ba230ba46ff5aa355",
+          "size_bytes": 42
+        },
+        "artifacts/fixture/tokenizer/tokenizer_config.json": {
+          "sha256": "05c53f4eec3ad547d6a0f4a368fc7c6cb68b3290bc77f839c3450e9c908c756e",
+          "size_bytes": 411
+        },
+        "artifacts/fixture/tokenizer/tokenizer_manifest.json": {
+          "sha256": "eece8729e758a433d764d73df10ca0e722184ab47e062867fdb760349455e13f",
+          "size_bytes": 408
+        },
+        "artifacts/fixture/tokenizer/vocab.json": {
+          "sha256": "003cfa0852b460aa99833aa7209813dc7dbfffef1a622387751b0a5eab04b449",
+          "size_bytes": 12672
+        },
+        "artifacts/report.json": {
+          "sha256": "6a7de05eee73a0408e1a8aa53c6694f090fc717fb02a6ddd6ac8cfc918579918",
+          "size_bytes": 374
+        },
+        "config.json": {
+          "sha256": "1f40653b46c42d6b1e27b16d0c62de9c7f1762410c7ec84a080f54318a3e2a96",
+          "size_bytes": 1190
+        },
+        "config_sources/sample_bank.toml": {
+          "sha256": "a96b98a9a90f64c7e624f397db8e5dcc0722e042cc83aeb8e4b0f71d657f5586",
+          "size_bytes": 711
+        },
+        "logs/events.jsonl": {
+          "sha256": "a725d7963070a34b997ed70cef2f38704bf98b5d395d20cdd2576164d1c9e893",
+          "size_bytes": 8268
+        },
+        "logs/run.log": {
+          "sha256": "51d95432eee5acaca6fc5280312796a0b101e7b4d4744556a43748774f5ce35d",
+          "size_bytes": 7162
+        },
+        "metadata.json": {
+          "sha256": "d334e84ac43964d58bef4077de93064074ab752bd4f70655e95fd502519d8bdd",
+          "size_bytes": 10082
+        },
+        "run.json": {
+          "sha256": "ec5aa1ab00a4b9634bdf116d85766e21073b5133de4ec31afe04f45e66a783f3",
+          "size_bytes": 150
+        }
+      }
+    },
+    "cuda": {
+      "path": "artifacts/runs/20261125T112513286713Z-wp08-1-sample-bank-smoke-seed42-a2e29ffc",
+      "report": {
+        "bank_fingerprint": "cbfd00679745fe7f3b8d99884afd95c4d41928a223f98d0071fa706697baa98f",
+        "device": "cuda",
+        "generated_tokens_per_bank": 84,
+        "gold_outside_bank": true,
+        "mode": "real-checkpoint",
+        "ordered_groups": 2,
+        "records_per_bank": 4,
+        "repeated_banks_exact": true,
+        "scope": "Engineering reproducibility only; no feasibility or benchmark decision",
+        "status": "passed",
+        "work_package": "WP08.1"
+      },
+      "git": {
+        "branch": "feat/wp08-1-sample-bank-foundation",
+        "commit": "94c31685191bf9d261341c42e2fe1b052f1bcdd5",
+        "dirty": false,
+        "state": "committed",
+        "untracked_files": 0
+      },
+      "files": {
+        "artifacts/bank-0/candidates.jsonl": {
+          "sha256": "79e3fe7506dfee043d5c9712895fc8ff44ebd7cf422da227296af9aed4fb5719",
+          "size_bytes": 4319
+        },
+        "artifacts/bank-0/manifest.json": {
+          "sha256": "bb6a3c0089c75a8ea21802071986daf61efc596d59aaf416154326ab0b498a3f",
+          "size_bytes": 10129
+        },
+        "artifacts/bank-0/questions.jsonl": {
+          "sha256": "7d22d1c44dc50abcd92f5069c43ddbaf7e0df34371debef0850f63d452c9500e",
+          "size_bytes": 470
+        },
+        "artifacts/bank-0/tokenizer/merges.json": {
+          "sha256": "7a631cf8143b67db9c4246ed83a54d680f5300e55236851a1429d46551d0d8ed",
+          "size_bytes": 368396
+        },
+        "artifacts/bank-0/tokenizer/tokenizer_config.json": {
+          "sha256": "fae3d75d7ddb0fda306c7608f6caff65b47f5a33a4b2a486174c7b597d2a8210",
+          "size_bytes": 413
+        },
+        "artifacts/bank-0/tokenizer/tokenizer_manifest.json": {
+          "sha256": "b98d98bdb58c7c7fe4e1fa2d6e7759449e84ab02a504777fa8a8738c94a30268",
+          "size_bytes": 408
+        },
+        "artifacts/bank-0/tokenizer/vocab.json": {
+          "sha256": "9f5cf82719d7e2edc94b95937c1c699a25db6566e12c03958785f2aec5aee7b6",
+          "size_bytes": 468220
+        },
+        "artifacts/bank-1/candidates.jsonl": {
+          "sha256": "79e3fe7506dfee043d5c9712895fc8ff44ebd7cf422da227296af9aed4fb5719",
+          "size_bytes": 4319
+        },
+        "artifacts/bank-1/manifest.json": {
+          "sha256": "bb6a3c0089c75a8ea21802071986daf61efc596d59aaf416154326ab0b498a3f",
+          "size_bytes": 10129
+        },
+        "artifacts/bank-1/questions.jsonl": {
+          "sha256": "7d22d1c44dc50abcd92f5069c43ddbaf7e0df34371debef0850f63d452c9500e",
+          "size_bytes": 470
+        },
+        "artifacts/bank-1/tokenizer/merges.json": {
+          "sha256": "7a631cf8143b67db9c4246ed83a54d680f5300e55236851a1429d46551d0d8ed",
+          "size_bytes": 368396
+        },
+        "artifacts/bank-1/tokenizer/tokenizer_config.json": {
+          "sha256": "fae3d75d7ddb0fda306c7608f6caff65b47f5a33a4b2a486174c7b597d2a8210",
+          "size_bytes": 413
+        },
+        "artifacts/bank-1/tokenizer/tokenizer_manifest.json": {
+          "sha256": "b98d98bdb58c7c7fe4e1fa2d6e7759449e84ab02a504777fa8a8738c94a30268",
+          "size_bytes": 408
+        },
+        "artifacts/bank-1/tokenizer/vocab.json": {
+          "sha256": "9f5cf82719d7e2edc94b95937c1c699a25db6566e12c03958785f2aec5aee7b6",
+          "size_bytes": 468220
+        },
+        "artifacts/engineering.references.jsonl": {
+          "sha256": "9125f3a07a2dde27820645e0afe8ec0b76f7b8ba4942dccdd4c52aa9c394c4e7",
+          "size_bytes": 162
+        },
+        "artifacts/environment.json": {
+          "sha256": "7c476c9baa2d64d6847e996fe67c2458d9799e264372ec1d5609bb1f594b3f9e",
+          "size_bytes": 650
+        },
+        "artifacts/external-scoring/report.json": {
+          "sha256": "da049dc1501acbdff4d860e9935ce7765ed2036df196e301f94963f644442e35",
+          "size_bytes": 382
+        },
+        "artifacts/external-scoring/scored.jsonl": {
+          "sha256": "73032a9ceaa5d6bca9edcbc4286fbcca3afc1134e3b552334a4e1fb9dab58a8e",
+          "size_bytes": 718
+        },
+        "artifacts/real_logprob_equivalence.json": {
+          "sha256": "d743c99d759c844d86c9a364625619d17489c09d0ede50e5d899beda0351b434",
+          "size_bytes": 346
+        },
+        "artifacts/report.json": {
+          "sha256": "6fe81524862759e624d14548b1aaef16c276ad012f1359e5fc29c29a274cb659",
+          "size_bytes": 376
+        },
+        "config.json": {
+          "sha256": "388380fdb7ae48e40b64630f57de49fa7199aa03430927ed126f854f8e6993cc",
+          "size_bytes": 886
+        },
+        "config_sources/sample_bank.toml": {
+          "sha256": "a96b98a9a90f64c7e624f397db8e5dcc0722e042cc83aeb8e4b0f71d657f5586",
+          "size_bytes": 711
+        },
+        "logs/events.jsonl": {
+          "sha256": "084bd3f4c3ef61fa505c3d2e3f18390af29a12250314464987b0f50145a0b875",
+          "size_bytes": 3260
+        },
+        "logs/run.log": {
+          "sha256": "10d54eff85b06c999b4fb374ca14531336e4d5dc386c0cebb0bfa7459c116061",
+          "size_bytes": 2856
+        },
+        "metadata.json": {
+          "sha256": "23c2d5ef1689df926d22b772bb1140c8bb7c4ac4afd6e377a06d41d196003702",
+          "size_bytes": 10202
+        },
+        "run.json": {
+          "sha256": "5164e52596fe910503113b0da8023665121b52a9a140521c969ba9686e236e44",
+          "size_bytes": 150
+        }
+      }
+    },
+    "installed_wheel_cpu": {
+      "path": ".cache/wp08-1-wheel-runs/20261125T112430350246Z-wp08-1-sample-bank-smoke-seed42-56f74423",
+      "report": {
+        "bank_fingerprint": "93842bdfcec33efce3e653c0cd863b84a5ed4ee4184b93a0e32656c061cb7cc6",
+        "device": "cpu",
+        "generated_tokens_per_bank": 117,
+        "gold_outside_bank": true,
+        "mode": "tiny-offline",
+        "ordered_groups": 8,
+        "records_per_bank": 16,
+        "repeated_banks_exact": true,
+        "scope": "Engineering reproducibility only; no feasibility or benchmark decision",
+        "status": "passed",
+        "work_package": "WP08.1"
+      },
+      "git": {
+        "branch": "feat/wp08-1-sample-bank-foundation",
+        "commit": "2ec4785b91e6071f3f3090d046af25c2cba6ef14",
+        "dirty": true,
+        "state": "committed",
+        "untracked_files": 9
+      },
+      "files": {
+        "artifacts/bank-0/candidates.jsonl": {
+          "sha256": "a137e45ea3c67f33fd6eae562c95d69640086385c3cd4678da4cf75067324462",
+          "size_bytes": 11074
+        },
+        "artifacts/bank-0/manifest.json": {
+          "sha256": "129185686030818f46192c782768421a00f562bbc2ee99ac3c6be08b9fabbc61",
+          "size_bytes": 10414
+        },
+        "artifacts/bank-0/questions.jsonl": {
+          "sha256": "7d22d1c44dc50abcd92f5069c43ddbaf7e0df34371debef0850f63d452c9500e",
+          "size_bytes": 470
+        },
+        "artifacts/bank-0/tokenizer/merges.json": {
+          "sha256": "a57081ed6082727c731b66e3b0c29813b4855f90914b5d3ba230ba46ff5aa355",
+          "size_bytes": 42
+        },
+        "artifacts/bank-0/tokenizer/tokenizer_config.json": {
+          "sha256": "05c53f4eec3ad547d6a0f4a368fc7c6cb68b3290bc77f839c3450e9c908c756e",
+          "size_bytes": 411
+        },
+        "artifacts/bank-0/tokenizer/tokenizer_manifest.json": {
+          "sha256": "eece8729e758a433d764d73df10ca0e722184ab47e062867fdb760349455e13f",
+          "size_bytes": 408
+        },
+        "artifacts/bank-0/tokenizer/vocab.json": {
+          "sha256": "003cfa0852b460aa99833aa7209813dc7dbfffef1a622387751b0a5eab04b449",
+          "size_bytes": 12672
+        },
+        "artifacts/bank-1/candidates.jsonl": {
+          "sha256": "a137e45ea3c67f33fd6eae562c95d69640086385c3cd4678da4cf75067324462",
+          "size_bytes": 11074
+        },
+        "artifacts/bank-1/manifest.json": {
+          "sha256": "129185686030818f46192c782768421a00f562bbc2ee99ac3c6be08b9fabbc61",
+          "size_bytes": 10414
+        },
+        "artifacts/bank-1/questions.jsonl": {
+          "sha256": "7d22d1c44dc50abcd92f5069c43ddbaf7e0df34371debef0850f63d452c9500e",
+          "size_bytes": 470
+        },
+        "artifacts/bank-1/tokenizer/merges.json": {
+          "sha256": "a57081ed6082727c731b66e3b0c29813b4855f90914b5d3ba230ba46ff5aa355",
+          "size_bytes": 42
+        },
+        "artifacts/bank-1/tokenizer/tokenizer_config.json": {
+          "sha256": "05c53f4eec3ad547d6a0f4a368fc7c6cb68b3290bc77f839c3450e9c908c756e",
+          "size_bytes": 411
+        },
+        "artifacts/bank-1/tokenizer/tokenizer_manifest.json": {
+          "sha256": "eece8729e758a433d764d73df10ca0e722184ab47e062867fdb760349455e13f",
+          "size_bytes": 408
+        },
+        "artifacts/bank-1/tokenizer/vocab.json": {
+          "sha256": "003cfa0852b460aa99833aa7209813dc7dbfffef1a622387751b0a5eab04b449",
+          "size_bytes": 12672
+        },
+        "artifacts/engineering.references.jsonl": {
+          "sha256": "9125f3a07a2dde27820645e0afe8ec0b76f7b8ba4942dccdd4c52aa9c394c4e7",
+          "size_bytes": 162
+        },
+        "artifacts/environment.json": {
+          "sha256": "cd18da81382eb26b4674353d15bdd6b0c86f1f57cd42086f1e6636cc264221bd",
+          "size_bytes": 646
+        },
+        "artifacts/external-scoring/report.json": {
+          "sha256": "894f06bebccece2ca3d457c13be9f3ff19656d50942449e2f18d99df28975622",
+          "size_bytes": 383
+        },
+        "artifacts/external-scoring/scored.jsonl": {
+          "sha256": "82ad78d7012658a1482d9f60ad311595a9f7237565c9b73302e0fb0befcaaa0d",
+          "size_bytes": 2696
+        },
+        "artifacts/fixture/datasets/manifest.json": {
+          "sha256": "dd57c2e810d536977e359b83f428b03b995065f011e102fe97474d6235397f92",
+          "size_bytes": 1554
+        },
+        "artifacts/fixture/datasets/pilot/test.questions.jsonl": {
+          "sha256": "cc66aa237914f157c30670ea8211b698d46f2e7038c779e5d1c4f1693a367d5a",
+          "size_bytes": 806
+        },
+        "artifacts/fixture/datasets/pilot/test.references.jsonl": {
+          "sha256": "0fbc95f07e0dbc557e1cd53ec38f69bdafe56bef4cf187d94a3c12bc782c6e2f",
+          "size_bytes": 216
+        },
+        "artifacts/fixture/datasets/pilot/validation.questions.jsonl": {
+          "sha256": "1a302a9398390f36b8b426259c9cbfbba8204b97f28306fe2c84ac091621d3fc",
+          "size_bytes": 839
+        },
+        "artifacts/fixture/datasets/pilot/validation.references.jsonl": {
+          "sha256": "aab8343babe2d1b47fc4e9247c9082722e6f54bc908850387e38aa8df7fdfc4b",
+          "size_bytes": 249
+        },
+        "artifacts/fixture/fixture.toml": {
+          "sha256": "accbf0573e6ee193b308e63e2a1aa033badc62aaf1982bab2a9d0f9676701f3e",
+          "size_bytes": 1299
+        },
+        "artifacts/fixture/tokenizer/merges.json": {
+          "sha256": "a57081ed6082727c731b66e3b0c29813b4855f90914b5d3ba230ba46ff5aa355",
+          "size_bytes": 42
+        },
+        "artifacts/fixture/tokenizer/tokenizer_config.json": {
+          "sha256": "05c53f4eec3ad547d6a0f4a368fc7c6cb68b3290bc77f839c3450e9c908c756e",
+          "size_bytes": 411
+        },
+        "artifacts/fixture/tokenizer/tokenizer_manifest.json": {
+          "sha256": "eece8729e758a433d764d73df10ca0e722184ab47e062867fdb760349455e13f",
+          "size_bytes": 408
+        },
+        "artifacts/fixture/tokenizer/vocab.json": {
+          "sha256": "003cfa0852b460aa99833aa7209813dc7dbfffef1a622387751b0a5eab04b449",
+          "size_bytes": 12672
+        },
+        "artifacts/report.json": {
+          "sha256": "07526fe47498c17d23eabe80d4c25e0232b7bd108781fe9efc873fb9ef93b2af",
+          "size_bytes": 374
+        },
+        "config.json": {
+          "sha256": "5f15a600756e0d81bf0d4018a0930a0ea78c75e4f102eca79cb662c1ad536f4a",
+          "size_bytes": 1220
+        },
+        "config_sources/sample_bank.toml": {
+          "sha256": "a96b98a9a90f64c7e624f397db8e5dcc0722e042cc83aeb8e4b0f71d657f5586",
+          "size_bytes": 711
+        },
+        "logs/events.jsonl": {
+          "sha256": "7a4fd6459b332857ea95b56f18014bca0df3f62d44c3ed2cf3762b4d6b375c96",
+          "size_bytes": 8288
+        },
+        "logs/run.log": {
+          "sha256": "9c225975e83f9b699e08ad36474c47d28185b8d5659fef55565086507f95b238",
+          "size_bytes": 7182
+        },
+        "metadata.json": {
+          "sha256": "3ec020c7d562fa7a8d39a203f15b14a3ad23b7e6ffa526ca2f0e4411cb7150f0",
+          "size_bytes": 10027
+        },
+        "run.json": {
+          "sha256": "0c20138c4bc2f483d9897bf71dad747f38d3b5da2ae66e0f1c91d4da07a48398",
+          "size_bytes": 150
+        }
+      }
+    }
+  },
+  "real_logprob_equivalence": {
+    "atol": 5e-05,
+    "batch_size": 2,
+    "cached_uncached_logprob_max_abs": 2.9206275939941406e-06,
+    "cached_uncached_tokens_exact": true,
+    "global_rng_unchanged": true,
+    "logging_flag_preserves_tokens": true,
+    "masked_tail_tokens": 4,
+    "max_new_tokens": 8,
+    "rtol": 5e-05,
+    "status": "passed",
+    "teacher_forcing_logprob_max_abs": 2.9206275939941406e-06,
+    "valid_generated_tokens": 12
+  },
+  "unchanged_checkpoint_inputs": {
+    "sft_500": {
+      "path": "artifacts/checkpoints/wp07-cot-sft-math-500/final.pt",
+      "sha256": "5f75909261c79e9f7f0c6e37a7e9d76ba5670be8b4be5133b6e148e0cd06ff42"
+    },
+    "curriculum_selected_2200": {
+      "path": "artifacts/checkpoints/wp07-curriculum-2800-selected-2200/selected_model.pt",
+      "sha256": "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8"
+    }
+  },
+  "artifact_bundle": {
+    "path": "dist/grast-wp08-1-foundation-20261125.zip",
+    "sha256": "33152dab73f02351dd47b8db0b1de40cebe7796d3c4c7e9fb9ae0319ac08ab5b",
+    "size_bytes": 308989,
+    "contains_weights": false,
+    "contains_source_cpu_cuda_raw_banks_logs_metadata": true
+  }
+}
