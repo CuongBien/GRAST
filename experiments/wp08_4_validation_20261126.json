@@ -1,0 +1,275 @@
+{
+  "work_package": "WP08.4",
+  "date": "2026-11-26",
+  "status": "completed_local",
+  "implementation_commit": "821c0f67ea703943ffc4fc1b2daa36de74ec7ce5",
+  "git_at_run_start": {
+    "branch": "feat/wp08-4-feasibility-report",
+    "commit": "821c0f67ea703943ffc4fc1b2daa36de74ec7ce5",
+    "dirty": false,
+    "state": "committed",
+    "untracked_files": 0
+  },
+  "run_directory": "artifacts/runs/20261125T192957792987Z-wp08-4-feasibility-review-seed42-5365f7f3",
+  "source_audit": {
+    "status": "passed",
+    "source_artifacts_reverified_after_probe": true,
+    "source_bank_fingerprint": "6941830812e5fe91ba583553556cbc68a10ecf9b84dcad2bb5850c97cab1c809",
+    "source_replay_fingerprint": "7fa3de8093ae73094a74c82b95e74cc7545858c2df05f65c965f1fee242e6a20",
+    "pilot_receipt_fingerprint": "c1d9f1641a82bcb9925dfc9fbeb9b7f5300f9e24227301427affc3c8897a0276",
+    "replay_receipt_fingerprint": "ba90d0ac49dc6a56d506fc36904c4cb0492910799b5aed129170d1771a089d72",
+    "probe_manifest_matches_versioned_lock": true
+  },
+  "gsm_probe_manifest": {
+    "contract": {
+      "checkpoints": [
+        {
+          "id": "sft-500",
+          "kind": "engine",
+          "sha256": "5f75909261c79e9f7f0c6e37a7e9d76ba5670be8b4be5133b6e148e0cd06ff42"
+        },
+        {
+          "id": "curriculum-selected-2200",
+          "kind": "curriculum_selected",
+          "sha256": "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8"
+        }
+      ],
+      "context_length": 1024,
+      "gsm_probe": {
+        "batch_size": 8,
+        "expected_validation_records": 500,
+        "max_new_tokens": 256,
+        "precision": "float32",
+        "questions": 16,
+        "selection_seed": 20261126
+      },
+      "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+      "wp03_fingerprint": "79ff92320ebb64e283ce342076c5e570989ef5433d8791231b2d78f370baf485"
+    },
+    "eligible_records": 500,
+    "fingerprint": "52a75efb827d355f6bff301ee6f754aab1205e5f49e27ca125b2f0a1d09f8aa9",
+    "over_context_records": 0,
+    "question_ids": [
+      "gsm8k-5adc7f7c410707aaaaaed730d3061c90f5898dfaccdfc1a0459a9109a6df2c85",
+      "gsm8k-5d2360014c88ec5a48eb3e57e2771cb7276809cebf68ba853efd5aa77f99a15d",
+      "gsm8k-69d8007e6d52f662cfb4cacf27794ca320b44ca9fa41d7bcb227a70e2b31ee56",
+      "gsm8k-c8c9725932207f3d947fb5a6487b6f59c110a8c3d3628523782b975ced9c3456",
+      "gsm8k-6db6a3728a3c921543cda6dcc0e9b1fd97b449a329ad3b00fa045fa817f80ff5",
+      "gsm8k-8260eb64813c10be9d3a813812c2a425c2e76310047fb4a549757fb5d1778bb3",
+      "gsm8k-1f877a8967be902347332154c71dddcede5c5bc9315123eca8f5262f6892be20",
+      "gsm8k-f3317a9ff1173b6f1e24ecbf22a32f6b16452afd2410be128aefcb74ef2b137e",
+      "gsm8k-f50f4c177775496af90cd460dada0f8cfad70c91e8c427cf997df7554afad9c6",
+      "gsm8k-6008e3ed35dcdf0f231dd60a4f03f155dab3308fd44c7e4dc565c310d7057d0e",
+      "gsm8k-a9dae85b896063510627e0202e480659f33b64b9a9ec6c0b26c81712ad86634c",
+      "gsm8k-92000dfaaa85041544ee9f64363562360fee45c8e2c1cd88ec1f82d0fbbac924",
+      "gsm8k-16f6fcb8aefdfa414b86ec98e616e30b3af4e4071ed694e36d1e51c168bf3b15",
+      "gsm8k-18acaeead40d3585b546615f59f636cd6066706878794ddbbe4ff29f88411a02",
+      "gsm8k-d06c2e6019e06a5ff14be5c7621ee2a7e5888d5da77e15db895b174acb2fd5e0",
+      "gsm8k-30433658663920b02bdc65e56e9b51a9b9e889b317b672d8e48955b795301922"
+    ],
+    "questions_sha256": "3f1b6d05dd7bbb348a9d036502838928be015a7c064614838e7024688a5149d1",
+    "schema_version": 1,
+    "scope": "gsm8k-official-train-derived-validation-only",
+    "selection_protocol": "question-id-hash-context-eligible-v1",
+    "validation_records": 500,
+    "validation_source_sha256": "87d005b55956f683b14e434c66b561db9cde0e90e0369cc762f3531a9bced338",
+    "work_package": "WP08.4"
+  },
+  "decision": {
+    "assessment": "posthoc-descriptive-feasibility-review",
+    "automatic_training_or_threshold_fit": false,
+    "confidence_efficacy_gate": "no-go-with-current-model-and-benchmark",
+    "engineering_gate": "passed",
+    "evidence_counts": {
+      "arithmetic_candidates": 2880,
+      "gsm_predictions": 32,
+      "replay_decisions": 1440
+    },
+    "gsm8k_role": "retained-supplementary-stress-test-not-primary",
+    "limitations": [
+      "Validation already examined; not an untouched test.",
+      "Very few correct policy decisions; no reliable efficacy/calibration claim.",
+      "Canonical trace verification is conservative, not a complete reasoning judge.",
+      "GSM8K probe is small, greedy and context-eligible only; no full-benchmark accuracy claim."
+    ],
+    "medium_hard_role": "negative-controls-and-error-analysis",
+    "next_gate": "Improve easy arithmetic capability and prospectively freeze a new validation pilot before confidence calibration/efficacy claims.",
+    "primary_diagnostic_benchmark": "wp03-easy-validation",
+    "review_bound_to_frozen_wp08_snapshot": true
+  },
+  "gsm_results": [
+    {
+      "checkpoint_id": "sft-500",
+      "summary": {
+        "by_difficulty": {
+          "ungraded": {
+            "answer_valid_rate": 0.9375,
+            "budget_exhausted_rate": 0.0,
+            "correct": 1,
+            "eos_rate": 1.0,
+            "exact_match": 0.0625,
+            "finish_reasons": {
+              "eos": 16
+            },
+            "format_valid_rate": 0.9375,
+            "generated_tokens": 689,
+            "mean_generated_tokens": 43.0625,
+            "questions": 16
+          }
+        },
+        "overall": {
+          "answer_valid_rate": 0.9375,
+          "budget_exhausted_rate": 0.0,
+          "correct": 1,
+          "eos_rate": 1.0,
+          "exact_match": 0.0625,
+          "finish_reasons": {
+            "eos": 16
+          },
+          "format_valid_rate": 0.9375,
+          "generated_tokens": 689,
+          "mean_generated_tokens": 43.0625,
+          "questions": 16
+        }
+      }
+    },
+    {
+      "checkpoint_id": "curriculum-selected-2200",
+      "summary": {
+        "by_difficulty": {
+          "ungraded": {
+            "answer_valid_rate": 0.9375,
+            "budget_exhausted_rate": 0.0,
+            "correct": 0,
+            "eos_rate": 1.0,
+            "exact_match": 0.0,
+            "finish_reasons": {
+              "eos": 16
+            },
+            "format_valid_rate": 0.9375,
+            "generated_tokens": 890,
+            "mean_generated_tokens": 55.625,
+            "questions": 16
+          }
+        },
+        "overall": {
+          "answer_valid_rate": 0.9375,
+          "budget_exhausted_rate": 0.0,
+          "correct": 0,
+          "eos_rate": 1.0,
+          "exact_match": 0.0,
+          "finish_reasons": {
+            "eos": 16
+          },
+          "format_valid_rate": 0.9375,
+          "generated_tokens": 890,
+          "mean_generated_tokens": 55.625,
+          "questions": 16
+        }
+      }
+    }
+  ],
+  "tests": {
+    "full_passed": 921,
+    "full_elapsed_seconds": 185.42,
+    "new_tests": 14,
+    "focused_after_review_guard_change": 14,
+    "focused_elapsed_seconds": 7.43,
+    "ruff_check": "passed",
+    "ruff_format": "passed",
+    "diff_check": "passed"
+  },
+  "distribution": {
+    "build": "passed",
+    "installed_wheel_outside_source": "passed",
+    "runtime_artifacts_excluded": true,
+    "smoke_run": ".cache/wp08-4-wheel-smoke-8430b171/reviews/20261125T193056082651Z-wp08-4-feasibility-review-seed42-9b2004f9"
+  },
+  "failure_cases": 7,
+  "distinct_failure_question_ids": 7,
+  "files": {
+    "artifacts/curriculum-selected-2200.predictions.jsonl": {
+      "sha256": "dd28c8093feb2491945051fdc6b5bbc42b3f4b9e0623833901db3fcad832cb47",
+      "size_bytes": 12097
+    },
+    "artifacts/curriculum-selected-2200.scored.jsonl": {
+      "sha256": "640daf574512f7ef85644c3cffdfc74a574bf61d2cd1551ecec8e1e60c468def",
+      "size_bytes": 13675
+    },
+    "artifacts/environment.json": {
+      "sha256": "7c476c9baa2d64d6847e996fe67c2458d9799e264372ec1d5609bb1f594b3f9e",
+      "size_bytes": 650
+    },
+    "artifacts/export_feasibility_artifacts.py": {
+      "sha256": "a146e76ef486ed58d71b5ecdd7dbf5291f6506c73362a50a98af7615de46dd8d",
+      "size_bytes": 6505
+    },
+    "artifacts/failure_cases.json": {
+      "sha256": "6b567b3aadc904df722c9497dcbb11f6d3ebe173fd6194883fdfb30e549bf4d9",
+      "size_bytes": 7318
+    },
+    "artifacts/feasibility_report.json": {
+      "sha256": "3b03a0708c7b19dcc195b0c0fe95830a433d51099651b9708bc1347c74a1b405",
+      "size_bytes": 131909
+    },
+    "artifacts/gsm.references.jsonl": {
+      "sha256": "e8b70f95e559b101c1a496e4be5be85a696a1f1d405a736f1d6f841831270a00",
+      "size_bytes": 2146
+    },
+    "artifacts/probe_manifest.json": {
+      "sha256": "5232d8e33e620a9941c1ec1bdf936f135d12f5c0aaf90ee8d8a6ce30b3386f01",
+      "size_bytes": 2302
+    },
+    "artifacts/sft-500.predictions.jsonl": {
+      "sha256": "3d25c354dc2d24d9d923bb28accd76026700aa0812d91b1bc1d36ac59e9dfa43",
+      "size_bytes": 11492
+    },
+    "artifacts/sft-500.scored.jsonl": {
+      "sha256": "23de95d795371df1635408a00f2ac0d6894525f7704cfc9454b96fef3ffeaf90",
+      "size_bytes": 13053
+    },
+    "artifacts/source_audit.json": {
+      "sha256": "c418b9c4a7b6b90d585c25a31fe84c84f37e649fdb0ffde555b87874b7fd5782",
+      "size_bytes": 529
+    },
+    "artifacts/source_figures/coverage.png": {
+      "sha256": "408f4ae71b5fdc66c51a2743dd2fa311cdc80c7a3db0cbfa4c7fbc039ad4a17e",
+      "size_bytes": 132400
+    },
+    "artifacts/source_figures/replay_accuracy_cost.png": {
+      "sha256": "2f8c0c4bb8abcdb2ad168696bc5c069018b210bbb4db4c1d0edc47ff3947b955",
+      "size_bytes": 104911
+    },
+    "config.json": {
+      "sha256": "578f01fc1b0a43828abe3ecafeef96d47e081ded5fb6a0a1820bc492c45eccdd",
+      "size_bytes": 1501
+    },
+    "config_sources/feasibility_review.toml": {
+      "sha256": "2568f48cf69dfdefacaa137adc070ba309088d699549852dfef166c9b40ed91d",
+      "size_bytes": 1166
+    },
+    "logs/events.jsonl": {
+      "sha256": "7d999321e8d53d89788024dc62396bf980a57de5f4a9d7b616de50693ee314a3",
+      "size_bytes": 4973
+    },
+    "logs/run.log": {
+      "sha256": "6e2814eef40bbed0e2e960ecdd39faa749e6a7804ba0f5cfeb5a0cf127ecbee4",
+      "size_bytes": 4218
+    },
+    "metadata.json": {
+      "sha256": "0cc562cacf2a431599279b0a24b2cd62f0dff604e7971882388c6831ccbb482b",
+      "size_bytes": 10926
+    },
+    "run.json": {
+      "sha256": "b8a29088d1e8474213be58b30690a5869e0d28f7ab569eb5a61040cd177aebf6",
+      "size_bytes": 150
+    }
+  },
+  "artifact_bundle": {
+    "path": "dist/grast-wp08-4-feasibility-20261126-5365f7f3.zip",
+    "sha256": "c255fef43b97abcc1dac75ecb62777abdeb300573708e83192f7af67e1cd35be",
+    "size_bytes": 252551,
+    "contains_weights": false,
+    "contains_source_bank": false
+  }
+}

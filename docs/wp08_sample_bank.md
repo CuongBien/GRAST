@@ -13,6 +13,9 @@ chưa đồng nghĩa reasoning đã đủ tốt hoặc đã đạt nghiệm thu 
 WP08.2 đã hoàn tất [protocol pilot đã khóa](wp08_pilot.md) và
 [kết quả2.880 ứng viên](wp08_2_validation.md). WP08.3 đã có
 [offline replay và kết quả1.440 quyết định](wp08_3_validation.md).
+WP08.4 đã [chốt feasibility/benchmark](wp08_4_validation.md): đủ nghiệm thu kỹ thuật
+WP08; chưa đủ capability để khẳng định lợi ích confidence stopping. Ưu tiên easy
+diagnostic, giữ GSM8K supplementary stress; không fit threshold trên test.
 
 WP08.1 chỉ dùng hai câu tự soạn để kiểm tra kỹ thuật. Chưa chọn pilot, threshold,
 calibration hoặc benchmark theo kết quả smoke. Pilot WP08.2 cần loại các prompt/group

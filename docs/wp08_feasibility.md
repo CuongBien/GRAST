@@ -1,5 +1,7 @@
 # WP08.4 — Feasibility review và supplementary GSM8K probe
 
+Đã hoàn tất review, xem [kết quả và quyết định chốt WP08](wp08_4_validation.md).
+
 Review kiểm tra lại checksum/provenance của WP08.2/3 và dùng nguyên bank/replay đã
 khóa. Không thay số liệu, không chọn lại pilot hoặc threshold. Receipt versioned dùng
 canonical JSON fingerprint để không phụ thuộc LF/CRLF; runtime artifacts dùng SHA256
