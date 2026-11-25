@@ -1,0 +1,1232 @@
+{
+  "work_package": "WP08.3",
+  "date": "2026-11-26",
+  "status": "completed_local",
+  "implementation_commit": "43201740a2086e3c896d4cd5a224174d9499076d",
+  "git_at_run_start": {
+    "branch": "feat/wp08-3-offline-replay",
+    "commit": "43201740a2086e3c896d4cd5a224174d9499076d",
+    "dirty": false,
+    "state": "committed",
+    "untracked_files": 0
+  },
+  "run_directory": "artifacts/runs/20261125T175551439263Z-wp08-3-offline-replay-seed42-daf75519",
+  "bank_fingerprint": "6941830812e5fe91ba583553556cbc68a10ecf9b84dcad2bb5850c97cab1c809",
+  "source_bank_unchanged": true,
+  "source_receipt_sha256": "26993b7931cfbe3076a97017af37ad84f5c40fadc1361bb9da500ba0a3306a8b",
+  "source_bank_manifest_sha256": "98bd8459b3f429ed7cc17b4590618925e22e6facd5cfdd4ab471766f2651600f",
+  "repeat_verification": {
+    "bank_fingerprint": "6941830812e5fe91ba583553556cbc68a10ecf9b84dcad2bb5850c97cab1c809",
+    "bank_manifest_sha256": "98bd8459b3f429ed7cc17b4590618925e22e6facd5cfdd4ab471766f2651600f",
+    "decision_bytes_exact": true,
+    "decisions": 1440,
+    "repeated_fingerprint_exact": true,
+    "replay_fingerprint": "7fa3de8093ae73094a74c82b95e74cc7545858c2df05f65c965f1fee242e6a20",
+    "source_fingerprint_matches_run": true,
+    "status": "passed"
+  },
+  "decisions": 1440,
+  "unique_questions": 30,
+  "policies": [
+    {
+      "id": "fixed-k1",
+      "kind": "fixed",
+      "max_draws": 1,
+      "min_draws": 1,
+      "threshold_denominator": 1,
+      "threshold_numerator": 1
+    },
+    {
+      "id": "fixed-k2",
+      "kind": "fixed",
+      "max_draws": 2,
+      "min_draws": 2,
+      "threshold_denominator": 1,
+      "threshold_numerator": 1
+    },
+    {
+      "id": "fixed-k4",
+      "kind": "fixed",
+      "max_draws": 4,
+      "min_draws": 4,
+      "threshold_denominator": 1,
+      "threshold_numerator": 1
+    },
+    {
+      "id": "fixed-k8",
+      "kind": "fixed",
+      "max_draws": 8,
+      "min_draws": 8,
+      "threshold_denominator": 1,
+      "threshold_numerator": 1
+    },
+    {
+      "id": "fixed-k16",
+      "kind": "fixed",
+      "max_draws": 16,
+      "min_draws": 16,
+      "threshold_denominator": 1,
+      "threshold_numerator": 1
+    },
+    {
+      "id": "unanimous-min2",
+      "kind": "agreement",
+      "max_draws": 16,
+      "min_draws": 2,
+      "threshold_denominator": 1,
+      "threshold_numerator": 1
+    },
+    {
+      "id": "unanimous-min4",
+      "kind": "agreement",
+      "max_draws": 16,
+      "min_draws": 4,
+      "threshold_denominator": 1,
+      "threshold_numerator": 1
+    },
+    {
+      "id": "vote80-min4",
+      "kind": "agreement",
+      "max_draws": 16,
+      "min_draws": 4,
+      "threshold_denominator": 5,
+      "threshold_numerator": 4
+    }
+  ],
+  "scope": "Development-validation answer exact match; no fitting or benchmark decision",
+  "tests": {
+    "passed": 907,
+    "new_tests": 20,
+    "elapsed_seconds": 228.3,
+    "ruff_check": "passed",
+    "ruff_format": "passed",
+    "diff_check": "passed"
+  },
+  "distribution": {
+    "build": "passed",
+    "runtime_artifacts_excluded": true,
+    "installed_wheel_outside_source": "passed",
+    "smoke_run": ".cache/wp08-3-wheel-smoke-92adb1c5/runs/20261125T175318860849Z-wp08-3-replay-smoke-seed42-0ef2cc64"
+  },
+  "results": [
+    {
+      "checkpoint_id": "sft-500",
+      "policy_id": "fixed-k1",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0,
+        "correct": 0,
+        "full_bank_generated_tokens": 92993,
+        "mean_draws": 1,
+        "observed_generated_tokens": 5791,
+        "oracle_covered_at_bank_budget": 19,
+        "question_trials": 90,
+        "token_savings_fraction": 0.9377264955426753,
+        "wrong_despite_observed_correct": 0,
+        "wrong_with_later_correct": 19
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 1,
+          "token_savings_fraction": 0.9373150649684806
+        },
+        {
+          "seed": 43,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 1,
+          "token_savings_fraction": 0.9381583198707593
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 1,
+          "token_savings_fraction": 0.9377079900487868
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "sft-500",
+      "policy_id": "fixed-k2",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0,
+        "correct": 0,
+        "full_bank_generated_tokens": 92993,
+        "mean_draws": 2,
+        "observed_generated_tokens": 11588,
+        "oracle_covered_at_bank_budget": 19,
+        "question_trials": 90,
+        "token_savings_fraction": 0.8753884700999,
+        "wrong_despite_observed_correct": 2,
+        "wrong_with_later_correct": 18
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 2,
+          "token_savings_fraction": 0.8750482439212659
+        },
+        {
+          "seed": 43,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 2,
+          "token_savings_fraction": 0.875638126009693
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 2,
+          "token_savings_fraction": 0.8754805983651578
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "sft-500",
+      "policy_id": "fixed-k4",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0,
+        "correct": 0,
+        "full_bank_generated_tokens": 92993,
+        "mean_draws": 4,
+        "observed_generated_tokens": 23136,
+        "oracle_covered_at_bank_budget": 19,
+        "question_trials": 90,
+        "token_savings_fraction": 0.7512070801028035,
+        "wrong_despite_observed_correct": 7,
+        "wrong_with_later_correct": 13
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 4,
+          "token_savings_fraction": 0.7501286504567091
+        },
+        {
+          "seed": 43,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 4,
+          "token_savings_fraction": 0.7517285945072698
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 4,
+          "token_savings_fraction": 0.7517689250751187
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "sft-500",
+      "policy_id": "fixed-k8",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0,
+        "correct": 0,
+        "full_bank_generated_tokens": 92993,
+        "mean_draws": 8,
+        "observed_generated_tokens": 46458,
+        "oracle_covered_at_bank_budget": 19,
+        "question_trials": 90,
+        "token_savings_fraction": 0.5004140096566408,
+        "wrong_despite_observed_correct": 16,
+        "wrong_with_later_correct": 9
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 8,
+          "token_savings_fraction": 0.499195934645568
+        },
+        {
+          "seed": 43,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 8,
+          "token_savings_fraction": 0.5
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 8,
+          "token_savings_fraction": 0.5020516299957998
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "sft-500",
+      "policy_id": "fixed-k16",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0.011111111111111112,
+        "correct": 1,
+        "full_bank_generated_tokens": 92993,
+        "mean_draws": 16,
+        "observed_generated_tokens": 92993,
+        "oracle_covered_at_bank_budget": 19,
+        "question_trials": 90,
+        "token_savings_fraction": 0.0,
+        "wrong_despite_observed_correct": 18,
+        "wrong_with_later_correct": 0
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0.011111111111111112,
+          "correct": 1,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 43,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "sft-500",
+      "policy_id": "unanimous-min2",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0.011111111111111112,
+        "correct": 1,
+        "full_bank_generated_tokens": 92993,
+        "mean_draws": 15.688888888888888,
+        "observed_generated_tokens": 92320,
+        "oracle_covered_at_bank_budget": 19,
+        "question_trials": 90,
+        "token_savings_fraction": 0.007237103868033112,
+        "wrong_despite_observed_correct": 18,
+        "wrong_with_later_correct": 0
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0.011111111111111112,
+          "correct": 1,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30,
+          "mean_draws": 15.533333333333333,
+          "token_savings_fraction": 0.010870963591920746
+        },
+        {
+          "seed": 43,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 15.533333333333333,
+          "token_savings_fraction": 0.010823559820361206
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "sft-500",
+      "policy_id": "unanimous-min4",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0.011111111111111112,
+        "correct": 1,
+        "full_bank_generated_tokens": 92993,
+        "mean_draws": 16,
+        "observed_generated_tokens": 92993,
+        "oracle_covered_at_bank_budget": 19,
+        "question_trials": 90,
+        "token_savings_fraction": 0.0,
+        "wrong_despite_observed_correct": 18,
+        "wrong_with_later_correct": 0
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0.011111111111111112,
+          "correct": 1,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 43,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "sft-500",
+      "policy_id": "vote80-min4",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0.011111111111111112,
+        "correct": 1,
+        "full_bank_generated_tokens": 92993,
+        "mean_draws": 16,
+        "observed_generated_tokens": 92993,
+        "oracle_covered_at_bank_budget": 19,
+        "question_trials": 90,
+        "token_savings_fraction": 0.0,
+        "wrong_despite_observed_correct": 18,
+        "wrong_with_later_correct": 0
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0.011111111111111112,
+          "correct": 1,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 43,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "curriculum-selected-2200",
+      "policy_id": "fixed-k1",
+      "overall": {
+        "abstained": 1,
+        "accuracy": 0.022222222222222223,
+        "correct": 2,
+        "full_bank_generated_tokens": 93098,
+        "mean_draws": 1,
+        "observed_generated_tokens": 5846,
+        "oracle_covered_at_bank_budget": 18,
+        "question_trials": 90,
+        "token_savings_fraction": 0.9372059550151454,
+        "wrong_despite_observed_correct": 0,
+        "wrong_with_later_correct": 16
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0.022222222222222223,
+          "correct": 2,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0.06666666666666667,
+          "correct": 2,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 1,
+          "token_savings_fraction": 0.9372123708685998
+        },
+        {
+          "seed": 43,
+          "accuracy": 0.06666666666666667,
+          "correct": 2,
+          "question_trials": 30,
+          "mean_draws": 1,
+          "token_savings_fraction": 0.9379014298163509
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 1,
+          "token_savings_fraction": 0.9365053798080021
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "curriculum-selected-2200",
+      "policy_id": "fixed-k2",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0.022222222222222223,
+        "correct": 2,
+        "full_bank_generated_tokens": 93098,
+        "mean_draws": 2,
+        "observed_generated_tokens": 11664,
+        "oracle_covered_at_bank_budget": 18,
+        "question_trials": 90,
+        "token_savings_fraction": 0.874712668370964,
+        "wrong_despite_observed_correct": 4,
+        "wrong_with_later_correct": 15
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0.022222222222222223,
+          "correct": 2,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0.06666666666666667,
+          "correct": 2,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 2,
+          "token_savings_fraction": 0.8745534708589451
+        },
+        {
+          "seed": 43,
+          "accuracy": 0.06666666666666667,
+          "correct": 2,
+          "question_trials": 30,
+          "mean_draws": 2,
+          "token_savings_fraction": 0.8753187231707711
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 2,
+          "token_savings_fraction": 0.874267121963791
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "curriculum-selected-2200",
+      "policy_id": "fixed-k4",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0.011111111111111112,
+        "correct": 1,
+        "full_bank_generated_tokens": 93098,
+        "mean_draws": 4,
+        "observed_generated_tokens": 23275,
+        "oracle_covered_at_bank_budget": 18,
+        "question_trials": 90,
+        "token_savings_fraction": 0.7499946293153451,
+        "wrong_despite_observed_correct": 8,
+        "wrong_with_later_correct": 14
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0.011111111111111112,
+          "correct": 1,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 4,
+          "token_savings_fraction": 0.7502976860940367
+        },
+        {
+          "seed": 43,
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30,
+          "mean_draws": 4,
+          "token_savings_fraction": 0.7498951037665817
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 4,
+          "token_savings_fraction": 0.7497906062753689
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "curriculum-selected-2200",
+      "policy_id": "fixed-k8",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0.03333333333333333,
+        "correct": 3,
+        "full_bank_generated_tokens": 93098,
+        "mean_draws": 8,
+        "observed_generated_tokens": 46655,
+        "oracle_covered_at_bank_budget": 18,
+        "question_trials": 90,
+        "token_savings_fraction": 0.4988614148531655,
+        "wrong_despite_observed_correct": 9,
+        "wrong_with_later_correct": 11
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0.03333333333333333,
+          "correct": 3,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0.1,
+          "correct": 3,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 8,
+          "token_savings_fraction": 0.498600070801017
+        },
+        {
+          "seed": 43,
+          "accuracy": 0.06666666666666667,
+          "correct": 2,
+          "question_trials": 30,
+          "mean_draws": 8,
+          "token_savings_fraction": 0.4975631798082819
+        },
+        {
+          "seed": 44,
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30,
+          "mean_draws": 8,
+          "token_savings_fraction": 0.5004187874492623
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "curriculum-selected-2200",
+      "policy_id": "fixed-k16",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0.011111111111111112,
+        "correct": 1,
+        "full_bank_generated_tokens": 93098,
+        "mean_draws": 16,
+        "observed_generated_tokens": 93098,
+        "oracle_covered_at_bank_budget": 18,
+        "question_trials": 90,
+        "token_savings_fraction": 0.0,
+        "wrong_despite_observed_correct": 17,
+        "wrong_with_later_correct": 0
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0.011111111111111112,
+          "correct": 1,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 43,
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "curriculum-selected-2200",
+      "policy_id": "unanimous-min2",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0.011111111111111112,
+        "correct": 1,
+        "full_bank_generated_tokens": 93098,
+        "mean_draws": 15.377777777777778,
+        "observed_generated_tokens": 91766,
+        "oracle_covered_at_bank_budget": 18,
+        "question_trials": 90,
+        "token_savings_fraction": 0.014307503920599762,
+        "wrong_despite_observed_correct": 15,
+        "wrong_with_later_correct": 2
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0.011111111111111112,
+          "correct": 1,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 43,
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30,
+          "mean_draws": 15.066666666666666,
+          "token_savings_fraction": 0.021689313494496987
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 15.066666666666666,
+          "token_savings_fraction": 0.021261516654854762
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "curriculum-selected-2200",
+      "policy_id": "unanimous-min4",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0.011111111111111112,
+        "correct": 1,
+        "full_bank_generated_tokens": 93098,
+        "mean_draws": 16,
+        "observed_generated_tokens": 93098,
+        "oracle_covered_at_bank_budget": 18,
+        "question_trials": 90,
+        "token_savings_fraction": 0.0,
+        "wrong_despite_observed_correct": 17,
+        "wrong_with_later_correct": 0
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0.011111111111111112,
+          "correct": 1,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 43,
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "curriculum-selected-2200",
+      "policy_id": "vote80-min4",
+      "overall": {
+        "abstained": 0,
+        "accuracy": 0.011111111111111112,
+        "correct": 1,
+        "full_bank_generated_tokens": 93098,
+        "mean_draws": 16,
+        "observed_generated_tokens": 93098,
+        "oracle_covered_at_bank_budget": 18,
+        "question_trials": 90,
+        "token_savings_fraction": 0.0,
+        "wrong_despite_observed_correct": 17,
+        "wrong_with_later_correct": 0
+      },
+      "accuracy_by_difficulty": {
+        "all": {
+          "accuracy": 0.011111111111111112,
+          "correct": 1,
+          "question_trials": 90
+        },
+        "easy": {
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30
+        },
+        "hard": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        },
+        "medium": {
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30
+        }
+      },
+      "per_seed_overall": [
+        {
+          "seed": 42,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 43,
+          "accuracy": 0.03333333333333333,
+          "correct": 1,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        },
+        {
+          "seed": 44,
+          "accuracy": 0,
+          "correct": 0,
+          "question_trials": 30,
+          "mean_draws": 16,
+          "token_savings_fraction": 0.0
+        }
+      ]
+    }
+  ],
+  "cost_protocol": "Consumed-prefix generated tokens including EOS, excluding masked tails; no latency/VRAM claim. Full bank is a sunk offline acquisition cost.",
+  "diagnostic_protocol": "Wrong-with-later-correct and oracle coverage use labels/future samples only after decisions; not policy inputs. Seeds reuse the same questions.",
+  "files": {
+    "artifacts/evaluation/report.json": {
+      "sha256": "dd4ec218fbb0d3ea7490fd519e33f24ad6c3d03684994278616c71b55fbe7319",
+      "size_bytes": 81087
+    },
+    "artifacts/evaluation/scored.jsonl": {
+      "sha256": "0598228c5e90d1594d95b3b0e47bd0dad91b90cf93fed84c74c2bfb18652af23",
+      "size_bytes": 760456
+    },
+    "artifacts/export_replay_artifacts.py": {
+      "sha256": "604237c94eb819e9819c52e20a70623477bfceb65332c47a694bdfbde385faae",
+      "size_bytes": 5966
+    },
+    "artifacts/repeat_report.json": {
+      "sha256": "42cee8ce75e5af613b773517d31fb7f915a577eae63f0824c5253e7a2e6166f7",
+      "size_bytes": 402
+    },
+    "artifacts/replay/decisions.jsonl": {
+      "sha256": "51e46ce1c1b06b44f82cf93557906223cf283d59c3ae149cc525618194f13e2d",
+      "size_bytes": 2365506
+    },
+    "artifacts/replay/manifest.json": {
+      "sha256": "97e83262d3f32a022d29e5ba8694e5a4a927a15755a0c9054632f06adc20ed15",
+      "size_bytes": 10063
+    },
+    "artifacts/replay_accuracy_cost.png": {
+      "sha256": "2f8c0c4bb8abcdb2ad168696bc5c069018b210bbb4db4c1d0edc47ff3947b955",
+      "size_bytes": 104911
+    },
+    "artifacts/replay_accuracy_cost.svg": {
+      "sha256": "12472733fd08425dd9dac7e9417fd189fdc22be150a45855e9889d3dc332c972",
+      "size_bytes": 77090
+    },
+    "artifacts/replay_metrics.csv": {
+      "sha256": "fc6061bfbd4f0496e21d04fc1bb8c0d6e37a257f8592b06c161d794a60830925",
+      "size_bytes": 15426
+    },
+    "artifacts/replay_repeat/decisions.jsonl": {
+      "sha256": "51e46ce1c1b06b44f82cf93557906223cf283d59c3ae149cc525618194f13e2d",
+      "size_bytes": 2365506
+    },
+    "artifacts/replay_repeat/manifest.json": {
+      "sha256": "97e83262d3f32a022d29e5ba8694e5a4a927a15755a0c9054632f06adc20ed15",
+      "size_bytes": 10063
+    },
+    "config.json": {
+      "sha256": "2bd5e82aeac746add2c04265519199b6d3b84e3915c12664e4c7affc77d3c911",
+      "size_bytes": 2071
+    },
+    "config_sources/replay.toml": {
+      "sha256": "d2abe5229805c2a591378dc1027102a2c442ad77e691a80b3fb302c47f17379c",
+      "size_bytes": 1737
+    },
+    "logs/events.jsonl": {
+      "sha256": "18b5a65cdc8143d65b6e61ea3b8c7955a4c34be327bf20423596b39ca008dde3",
+      "size_bytes": 1647
+    },
+    "logs/run.log": {
+      "sha256": "5350f40767eb16404b9413f1cefa79650c514b4821f91fb17a5b21b9b27ac61a",
+      "size_bytes": 1351
+    },
+    "metadata.json": {
+      "sha256": "6d94bb297ca0f2ec777e059f72e02ba221414fc43e8708015710bc74a6213ef3",
+      "size_bytes": 10661
+    },
+    "run.json": {
+      "sha256": "4db5e9c75d0421083cecdc8e126eacf37d06d9a8d90c1f8cc2f2f6cfdb954e10",
+      "size_bytes": 150
+    }
+  },
+  "artifact_bundle": {
+    "path": "dist/grast-wp08-3-replay-20261126-daf75519.zip",
+    "sha256": "f65e78158ad621083d2ce98f55dea219b938c23488bd8b1b9869486a031b6ce2",
+    "size_bytes": 263584,
+    "contains_weights": false,
+    "contains_source_bank": false
+  }
+}

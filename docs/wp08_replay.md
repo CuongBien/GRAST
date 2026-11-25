@@ -1,5 +1,7 @@
 # WP08.3 — Offline policy replay
 
+Đã chạy và kiểm tra replay; xem [báo cáo WP08.3](wp08_3_validation.md).
+
 Replay dùng nguyên bank WP08.2, fingerprint
 `6941830812e5fe91ba583553556cbc68a10ecf9b84dcad2bb5850c97cab1c809`.
 Không sinh lại ứng viên hoặc tải weights. Cùng một question/checkpoint/trial seed

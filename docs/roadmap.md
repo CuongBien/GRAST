@@ -98,7 +98,8 @@ raw-model log-probability và tách gold khỏi policy observations. Đã đạt
 [smoke kỹ thuật CPU/checkpoint thật](wp08_1_validation.md); chưa chạy full pilot.
 WP08.2 đã [khóa30 câu và thu đủ2.880 ứng viên](wp08_2_validation.md),2 checkpoints/3 seeds/K16.
 Selected2200 easy coverage56,7%; medium/hard chưa có trace được verified.
-WP08.3 replay các policy trên cùng prefix; WP08.4 báo cáo feasibility/quyết định GSM8K.
+WP08.3 đã [replay8 policy trên cùng prefix](wp08_3_validation.md),1.440 quyết định,
+repeat exact; majorityK16 đúng1/90 mỗi checkpoint. WP08.4 báo cáo feasibility/quyết định GSM8K.
 Không fit stopping/calibration trên test và không gọi replay cost là online latency.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
