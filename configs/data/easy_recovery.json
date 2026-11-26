@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "seed": 20261127,
+  "max_length": 128,
+  "source_dataset_fingerprint": "0a891fda1dc3325a85f73a7022cef14fb6ce1b2d27467c1a7fbd42a7a0d16b56",
+  "source_checkpoint_sha256": "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8",
+  "prior_questions_sha256": "19c3be61e1ffff424617eb41147440c52f1d2fc0b8540072192230b5a4908349",
+  "selection": {"wp03": 4, "authored": 12},
+  "gate": {"wp03": 4, "authored": 44}
+}

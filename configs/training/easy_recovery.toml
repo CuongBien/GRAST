@@ -1,0 +1,59 @@
+schema_version = 1
+
+[experiment]
+name = "easy-recovery-v1"
+
+[model]
+vocab_size = 8192
+context_length = 1024
+hidden_size = 512
+num_layers = 10
+num_heads = 8
+ffn_hidden_size = 2048
+dropout = 0.0
+tie_embeddings = true
+
+[initialization]
+sha256 = "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8"
+
+[training]
+stage = "sft"
+max_steps = 1000
+gradient_accumulation_steps = 4
+learning_rate = 0.0001
+weight_decay = 0.01
+warmup_steps = 50
+min_lr_ratio = 0.1
+max_grad_norm = 1.0
+precision = "float16"
+
+[data]
+block_size = 128
+batch_size = 8
+shuffle_seed = 42
+validation_batches = 0
+
+[runner]
+validate_every = 100
+checkpoint_every = 100
+milestones = [500, 1000]
+max_attempts_per_step = 16
+
+[evaluation]
+batch_size = 8
+max_new_tokens = 64
+precision = "float32"
+selection_seed = 42
+
+[gate]
+minimum_final_accuracy = 0.30
+minimum_verified_accuracy = 0.25
+minimum_correct_and_wrong = 15
+
+[reproducibility]
+seed = 42
+deterministic = true
+num_threads = 1
+
+[artifacts]
+root = "../../artifacts/runs"

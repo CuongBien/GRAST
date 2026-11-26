@@ -69,6 +69,9 @@ majorityK16 chỉ đúng1/90 question-trials mỗi checkpoint.
 [WP08 đã chốt về kỹ thuật](docs/wp08_4_validation.md): ưu tiên WP03 easy cho diagnostic,
 giữ GSM8K làm supplementary stress (greedy probe SFT500:1/16, selected2200:0/16).
 Gate năng lực để khẳng định lợi ích confidence stopping chưa đạt.
+[Đã chuẩn bị một vòng easy SFT trước WP09](docs/easy_recovery.md): source selected2200,
+budget1.000 updates, Colab luôn in log, selection/gate tách biệt. User chạy full training;
+local smoke không phải kết quả cải thiện năng lực.
 
 1. **Đồ án:** *When Does Confidence-Gated Test-Time Scaling Fail? A Study of
    Reliability and Compute Efficiency in Small Language Models.* Nghiên cứu confidence
@@ -124,7 +127,7 @@ src/llm_scratch/
   utils/                 seed, logging
 scripts/                 data/tokenizer tools, model/cache/generation diagnostic probes
 tests/                   package, reproducibility, data/math, answer extraction, BPE và adapters
-notebooks/               Colab A100 preflight và WP02 smoke; chưa chạy training
+notebooks/               Colab preflight, pretraining/SFT/curriculum và easy recovery
 experiments/             fixed diagnostic fixtures và validation manifests
 artifacts/               runs, checkpoints, tokenizers, sample_bank, results (gitignore)
 reports/                 figures, paper

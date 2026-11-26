@@ -104,6 +104,11 @@ WP08.4 đã [chốt review và benchmark](wp08_4_validation.md): engineering gat
 ưu tiên WP03 easy diagnostic, GSM8K supplementary stress; capability/efficacy gate chưa đạt.
 Không fit stopping/calibration trên test và không gọi replay cost là online latency.
 
+Trước WP09, đã chuẩn bị [một vòng easy SFT có budget cố định](easy_recovery.md),
+khởi tạo từ selected2200. Agent verify ngắn; user chạy1.000 updates trên Colab.
+Selection16 và gate48 tách theo cặp toán hạng, không mở test. Chỉ kết luận sau full run;
+không tự thêm vòng train nếu gate yếu. Sau đó chuyển WP09 theo phạm vi evidence cho phép.
+
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 
 *When Does Confidence-Gated Test-Time Scaling Fail? A Study of Reliability and

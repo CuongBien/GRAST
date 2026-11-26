@@ -1,0 +1,284 @@
+{
+  "data_manifest": {
+    "block_size": 128,
+    "clean_pair_pool": {
+      "authored": 64,
+      "wp03": 11
+    },
+    "config": {
+      "gate": {
+        "authored": 44,
+        "wp03": 4
+      },
+      "max_length": 128,
+      "prior_questions_sha256": "19c3be61e1ffff424617eb41147440c52f1d2fc0b8540072192230b5a4908349",
+      "schema_version": 1,
+      "seed": 20261127,
+      "selection": {
+        "authored": 12,
+        "wp03": 4
+      },
+      "source_checkpoint_sha256": "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8",
+      "source_dataset_fingerprint": "0a891fda1dc3325a85f73a7022cef14fb6ce1b2d27467c1a7fbd42a7a0d16b56"
+    },
+    "evaluation_pair_groups": {
+      "gate": [
+        "pair-3c62258f0988a6f41e731acfb7f35c36ae16b2c9309f916ac1ae2d53f4e29235",
+        "pair-305b5ff66284f6e64862d801f3d1810c19cc1df07d0542156e218b79cf8aff5f",
+        "pair-d0c3c49a9030d5cf7dc429ea938f48d9d95e8df8166e389d38d83970ad75401c",
+        "pair-af1980bca812707cbb52fbe18bf9a930d053f33aa8e8d9c1b43d099a6ed90056",
+        "pair-8cc2b1624693abb0c6306df5b7adb0f8936893a60a455499343f6de05f26fdae",
+        "pair-e33ecd6d4f6523c07ee47b6c9cbbfa2f504ee868d2d1ec010de323ae92175723",
+        "pair-858669787b69b10d7cb1a6640bcb8427cf7943daf4bd0c30d760b5b490d41f06",
+        "pair-4897ed721ef7c9b78c953ad2b12adaf9e696849e742d898c7dc0e97d7b323ac8",
+        "pair-c6e20ec58caedf52d4ca66ee7e15f8eea5c55f8e1e62940cf9b33bc2ebb7f60c",
+        "pair-012fdc932350c6a6ad94d1283e2c0bcad2ae1442530578298f23dbd14a1b4c60",
+        "pair-22d563608fb962816c03aab963371aece8efe65d2a53955732246c91ac962ad5",
+        "pair-b63f65eca352d1ef5f8ab64cb2934b79201f651444aab66ab8c499cb63d4d647",
+        "pair-5439f31a10f40cdfa19e1a4fdacd7ba21108410f4613c83695e6e1ece10e21f7",
+        "pair-0bfc893d957445726ef56a17eed1325257d05d3950162aa23e90f6962b734611",
+        "pair-e05b6b875b96bfc3bd71f5030d36b75c6587c7d274bf83d9f8bc0f5036b2a203",
+        "pair-fde87bb73fe48e2e0412d6c2bbaaec2a176d3cc3d0aa117f452c2d38db4c71eb",
+        "pair-938483417f4e0a2c08320bff0769eb1496cf1c94b05800bbd88d34731e2fc670",
+        "pair-e07ada4e0e358f5d071968a0cbcf95d96239772469f9f83287a2bba80bdefb16",
+        "pair-31c24b7ad6efed16bc448014a10a0323f21a6e73d386f07b3d5f1ae72733436c",
+        "pair-b22fb4acd262642f9e93fec4443aae8f5a487c65a61adf8d5ec4ae9ab86e42e7",
+        "pair-5051312f0fd6a9fd9973be62f22f9c65023f3286bd91a719a67e6c54e0c1dc6f",
+        "pair-566e364ee856e235412f142853cfdbf29c7099bba1c233a7f5cb0d060cad7073",
+        "pair-0402affdb606c894f09572e0428c4b5d5de0c324966a8860842f9d36dc5495d9",
+        "pair-b60bbd5ba7337113db6a187e3b73763cb2f1c30aacd28442b120441ac7cf3072",
+        "pair-d88d9c84f356daed5241b10be00e6512f750c82ace57a90f05480b147a3374c2",
+        "pair-22ce08089c2b59a24c5a21ed16a679fec5d4f89215046e13a7ec1f57df15d440",
+        "pair-99f19d0991ced75d56879c137b635a76304240879a368f81b1ba246f97b07c40",
+        "pair-36141f6fd6a0be5fccfe76986302c9c13d6128fd15f32c6a1f502ef33347e63e",
+        "pair-5c058513913ccd6ffe1ec3209878fff28284c3cbf6885be15ccfe7ffcd96f9ac",
+        "pair-cf15882e077a3558a188394eda3b0b9f6d059ca290777b3e95b203c772188323",
+        "pair-fea7ff3dc4491e5feb42499e2de9eedf74177fe4fe3f9570c2f2cf2f684b45ed",
+        "pair-4087357e0709df35d89f570b2c6dfde16fc090143238accb15e2d9c71774b575",
+        "pair-4a72684865e419f971f8a36c39dda0adbbfd2053d15c4bb5c6a73afe919c2122",
+        "pair-130a8b36cace0c9ee3e10089888182f17cdfabcd1c6a50a46df83351f22d16c4",
+        "pair-6cce75c2bb6a8ca6071418518717d3cbb6daa4b33b238b8257ad9efd9bb9ba86",
+        "pair-6485bc52b44087afe0176083d0158f2daf50be604ba7d4c6dc2b26e803913ea1",
+        "pair-063764b5b7ac908509d75487f4bccd23c0a06e9884051282560aca4ad09980f3",
+        "pair-02a2d7680c4abb8b52cb866e82e1678c6b07192f7e17194f4222b8005f15b5a7",
+        "pair-3940a1c9ec2b8363308386be8f8153b2060062ce848d2bff4e83e4343bd0f8cc",
+        "pair-a2053df5255c105e6c3998d2adac98893405356f12c289e8b7164eb79fc64372",
+        "pair-cda00227322a54741851b4f9695f4167f6eb4ba62bb5951cbe4419082b955924",
+        "pair-ed0c8d3b31fb1117f5aa939ed916c5b7ab62d29930ae296b5fddab8ce4d1a7a8",
+        "pair-cf4b85993939f86c1c6719d32628af813ad1b00a1309b0f064ada72b82632b5c",
+        "pair-734e2fc2a8a2abcddb0b1dcc1f018973189b0f085e2cf10dffb718a44d94f852",
+        "pair-4c74f9adc608823ee0045c45b0d8eedd01a8c3cef42ed022ce4aa197a11e8dc4",
+        "pair-fd24e96ad2b3b7626e10a76b42c43627a1c7a9a6e345d6f7c624707664c3ff0f",
+        "pair-282511b43827ac4ff438c38fa04be5252cf7ecd6f94fcfc83bb7b1ec2142dac9",
+        "pair-8d122e2194d78aca758ae23b11184120092944c3f5ade556ee694befa4329649"
+      ],
+      "selection": [
+        "pair-7f6621bb159b7820daa79a2107224910b11da4fe90dc04bbde4a954682e18b67",
+        "pair-e2402414cacde3e0e589905d2b8e82b35a1cc237457748c117b6cbf260f2d34c",
+        "pair-6679b0a9c69b4928304b2dd1dd19f54e92893ae08389bf95691cf0bdbaefd51f",
+        "pair-8195aa19b2860c12ecd1600d71b1464c7d78613b4732e54d1d8289d94d7e5956",
+        "pair-520a62fa2d462513ff093dc6795210da6a014795632ce57fdd726717bbdaf732",
+        "pair-d2dd70cd1ff02ed2bf2cef0ef5edbd59d2b892ffedbdc9da197834fef1e8006c",
+        "pair-fd0f35faf50dbe7118724a8e1c825cc680d016aee256563358aea38fc5388232",
+        "pair-95bc8dddb40714b67454df67200f9804bd975c4401431cf0e94b5d1805a1f138",
+        "pair-6ec20695b9216e7dc324d6982c9e61002b63eb082822b81734267d4879827a6d",
+        "pair-b7b2c469721d344a3079019b4c3fb38044c8c699bf1e27f732e9641e5d481f1f",
+        "pair-263ac0506df5e66889fcacab8370ac3a457dca75a37cb655d4dc831061f5f8bf",
+        "pair-49118d5ffa2da5f4f7a56accb1c848ec94e7fa86708ce5d683967c06ecda56d6",
+        "pair-3bc3f28a1233e6e03957d6d1a0b722ff79b35c7a0fe98ac175970a4298de37a5",
+        "pair-65e3d41cfb31abe0538911a696c6c7026ba55c9f74454df0a35dd45fedaf093e",
+        "pair-4e6f196066ec3e4044166e03d6dd2d2d973a658e4b21729cb6142b7fe3cf221c",
+        "pair-51d3f2e354768a9eaad67ddd201957d867ccae0f1cf05a34ebc1addc1880e9d0"
+      ]
+    },
+    "excluded_pairs": 5998,
+    "excluded_pairs_sha256": "034ddf41b57678accee48e3b9cf41298caadb0d2b44aa8665abd8c7df6039987",
+    "fingerprint": "bdb0503b93a3f184acb1d0a71dda69bd9227c0ddf57bed189f0911ed2e9eed17",
+    "schema_version": 1,
+    "scope": "easy-recovery-v1",
+    "scope_limit": "Development validation; previously used for loss. Pretraining exposure unknown.",
+    "splits": {
+      "gate": {
+        "ids": [
+          "curriculum-192cec4d194fcc17498e223aff0cf5a1c6526197126bec0b44657cbe2be50ffe",
+          "curriculum-7aeeae99b8b63fe72a25620581c352126502ebd8aee233eacad7f89a978e4c3f",
+          "curriculum-486c6cbec13fc6613941e6998a856c13b424eca131b8adfa078cba3461094a73",
+          "curriculum-94ce4156b971f27189c3bea92a51fbb2c033cf9e69455e3fb3fb8bfc5f4fb0a7",
+          "curriculum-041483bc847ce7b3665bc8246176b21f4844aa08a731160a842413bc30be9842",
+          "curriculum-f1656abc641f07e33658ca58240c87cc24070bce80f6c19a3eb9c7e7db9eacc3",
+          "curriculum-ee0b8cf2fce5d5a902bdf47ad679fc025a2d6aa4b4bf114759980652a43aa11f",
+          "curriculum-e198dc62205cbc597ac1cd2216efea243ffcc9d26e99d536aeedbd5582ca02e0",
+          "curriculum-cecbf180733261ac4a2b6c5d9606ff91930cc2c42a5fc5e39ced918f1684bbbe",
+          "curriculum-1b7272f44471bd73b227c48fec0ee4ef4145e649bf5925ffdd44028f14373886",
+          "curriculum-9fcc2a14c324498a4903a7a550ac103be40b17a2c3c520e26c092b473dd66c07",
+          "curriculum-6e3fea5efe5fe94b12c65ba07e6aa946c6779d349db18e1310bce07a6ca81b39",
+          "curriculum-321715c28467cb9f2fd9d0b00f92718e358c643f5ee7bf5ac9732b15dae57bc0",
+          "curriculum-29b27737656f65603f41a95bd59e8321febbdb0536008daaa8529caca948928d",
+          "curriculum-4a24fa4b410420b18659265bf16306256db0b150c7eb376f0ad7f1ecbf853699",
+          "curriculum-c131215787920b595d3ef204a442d1d94a6bff6fad48799c27917e3a88e91d4b",
+          "curriculum-2f7d4cbc3d4a95fe6e201e77447b6d578de7b28863dfad59392ae7346292a07d",
+          "curriculum-9fb13c43e5559fd85a6590d746ff50a669745ba3eda16d180e8b122ee394e370",
+          "curriculum-3fe2c68c3df691835dc909dc38a299e93c3ea79531fad7299bdbf1deaeb7f8df",
+          "curriculum-a3bda89483e18150929b7e10106afbbc6c92be3cad29254dc0d98a76638e70bb",
+          "curriculum-c47fe925314c31cff7be47733647a84741d8b10abe8798bde0e3aba27ecb063a",
+          "curriculum-910ae23cfed1231d2623ddc562772a577a21f4c85c7553ff484c77f7895d45d2",
+          "curriculum-18a548ae73315566d049215825114a991eb2f928838c19884eadc1566d513ad5",
+          "curriculum-02a03f380edd995692f54a510b3af14871b29f30f9bd99a295e98a8b90894b7e",
+          "curriculum-2e742689aec80d50190830912a718ef0dc2d403f009939211902f7b400211895",
+          "curriculum-73d48f325d545d72ee13463fddffb0e7b7bf7c76faf9988970d18923de0411da",
+          "curriculum-600345441c525e338985a2be39b242e9ebf8dc7f1f5c09829cccf857c5817de9",
+          "curriculum-39003c869249cf44e828391658b8fa7d7d3f403c9bfef5257cb9c471a975351a",
+          "curriculum-ba27e237ac1a9df80245b7a1a21be608b113f712f44c5fa457450b23fec57d5e",
+          "curriculum-eb0e72622c7c3261e21dd98022888ae20d71dad70c5c39efb1cba80e71f436dc",
+          "curriculum-de295ca3cd4f3c289fce8cbea6033f94bee1f315d400483b924eb391d4db8be3",
+          "curriculum-998773641a01468b367c80b247295c0c3cdbd3a696102e590dc8619659824032",
+          "curriculum-2dc4823174a48fb3f23e5db7ae9569df60c06dd4fbb6693cda4637d9ccdba629",
+          "curriculum-5ad4e88650c7bf9aad34d18cc52ea7244eb0c4024bd06efa9c468790de5bba52",
+          "curriculum-088de1a07fb33ff5d379a2393976b3b621b2abe35e1a289db2d6feda143d1d28",
+          "curriculum-5e60212026f21eb204ba45085dada308f76078bc3082f067bbfa98e0013966b9",
+          "curriculum-633fe7e0902f880aa37d7b82916d0ee6e4ee15a1a5d6db6afe91585b5da580cf",
+          "curriculum-52dedd70b29e32cf34e1635251e8d391480a27e47f67a3435948d13fac56d84d",
+          "curriculum-a6d964410a77ef092900c788d6e12d8823cf3ed2f4f871a59ac775c2d8e24651",
+          "curriculum-2c8001aebc9fb6a780ff24b1dfefc969dccafbeaadc47609bcb9cad17a87a8cf",
+          "curriculum-b900b16e78c13c2765f7c5408711a17b4704989b94e5a28b5142ae5a42cf7175",
+          "curriculum-f2589a7f5a40adedae80977532c5a64d3c2fd90f8c5e376de13d95b560c55827",
+          "curriculum-102c89ad39261da7cbddcdb0703df1f9e60821e225f14aace443a75fed7df7f4",
+          "curriculum-1d3e0d85b941c0e4d965efe79afc796565a3b64dbc109a2e1b9bb80fbb7f32dd",
+          "curriculum-c38f229d07ae7b05b031910d31e496eba874b47fa38b762a7536cc8c8b78aa25",
+          "curriculum-b802736a089354732ff9625b39f3cf9067cff990c432a5ee47fa64f44db40c08",
+          "curriculum-f7cca068415b88d85594c9a2163da60eb38a7c656feb134c4cd6a947e6388ece",
+          "curriculum-44eb56055f1704cdcd913c5011c4bd6322d6aeb20d505282120a95244776fcfa"
+        ],
+        "operators": {
+          "+": 17,
+          "-": 31
+        },
+        "origins": {
+          "authored": 44,
+          "wp03": 4
+        },
+        "records": 48,
+        "sha256": "6bc0711c41b6122b7cdf64742938527b6df9a4d97ce828b00843c83486b37873"
+      },
+      "selection": {
+        "ids": [
+          "curriculum-c64ca7b123753577255a49dd6f972db857586188455625ac2028bf4bc0367097",
+          "curriculum-96f8bf6e788f41e098fd968c900661a1b6e3aba83078c0721d0bd6f50af7d808",
+          "curriculum-6975f1247c2c5987605a4c1f659c3ec8495b735910c2400b12a2d918d31ec1a6",
+          "curriculum-548d8c5867a1357e62a541e54e1bceea8076d460eb884a1ff5fae5ec96f17908",
+          "curriculum-6370572df4ce884b466fe856e407d7fb9aae634f7b78ad166ca04b589d8cedeb",
+          "curriculum-8f170f611b46faab1c05dfbe1de3cba186bf9846b76643d25299d595d3bf9adb",
+          "curriculum-ff4ccce5e2f680a49893f822a3f5ab23db6d137ae05b18c9601325e473dfd2a4",
+          "curriculum-94913fa23e907a0a5b64a61033482aef2fe995c3e3442e6e8e1df960fc8300c1",
+          "curriculum-11bac4da3fe764a00c24187b13f56fbc6413ae955c0c9ae8eef6dace6003085d",
+          "curriculum-0a9456b364b4cbd2fde43531b6c7faee3dc4a095fc740ba6d0e135517b3528c7",
+          "curriculum-6ddb842113d1d5ffadfd99cc2058a360a38d84eb7ba3272a9f751296096538c7",
+          "curriculum-466c4142e16a2fa44759fd8bea3696c821ba182568202957a57bf6ec90633c9b",
+          "curriculum-13ebcaf230d494936008b739ed9b43e4993ad1c0c465bdd1220559e4e4b2ce32",
+          "curriculum-9fd6dbffbfa9cf1e1b03404aba6cea4afdd11cfa2c1e47106b8ae8519f3edb75",
+          "curriculum-cce0dbe1adabd01a73639905cdc8e464bb9c55bee8e802e546c2a4610ee09078",
+          "curriculum-8dbc16323c32dadb39a4ff1e84fb792de82b0ca5495f8cf7a053e9dbe122757d"
+        ],
+        "operators": {
+          "+": 9,
+          "-": 7
+        },
+        "origins": {
+          "authored": 12,
+          "wp03": 4
+        },
+        "records": 16,
+        "sha256": "746eb07827c531c39647b5c29f2bc62d48185835d580420623f829bb005a5ea7"
+      },
+      "train": {
+        "ids": null,
+        "operators": {
+          "+": 2136,
+          "-": 4060
+        },
+        "origins": {
+          "authored": 5696,
+          "wp03": 500
+        },
+        "records": 6196,
+        "sha256": "79243d551776831eb84c6eba699fe44f27192a2d2fb690ea0c67a7d92a37eb15"
+      }
+    },
+    "test_files_read": false,
+    "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+    "train_sampling": "Repeat WP03 references ceil(authored/WP03) times; shuffle virtual epoch.",
+    "vocab_size": 8192
+  },
+  "date": "2026-11-27",
+  "full_training_executed": false,
+  "gate_scores_observed": false,
+  "next": "WP09, no automatic additional training round",
+  "recipe": {
+    "data": {
+      "batch_size": 8,
+      "block_size": 128,
+      "shuffle_seed": 42,
+      "validation_batches": 0
+    },
+    "evaluation": {
+      "batch_size": 8,
+      "max_new_tokens": 64,
+      "precision": "float32",
+      "selection_seed": 42
+    },
+    "experiment": {
+      "name": "easy-recovery-v1"
+    },
+    "gate": {
+      "minimum_correct_and_wrong": 15,
+      "minimum_final_accuracy": 0.3,
+      "minimum_verified_accuracy": 0.25
+    },
+    "initialization": {
+      "sha256": "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8"
+    },
+    "model": {
+      "context_length": 1024,
+      "dropout": 0.0,
+      "ffn_hidden_size": 2048,
+      "hidden_size": 512,
+      "num_heads": 8,
+      "num_layers": 10,
+      "rms_norm_eps": 1e-06,
+      "rope_theta": 10000.0,
+      "tie_embeddings": true,
+      "vocab_size": 8192
+    },
+    "reproducibility": {
+      "deterministic": true,
+      "num_threads": 1,
+      "seed": 42
+    },
+    "runner": {
+      "checkpoint_every": 100,
+      "max_attempts_per_step": 16,
+      "milestones": [
+        500,
+        1000
+      ],
+      "validate_every": 100
+    },
+    "schema_version": 1,
+    "training": {
+      "beta1": 0.9,
+      "beta2": 0.95,
+      "eps": 1e-08,
+      "gradient_accumulation_steps": 4,
+      "learning_rate": 0.0001,
+      "max_grad_norm": 1.0,
+      "max_steps": 1000,
+      "min_lr_ratio": 0.1,
+      "precision": "float16",
+      "stage": "sft",
+      "warmup_steps": 50,
+      "weight_decay": 0.01
+    }
+  },
+  "schema_version": 1,
+  "scope": "prospective one bounded easy recovery; before full Colab training"
+}
