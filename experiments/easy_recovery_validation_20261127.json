@@ -1,0 +1,140 @@
+{
+  "branch": "feat/easy-recovery-colab",
+  "checks": {
+    "final_targeted": {
+      "passed": 15,
+      "scope": "final runner milestone behavior, exact resume, transport, notebook pins/streaming/dtype",
+      "seconds": 10.01
+    },
+    "full_suite": {
+      "deferred": "notebook checksum pin test until kit finalized",
+      "deselected": 1,
+      "passed": 932,
+      "seconds": 193.0
+    },
+    "installed_wheel_acceptance": {
+      "controlled_stop_does_not_read_gate": true,
+      "exact_resume": true,
+      "installed_package": "D:\\GRAST\\.cache\\easy-recovery-wheel-final-20261127\\llm_scratch\\__init__.py",
+      "milestones_independent_of_checkpoint_interval": true,
+      "scope": "tiny CPU fixture, no capability claim",
+      "selected_export_reloads": true,
+      "status": "passed",
+      "tampered_best_rejected": true
+    },
+    "ruff_format": true,
+    "ruff_lint": true,
+    "sdist_excludes_local_artifacts": true
+  },
+  "date": "2026-11-27",
+  "full_training_executed": false,
+  "gate_scores_observed": false,
+  "implementation_commit": "1ff2079f5833345b10ad5f852e3a297f17d072ab",
+  "kit": {
+    "package_files_match_verified_wheel": true,
+    "path": "dist/grast-easy-recovery-kit-20261127.zip",
+    "sha256": "c8b15e13ab936af43a7efc649fedc1191f210fa4d9a097c95bc63bb68ab606cf",
+    "size_bytes": 1326953,
+    "weights_included": false,
+    "wheel_sha256": "ad0e18236b993375dd4cf3cb1f928d61e32b7e4f23065960e2207dae2f2e1bba"
+  },
+  "local_smoke": {
+    "cursor_windows": 2,
+    "environment": {
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "cudnn_version": 91002,
+      "gpus": [
+        {
+          "compute_capability": [
+            8,
+            9
+          ],
+          "index": 0,
+          "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+          "total_memory_bytes": 8585216000
+        }
+      ],
+      "numpy_version": "2.4.6",
+      "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, 610.47, 8188 MiB",
+      "platform": "Windows-10-10.0.22631-SP0",
+      "process_environment": {
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+        "MKL_NUM_THREADS": null,
+        "OMP_NUM_THREADS": null,
+        "PYTHONHASHSEED": null
+      },
+      "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+      "pytorch_version": "2.9.1+cu128",
+      "requested_device": "cuda",
+      "selected_device": "cuda:0",
+      "validation": {
+        "errors": [],
+        "ok": true
+      }
+    },
+    "files": {
+      "artifacts/generated_selection.json": "f60829b14e4e1a9c1b698f8faccae9b0dac46f32a4e35ff5037edab267c0799b",
+      "artifacts/history.json": "5d063bf2e26f2cf45d2e505a37aa7325c33124e2bf2da7292e555706dab43a03",
+      "artifacts/loss_curves.png": "59e30ad94ef3d9c5851866fe4d75210a1a5a79309825dd6459585ded9389d158",
+      "artifacts/recovery_report.json": "ca24c7c78b98bb205bf25c6a794481975b41be4d96d6d21096226ecee3e1c655",
+      "logs/events.jsonl": "dcebb4f5d1f6acb40a8d6a99e2e651070746a920e193dd856f6a9a1d48767ac4"
+    },
+    "gate_not_evaluated": true,
+    "git_at_run_start": {
+      "branch": "feat/easy-recovery-colab",
+      "commit": "1ff2079f5833345b10ad5f852e3a297f17d072ab",
+      "dirty": true,
+      "state": "committed",
+      "untracked_files": 2
+    },
+    "latest_sha256": "db49eba6a09aca54ccaa1f99ebe7405a5569f6795ac2a3c2d619d7ef1dabb646",
+    "note": "Dirty flag covers two then-untracked notebook handoff files; executable sources byte-match pinned wheel.",
+    "optimizer_steps_all_two": true,
+    "report": {
+      "amp_skips": 0,
+      "attempts": 2,
+      "best": {
+        "step": 0,
+        "summary": {
+          "accuracy": 0.25,
+          "by_origin": {
+            "authored": {
+              "correct": 0.25,
+              "format_valid": 1.0,
+              "questions": 12,
+              "verified": 0.25
+            },
+            "wp03": {
+              "correct": 0.25,
+              "format_valid": 1.0,
+              "questions": 4,
+              "verified": 0.25
+            }
+          },
+          "correct": 4,
+          "macro_final": 0.25,
+          "macro_verified": 0.25,
+          "questions": 16,
+          "verified": 4,
+          "verified_accuracy": 0.25
+        },
+        "weights_sha256": "e0ac6861efd2be5c2db9bf84e3370bf2101999a96377e5544e0295779e5bb4b7"
+      },
+      "dataset_fingerprint": "bdb0503b93a3f184acb1d0a71dda69bd9227c0ddf57bed189f0911ed2e9eed17",
+      "gate_evaluated": false,
+      "improved_on_selection": false,
+      "planned_steps": 1000,
+      "selected_sha256": "9a88f8b12efa4d010c1908a873a134e4dd15cdf4853a7e4be0e5a1c2738ec586",
+      "source_sha256": "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8",
+      "status": "controlled_stop",
+      "step": 2
+    },
+    "run_directory": "artifacts/easy-recovery-v1/verified-wheel-runs/20261126T173443990460Z-easy-recovery-v1-seed42-736bb541",
+    "weights_updated": true
+  },
+  "next": "User runs one 1000-update Colab round; return summary and selected_model.pt; then WP09. No automatic additional recovery round.",
+  "schema_version": 1,
+  "status": "engineering_ready_full_colab_pending",
+  "test_files_read": false
+}

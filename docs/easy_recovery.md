@@ -96,6 +96,7 @@ question trong một partition ở mọi seed và checkpoint.
 Dataset fingerprint:
 `bdb0503b93a3f184acb1d0a71dda69bd9227c0ddf57bed189f0911ed2e9eed17`.
 Manifest prospective được lưu tại `experiments/easy_recovery_protocol_20261127.json`.
+Xem [evidence local và bộ cài đã verify](easy_recovery_validation.md).
 
 ## Chuẩn bị lại / local smoke
 
