@@ -1,0 +1,95 @@
+{
+  "adapter_parent_commit": "dfb1dfd67813c532853ee3ece9c4e814117318e6",
+  "checks": {
+    "cpu_fixture_smoke_resume_to_step4": true,
+    "mounted_input_payloads_unchanged": true,
+    "pytest_related_passed": 29,
+    "pytest_related_seconds": 26.92,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "streaming_and_interrupt_cleanup": true,
+    "summary_excludes_weights": true
+  },
+  "date": "2026-11-27",
+  "direct_kaggle_session_executed": false,
+  "full_training_executed": false,
+  "kit": {
+    "manifest_sha256": "d58c11c093e80035a627dad338956b70514a8ef9dfa8121a54ec3c0e3231af98",
+    "sha256": "c8b15e13ab936af43a7efc649fedc1191f210fa4d9a097c95bc63bb68ab606cf",
+    "unchanged_from_colab": true
+  },
+  "local_gpu": {
+    "environment": {
+      "capability": [
+        8,
+        9
+      ],
+      "cuda": "12.8",
+      "device": "cuda:0",
+      "distributed": false,
+      "forward_backward_probe": "passed",
+      "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "precision": "bfloat16",
+      "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+      "pytorch": "2.9.1+cu128",
+      "visible_gpus": 1
+    },
+    "files": {
+      "20261127T080854014382Z-easy-recovery-v1-seed42-05b0c909-summary.zip": "c5b4cf593f93081f914f470ef69aa29b1912b88cac5ec65505a1b32a3995a5cf",
+      "acceptance.json": "d1d5f40157d9c4b6644125ae85e1f76fbf46d06c2dc739703883a08bab84c74b",
+      "console.log": "2e56b685ae1a7524fa2cc7858ca997cc4706fbf5a78ebec42740622f3cde00dc",
+      "runs/20261127T080854014382Z-easy-recovery-v1-seed42-05b0c909/artifacts/recovery_report.json": "fb783651474f9ead662dae331cc35d0b8186e837ac15ef624ebd36e9c29555b8"
+    },
+    "installation": "Reused the same previously verified installed wheel in an isolated target; no package source changes.",
+    "metadata_package_identity": {
+      "sha256": "553226fba116ed150ddf67f661346fdbd33ce764e64eb701ef18acf9b8ff0913"
+    },
+    "report": {
+      "amp_skips": 0,
+      "attempts": 2,
+      "best": {
+        "step": 0,
+        "summary": {
+          "accuracy": 0.25,
+          "by_origin": {
+            "authored": {
+              "correct": 0.25,
+              "format_valid": 1.0,
+              "questions": 12,
+              "verified": 0.25
+            },
+            "wp03": {
+              "correct": 0.25,
+              "format_valid": 1.0,
+              "questions": 4,
+              "verified": 0.25
+            }
+          },
+          "correct": 4,
+          "macro_final": 0.25,
+          "macro_verified": 0.25,
+          "questions": 16,
+          "verified": 4,
+          "verified_accuracy": 0.25
+        },
+        "weights_sha256": "e0ac6861efd2be5c2db9bf84e3370bf2101999a96377e5544e0295779e5bb4b7"
+      },
+      "dataset_fingerprint": "bdb0503b93a3f184acb1d0a71dda69bd9227c0ddf57bed189f0911ed2e9eed17",
+      "gate_evaluated": false,
+      "improved_on_selection": false,
+      "planned_steps": 1000,
+      "selected_sha256": "d28bcdd537b60587c66e89a8e52d54c9535a762c4436be7b50da50a53b0b4537",
+      "source_sha256": "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8",
+      "status": "controlled_stop",
+      "step": 2
+    },
+    "root": "artifacts/easy-recovery-kaggle/local-3e508118"
+  },
+  "next": "User attaches unchanged kit and selected2200 in Kaggle, runs smoke then one full 1000-update round, saves Notebook Output and returns summary plus selected model.",
+  "notebook": "notebooks/easy_recovery_kaggle.ipynb",
+  "notebook_sha256_at_verification": "2bab4ebc7258a4a2bd26161bd31449e5b4646ee3c5953a84f429905d186b4b8f",
+  "real_gate_scored": false,
+  "schema_version": 1,
+  "status": "adapter_verified_locally",
+  "training_implementation_commit": "1ff2079f5833345b10ad5f852e3a297f17d072ab"
+}

@@ -7,6 +7,8 @@ kết thúc rồi chuyển WP09 với phạm vi chẩn đoán phù hợp kết q
 
 ## Chạy trên Colab
 
+Có [bản Kaggle tương đương](easy_recovery_kaggle.md), dùng lại cùng hai input và recipe.
+
 Mở `notebooks/easy_recovery_colab.ipynb`, chọn GPU runtime. Upload hai input vào
 `MyDrive/GRAST/easy_recovery/inputs/`:
 
