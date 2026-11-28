@@ -1,0 +1,131 @@
+{
+  "archive": {
+    "bytes": 215342,
+    "path": "dist\\grast-wp09-1-benchmark-05c7d4a6e75e.zip",
+    "sha256": "16b57ff058aaf269abad26335691da0e32baa66bb2c9d0a30751cdf8577311d6"
+  },
+  "checks": {
+    "all_groups_disjoint": true,
+    "design_finish_reasons": {
+      "eos": 48
+    },
+    "full_real_pipeline_executed": true,
+    "full_tests_passed": 956,
+    "full_tests_seconds": 318.98,
+    "installed_wheel_verified": true,
+    "model_file_unchanged": true,
+    "new_scorer_positive_control_correct": 6,
+    "payload_verified": true,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "sdist_excludes_local_artifacts": true,
+    "targeted_tests_passed": 6
+  },
+  "date": "2026-11-28",
+  "decision": {
+    "eligible_strata": [],
+    "limit": "Eight design questions per stratum do not guarantee held-out outcome balance.",
+    "selected_strata": [
+      "boundary-100",
+      "cross-medium"
+    ],
+    "status": "diagnostic_only"
+  },
+  "design_summary": {
+    "boundary-100": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "format_valid_rate": 1.0,
+      "questions": 8,
+      "verified": 0
+    },
+    "cross-medium": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "format_valid_rate": 1.0,
+      "questions": 8,
+      "verified": 0
+    },
+    "cross-short": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "format_valid_rate": 1.0,
+      "questions": 8,
+      "verified": 0
+    },
+    "three-digit": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "format_valid_rate": 1.0,
+      "questions": 8,
+      "verified": 0
+    },
+    "two-step-cross": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "format_valid_rate": 1.0,
+      "questions": 8,
+      "verified": 0
+    },
+    "two-step-three-digit": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "format_valid_rate": 1.0,
+      "questions": 8,
+      "verified": 0
+    }
+  },
+  "held_out_predictions_generated": false,
+  "model_trained": false,
+  "partition_counts": {
+    "calibration_fit": 60,
+    "calibration_threshold": 40,
+    "evaluation": 100
+  },
+  "positive_control": {
+    "checkpoint_sha256": "6b24c29a7be8b4700bbd92b6e1d87e88e64e670fe2378437b18dc97abd8d4a97",
+    "correct": 6,
+    "matches_original_generated_ids": true,
+    "questions": 8,
+    "scope": "debug positive control only; old development gate first8, not used to select new benchmark"
+  },
+  "probe_source_sha256": "2dcf94a637652d97b7906225beb23b7661eb322b9e722db061ef15a29c8b1995",
+  "prospective_commit": "c532ca5623a9053fde307d55045f60957cc1b34d",
+  "protocol_fingerprint": "05c7d4a6e75e763d329c7e89b2c5d4c9f4e3ca98e0b056b61c12d32942d1589d",
+  "runtime": {
+    "cuda_available": true,
+    "cuda_version": "12.8",
+    "cudnn_version": 91002,
+    "gpus": [
+      {
+        "compute_capability": [
+          8,
+          9
+        ],
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "total_memory_bytes": 8585216000
+      }
+    ],
+    "numpy_version": "2.4.6",
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, 610.47, 8188 MiB",
+    "platform": "Windows-10-10.0.22631-SP0",
+    "process_environment": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "MKL_NUM_THREADS": null,
+      "OMP_NUM_THREADS": null,
+      "PYTHONHASHSEED": null
+    },
+    "python": "3.11.16 (main, Sep 24 2026, 17:55:08) [MSC v.1944 64 bit (AMD64)]",
+    "pytorch_version": "2.9.1+cu128",
+    "requested_device": "cuda",
+    "selected_device": "cuda:0",
+    "validation": {
+      "errors": [],
+      "ok": true
+    }
+  },
+  "status": "completed_diagnostic_only",
+  "test_files_read": false,
+  "work_package": "WP09.1"
+}

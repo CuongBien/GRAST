@@ -114,6 +114,13 @@ selected900, gate6/48→45/48 (WP03 2/4, authored43/44). Capability screen đạ
 chỉ3 negatives nên cần thiết kế benchmark/split trước calibration trong WP09.1,
 không mở thêm vòng SFT và không gọi đây là test accuracy.
 
+## WP09 — Confidence-Gated Sampling
+
+[Kế hoạch6 phase và protocol](wp09_confidence.md). WP09.1 đã khóa design probe48
+và main benchmark200 câu với fact groups không trùng. Probe mới0/48, control cũ6/8
+khớp inference trước đó: trạng thái diagnostic_only. Chưa generate/chấm200 câu main;
+WP09.2 bắt đầu pilot trên calibration_fit trước khi quyết định thu bank đầy đủ.
+
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 
 *When Does Confidence-Gated Test-Time Scaling Fail? A Study of Reliability and

@@ -1,0 +1,482 @@
+{
+  "bank": {
+    "batch_size": 8,
+    "checkpoint": "easy-recovery-selected-900",
+    "greedy_separate": true,
+    "max_candidates": 16,
+    "max_new_tokens": 128,
+    "precision": "float32",
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "share_candidate_order_across_policies": true,
+    "temperature": 0.8,
+    "top_k": 0,
+    "top_p": 0.95
+  },
+  "checkpoint_sha256": "6b24c29a7be8b4700bbd92b6e1d87e88e64e670fe2378437b18dc97abd8d4a97",
+  "config": {
+    "checkpoint_sha256": "6b24c29a7be8b4700bbd92b6e1d87e88e64e670fe2378437b18dc97abd8d4a97",
+    "curriculum_fingerprint": "0a891fda1dc3325a85f73a7022cef14fb6ce1b2d27467c1a7fbd42a7a0d16b56",
+    "design_per_stratum": 8,
+    "generation": {
+      "batch_size": 8,
+      "max_new_tokens": 128,
+      "precision": "float32",
+      "seed": 42
+    },
+    "main_per_stratum": {
+      "calibration_fit": 30,
+      "calibration_threshold": 20,
+      "evaluation": 50
+    },
+    "partition_seed": 20261129,
+    "recovery_fingerprint": "bdb0503b93a3f184acb1d0a71dda69bd9227c0ddf57bed189f0911ed2e9eed17",
+    "schema_version": 1,
+    "seed": 20261128,
+    "selected_strata": 2,
+    "selection_rule": "Eligible: 1..7 of 8 correct and format-valid rate >= 0.75; choose two closest to accuracy 0.5, name tie-break. Fill missing slots by the same distance, mark diagnostic_only. No further probe round.",
+    "strata": [
+      {
+        "a": [
+          1,
+          30
+        ],
+        "b": [
+          31,
+          99
+        ],
+        "c": [
+          100,
+          199
+        ],
+        "name": "cross-short",
+        "operations": 1,
+        "prompt_length": "short"
+      },
+      {
+        "a": [
+          1,
+          30
+        ],
+        "b": [
+          31,
+          99
+        ],
+        "c": [
+          100,
+          199
+        ],
+        "name": "cross-medium",
+        "operations": 1,
+        "prompt_length": "medium"
+      },
+      {
+        "a": [
+          80,
+          119
+        ],
+        "b": [
+          1,
+          99
+        ],
+        "c": [
+          100,
+          199
+        ],
+        "name": "boundary-100",
+        "operations": 1,
+        "prompt_length": "short"
+      },
+      {
+        "a": [
+          100,
+          199
+        ],
+        "b": [
+          100,
+          199
+        ],
+        "c": [
+          100,
+          199
+        ],
+        "name": "three-digit",
+        "operations": 1,
+        "prompt_length": "short"
+      },
+      {
+        "a": [
+          1,
+          30
+        ],
+        "b": [
+          31,
+          99
+        ],
+        "c": [
+          100,
+          199
+        ],
+        "name": "two-step-cross",
+        "operations": 2,
+        "prompt_length": "short"
+      },
+      {
+        "a": [
+          100,
+          199
+        ],
+        "b": [
+          100,
+          199
+        ],
+        "c": [
+          100,
+          199
+        ],
+        "name": "two-step-three-digit",
+        "operations": 2,
+        "prompt_length": "short"
+      }
+    ],
+    "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3"
+  },
+  "decision": {
+    "eligible_strata": [],
+    "limit": "Eight design questions per stratum do not guarantee held-out outcome balance.",
+    "selected_strata": [
+      "boundary-100",
+      "cross-medium"
+    ],
+    "status": "diagnostic_only"
+  },
+  "design_summary": {
+    "boundary-100": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "format_valid_rate": 1.0,
+      "questions": 8,
+      "verified": 0
+    },
+    "cross-medium": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "format_valid_rate": 1.0,
+      "questions": 8,
+      "verified": 0
+    },
+    "cross-short": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "format_valid_rate": 1.0,
+      "questions": 8,
+      "verified": 0
+    },
+    "three-digit": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "format_valid_rate": 1.0,
+      "questions": 8,
+      "verified": 0
+    },
+    "two-step-cross": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "format_valid_rate": 1.0,
+      "questions": 8,
+      "verified": 0
+    },
+    "two-step-three-digit": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "format_valid_rate": 1.0,
+      "questions": 8,
+      "verified": 0
+    }
+  },
+  "excluded_facts": 6621,
+  "excluded_facts_sha256": "5bb7113e6ead06ebdee77b489d8b0ab10cc7afb3f57152631825710714d00808",
+  "files": {
+    "design.predictions.jsonl": {
+      "bytes": 24719,
+      "sha256": "ae769e38601ccfe635b0f3936adfa79e8b60dcf63e803de384dc6d408432f040"
+    },
+    "design.questions.jsonl": {
+      "bytes": 17933,
+      "sha256": "39823da177954485afc66b2780d2e84ca6fb21ca154073b424ea4e8009e4fa5c"
+    },
+    "design.references.jsonl": {
+      "bytes": 35391,
+      "sha256": "3d57403669684e60d3bae265801504d0d15dbc50ae93212f4c5dcac678b89962"
+    },
+    "design.scored.jsonl": {
+      "bytes": 30652,
+      "sha256": "d8610103cf5c88cadf536136cf7326cd0f283ebb9923cae4b932eb943dfe9732"
+    },
+    "index.jsonl": {
+      "bytes": 62740,
+      "sha256": "0068b5b6b0dba54a4adf9f8a8dd8a9fa5daf6bc8eed2cd1bdb2897cf2ada7bcc"
+    },
+    "questions.jsonl": {
+      "bytes": 77393,
+      "sha256": "83383e8e597046329124423c4d2bfbb07bce317ea81b8bad444eb7ff5d9c5ffb"
+    },
+    "references.jsonl": {
+      "bytes": 142059,
+      "sha256": "f22bf23530ebac3bd29724f8b8a32254dcd8eea17693d78a82a50aea48ea186d"
+    }
+  },
+  "fingerprint": "05c7d4a6e75e763d329c7e89b2c5d4c9f4e3ca98e0b056b61c12d32942d1589d",
+  "future_analysis": {
+    "calibration_target": "current prefix winner correct",
+    "calibrator_fit_partition": "calibration_fit",
+    "confidence_features": [
+      "agreement",
+      "answer_entropy",
+      "length_normalized_log_probability"
+    ],
+    "consensus_counts": [
+      2,
+      3,
+      4
+    ],
+    "fixed_k": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "invalid_votes": "keep in denominator; invalid cannot trigger stop",
+    "max_accuracy_drop_vs_fixed16": 0.02,
+    "min_samples": 2,
+    "report_partition": "evaluation",
+    "threshold_selection_partition": "calibration_threshold",
+    "tie_break": "earliest occurrence",
+    "uncertainty_unit": "question/fact group, cluster all seeds and prefixes"
+  },
+  "held_out_predictions_generated": false,
+  "main_sampling_rule": "No filtering main questions by model outputs",
+  "partition_counts": {
+    "calibration_fit": 60,
+    "calibration_threshold": 40,
+    "evaluation": 100
+  },
+  "question_ids": {
+    "calibration_fit": [
+      "wp09-a67003b3c2717189405cb7d8d908f0b07b6b38b97c91ad4ab5157aedd5c68e98",
+      "wp09-e47821216315703e88d0f4f8b22111d00f4e0c75dded8191eaac4aa734170dd7",
+      "wp09-253fc6ebcac39ce358ceed7ac8320ec4922771585c6517fcfdf4fb83e781a6d6",
+      "wp09-eedeb6554e422aa322f0048b7b6e40f5950aa28497746aeca9c59e238573030e",
+      "wp09-df9a85b4842ec75835782abb89c04f1f0d6e77ad81adc4a76cb6da0da8117534",
+      "wp09-19ea422e554f0dd7bfd57803e72a112f9a1edf6232dd91f6fd335a8901417774",
+      "wp09-a3d10a02094eb37ce359e9685f98f42c5045ac097910e8c046ae0111f8afaf1b",
+      "wp09-7b73f51cb79c47d87877ef0d4782ab18daf73fdeb7f08a3c0f3ebda05ca95668",
+      "wp09-1571b6a8f588548df8a90696cbf2e7b0e8d1efb52a92efc3f5fa6a0d3f0dec36",
+      "wp09-cf55eef4032d23ced6549c3f48a3e5af887e6a05f759897240935c44b7e8c756",
+      "wp09-47dc83ffc0236a765f91223d0b44ef4ee994c234083bea2f14ea37ac9e348c1c",
+      "wp09-08ab3c909a834c8bd951238301f7f1a66bd4ebcd6fc252c4a7e026c239125ae6",
+      "wp09-ae57e27bd3ad18c0f0eeb44ca8fbba0e5d612b38cf38389afcdd3797b548ba91",
+      "wp09-87ce3a8527b6a1f6a007d15d388e7ea105188ed31ef7a5c31373311d56845e52",
+      "wp09-6bd127ea2af5a49e0b5650cec904682b0b158259b15d774b68f66330c7c87ba7",
+      "wp09-172847fb612991c4228fb99ae8f6c167630e0444d05b84792d6d9d74211d65be",
+      "wp09-1c158a20f7d6856e62f0079cc3921842078c6300793a15027237280b714ef5b4",
+      "wp09-5bbd24cd50b01089c8f73a02712028003c95a43fba56204f6971960f3c8608d4",
+      "wp09-bcbae86fbbd9eba8c15dfc1772455464ae678412204d05d13207ac58d8bfb76b",
+      "wp09-563010900f331938e94f584c26900cb22651e94f152d56f317f72ffc73b643f4",
+      "wp09-cb12ba8ed8d9059063216b723c0720c7e44c37cd4761015da47193c05d7770a1",
+      "wp09-934ad6a152db722aee2179ce28e5c5cf2d4657588efb18bb91c424609fa11da0",
+      "wp09-4b6d10321aecd9733dff0e85f136705bcc21e11521013d85d26a4770d1cb4514",
+      "wp09-90af6f09afbf7ddc7f7c10f3e665795f7b6e95ff8f76b9f519af9962914b7a24",
+      "wp09-c2ecb0ec4a4a021d93ade3460eab35e4cf1d27cd01ca81647f6940f5117ddb5d",
+      "wp09-829b06be9f6ea403a184ba4b709eb90b6c69a81e80ea80be49f133dd49e12e86",
+      "wp09-d0304fdfc41a6ef40006b9cbe572f3d9efefec40254f6830263cde601c3f9b61",
+      "wp09-97c3bd7955969e5bbb2064d024d19a6a09b49e6259113a43ed9c092e02597ef2",
+      "wp09-4a208452d37cf6b904deb1a9698187de89bc9e973d32b274c6f646ec484e650a",
+      "wp09-64384b52999041e058452149423ee10240ab939c0a06b80fac3d921988f6dfef",
+      "wp09-3dedea3d990950abcc661453007feec2bae1fe7d12e8af024e401781fb918fbd",
+      "wp09-e3edfbc7740e8f53789b01aa172744d86865bcce9f1ea988910eeb25ed27070f",
+      "wp09-b5e998bcf1df414df879b8b42688e02ed8526a3a58be59f2a53b10b80ed981a5",
+      "wp09-ae309d76148db09883c972b7b5d49c050bfcaa4fdea579b548bfe9edd6bbe481",
+      "wp09-81be4c92349625d4089c25db3d10dba0b6382d77f301ba6b4f1302485481dd09",
+      "wp09-76531326e796765ef1b33af2193b81411ad5e3149d23f897e18dd34fb4be1a3f",
+      "wp09-ddea1f42afd9b0c6b864d070c4ab76b147b37f2a917cd4b2bfd20fa57c1cb58c",
+      "wp09-64e3f119115103e78f98a54e1c6088781763bad19c079f128eee57701ffef3d5",
+      "wp09-f67ced0e12881163659dc3d7f123f4f3836b0e70de73a7502cf5013b0da817f5",
+      "wp09-29fa59658697883ab7f9cd339a733a6d5dbfb52860508f588fd8c4e03eb57e11",
+      "wp09-7c330745563364c983316f2b44505dd4b3acc0320800e14eca6e2bbd938dac97",
+      "wp09-0a3dda2fe252809c1d617b861423736d17a031189ff4897228b524b745d19de7",
+      "wp09-52b974efee68018efef9b10bda4e96266219f67106d677704a2a3d20c0b07740",
+      "wp09-ebb8c1abbada110874175019a73ca6db94f7b24fa7e573528791dd9d30745e69",
+      "wp09-5942380ec6aaf49ba1cb02e4e64690027486ed7448e102ae8e66a139e9eb0908",
+      "wp09-660e7ad2129b6e12de0cd34828dd91dc8ba9b843b639a689bf47c7051a06682e",
+      "wp09-080c880c7cdbfaf498ab269814d17573fc05564efcfdb65a2d5db513a6d51759",
+      "wp09-c9584f2b3dfea67dfcb9c62d83f2a896fd43ce48cf94ef6ea7721c4b3fe46cff",
+      "wp09-14bad027a6efc3ba2d1b6e1982d554b274dc8907bab316a4b85183ac272d59e6",
+      "wp09-12dbb78a5e4686879264ea88ed7dfcba7b11dd7eecf2bfbc5cacd140a58da4af",
+      "wp09-1396fdc2a067ba0317693d7316bd95368444f2ad2d7cdca3f01c8f77c2461784",
+      "wp09-b3ec5fc4b28845857d541ce22d7d98732eb9e439b34c8eb3c2df33933bb69416",
+      "wp09-ad5de9af2e2eff47b80fa99936878bd1271a55d01a580765a2e22f9eeb992f92",
+      "wp09-f5db41ae49866a70878ac0a9289f20709203879bedb699b7c081f687a0a6794e",
+      "wp09-a8f21fa4e3e8ad074cedd9ff90ed7d47cce40966e7526da544ff478f4d7cd831",
+      "wp09-ba0acfcf0d3d4a91d6b6764bb91bc3f51b98975e448e2a4a6ec485338bfe8347",
+      "wp09-1b0cfa28e386701aa1bb0e69c6f3b3b2faeab60b51f8b7750bb29ab95ea07111",
+      "wp09-e8fe6865ea14aad46dc1c89e0aa5f174462b6a57a7b1747e247fc889e32327c5",
+      "wp09-b66bfbf9ed6229c09d4c4174d0d968b3e33427fb0a8d32ce5c671e3ca856ffd5",
+      "wp09-4d40d47b7a631f6ea71a06b9e908aa62635d4a7192f0372258393064847dbe35"
+    ],
+    "calibration_threshold": [
+      "wp09-b128329f3597509517e6705eb614cfe7fb746c75405fa3f1a0dbd0d943608243",
+      "wp09-a04218cdd5af2d6a5022ca870af804cb7795880690b177aa60035dfa2dc9c415",
+      "wp09-094fb48b8b047abc091759b1f9dc0769f0b99fdd0eeddd50b3677b5981554393",
+      "wp09-fc6f9c2865dbdb42098e8ebad81b3c6f739c0988070eb72df33439c6c20e5e14",
+      "wp09-b45ceb5c87da2e20f88e23dc2c3f603ddcd501dac988a00ebfe07546571cecab",
+      "wp09-24e67c4926dfe41bd283e25aaaaf9bbba7df8c126a894df403a8ec556d6d9c90",
+      "wp09-860953d824c6d5ff3c5a0fab5ad47aa88186c70d6c80566c19fce93c6d5e5516",
+      "wp09-19fba06c9fa1ddc21a8eaf466f07e084c0d8941f0695c1974c386ae352d60f69",
+      "wp09-f9132c227b10430d25121e53b71b8983d05f31a396acdd83c598d4f0ac07f450",
+      "wp09-d041894a6bc418638f9757e824d828e9e49deb2518fe0979755765774d01dec8",
+      "wp09-e7b335ef0a22b4e63e8d65d1491360b8ed5ec17fb0ed4aefa786f537a3b82f01",
+      "wp09-060c025273c9896000f5d04db7e349af32b9dfa102d2a7900e81e0dc61013a9a",
+      "wp09-650060f2f4976fc06971af4cd4c3c8ee7c1941b7a98b14b4d9c8e750aab8c8f9",
+      "wp09-c6b33fb3b6c16cd30d937c4e4a7abf0f2e1bd211270ddc40de7acd1993b2e1d8",
+      "wp09-fdde40a752f101213b76a8dcead187843b934309a4c39cb4af94964753dc9757",
+      "wp09-accf8474b2bf31502c8adbc56bc257a2504118cb941f8ba51388fdd8ca5d4886",
+      "wp09-7105d53f7f396b90a8c60fe2864b116a49ab5cb820fb607bd065291ac2336bcb",
+      "wp09-5a267e2fcbd738775055c8baf5374617b680331c6053b4d1c75e7f24af2ee5be",
+      "wp09-00bd4f08072df885820be6c35633e10bf17b556ee3a6d1c63d43cc3800955a25",
+      "wp09-f747c3f39152f52b8451a77bb38dad6ed18e3b72bab2903b4c5b4355abd1c1f5",
+      "wp09-b48ff0ac7549446aa0be8dc9793412346770d482d639353bd1cc28bcf38c8bea",
+      "wp09-11027fd211ca89faf499f2fb91f9900d213cc7c54bb499dd908fe370b404345d",
+      "wp09-0f028d2fa84af3a42a035b615e5b24cf2c88f87977e792f7ccd02734bc9eed61",
+      "wp09-a11710a6bbcee304099c89758324af364d7e2d30af7c2a94854931b5352f0265",
+      "wp09-2b0a7ec1a084ce5e0de80337ebdbb6d0f89bf82211c3a20d8948cb0db35cc940",
+      "wp09-a0471e6f2e62cc2d325801bc0ef194e2a9853d63adb2e5ad94e292a8933c3998",
+      "wp09-c6e50c0050ceb345e99d81744f25b9c01fbcc3581b825cccc4c15b82575cc35f",
+      "wp09-a6b8b9294030c571b9d544820c4f60c2c2b66270c8819a87ae1fd1b1754d4c9c",
+      "wp09-55ca005e8787f518ece25d8adbefda231845d3080ff5a6aa9e060399d2ef3345",
+      "wp09-00aa8e418311972a768f0ad26d38762f4310001bac947dbe89a1288da95b4d32",
+      "wp09-c0a3258ed9ff4d00b26f27543ac53ebb91d514f5d56675fb43bb07f4cbafca14",
+      "wp09-48432ace457cf1fee8db0be4337ba165320b86e3ead8bd5e22ba8480cd4c4a1d",
+      "wp09-6e952fe5b45b70c5fff003449a74c4e05c724f77a94dd5bdf4b9e1003c92d412",
+      "wp09-f12d13a75b95b12c5947bb242ec63336a0da260aab1d8b58637265cdf688181b",
+      "wp09-0946c4a7985d7e49012d1255aea4c78dd3b576ce11b622365bb60e2c26383cd8",
+      "wp09-a76729bffd1349e6c53a0641945aa063c2223e23fbffd2c59e45085f54034b56",
+      "wp09-b668fd8c9c16895243c4d7128bd5c5f9e7b358c86d8fae3eec6b93334595d95e",
+      "wp09-75edfd34f249c62b4dd04a870ddf09765769778228a2b9b392fa6de1dd0d6625",
+      "wp09-839bf8f9fd7be18c34570d86bea0cc7db6d0c93e400688162b4176438b409c81",
+      "wp09-59c457a659c1fc4a3bfaa602cb49e7315c6287ab83d1cf1d63c6f018c3b08d39"
+    ],
+    "evaluation": [
+      "wp09-dc412f2d5a49d9b4c7e3da33c596b94e94f5b0ab1cf8b86ec5e43e523c26d7da",
+      "wp09-7729b7618682f11816244174d43d9dd777b6dc66b8fba432463d85eadc4608a6",
+      "wp09-03cf453833146b62d045adb5488cb83368e6cf79b098c68e83ee0827495d81c7",
+      "wp09-93efdf461ac8b7a1732c127ad66abf2d4aa2d320bac5e85adaab3938a487af0f",
+      "wp09-1414ed4e994a64a7a16236518f4b7ef46243456e21d18157abb0140477948666",
+      "wp09-d48332cbc6a15cbe524b79e9a84682619a85b8c354a9be9853bb0d79870cea7d",
+      "wp09-c9344e07434bffa461382cebaaee7beea2d7fb3880a1a1c97d6e81c523dac88b",
+      "wp09-937e39dc082816fb844c2f977440528b129ffa39741e897537df2e48e89701b8",
+      "wp09-d9e48c0bd0d6ce2093f2a12203b7377568f652c5526ada727ccee7bbd7ad113f",
+      "wp09-51966bc91d673a2911bce102cf6d637401867a85a56642cb0045142f287e374a",
+      "wp09-9c5e70042faee84536cf650a6d41f7766ff237d2886ff6c8526a4382ad9f05e3",
+      "wp09-b459a35d56e18fe7c3b3243e2e4f6a3b1aedea4bbefec0c582b211efee4930db",
+      "wp09-d3441fe8ebadef832e5e1690ab6779f7228fb4669965f55d37d0730ccfcb271b",
+      "wp09-8245f9bb6a5e2ce8a64291b0477a6332163c9f982e237bd4edefabb8ea7008cd",
+      "wp09-831b49dc5520b741f52afa9ab8c3a9ea149345fe9378d27d254c58ff5cdcc47b",
+      "wp09-3b4f2fc6d9f384eb09ce7e49dea4b477be0f3d972111915131a8107eb32a4a4a",
+      "wp09-48833d853934d9982f1508ea42b0972275b8d0bb603b7fa1773778af6fdad091",
+      "wp09-91333336c712ae24b2cd72deaa0dcf9ea0494e73fe9d1c9e5e1e3e4c614bd515",
+      "wp09-f1fd50de6a58311432fd2d6731146d2c07a7e1a62251e76c0e56ff6d5ba00920",
+      "wp09-f8edd1661e47b8315a1abcc45938bd755a36f5036b32f754e1fc723654563246",
+      "wp09-8d1f9fe231d49564b6d4fb6ed17b93e8e8e015572668735867249cbd46be3011",
+      "wp09-a56f66b6077c9aecb1ffc856efe95aa1a368755389bb93cac1d448e621dc5b89",
+      "wp09-798fc81e150bcee2c66f8e4afda9e2c5d91c41a390157d73ba26096618ab0ca9",
+      "wp09-da53b8effea33efea27430257060417a635fb07c7a374e8134efa2b8d3449355",
+      "wp09-a9fc3001aae2e51f74d86028e29a4cdadbf0ca988848677e4043d6167efba24d",
+      "wp09-1832a31cc1fd796afecb449da077eb24a7dbf61b4c82a6837c5d141140ce5e7d",
+      "wp09-76cd19f2e744493f219764de0494f62c46562645c94464b78db575d54b2764ff",
+      "wp09-71a3030354f80414457c305fecbe1b5630dee4503348f5ff2f78ccaa0c64e193",
+      "wp09-79c3a9c3eea0742de7fec6b6c29ba33f34a476ebb7fd5040acbc239966a33465",
+      "wp09-7ef34b2b06aadecdf5fa92a65aa31cd0f855cb04bb6389aacf138ad119cc59fa",
+      "wp09-1766158ef8751e0796f704b0fa98c0a9ac429bc762f45887dcbb4e95d392b6b4",
+      "wp09-ead0e6b1f1cdf94ad0cbef6c51cb0bcea2e3e8d91e1a8bf484ef06fb802d87f7",
+      "wp09-660fc1597fc4b0b8daa9d02777a007f9f6f7e28ab4a7b05193b0217302da5da8",
+      "wp09-d3a72ccbfaf1ee5d95b99a532307096372657650eb6983bec8c41b5d6a28fa52",
+      "wp09-ffad325f933800940bf99324843e5da2193ecb57b911a6e4563057086e01cf39",
+      "wp09-8c30d1e730036c8a7efe9d0a367bb28ff2ef608501654e80bdea0917afa7f8bf",
+      "wp09-dc1cf0b24d7136190fcac6416623fc5e96471225eb0df7fd68ee001438145efc",
+      "wp09-1b820dfa32e8ec62addf0b24076d0eff9659f77da4cbd20d5649e80595c87c0d",
+      "wp09-1f6ac85dd1cd4596f2355d7ff59ea5c35499586f4676948bf2e34782f2da73ce",
+      "wp09-0a2899f8cddcbe8cb1936004bf295de74ee48a00e868c68c01f79d008d4a72ed",
+      "wp09-07b9175573d998fe75c786fa17bf28109faae3a82e5f2c01ce090bf97bb4ddc4",
+      "wp09-d8d67a47da088e72717017970ae1a5cdd6dcdc99d70d0104f157d2d41901cd78",
+      "wp09-59136b3e414ca1ec50403203874c14e029fe28721fe161af27f367454279d8ea",
+      "wp09-ba25a0ab4ef3719225236528a1b9d653c18c698946259d87d317839e21804127",
+      "wp09-ed812cc722110944c57d10fcd6215b8f1303b0ae04584f7841ec3b145685587c",
+      "wp09-d3f5bebf22d5c7608f8b6e11e80e28243e0b9ae2b48e6c4761db3b4d0c886373",
+      "wp09-83347bcc41b7ceee946f0f8b5af5a2f5f04bdbb6c742e8b825f0c131386a9d15",
+      "wp09-52703f704a7af11a72182c15bf412f05a68fe98aa1a2047b9a1f56a25911bcf2",
+      "wp09-97a48b503a7185384d7cc019884342a5d9ef8a68eb40acf881fd336e9674ee07",
+      "wp09-a7c783916e1045be9b626b3d59aaae22fcab3df7b83cf984c0c0b83085795e90",
+      "wp09-a11db33c67854fa66635921d033985e0ecdcec3e3453f52fcc19bbe790239353",
+      "wp09-2dc75c6020b5bdabd1ca1704c23307d212514bfb471af3e6987ebafb9288ca63",
+      "wp09-10a4ed1c6b72c88bb664c9f2dff0f74c90d8d83f909a7f4d20e03024febf560c",
+      "wp09-89c1340cb4b2482586a08a9888e6ff3960c517f00dba551e61cffcdc9016075d",
+      "wp09-e00be0fb5fd5b1dd403b91c102882c1e49119f356f8ea736e796e750bfc362f5",
+      "wp09-9871f40571e3af4df1c7b9d4f538c080f57011d7195724f6411770c6fd807db1",
+      "wp09-e3e1e8758fa42bd5bc2dcf30c2fd42c078846f0771c805eb57b1f1ae57803094",
+      "wp09-c918a6fa68e53fd1da09034a98ca2535d0e5b50ae40fcb135c5fa910951bbc85",
+      "wp09-38a01229eaf30945b91103b7138b1143ff09cdd6a27dad5585f33b87c111681c",
+      "wp09-dec0f9ab9c0031e689f01a8dbb5e6697f6c129d02294beecef4bb6460830a6ec",
+      "wp09-402b850349a52d1dd8dbbb1fc71d152d32e7b406329315590c849eeeba24155b",
+      "wp09-968794096c1c5b233ab8ee758417c9622b94f0ab4d46e6233f49e415540c5061",
+      "wp09-c003eb79857b0690b0e3d9880461203bec91e54909a7fe897cb634687e3c4029",
+      "wp09-c3dc9413a5c9cfe2ec66ae82bb4f7b7b7214fe424b67d80b0a4267a587401411",
+      "wp09-2879cc3069ce845134d89091ee8d2ac32fcb7aca2e9505c99e88147181dfc09b",
+      "wp09-43e8f0b5178f1d39c741192c321baa89769442ae12fd20cb96b3d7242c0c8f3a",
+      "wp09-3ef011fa37ddda4d9a4c0bebb547a6730fd19b878c2595a54bc22ba39fe8bc36",
+      "wp09-0a8e3a744fa2c9f29ea7bea37cee68f5f625804d8f848f72c9ec331d8277517c",
+      "wp09-53bf8140f331ca2470c9c7c791d1f206418a0116b02642db4dd7d2ee8909a853",
+      "wp09-df2b333d1f85d3abee14b639b0e3764888c2edd27b05125959fd44b49d00738a",
+      "wp09-6cdd366e0532c4582efc02a23e8aecd705bb17f4a24cdf81f29971ebd4874140",
+      "wp09-7545e33ff1e7095b8312e85c2a11bd64ff14d92189f3251c60d16def59736ef9",
+      "wp09-4fac875f26271a67d78ac6221dc9bb6b1411f8ebcaa74650077c21332b0f51ad",
+      "wp09-906ef2c736afc165f28071e45178f7d86f594a49ffce810c03ea5756efaf5e65",
+      "wp09-a6b9cf2144b4f71754b9c4f99c14fd7d8d2741b3dd916c5bd9766db1b8de492b",
+      "wp09-ad67b07c8d966a2ecdacb65852a4e4e6088afa58466add74dd776949c42b825d",
+      "wp09-0c0a4ba6b6b5901c0d39a1319721b443c82cec51e26aebadc65ba4e513970dd3",
+      "wp09-70d7a98a493e0b79d2ae9a3b19f6df51a5d87c386ad0d9dc57bb37f4ca00e1a9",
+      "wp09-df9bccdb327e29ba2c2bf70ed5cccd529df5af4fd537dc02abfc249f5876a9be",
+      "wp09-f69151f86e72ba3e391506f87e79aa7675ebc684e9346ec0c4ff456e1255ce0b",
+      "wp09-177136f0a2eaf618290f23afa35abd0d6ebd2540ae9a979665de202c56e73cfe",
+      "wp09-fcecd2ca32f94276a2885959b034010331a44922f71ca09f805fc15206f5412f",
+      "wp09-2a98ad59d3d0947dd197890669c4b8dbe95c7ba0830c57931690ec392d08263c",
+      "wp09-f1d69efaacae90e6c81e99a27b01e78d361d296f1f8ae3385b083ae0110b7522",
+      "wp09-fe33d7545253e3dcb9b5809e5130449d05ae0ef18cd77e01ef791903c2b26459",
+      "wp09-095ffb3505a153be211e739a5f97c4195d0b445606850fbc9277a06177035b13",
+      "wp09-9d4c66963518eab8cdf19120717a4b330e259453a02246bbadbc1efbb00228f1",
+      "wp09-832cf83425046d72cdf4714b3967c9fba380fbcf5cafa6e99df01265848b7ea9",
+      "wp09-b491a53b28a1467de545c6f15f3dd8be03a46646393e7a0a06e06f00557b6b96",
+      "wp09-f979aa3e321afdf7a2ad2cb206bce54e4ae96feb570514dff15d45d17d1a727e",
+      "wp09-723093f6269aea3d3e81bfc9dead99c015f0a99ac3deb2712c0a1a76fc488a26",
+      "wp09-bf432717dd98ddd6a98009713dcc120a4ee78a0becf7480fb676f854db27a592",
+      "wp09-d4ea4a28a4f61d0f97777237a45e57502b12452844916d45c5dda840237bedcc",
+      "wp09-5e7e447c911864c434a84677e3e3edcc2902eae73a6916d576b1fe0853c2e9d7",
+      "wp09-2be308a6eeff0ce1facf78eb5a2fe2bd73539bc84200c87ba6be450cb8d14abe",
+      "wp09-92833fdc6b0f72502603ba367a14a92f69cc574b07b99f2348a04f249de6048c",
+      "wp09-59e7c9754e31f517237889eb1507c7510a79bf72923fd913b085e08af8e2691b",
+      "wp09-c062536b58aae255dde68a9d0b952d7c2ce2fda1d6fca5eb82185f1191a9d3a8",
+      "wp09-a9d2f10437d1e00560d15eb72185b7f025a317e2aa517dbae3924fd7ec7bbba4",
+      "wp09-6cc1cbf72924c6360708044ffc778125b9668e3120f86696738912475a26ec8b"
+    ]
+  },
+  "schema_version": 1,
+  "scope": "development_validation_only",
+  "selected_step": 900,
+  "test_files_read": false,
+  "training_performed": false,
+  "work_package": "WP09.1"
+}
