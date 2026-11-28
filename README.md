@@ -72,6 +72,9 @@ Gate năng lực để khẳng định lợi ích confidence stopping chưa đ�
 [Đã chuẩn bị một vòng easy SFT trước WP09](docs/easy_recovery.md): source selected2200,
 budget1.000 updates, Colab luôn in log, selection/gate tách biệt. User chạy full training;
 local smoke không phải kết quả cải thiện năng lực.
+[Full Kaggle run đã được audit](docs/easy_recovery_completed.md): selected900,
+gate development6/48→45/48; WP03 2/4, authored43/44. Chỉ3 câu sai nên bước tiếp theo
+là khóa benchmark/split WP09.1 trước calibration, không train thêm vòng SFT.
 
 1. **Đồ án:** *When Does Confidence-Gated Test-Time Scaling Fail? A Study of
    Reliability and Compute Efficiency in Small Language Models.* Nghiên cứu confidence

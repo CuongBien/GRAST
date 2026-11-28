@@ -1,0 +1,214 @@
+{
+  "checks": {
+    "cursor_progress_consistent": true,
+    "earliest_best_selection_rule": true,
+    "exact_runtime_resume_tested_locally": false,
+    "full_checkpoint_counters_optimizer_history": true,
+    "implementation_100_files_match": true,
+    "independent_gate_rescoring": true,
+    "local_fp32_generation_matches_gate_metrics": true,
+    "selected_export_matches_checkpoint_best": true,
+    "source_and_dataset_pins": true
+  },
+  "date": "2026-11-28",
+  "local_generation": {
+    "baseline": {
+      "all_generated_ids_match_kaggle": true,
+      "summary": {
+        "accuracy": 0.125,
+        "by_origin": {
+          "authored": {
+            "correct": 0.13636363636363635,
+            "format_valid": 1.0,
+            "questions": 44,
+            "verified": 0.13636363636363635
+          },
+          "wp03": {
+            "correct": 0.0,
+            "format_valid": 1.0,
+            "questions": 4,
+            "verified": 0.0
+          }
+        },
+        "correct": 6,
+        "macro_final": 0.06818181818181818,
+        "macro_verified": 0.06818181818181818,
+        "questions": 48,
+        "verified": 6,
+        "verified_accuracy": 0.125
+      }
+    },
+    "selected": {
+      "all_generated_ids_match_kaggle": true,
+      "summary": {
+        "accuracy": 0.9375,
+        "by_origin": {
+          "authored": {
+            "correct": 0.9772727272727273,
+            "format_valid": 1.0,
+            "questions": 44,
+            "verified": 0.9772727272727273
+          },
+          "wp03": {
+            "correct": 0.5,
+            "format_valid": 1.0,
+            "questions": 4,
+            "verified": 0.5
+          }
+        },
+        "correct": 45,
+        "macro_final": 0.7386363636363636,
+        "macro_verified": 0.7386363636363636,
+        "questions": 48,
+        "verified": 45,
+        "verified_accuracy": 0.9375
+      }
+    }
+  },
+  "model_directory": "artifacts/checkpoints/easy-recovery-1000-selected-900",
+  "next": "WP09.1 benchmark stratification and group-level calibration/evaluation split; no additional training round; no thresholds fit on gate/test.",
+  "report": {
+    "amp_skips": 0,
+    "attempts": 1000,
+    "best": {
+      "step": 900,
+      "summary": {
+        "accuracy": 1.0,
+        "by_origin": {
+          "authored": {
+            "correct": 1.0,
+            "format_valid": 1.0,
+            "questions": 12,
+            "verified": 1.0
+          },
+          "wp03": {
+            "correct": 1.0,
+            "format_valid": 1.0,
+            "questions": 4,
+            "verified": 1.0
+          }
+        },
+        "correct": 16,
+        "macro_final": 1.0,
+        "macro_verified": 1.0,
+        "questions": 16,
+        "verified": 16,
+        "verified_accuracy": 1.0
+      },
+      "weights_sha256": "ceff8505868e41f56fdd57f33a339368f322017f2012b5bcba4ee88709d21859"
+    },
+    "dataset_fingerprint": "bdb0503b93a3f184acb1d0a71dda69bd9227c0ddf57bed189f0911ed2e9eed17",
+    "gate": {
+      "capability_screen_passed": true,
+      "limit": "Engineering screen only; not calibrated confidence or test-set evidence.",
+      "mixed_outcome_screen_passed": false,
+      "next": "Proceed to WP09; no automatic extra recovery round.",
+      "results": {
+        "baseline": {
+          "accuracy": 0.125,
+          "by_origin": {
+            "authored": {
+              "correct": 0.13636363636363635,
+              "format_valid": 1.0,
+              "questions": 44,
+              "verified": 0.13636363636363635
+            },
+            "wp03": {
+              "correct": 0.0,
+              "format_valid": 1.0,
+              "questions": 4,
+              "verified": 0.0
+            }
+          },
+          "checkpoint_sha256": "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8",
+          "correct": 6,
+          "macro_final": 0.06818181818181818,
+          "macro_verified": 0.06818181818181818,
+          "questions": 48,
+          "verified": 6,
+          "verified_accuracy": 0.125
+        },
+        "selected": {
+          "accuracy": 0.9375,
+          "by_origin": {
+            "authored": {
+              "correct": 0.9772727272727273,
+              "format_valid": 1.0,
+              "questions": 44,
+              "verified": 0.9772727272727273
+            },
+            "wp03": {
+              "correct": 0.5,
+              "format_valid": 1.0,
+              "questions": 4,
+              "verified": 0.5
+            }
+          },
+          "checkpoint_sha256": "6b24c29a7be8b4700bbd92b6e1d87e88e64e670fe2378437b18dc97abd8d4a97",
+          "correct": 45,
+          "macro_final": 0.7386363636363636,
+          "macro_verified": 0.7386363636363636,
+          "questions": 48,
+          "verified": 45,
+          "verified_accuracy": 0.9375
+        }
+      },
+      "scope": "development-validation-only",
+      "thresholds": {
+        "minimum_correct_and_wrong": 15,
+        "minimum_final_accuracy": 0.3,
+        "minimum_verified_accuracy": 0.25
+      },
+      "wp09_guidance": "adjust_difficulty"
+    },
+    "gate_evaluated": true,
+    "improved_on_selection": true,
+    "planned_steps": 1000,
+    "selected_sha256": "6b24c29a7be8b4700bbd92b6e1d87e88e64e670fe2378437b18dc97abd8d4a97",
+    "source_sha256": "d2ea45abc8f81b516552c184d75c595b95fa2bd1abdc260538e497da4b627dc8",
+    "status": "completed",
+    "step": 1000
+  },
+  "run_lifecycle": {
+    "error": null,
+    "finished_at": "2026-11-28T10:42:16.158264+00:00",
+    "started_at": "2026-11-28T10:33:57.626468+00:00",
+    "status": "completed"
+  },
+  "runtime_kaggle": {
+    "capability": [
+      7,
+      5
+    ],
+    "cuda": "13.0",
+    "cudnn_tf32": false,
+    "deterministic": true,
+    "device": "cuda:0",
+    "gpu_count": 2,
+    "gpu_name": "Tesla T4",
+    "matmul_tf32": false,
+    "num_threads": 1,
+    "torch": "2.11.0+cu130"
+  },
+  "selection_validation_loss_final": 0.006418769422748367,
+  "selection_validation_loss_initial": 0.0975970343360441,
+  "source_files": {
+    "20261128T103357626494Z-easy-recovery-v1-seed42-f378ee5a-summary.zip": {
+      "bytes": 1189458,
+      "sha256": "da8abe4b3518dcb5fb0913247281cc4d5ee9ced5451f93508d6b9a3f8632f952",
+      "stored_path": "artifacts/checkpoints/easy-recovery-1000-selected-900/evidence/20261128T103357626494Z-easy-recovery-v1-seed42-f378ee5a-summary.zip"
+    },
+    "latest.pt": {
+      "bytes": 755567263,
+      "sha256": "1857efc7f3dbaa714466385e3f0ec002c1d406905f07838a2a37e8645be5e34b",
+      "stored_path": "artifacts/checkpoints/easy-recovery-1000-selected-900/latest.pt"
+    },
+    "selected_model.pt": {
+      "bytes": 201412748,
+      "sha256": "6b24c29a7be8b4700bbd92b6e1d87e88e64e670fe2378437b18dc97abd8d4a97",
+      "stored_path": "artifacts/checkpoints/easy-recovery-1000-selected-900/selected_model.pt"
+    }
+  },
+  "status": "verified",
+  "train_loss_last100": 0.001385035890783764
+}

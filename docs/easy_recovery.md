@@ -1,5 +1,8 @@
 # One bounded easy SFT recovery round — trước WP09
 
+**Đã nhận và audit full Kaggle run ngày28/11/2026:**1.000 updates,0 skip,
+selected900; gate6/48→45/48. Xem [kết quả và bước chuyển WP09](easy_recovery_completed.md).
+
 Quyết định ngày **27/11/2026**: chạy đúng một vòng easy arithmetic từ selected2200,
 user train đầy đủ trên Colab; agent chỉ verify ngắn. WP08 đã đóng về kỹ thuật,
 gate năng lực còn yếu. Vòng này không được kéo dài tự động nếu chưa cải thiện;

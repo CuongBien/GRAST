@@ -109,6 +109,11 @@ khởi tạo từ selected2200. Agent verify ngắn; user chạy1.000 updates tr
 Selection16 và gate48 tách theo cặp toán hạng, không mở test. Chỉ kết luận sau full run;
 không tự thêm vòng train nếu gate yếu. Sau đó chuyển WP09 theo phạm vi evidence cho phép.
 
+Ngày28/11 đã [audit full easy recovery](easy_recovery_completed.md):1.000 updates,
+selected900, gate6/48→45/48 (WP03 2/4, authored43/44). Capability screen đạt;
+chỉ3 negatives nên cần thiết kế benchmark/split trước calibration trong WP09.1,
+không mở thêm vòng SFT và không gọi đây là test accuracy.
+
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 
 *When Does Confidence-Gated Test-Time Scaling Fail? A Study of Reliability and
