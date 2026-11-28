@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "experiment": {"name": "wp09-3-diagnostic-baselines"},
+  "reproducibility": {"seed": 42},
+  "artifacts": {"root": "../../artifacts/wp09-3/runs"},
+  "reference_policy": "fixed-k16",
+  "inputs": {
+    "pilot_inputs": "../../artifacts/wp09-2/pilot-inputs-v1",
+    "plan_fingerprint": "5be360669114a460de9aa114309bdf3093e10a888884ffbe1c4c99fc0b10b4f5",
+    "bank": "../../artifacts/wp09-2/runs/20261128T120857964590Z-wp09-2-stochastic-pilot-seed42-b7375a52/artifacts/bank",
+    "bank_fingerprint": "8752dbb5c275be1eeaed2b4d5cc431c4a9967cb34b03072f4506a5cf633e28b7",
+    "generation_commit": "../../artifacts/wp09-2/runs/20261128T120857964590Z-wp09-2-stochastic-pilot-seed42-b7375a52/artifacts/generation_commit.json",
+    "generation_fingerprint": "8a614498025af23e3074805b3834db7ace3c1d40a157051ac40895f7a342f6c3",
+    "greedy": "../../artifacts/wp09-2/runs/20261128T120857964590Z-wp09-2-stochastic-pilot-seed42-b7375a52/artifacts/greedy.predictions.jsonl",
+    "greedy_sha256": "311753976ba59c7e0efbc5134117f17d495399a8a2c705bd0638ab37aca0ddbb",
+    "references": "../../artifacts/wp09-2/analysis-v1/references.jsonl",
+    "references_sha256": "ce5a36df4881dfaba72a24ad9757a8a8f296a52f812f6ae1366093d1f1f42a4b"
+  },
+  "policies": [
+    {"id":"fixed-k1","kind":"fixed","min_draws":1,"max_draws":1,"threshold_numerator":1,"threshold_denominator":1},
+    {"id":"fixed-k2","kind":"fixed","min_draws":2,"max_draws":2,"threshold_numerator":1,"threshold_denominator":1},
+    {"id":"fixed-k4","kind":"fixed","min_draws":4,"max_draws":4,"threshold_numerator":1,"threshold_denominator":1},
+    {"id":"fixed-k8","kind":"fixed","min_draws":8,"max_draws":8,"threshold_numerator":1,"threshold_denominator":1},
+    {"id":"fixed-k16","kind":"fixed","min_draws":16,"max_draws":16,"threshold_numerator":1,"threshold_denominator":1},
+    {"id":"unanimous-min2","kind":"agreement","min_draws":2,"max_draws":16,"threshold_numerator":1,"threshold_denominator":1},
+    {"id":"unanimous-min3","kind":"agreement","min_draws":3,"max_draws":16,"threshold_numerator":1,"threshold_denominator":1},
+    {"id":"unanimous-min4","kind":"agreement","min_draws":4,"max_draws":16,"threshold_numerator":1,"threshold_denominator":1}
+  ]
+}
