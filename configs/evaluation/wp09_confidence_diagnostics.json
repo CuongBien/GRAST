@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "experiment": {
+    "name": "wp09-4a-confidence-diagnostics"
+  },
+  "reproducibility": {
+    "seed": 42
+  },
+  "artifacts": {
+    "root": "../../artifacts/wp09-4a/runs"
+  },
+  "inputs": {
+    "pilot_inputs": "../../artifacts/wp09-2/pilot-inputs-v1",
+    "plan_fingerprint": "5be360669114a460de9aa114309bdf3093e10a888884ffbe1c4c99fc0b10b4f5",
+    "bank": "../../artifacts/wp09-2/runs/20261128T120857964590Z-wp09-2-stochastic-pilot-seed42-b7375a52/artifacts/bank",
+    "bank_fingerprint": "8752dbb5c275be1eeaed2b4d5cc431c4a9967cb34b03072f4506a5cf633e28b7",
+    "references": "../../artifacts/wp09-2/analysis-v1/references.jsonl",
+    "references_sha256": "ce5a36df4881dfaba72a24ad9757a8a8f296a52f812f6ae1366093d1f1f42a4b"
+  },
+  "signal_protocol": "prefix-answer-entropy-invalid-bucket-raw-model-logprobs-v1",
+  "reliability_bin_edges": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "plotted_prefixes": [
+    2,
+    4,
+    8,
+    16
+  ]
+}
