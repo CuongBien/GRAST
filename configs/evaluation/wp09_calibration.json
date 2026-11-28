@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "experiment": {
+    "name": "wp09-4b-calibration-engine"
+  },
+  "reproducibility": {
+    "seed": 42
+  },
+  "artifacts": {
+    "root": "../../artifacts/wp09-4b/runs"
+  },
+  "protocol": "group-weighted-l2-logistic-prefix-v1",
+  "diagnostic_config": "wp09_confidence_diagnostics.json",
+  "calibration_spec": {
+    "l2": 0.01,
+    "gradient_tolerance": 1e-08,
+    "max_iterations": 100,
+    "min_positive_groups": 5,
+    "min_negative_groups": 5
+  },
+  "synthetic": {
+    "fit_groups": 128,
+    "assessment_groups": 128,
+    "seed": 20261129,
+    "fixture_protocol": "authored-two-outcome-overconfidence-disjoint-groups-v1"
+  },
+  "diagnostic_config_fingerprint": "00c2b9b96fe1bc4af7e9da5556aec9f0a6b5dcd3ec246de3ab1dcf66457e8d43"
+}
