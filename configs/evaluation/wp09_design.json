@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "seed": 20261128,
+  "partition_seed": 20261129,
+  "checkpoint_sha256": "6b24c29a7be8b4700bbd92b6e1d87e88e64e670fe2378437b18dc97abd8d4a97",
+  "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+  "curriculum_fingerprint": "0a891fda1dc3325a85f73a7022cef14fb6ce1b2d27467c1a7fbd42a7a0d16b56",
+  "recovery_fingerprint": "bdb0503b93a3f184acb1d0a71dda69bd9227c0ddf57bed189f0911ed2e9eed17",
+  "design_per_stratum": 8,
+  "selected_strata": 2,
+  "main_per_stratum": {"calibration_fit": 30, "calibration_threshold": 20, "evaluation": 50},
+  "generation": {"batch_size": 8, "max_new_tokens": 128, "seed": 42, "precision": "float32"},
+  "selection_rule": "Eligible: 1..7 of 8 correct and format-valid rate >= 0.75; choose two closest to accuracy 0.5, name tie-break. Fill missing slots by the same distance, mark diagnostic_only. No further probe round.",
+  "strata": [
+    {"name": "cross-short", "operations": 1, "a": [1, 30], "b": [31, 99], "c": [100, 199], "prompt_length": "short"},
+    {"name": "cross-medium", "operations": 1, "a": [1, 30], "b": [31, 99], "c": [100, 199], "prompt_length": "medium"},
+    {"name": "boundary-100", "operations": 1, "a": [80, 119], "b": [1, 99], "c": [100, 199], "prompt_length": "short"},
+    {"name": "three-digit", "operations": 1, "a": [100, 199], "b": [100, 199], "c": [100, 199], "prompt_length": "short"},
+    {"name": "two-step-cross", "operations": 2, "a": [1, 30], "b": [31, 99], "c": [100, 199], "prompt_length": "short"},
+    {"name": "two-step-three-digit", "operations": 2, "a": [100, 199], "b": [100, 199], "c": [100, 199], "prompt_length": "short"}
+  ]
+}
