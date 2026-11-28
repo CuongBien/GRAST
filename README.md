@@ -83,6 +83,9 @@ Chưa fit calibrator hoặc mở evaluation.
 [WP09.3 đã replay9 baseline](docs/wp09_baselines.md): cả9 accuracy0%; unanimous-min2
 tiết kiệm74,64% prefix tokens nhưng42,64% khi tính đủ batch8, với51/60 lần dừng sớm sai.
 Đây là diagnostic cost/false consensus, chưa phải efficacy hoặc online latency.
+[WP09.4A đã phân tích confidence theo prefix](docs/wp09_confidence_diagnostics.md):
+K16 agreement TB91,67%,39/60 unanimous nhưng sai; reliability chỉ là raw-score diagnostic.
+Chưa có dữ liệu đúng/sai đủ để fit calibration/threshold.
 
 1. **Đồ án:** *When Does Confidence-Gated Test-Time Scaling Fail? A Study of
    Reliability and Compute Efficiency in Small Language Models.* Nghiên cứu confidence

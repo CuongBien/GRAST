@@ -129,6 +129,10 @@ không chấm threshold/evaluation.
 repeat exact từ wheel. Tất cả accuracy0%; unanimous-min2 dừng sai51/60 và tiết kiệm
 42,64% batch tokens so K16 (74,64% prefix proxy). Calibration/threshold efficacy
 vẫn no-go; không gọi replay cost là online latency.
+[WP09.4A đã có prefix confidence/reliability diagnostics](wp09_confidence_diagnostics.md):
+960 prefixes, accuracy0%; K16 mean agreement0,9167, entropy chuẩn hóa0,0716.
+Raw ECE/Brier chỉ mô tả; AUROC undefined vì một lớp, không fit calibrator.
+WP09.4B/5 vẫn chờ quyết định phạm vi và workload có cả nhóm câu đúng/sai.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 
