@@ -410,7 +410,9 @@ def score_baselines(
     return report
 
 
-def export_table(table, output):
+def export_table(
+    table, output, *, title="WP09.3 diagnostic pilot: cost proxies, not online latency"
+):
     import matplotlib
 
     matplotlib.use("Agg")
@@ -452,7 +454,9 @@ def export_table(table, output):
             ]
         )
     atomic_text(output / "accuracy_token_table.csv", stream.getvalue())
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5.5), layout="constrained")
+    fig, axes = plt.subplots(
+        1, 2, figsize=(12, max(5.5, len(table) * 0.42 + 1.5)), layout="constrained"
+    )
     try:
         y = list(range(len(table)))
         axes[0].barh(
@@ -478,7 +482,7 @@ def export_table(table, output):
             ax.set_axisbelow(True)
         axes[0].set_xlabel("Mean generated tokens / question (seeds averaged)")
         axes[1].set_xlabel("Mean allocated generation slots / question")
-        fig.suptitle("WP09.3 diagnostic pilot: cost proxies, not online latency")
+        fig.suptitle(title)
         for ext in ("png", "svg"):
             fig.savefig(output / f"cost_proxies.{ext}", dpi=160)
     finally:

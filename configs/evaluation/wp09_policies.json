@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "experiment": {
+    "name": "wp09-5-confidence-policies"
+  },
+  "reproducibility": {
+    "seed": 42
+  },
+  "artifacts": {
+    "root": "../../artifacts/wp09-5/runs"
+  },
+  "protocol": "prefix-threshold-cges-fixed-capacity-unseen-slots-v1",
+  "baseline_config": "wp09_baselines.json",
+  "baseline_config_fingerprint": "41eb25c0953ff8873cdbd5c51cd585e27a3e33969b949acc1bf099a08a1c29c4",
+  "calibration_config": "wp09_calibration.json",
+  "calibration_config_fingerprint": "0d24bd0301887116aa8b2761ab568a9a332119505f2828e55b78445b29a9bdc2",
+  "thresholds": [
+    0.5,
+    0.75,
+    0.9,
+    0.95,
+    0.99
+  ],
+  "min_draws": [
+    2,
+    4
+  ],
+  "capacity": 17,
+  "epsilon": 1e-06,
+  "max_accuracy_regret": 0.05,
+  "synthetic_groups": 64,
+  "seed": 20261129
+}

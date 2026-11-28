@@ -6,6 +6,7 @@ import json
 import math
 from collections import Counter
 from dataclasses import asdict, dataclass
+from functools import cached_property
 from pathlib import Path
 
 import numpy as np
@@ -368,26 +369,37 @@ class LogisticCalibrator:
 
     @property
     def fingerprint(self):
-        return self.payload["fingerprint"]
+        return self._compiled[-1]
+
+    @cached_property
+    def _compiled(self):
+        # Immutable prediction parameters; payload still returns a fresh audit copy.
+        p = self.payload
+        params = p["parameters"]
+        return (
+            CalibrationContext(**p["context"]),
+            tuple(params["center"]),
+            tuple(params["scale"]),
+            tuple(params["coefficients"]),
+            params["intercept"],
+            p["fingerprint"],
+        )
 
     def predict_features(self, features, *, context):
-        p = self.payload
-        if type(context) is not CalibrationContext or asdict(context) != p["context"]:
+        bound, center, scale, coefficients, intercept, _ = self._compiled
+        if type(context) is not CalibrationContext or context != bound:
             raise ValueError("Calibration context mismatch; synthetic is not model validation")
         if not features or any(type(f) is not FeatureVector for f in features):
             raise ValueError("Prediction accepts observable feature vectors only")
-        params = p["parameters"]
         raw = np.array([f.values for f in features], dtype=np.float64)
         with np.errstate(over="ignore", invalid="ignore"):
-            z = ((raw - params["center"]) / params["scale"]) @ params["coefficients"] + params[
-                "intercept"
-            ]
+            z = ((raw - center) / scale) @ coefficients + intercept
         if not np.isfinite(z).all():
             raise ValueError("Features outside finite calibration numeric range")
         return sigmoid(z).tolist()
 
     def predict_prefix(self, observation, *, context):
-        if type(context) is not CalibrationContext or asdict(context) != self.payload["context"]:
+        if type(context) is not CalibrationContext or context != self._compiled[0]:
             raise ValueError("Calibration context mismatch")
         vector = features_from_prefix(observation)
         return self.predict_features([vector], context=context)[0] if vector is not None else None
