@@ -86,6 +86,9 @@ tiết kiệm74,64% prefix tokens nhưng42,64% khi tính đủ batch8, với51/6
 [WP09.4A đã phân tích confidence theo prefix](docs/wp09_confidence_diagnostics.md):
 K16 agreement TB91,67%,39/60 unanimous nhưng sai; reliability chỉ là raw-score diagnostic.
 Chưa có dữ liệu đúng/sai đủ để fit calibration/threshold.
+[WP09.4B đã có calibration engine](docs/wp09_calibration.md): logistic NumPy,
+artifact save/load, synthetic held-out Brier0,4357→0,2033. Đây là engineering verification;
+pilot thật0 positive groups nên chưa fit model calibrator. WP09.5 có thể implement tiếp.
 
 1. **Đồ án:** *When Does Confidence-Gated Test-Time Scaling Fail? A Study of
    Reliability and Compute Efficiency in Small Language Models.* Nghiên cứu confidence

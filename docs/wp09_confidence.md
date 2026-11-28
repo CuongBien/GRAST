@@ -24,7 +24,9 @@ chỉ báo cáo latency khi có đo online.
 accuracy đều0%; phân biệt prefix/batch cost và wrong early stop với full-budget regret.
 [WP09.4A đã hoàn tất](wp09_confidence_diagnostics.md): gold-free agreement/entropy/logprob,
 raw-agreement reliability và error cases trên960 prefixes. Không fit calibrator;
-WP09.4B/5 chưa mở vì bank không có positive correctness class.
+[WP09.4B đã hoàn tất implementation/synthetic verification](wp09_calibration.md):
+logistic calibrator, lưu/nạp và split/context guards. Pilot thật0 positive groups nên
+chưa fit real calibrator; WP09.5 có thể tiếp tục engineering với efficacy gate tách riêng.
 
 **Đã khóa benchmark ở chế độ diagnostic_only. Chưa đạt screen để tuyên bố có workload
 phù hợp calibration/efficacy.** Probe cố định48 câu cho kết quả0/48 final đúng,

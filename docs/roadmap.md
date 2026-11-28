@@ -132,7 +132,9 @@ vẫn no-go; không gọi replay cost là online latency.
 [WP09.4A đã có prefix confidence/reliability diagnostics](wp09_confidence_diagnostics.md):
 960 prefixes, accuracy0%; K16 mean agreement0,9167, entropy chuẩn hóa0,0716.
 Raw ECE/Brier chỉ mô tả; AUROC undefined vì một lớp, không fit calibrator.
-WP09.4B/5 vẫn chờ quyết định phạm vi và workload có cả nhóm câu đúng/sai.
+[WP09.4B đã implement và verify trên synthetic](wp09_calibration.md), artifact nạp lại
+exact và ranh giới fit/assessment được kiểm thử. Pilot thật0 positive/20 negative groups
+nên không fit calibrator thật. Tiếp theo implement WP09.5; scientific efficacy vẫn chưa đạt.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 

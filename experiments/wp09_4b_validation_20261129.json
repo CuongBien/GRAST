@@ -1,0 +1,169 @@
+{
+  "archive": {
+    "bytes": 474552,
+    "path": "dist/grast-wp09-4b-calibration-4c69505427e0.zip",
+    "sha256": "f19384e973eafbfc6801b8b78708d12ce2a9855f739c86ac7ef044c5041fa58c"
+  },
+  "calibration_spec": {
+    "gradient_tolerance": 1e-08,
+    "l2": 0.01,
+    "max_iterations": 100,
+    "min_negative_groups": 5,
+    "min_positive_groups": 5
+  },
+  "calibrator_fingerprint": "4c69505427e0f78804d7b588834e39d02c143948da33a8e865811ca719b7e09e",
+  "checks": {
+    "analytical_constant_solution_and_finite_difference_gradient_hessian_passed": true,
+    "checkpoint_loading_forbidden_in_wheel_and_portable_replay": true,
+    "full_tests_passed": 993,
+    "full_tests_seconds": 207.98,
+    "group_weighting_fit_only_standardization_partition_context_and_overlap_guards_passed": true,
+    "new_tests_passed": 14,
+    "plot_visually_inspected": true,
+    "portable_zip_extracted_replay_identical_files": [
+      "report.json",
+      "synthetic/calibrator.json",
+      "synthetic/report.json",
+      "synthetic/assessment.predictions.jsonl",
+      "synthetic/prediction_commit.json",
+      "real-eligibility/report.json",
+      "real-eligibility/trace/manifest.json"
+    ],
+    "ruff_lint_format_passed": true,
+    "sdist_excludes_local_artifacts_except_scaffold": true,
+    "single_class_and_nonconverged_artifacts_refused": true,
+    "source_config_canonical_fingerprint_crlf_lf_independent": true,
+    "source_run_git_clean": true,
+    "wheel_offline_byte_identical_files": [
+      "report.json",
+      "synthetic/calibrator.json",
+      "synthetic/report.json",
+      "synthetic/assessment.predictions.jsonl",
+      "synthetic/prediction_commit.json",
+      "synthetic/synthetic_metrics.csv",
+      "real-eligibility/report.json",
+      "real-eligibility/trace/manifest.json",
+      "real-eligibility/trace/signals.jsonl"
+    ]
+  },
+  "context": {
+    "checkpoint_sha256": null,
+    "domain": "synthetic",
+    "tokenizer_fingerprint": null
+  },
+  "date": "2026-11-29",
+  "features": [
+    "agreement",
+    "answer_entropy_normalized",
+    "winner_member_logprob_mean",
+    "log_draws"
+  ],
+  "files": {
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/artifacts/real-eligibility/report.json": "e67e7ffae00bad176f6f7f0c3c4bbb8d784f4ccd50c5c82be936d3999e2e2eb6",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/artifacts/real-eligibility/trace/manifest.json": "e0dc88fb468bc1fe8df2c5d3bf4864ac631ed2c4054b0a937b1841faddaac04f",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/artifacts/report.json": "7943128d6259b9dd52356c5d1d2953bc67343326e6fffe7381feb54b44bf2e2b",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/artifacts/synthetic/assessment.inputs.jsonl": "c663f74e332d300f06e156962fdc527460c81573a9c01595fa5f1abdc1c49dc5",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/artifacts/synthetic/assessment.predictions.jsonl": "f06c7dd672a6cdc324c0c36a346a9d723c1bda06b1e8412dd6f4c3cdf225884f",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/artifacts/synthetic/assessment.scored.jsonl": "7686104fbbfaafd1431ae78f0ea5f06c56321078ab9644a355ece456b6492879",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/artifacts/synthetic/calibrator.json": "50615d0d9921eba1902a4f1856b1b0dbfb2e02fc811a51cda79e33beb8d13fdc",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/artifacts/synthetic/prediction_commit.json": "4c77ef51a666efc9aec6ddf74c7e299a064e42f6dda886fece5f61f0e26c2a20",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/artifacts/synthetic/report.json": "63ec53fdd04a27e1511e0e8d818c9e553b57f19ee30dbaa985b85d6e9427a508",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/artifacts/synthetic/synthetic_calibration.png": "c3eed35f65ae27bf0525bce4a6f391f2ee1cc01533d012ebc79375055d04e299",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/artifacts/synthetic/synthetic_calibration.svg": "9c95d741b81d4173cf8a0a25fe659fb866a3338c1c2772fcf2db5c27b72aae10",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/artifacts/synthetic/synthetic_metrics.csv": "bceca01a2687a52529603baafaa2820c2c11f3416217b6a0514242c37482feeb",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/logs/events.jsonl": "be41068be13aadf1d4f6446fb972d774e8faac9b5dbf9a229bbf06e420d6fc1f",
+    "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802/metadata.json": "0e3e50eaffcecfac0cd6dc7f406baf2e6929f3ff2058f2588beaeac784184a44",
+    "configs/evaluation/wp09_calibration.json": "e8cf3cf30d7e4a12b38821f4872c96cb69e026119ac5a08e0ede4434f03aed98"
+  },
+  "grid_timing": "Feature order, lambda, optimizer, synthetic fixture and assessment design frozen in implementation commit before acceptance run; no tuning on reserved real threshold/evaluation.",
+  "implementation_commit": "f3202408977a945267aee89f69bf2322deae753e",
+  "next": "Implement WP09.5 policy/threshold engineering on synthetic two-outcome fixtures; keep real bank diagnostic until scientific fitting/evaluation conditions are met.",
+  "portable_run": "D:\\GRAST\\artifacts\\wp09-4b\\portable-extracted-v1\\reruns\\20261128T190959724844Z-wp09-4b-calibration-engine-seed42-ab4f7052",
+  "protocol": "group-weighted-l2-logistic-prefix-v1",
+  "real_pilot": {
+    "bank_fingerprint": "8752dbb5c275be1eeaed2b4d5cc431c4a9967cb34b03072f4506a5cf633e28b7",
+    "context": {
+      "checkpoint_sha256": "6b24c29a7be8b4700bbd92b6e1d87e88e64e670fe2378437b18dc97abd8d4a97",
+      "domain": "model_validation",
+      "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3"
+    },
+    "next": "blocked_insufficient_positive_negative_groups",
+    "real_calibrator_fitted": false,
+    "references_sha256": "ce5a36df4881dfaba72a24ad9757a8a8f296a52f812f6ae1366093d1f1f42a4b",
+    "scope": "real_pilot_eligibility_only",
+    "support": {
+      "eligible": false,
+      "groups": 20,
+      "negative_groups": 20,
+      "negative_rows": 900,
+      "positive_groups": 0,
+      "positive_rows": 0,
+      "rows": 900,
+      "unique_questions": 20
+    },
+    "trace_fingerprint": "732b359b5cc565f2c43348c891f24424f4a628a3f3106417dab9d171d5d659e0"
+  },
+  "schema_version": 1,
+  "scope": {
+    "evaluation_scored": false,
+    "new_model_inference_performed": false,
+    "real_calibrator_fitted": false,
+    "scientific_efficacy_accepted": false,
+    "threshold_partition_scored": false,
+    "threshold_search_performed": false
+  },
+  "source_package_fingerprint": "9e686db30266c2ca1c8ad367c86821e56415b7a3d2eeee8acc0ea30b507b6058",
+  "source_run": "artifacts/wp09-4b/runs/20261128T190607709203Z-wp09-4b-calibration-engine-seed42-e9253802",
+  "status": "engineering_complete_synthetic_verified_real_fit_not_performed",
+  "synthetic": {
+    "assessment_support": {
+      "eligible": true,
+      "groups": 128,
+      "negative_groups": 84,
+      "negative_rows": 1008,
+      "positive_groups": 44,
+      "positive_rows": 528,
+      "rows": 1536,
+      "unique_questions": 128
+    },
+    "calibrated": {
+      "accuracy": 0.34375,
+      "brier": 0.203342548998505,
+      "ece": 0.019146449279901168,
+      "log_loss": 0.5915517782997527
+    },
+    "fit_support": {
+      "eligible": true,
+      "groups": 128,
+      "negative_groups": 84,
+      "negative_rows": 1008,
+      "positive_groups": 44,
+      "positive_rows": 528,
+      "rows": 1536,
+      "unique_questions": 128
+    },
+    "fixture_protocol": "authored-two-outcome-overconfidence-disjoint-groups-v1",
+    "model_efficacy_claim": false,
+    "optimizer": {
+      "gradient_inf_norm": 8.198596276702552e-10,
+      "iterations": 4,
+      "objective": 0.591492062168111
+    },
+    "prediction_commit": {
+      "calibrator_fingerprint": "4c69505427e0f78804d7b588834e39d02c143948da33a8e865811ca719b7e09e",
+      "fingerprint": "8b5f9ae21ed5a7374916b92b4efaf09734322d5245c16bb882fe0e6c8f6a1b87",
+      "inputs_sha256": "c663f74e332d300f06e156962fdc527460c81573a9c01595fa5f1abdc1c49dc5",
+      "predictions_sha256": "f06c7dd672a6cdc324c0c36a346a9d723c1bda06b1e8412dd6f4c3cdf225884f"
+    },
+    "raw": {
+      "accuracy": 0.34375,
+      "brier": 0.4356562296549479,
+      "ece": 0.47839355468749994,
+      "log_loss": 7.9300351722150815
+    },
+    "scope": "synthetic_verification_only"
+  },
+  "timezone": "Asia/Bangkok",
+  "wheel_run": "D:\\GRAST\\artifacts\\wp09-4b\\wheel-runs\\20261128T190726058806Z-wp09-4b-calibration-engine-seed42-93c0b271",
+  "work_package": "WP09.4B"
+}

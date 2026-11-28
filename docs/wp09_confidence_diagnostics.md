@@ -126,7 +126,9 @@ Receipt: `experiments/wp09_4a_validation_20261129.json`; kit portable trong `dis
 chứa bank/input/outputs/report/config, references tách riêng và không có weights.
 Để tái lập trace fingerprint, dùng package đúng implementation commit đã ghi.
 
-**WP09.4A đạt engineering acceptance; WP09.4B và WP09.5 vẫn no-go.** Bước quyết định
+**WP09.4A đạt engineering acceptance; real-fit/efficacy gate chưa đạt.**
+Cập nhật29/11: [WP09.4B đã implement và nghiệm thu synthetic](wp09_calibration.md);
+không cần chờ positive thật để hoàn thiện code WP09.4B/5. Bước quyết định
 tiếp theo là khóa hướng nghiên cứu: giữ workload này để báo cáo false consensus và
 compute cost, hoặc thiết kế một workload mới có positive/negative ở mức nhóm câu
 độc lập. Mọi thay đổi benchmark phải có protocol riêng; không dùng threshold hay
