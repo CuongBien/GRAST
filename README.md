@@ -80,6 +80,9 @@ là khóa benchmark/split WP09.1 trước calibration, không train thêm vòng 
 [WP09.2 pilot đã có bank tái sử dụng](docs/wp09_pilot.md):960 candidates,
 oracle0/60 trials, greedy0/20;39/60 trials unanimous ởK16 nhưng sai.
 Chưa fit calibrator hoặc mở evaluation.
+[WP09.3 đã replay9 baseline](docs/wp09_baselines.md): cả9 accuracy0%; unanimous-min2
+tiết kiệm74,64% prefix tokens nhưng42,64% khi tính đủ batch8, với51/60 lần dừng sớm sai.
+Đây là diagnostic cost/false consensus, chưa phải efficacy hoặc online latency.
 
 1. **Đồ án:** *When Does Confidence-Gated Test-Time Scaling Fail? A Study of
    Reliability and Compute Efficiency in Small Language Models.* Nghiên cứu confidence

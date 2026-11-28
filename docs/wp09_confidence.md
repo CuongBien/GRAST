@@ -20,6 +20,8 @@ chỉ báo cáo latency khi có đo online.
 
 [Pilot WP09.2 đã chạy](wp09_pilot.md):960 candidates/20 câu/3 seeds,
 0 candidates đúng, greedy0/20; giữ diagnostic_only, không tự mở full bank/calibration.
+[WP09.3 đã hoàn tất diagnostic replay](wp09_baselines.md):9 methods,500 decisions,
+accuracy đều0%; phân biệt prefix/batch cost và wrong early stop với full-budget regret.
 
 **Đã khóa benchmark ở chế độ diagnostic_only. Chưa đạt screen để tuyên bố có workload
 phù hợp calibration/efficacy.** Probe cố định48 câu cho kết quả0/48 final đúng,
@@ -62,7 +64,8 @@ không có nghĩa chúng tốt hơn các nhóm còn lại.
 | calibration_threshold | 40 (20/stratum) | Chọn threshold theo tiêu chí đã khóa |
 | evaluation | 100 (50/stratum) | Báo cáo sau khi đóng băng policy |
 
-48 câu design tách riêng. Toàn bộ200 câu main **chưa được sinh dự đoán hoặc chấm điểm**.
+48 câu design tách riêng. Khi đóng WP09.1, toàn bộ200 câu main chưa được sinh dự đoán
+hoặc chấm điểm. WP09.2 sau đó chỉ chạy20 câu calibration_fit; WP09.3 replay cùng bank.
 Các partition trên đều là development validation tổng hợp mới; official test không được đọc.
 
 Đã loại6.621 cặp toán hạng có trong toàn bộ curriculum train/validation và recovery

@@ -1,0 +1,387 @@
+{
+  "archive": {
+    "bytes": 440528,
+    "path": "dist/grast-wp09-3-baselines-8c592ba7dc87.zip",
+    "sha256": "6e8a34b2d8b95e9795628c32d6513594a61349f6bf0a876003196a54e4bc524a"
+  },
+  "bank_fingerprint": "8752dbb5c275be1eeaed2b4d5cc431c4a9967cb34b03072f4506a5cf633e28b7",
+  "checks": {
+    "bank_unchanged_after_each_replay": true,
+    "checkpoint_load_forbidden_in_wheel_and_portable_replay": true,
+    "full_tests_passed": 966,
+    "full_tests_seconds": 292.33,
+    "gold_free_decision_and_future_independence_tested": true,
+    "plot_visually_inspected": true,
+    "portable_zip_extracted_replay_identical_files": [
+      "analysis/report.json",
+      "replay/commit.json",
+      "replay/sampled/decisions.jsonl",
+      "replay/greedy.decisions.jsonl",
+      "analysis/accuracy_token_table.csv"
+    ],
+    "ruff_lint_format_passed": true,
+    "sdist_excludes_local_artifacts_except_scaffold": true,
+    "source_run_git_clean": true,
+    "targeted_tests_passed": 5,
+    "wheel_offline_byte_identical_files": [
+      "replay/commit.json",
+      "replay/greedy.decisions.jsonl",
+      "replay/sampled/decisions.jsonl",
+      "analysis/report.json",
+      "analysis/scored.jsonl",
+      "analysis/per_question.jsonl",
+      "analysis/accuracy_token_table.csv",
+      "analysis/error_cases.json"
+    ]
+  },
+  "cost_protocol": {
+    "batch": "All valid tokens from every candidate in launched native batches",
+    "greedy": "Dedicated completions; padded slots use actual cross-question batches",
+    "normalization": "Equal question weight, seeds averaged within question; ratios of means vs full fixed-K",
+    "padded_slots": "Batch size times longest completion per launched batch; not FLOPs or latency",
+    "prefill": "Prompt tokens reported separately, not included in generated-token savings",
+    "prefix": "Valid generated tokens incl EOS in consumed prefix; ideal sequential proxy",
+    "sunk_cost": "Full bank acquisition already paid; replay does not save this past cost"
+  },
+  "date": "2026-11-28",
+  "decision_commit_fingerprint": "4780565c8fb69108a1235fa0c6b14ed3b501d9c8408d14bfb7516dfa01951d86",
+  "files": {
+    "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240/artifacts/analysis/accuracy_token_table.csv": "f2556992544b6bc778672bcb42fb6b35d1dd8233a4c9cf98ca0b6e3bd31bbfe0",
+    "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240/artifacts/analysis/cost_proxies.png": "0febbbbcca8483e264fb8466452498b07d659b86c20e8733b0aa11de3ec663f1",
+    "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240/artifacts/analysis/cost_proxies.svg": "68bfd031ca2685822b741f6270e95ba616ab9517733b307ffba6b1d119087fab",
+    "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240/artifacts/analysis/error_cases.json": "a9f51c65366bdcc4ba8ce892ffe11014b0bebf9fb9a633ba11276034ca141b71",
+    "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240/artifacts/analysis/per_question.jsonl": "1a555a4b02e4784223142a3094bffbc44faddc74fdd3062c89295b32769d874c",
+    "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240/artifacts/analysis/report.json": "8ad0ebbdf8382bf5f63dc620acc560ce280bc972fc19eedd54c917074fef0e9c",
+    "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240/artifacts/analysis/scored.jsonl": "8bb1bb39214d9b0fa4ad6131e47613f9c2928edc7beeca42bfb58c218b94ae1b",
+    "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240/artifacts/replay/commit.json": "a2f1d9dd49f120c28ea3b4fd4643da2ca710bf98bf756317d5d315a0c7c8f981",
+    "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240/artifacts/replay/greedy.decisions.jsonl": "437ea2fadaabb578bfe9456733bc86a739ffb801d1bff8491ca03aee7f69fb27",
+    "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240/artifacts/replay/sampled/decisions.jsonl": "8a447eb2422996389eba4de2a2fed7920dedef8a51150b6818ec9c0f2f6e3fa5",
+    "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240/logs/events.jsonl": "364cf4357eb20a1f9dd6512bfa33051f49891b538eca335a2a3e80be5a7c08f0",
+    "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240/metadata.json": "08724455862da433a1e936261f79bd45c6d8c48b74b214dd8c34f0eba44bea89",
+    "configs/evaluation/wp09_baselines.json": "3998cde65862c0cd80198b47b7a8344241c12a3f11b9d46b2e5439084d5bbe28"
+  },
+  "greedy_acquisition_generated_tokens": 487,
+  "greedy_decisions": 20,
+  "grid_timing": "Specific unanimous-prefix min2/3/4 definition frozen after WP09.2 labels, before WP09.3 replay; not preregistered before pilot.",
+  "implementation_commit": "a14bc34236c721a8d58bcd2a35dfd967adb82f29",
+  "interpretation": "Pilot diagnostic only; no calibration/efficacy or population-accuracy claim. Oracle=0 bounds selectors to zero accuracy on this bank.",
+  "metrics": [
+    {
+      "accuracy": 0,
+      "avoidable_wrong_early_stops": 0,
+      "batch_savings": 0.93744648056174,
+      "correct_observations": 0,
+      "mean_costs": {
+        "batch_prompt_tokens": 59.35,
+        "batch_tokens": 24.35,
+        "padded_generation_slots": 26,
+        "prefix_prompt_tokens": 59.35,
+        "prefix_tokens": 24.35
+      },
+      "mean_draws": 1,
+      "observations": 20,
+      "padded_slot_savings": 0.9334470989761092,
+      "policy_id": "greedy",
+      "prefix_savings": 0.93744648056174,
+      "strata": {
+        "boundary-100": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 0
+        },
+        "cross-medium": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 0
+        }
+      },
+      "unique_questions": 20,
+      "wrong_early_stops": 0,
+      "wrong_with_later_correct": 0
+    },
+    {
+      "accuracy": 0,
+      "avoidable_wrong_early_stops": 0,
+      "batch_savings": 0.499743106696352,
+      "correct_observations": 0,
+      "mean_costs": {
+        "batch_prompt_tokens": 474.8,
+        "batch_tokens": 194.73333333333335,
+        "padded_generation_slots": 195.33333333333334,
+        "prefix_prompt_tokens": 59.35,
+        "prefix_tokens": 24.316666666666666
+      },
+      "mean_draws": 1,
+      "observations": 60,
+      "padded_slot_savings": 0.5,
+      "policy_id": "fixed-k1",
+      "prefix_savings": 0.937532111662956,
+      "strata": {
+        "boundary-100": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 0
+        },
+        "cross-medium": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 0
+        }
+      },
+      "unique_questions": 20,
+      "wrong_early_stops": 0,
+      "wrong_with_later_correct": 0
+    },
+    {
+      "accuracy": 0,
+      "avoidable_wrong_early_stops": 0,
+      "batch_savings": 0.499743106696352,
+      "correct_observations": 0,
+      "mean_costs": {
+        "batch_prompt_tokens": 474.8,
+        "batch_tokens": 194.73333333333335,
+        "padded_generation_slots": 195.33333333333334,
+        "prefix_prompt_tokens": 118.7,
+        "prefix_tokens": 48.666666666666664
+      },
+      "mean_draws": 2,
+      "observations": 60,
+      "padded_slot_savings": 0.5,
+      "policy_id": "fixed-k2",
+      "prefix_savings": 0.874978592224696,
+      "strata": {
+        "boundary-100": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 0
+        },
+        "cross-medium": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 0
+        }
+      },
+      "unique_questions": 20,
+      "wrong_early_stops": 0,
+      "wrong_with_later_correct": 0
+    },
+    {
+      "accuracy": 0,
+      "avoidable_wrong_early_stops": 0,
+      "batch_savings": 0.499743106696352,
+      "correct_observations": 0,
+      "mean_costs": {
+        "batch_prompt_tokens": 474.8,
+        "batch_tokens": 194.73333333333335,
+        "padded_generation_slots": 195.33333333333334,
+        "prefix_prompt_tokens": 237.4,
+        "prefix_tokens": 97.4
+      },
+      "mean_draws": 4,
+      "observations": 60,
+      "padded_slot_savings": 0.5,
+      "policy_id": "fixed-k4",
+      "prefix_savings": 0.7497859222469601,
+      "strata": {
+        "boundary-100": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 0
+        },
+        "cross-medium": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 0
+        }
+      },
+      "unique_questions": 20,
+      "wrong_early_stops": 0,
+      "wrong_with_later_correct": 0
+    },
+    {
+      "accuracy": 0,
+      "avoidable_wrong_early_stops": 0,
+      "batch_savings": 0.499743106696352,
+      "correct_observations": 0,
+      "mean_costs": {
+        "batch_prompt_tokens": 474.8,
+        "batch_tokens": 194.73333333333335,
+        "padded_generation_slots": 195.33333333333334,
+        "prefix_prompt_tokens": 474.8,
+        "prefix_tokens": 194.73333333333335
+      },
+      "mean_draws": 8,
+      "observations": 60,
+      "padded_slot_savings": 0.5,
+      "policy_id": "fixed-k8",
+      "prefix_savings": 0.499743106696352,
+      "strata": {
+        "boundary-100": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 0
+        },
+        "cross-medium": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 0
+        }
+      },
+      "unique_questions": 20,
+      "wrong_early_stops": 0,
+      "wrong_with_later_correct": 0
+    },
+    {
+      "accuracy": 0,
+      "avoidable_wrong_early_stops": 0,
+      "batch_savings": 0.0,
+      "correct_observations": 0,
+      "mean_costs": {
+        "batch_prompt_tokens": 949.6,
+        "batch_tokens": 389.26666666666665,
+        "padded_generation_slots": 390.6666666666667,
+        "prefix_prompt_tokens": 949.6,
+        "prefix_tokens": 389.26666666666665
+      },
+      "mean_draws": 16,
+      "observations": 60,
+      "padded_slot_savings": 0.0,
+      "policy_id": "fixed-k16",
+      "prefix_savings": 0.0,
+      "strata": {
+        "boundary-100": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 0
+        },
+        "cross-medium": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 0
+        }
+      },
+      "unique_questions": 20,
+      "wrong_early_stops": 0,
+      "wrong_with_later_correct": 0
+    },
+    {
+      "accuracy": 0,
+      "avoidable_wrong_early_stops": 0,
+      "batch_savings": 0.42635725295427296,
+      "correct_observations": 0,
+      "mean_costs": {
+        "batch_prompt_tokens": 552.0,
+        "batch_tokens": 223.3,
+        "padded_generation_slots": 224.0,
+        "prefix_prompt_tokens": 253.8,
+        "prefix_tokens": 98.7
+      },
+      "mean_draws": 4.1,
+      "observations": 60,
+      "padded_slot_savings": 0.42662116040955633,
+      "policy_id": "unanimous-min2",
+      "prefix_savings": 0.7464463092995376,
+      "strata": {
+        "boundary-100": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 27
+        },
+        "cross-medium": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 24
+        }
+      },
+      "unique_questions": 20,
+      "wrong_early_stops": 51,
+      "wrong_with_later_correct": 0
+    },
+    {
+      "accuracy": 0,
+      "avoidable_wrong_early_stops": 0,
+      "batch_savings": 0.4016098647028601,
+      "correct_observations": 0,
+      "mean_costs": {
+        "batch_prompt_tokens": 577.8666666666667,
+        "batch_tokens": 232.93333333333334,
+        "padded_generation_slots": 233.86666666666667,
+        "prefix_prompt_tokens": 345.53333333333336,
+        "prefix_tokens": 135.13333333333333
+      },
+      "mean_draws": 5.6,
+      "observations": 60,
+      "padded_slot_savings": 0.40136518771331064,
+      "policy_id": "unanimous-min3",
+      "prefix_savings": 0.6528515156704915,
+      "strata": {
+        "boundary-100": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 26
+        },
+        "cross-medium": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 22
+        }
+      },
+      "unique_questions": 20,
+      "wrong_early_stops": 48,
+      "wrong_with_later_correct": 0
+    },
+    {
+      "accuracy": 0,
+      "avoidable_wrong_early_stops": 0,
+      "batch_savings": 0.38568247987669124,
+      "correct_observations": 0,
+      "mean_costs": {
+        "batch_prompt_tokens": 589.3333333333334,
+        "batch_tokens": 239.13333333333333,
+        "padded_generation_slots": 240.26666666666665,
+        "prefix_prompt_tokens": 409.2,
+        "prefix_tokens": 164.06666666666666
+      },
+      "mean_draws": 6.8,
+      "observations": 60,
+      "padded_slot_savings": 0.3849829351535837,
+      "policy_id": "unanimous-min4",
+      "prefix_savings": 0.5785237198150368,
+      "strata": {
+        "boundary-100": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 24
+        },
+        "cross-medium": {
+          "accuracy": 0,
+          "unique_questions": 10,
+          "wrong_early_stops": 22
+        }
+      },
+      "unique_questions": 20,
+      "wrong_early_stops": 46,
+      "wrong_with_later_correct": 0
+    }
+  ],
+  "next": "No calibration fit/threshold search/evaluation expansion on this zero-positive bank; revisit research scope before efficacy claims.",
+  "oracle_covered_trials": 0,
+  "portable_run": "D:\\GRAST\\artifacts\\wp09-3\\portable-extracted-v1\\reruns\\20261128T131455542280Z-wp09-3-diagnostic-baselines-seed42-99b8c4bb",
+  "question_seed_trials": 60,
+  "replay_fingerprint": "8c592ba7dc87e2626b8bfcea48cb77ec2d1a28d496f7c4cf3c734cd694ae3eeb",
+  "sampled_acquisition_generated_tokens": 23356,
+  "sampled_decisions": 480,
+  "schema_version": 1,
+  "scope": {
+    "calibrator_fitted": false,
+    "evaluation_scored": false,
+    "new_inference_performed": false,
+    "threshold_partition_scored": false
+  },
+  "source_package_fingerprint": "e8f7363bb364e5ee38f81fa6562756ccbe953389a6e6fc18d8e03f179cf0a1a5",
+  "source_run": "artifacts/wp09-3/runs/20261128T131048991509Z-wp09-3-diagnostic-baselines-seed42-f6261240",
+  "status": "diagnostic_engineering_complete_efficacy_no_go",
+  "unique_questions": 20,
+  "wheel_run": "D:\\GRAST\\artifacts\\wp09-3\\wheel-runs\\20261128T131244875160Z-wp09-3-diagnostic-baselines-seed42-5dc8ea95",
+  "work_package": "WP09.3"
+}

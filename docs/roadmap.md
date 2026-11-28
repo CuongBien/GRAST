@@ -118,13 +118,17 @@ không mở thêm vòng SFT và không gọi đây là test accuracy.
 
 [Kế hoạch6 phase và protocol](wp09_confidence.md). WP09.1 đã khóa design probe48
 và main benchmark200 câu với fact groups không trùng. Probe mới0/48, control cũ6/8
-khớp inference trước đó: trạng thái diagnostic_only. Chưa generate/chấm200 câu main;
-WP09.2 bắt đầu pilot trên calibration_fit trước khi quyết định thu bank đầy đủ.
+khớp inference trước đó: trạng thái diagnostic_only. WP09.2 chỉ generate/chấm20 câu
+calibration_fit trong main; threshold40/evaluation100 vẫn chưa mở.
 
 [Pilot WP09.2 đã hoàn tất](wp09_pilot.md):20 câu,3 seeds,K16;0/960 candidates đúng,
 prefix winner không có positive, greedy0/20. Bank lưu đầy đủ token/logprob/order và
 có thể replay offline. Screen không đạt; không mở full bank, không fit calibrator,
-không chấm threshold/evaluation. Bước phù hợp kế tiếp là diagnostic replay trong WP09.3.
+không chấm threshold/evaluation.
+[WP09.3 đã replay9 baseline](wp09_baselines.md),480 sampled+20 greedy decisions,
+repeat exact từ wheel. Tất cả accuracy0%; unanimous-min2 dừng sai51/60 và tiết kiệm
+42,64% batch tokens so K16 (74,64% prefix proxy). Calibration/threshold efficacy
+vẫn no-go; không gọi replay cost là online latency.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 
