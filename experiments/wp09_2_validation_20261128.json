@@ -1,0 +1,95 @@
+{
+  "archive": {
+    "bytes": 315659,
+    "path": "dist/grast-wp09-2-pilot-8752dbb5c275.zip",
+    "sha256": "a7de0cb5d04062ec9b7a072c1d56f690be7b37dbb2ff8d3d8aba6e3b8fe7b76c"
+  },
+  "bank_fingerprint": "8752dbb5c275be1eeaed2b4d5cc431c4a9967cb34b03072f4506a5cf633e28b7",
+  "candidate_answer_valid": 960,
+  "candidate_eos_finished": 960,
+  "candidate_format_valid": 960,
+  "checks": {
+    "benchmark_unchanged": true,
+    "full_tests_passed": 961,
+    "full_tests_seconds": 301.51,
+    "independent_symbolic_answers_checked": 960,
+    "independent_wheel_offline_report_exact": true,
+    "model_unchanged": true,
+    "sdist_excludes_local_artifacts": true,
+    "source_fingerprints_match_bank_run": true,
+    "targeted_tests_passed": 5,
+    "tiny_repeat_bank_exact": true
+  },
+  "date": "2026-11-28",
+  "files": {
+    "artifacts/wp09-2/analysis-v1/candidate_labels/scored.jsonl": "5217286fbc5df1ca2cd08f02f2a2353b5b848e8ad082aece2834744c5f84231e",
+    "artifacts/wp09-2/analysis-v1/prefixes.scored.jsonl": "65d83690645cf13251e5647c26c27cda43bd88a90dd3edc33b50e5ae76c92cc2",
+    "artifacts/wp09-2/analysis-v1/report.json": "108b6ff18cd30f8a49d852a3a73df932c1bb8bdeb16063a21b1cd65b7ec6efcc",
+    "artifacts/wp09-2/runs/20261128T120857964590Z-wp09-2-stochastic-pilot-seed42-b7375a52/artifacts/generation_commit.json": "c897732a2def27d172151c5d563fadcb7c14d23d5c8f4b356f56066a62ca181f",
+    "artifacts/wp09-2/runs/20261128T120857964590Z-wp09-2-stochastic-pilot-seed42-b7375a52/logs/events.jsonl": "99607412201bd5245b427c9386cc4ba80d431d03c2f5bd7de3e432fb1e42125b"
+  },
+  "generation_lifecycle": {
+    "error": null,
+    "finished_at": "2026-11-28T12:13:58.010115+00:00",
+    "started_at": "2026-11-28T12:08:57.964590+00:00",
+    "status": "completed"
+  },
+  "implementation_commit": "02080bd5b20ee967f820e96ae94e71763ed74564",
+  "next": "WP09.3 diagnostic replay may reuse this bank; no full bank/calibrator/evaluation or additional SFT without revisiting research scope.",
+  "plan_fingerprint": "5be360669114a460de9aa114309bdf3093e10a888884ffbe1c4c99fc0b10b4f5",
+  "report": {
+    "bank_fingerprint": "8752dbb5c275be1eeaed2b4d5cc431c4a9967cb34b03072f4506a5cf633e28b7",
+    "benchmark_fingerprint": "05c7d4a6e75e763d329c7e89b2c5d4c9f4e3ca98e0b056b61c12d32942d1589d",
+    "calibrator_fitted": false,
+    "evaluation_scored": false,
+    "full_bank_generated": false,
+    "generated_tokens": 23356,
+    "greedy": {
+      "correct": 0,
+      "questions": 20,
+      "verified": 0
+    },
+    "plan_fingerprint": "5be360669114a460de9aa114309bdf3093e10a888884ffbe1c4c99fc0b10b4f5",
+    "schema_version": 1,
+    "scope": "calibration_fit_pilot_only",
+    "summary": {
+      "candidates": 960,
+      "correct_candidates": 0,
+      "covered_question_trials": 0,
+      "fixed_k_correct_trials": 0,
+      "limit": "Necessary pilot diversity screen, not proof of calibration sufficiency. Outcome-group sets may overlap; repeated seeds/prefixes are not independent.",
+      "next": "diagnostic_only_no_calibrator_fit",
+      "prefix_min_samples": 2,
+      "question_trials": 60,
+      "screen_passed": false,
+      "unique_questions": 20,
+      "unique_questions_with_any_correct_prefix": 0,
+      "unique_questions_with_any_verified_prefix": 0,
+      "unique_questions_with_any_wrong_prefix": 20,
+      "verified_correct_candidates": 0,
+      "verified_covered_question_trials": 0
+    },
+    "threshold_partition_scored": false,
+    "work_package": "WP09.2"
+  },
+  "run_directory": "artifacts/wp09-2/runs/20261128T120857964590Z-wp09-2-stochastic-pilot-seed42-b7375a52",
+  "runtime": {
+    "cuda": "12.8",
+    "cudnn_tf32": false,
+    "deterministic": true,
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "matmul_tf32": false,
+    "num_threads": 1,
+    "torch": "2.9.1+cu128"
+  },
+  "scope": "bounded calibration_fit pilot, not full bank",
+  "status": "pilot_completed_no_go",
+  "unanimous_trials_by_k": {
+    "16": 39,
+    "2": 51,
+    "4": 46,
+    "8": 43
+  },
+  "work_package": "WP09.2"
+}

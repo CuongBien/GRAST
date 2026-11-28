@@ -121,6 +121,11 @@ và main benchmark200 câu với fact groups không trùng. Probe mới0/48, con
 khớp inference trước đó: trạng thái diagnostic_only. Chưa generate/chấm200 câu main;
 WP09.2 bắt đầu pilot trên calibration_fit trước khi quyết định thu bank đầy đủ.
 
+[Pilot WP09.2 đã hoàn tất](wp09_pilot.md):20 câu,3 seeds,K16;0/960 candidates đúng,
+prefix winner không có positive, greedy0/20. Bank lưu đầy đủ token/logprob/order và
+có thể replay offline. Screen không đạt; không mở full bank, không fit calibrator,
+không chấm threshold/evaluation. Bước phù hợp kế tiếp là diagnostic replay trong WP09.3.
+
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 
 *When Does Confidence-Gated Test-Time Scaling Fail? A Study of Reliability and

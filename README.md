@@ -77,6 +77,9 @@ gate development6/48→45/48; WP03 2/4, authored43/44. Chỉ3 câu sai nên bư�
 là khóa benchmark/split WP09.1 trước calibration, không train thêm vòng SFT.
 [WP09.1 đã khóa benchmark diagnostic](docs/wp09_confidence.md): probe mới0/48,
 200 câu chia fit60/threshold40/evaluation100; chưa đạt gate cho calibration/efficacy.
+[WP09.2 pilot đã có bank tái sử dụng](docs/wp09_pilot.md):960 candidates,
+oracle0/60 trials, greedy0/20;39/60 trials unanimous ởK16 nhưng sai.
+Chưa fit calibrator hoặc mở evaluation.
 
 1. **Đồ án:** *When Does Confidence-Gated Test-Time Scaling Fail? A Study of
    Reliability and Compute Efficiency in Small Language Models.* Nghiên cứu confidence

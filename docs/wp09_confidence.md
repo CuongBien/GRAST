@@ -18,6 +18,9 @@ chỉ báo cáo latency khi có đo online.
 
 ## Trạng thái WP09.1 — 28/11/2026
 
+[Pilot WP09.2 đã chạy](wp09_pilot.md):960 candidates/20 câu/3 seeds,
+0 candidates đúng, greedy0/20; giữ diagnostic_only, không tự mở full bank/calibration.
+
 **Đã khóa benchmark ở chế độ diagnostic_only. Chưa đạt screen để tuyên bố có workload
 phù hợp calibration/efficacy.** Probe cố định48 câu cho kết quả0/48 final đúng,
 format48/48 hợp lệ; không đổi rule hoặc tìm thêm vòng probe sau kết quả này.
