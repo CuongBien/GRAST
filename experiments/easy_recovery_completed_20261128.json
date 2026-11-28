@@ -4,11 +4,22 @@
     "earliest_best_selection_rule": true,
     "exact_runtime_resume_tested_locally": false,
     "full_checkpoint_counters_optimizer_history": true,
+    "full_local_regression": {
+      "passed": 950,
+      "seconds": 291.31,
+      "source_revision": "65f646bfba0b76918d74c1e451f36e5fe6961ef3"
+    },
     "implementation_100_files_match": true,
     "independent_gate_rescoring": true,
     "local_fp32_generation_matches_gate_metrics": true,
     "selected_export_matches_checkpoint_best": true,
     "source_and_dataset_pins": true
+  },
+  "ci_followup": {
+    "initial_run_id": 46138724322,
+    "local_reproduction": "950 tests passed; failure not reproduced",
+    "next": "Rerun CI with this added verification receipt; no training/package source changes.",
+    "windows": "failed at pytest; detailed log unavailable through anonymous access"
   },
   "date": "2026-11-28",
   "local_generation": {
