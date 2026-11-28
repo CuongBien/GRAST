@@ -143,7 +143,7 @@ Kit portable trong `dist/` gồm bank/question-only inputs, references tách ri�
 source outputs và portable configs; không có weights. Dùng đúng implementation
 commit để tái lập source/trace fingerprints; không bảo đảm bitwise giữa mọi BLAS/OS.
 
-**WP09.4B đã hoàn tất phần engineering. Bước tiếp theo là implement WP09.5** và kiểm
-thử policy/threshold trên fixtures có hai outcome classes. Bank thật tiếp tục chỉ
+**WP09.4B đã hoàn tất phần engineering. [WP09.5 đã implement và kiểm thử](wp09_policies.md)**
+policy/threshold trên fixtures có hai outcome classes. Bank thật tiếp tục chỉ
 cho diagnostic raw-score replay; nghiệm thu efficacy của calibration/stopping vẫn
 phụ thuộc dữ liệu có cả đúng và sai, không dùng reserved evaluation để cứu gate.

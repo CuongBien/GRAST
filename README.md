@@ -89,6 +89,9 @@ Chưa có dữ liệu đúng/sai đủ để fit calibration/threshold.
 [WP09.4B đã có calibration engine](docs/wp09_calibration.md): logistic NumPy,
 artifact save/load, synthetic held-out Brier0,4357→0,2033. Đây là engineering verification;
 pilot thật0 positive groups nên chưa fit model calibrator. WP09.5 có thể implement tiếp.
+[WP09.5 đã implement threshold và CGES-style](docs/wp09_policies.md): synthetic selection/freeze
+trước evaluation; real replay29 methods/1.700 decisions, accuracy đều0%. Real calibrated
+policies chưa chạy; không chọn real threshold hoặc mở held-out model evaluation.
 
 1. **Đồ án:** *When Does Confidence-Gated Test-Time Scaling Fail? A Study of
    Reliability and Compute Efficiency in Small Language Models.* Nghiên cứu confidence

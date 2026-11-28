@@ -26,7 +26,10 @@ accuracy đều0%; phân biệt prefix/batch cost và wrong early stop với ful
 raw-agreement reliability và error cases trên960 prefixes. Không fit calibrator;
 [WP09.4B đã hoàn tất implementation/synthetic verification](wp09_calibration.md):
 logistic calibrator, lưu/nạp và split/context guards. Pilot thật0 positive groups nên
-chưa fit real calibrator; WP09.5 có thể tiếp tục engineering với efficacy gate tách riêng.
+chưa fit real calibrator.
+[WP09.5 engineering đã hoàn tất](wp09_policies.md): raw/calibrated threshold, CGES-style
+online adaptation, synthetic threshold freeze/evaluation và29-method real diagnostic.
+Không fit real calibrator, không chọn real threshold hoặc mở real evaluation.
 
 **Đã khóa benchmark ở chế độ diagnostic_only. Chưa đạt screen để tuyên bố có workload
 phù hợp calibration/efficacy.** Probe cố định48 câu cho kết quả0/48 final đúng,

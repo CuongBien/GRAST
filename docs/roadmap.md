@@ -134,7 +134,10 @@ vẫn no-go; không gọi replay cost là online latency.
 Raw ECE/Brier chỉ mô tả; AUROC undefined vì một lớp, không fit calibrator.
 [WP09.4B đã implement và verify trên synthetic](wp09_calibration.md), artifact nạp lại
 exact và ranh giới fit/assessment được kiểm thử. Pilot thật0 positive/20 negative groups
-nên không fit calibrator thật. Tiếp theo implement WP09.5; scientific efficacy vẫn chưa đạt.
+nên không fit calibrator thật.
+[WP09.5 đã implement/verify policies](wp09_policies.md): synthetic selection và reload
+trước evaluation, real29 methods/1.700 decisions đều accuracy0%. Bước kế tiếp WP09.6
+tổng hợp evidence và failure analysis; real-calibration/held-out efficacy chưa đạt.
 
 ## Giai đoạn 1 — đồ án, hạn 01/12/2026
 
