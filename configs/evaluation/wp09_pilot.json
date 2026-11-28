@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "benchmark_fingerprint": "05c7d4a6e75e763d329c7e89b2c5d4c9f4e3ca98e0b056b61c12d32942d1589d",
+  "selection_seed": 20261130,
+  "questions_per_stratum": 10,
+  "minimum_independent_correct_groups": 5,
+  "minimum_independent_wrong_groups": 5,
+  "minimum_independent_verified_groups": 5,
+  "decision_rule": "All three group-count screens must pass at prefix n>=2 to justify expanding calibration_fit only. Otherwise diagnostic_only; no automatic full bank or calibration fitting."
+}

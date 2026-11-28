@@ -1,0 +1,70 @@
+{
+  "bank": {
+    "batch_size": 8,
+    "checkpoint": "easy-recovery-selected-900",
+    "greedy_separate": true,
+    "max_candidates": 16,
+    "max_new_tokens": 128,
+    "precision": "float32",
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "share_candidate_order_across_policies": true,
+    "temperature": 0.8,
+    "top_k": 0,
+    "top_p": 0.95
+  },
+  "benchmark_fingerprint": "05c7d4a6e75e763d329c7e89b2c5d4c9f4e3ca98e0b056b61c12d32942d1589d",
+  "checkpoint_sha256": "6b24c29a7be8b4700bbd92b6e1d87e88e64e670fe2378437b18dc97abd8d4a97",
+  "config": {
+    "benchmark_fingerprint": "05c7d4a6e75e763d329c7e89b2c5d4c9f4e3ca98e0b056b61c12d32942d1589d",
+    "decision_rule": "All three group-count screens must pass at prefix n>=2 to justify expanding calibration_fit only. Otherwise diagnostic_only; no automatic full bank or calibration fitting.",
+    "minimum_independent_correct_groups": 5,
+    "minimum_independent_verified_groups": 5,
+    "minimum_independent_wrong_groups": 5,
+    "questions_per_stratum": 10,
+    "schema_version": 1,
+    "selection_seed": 20261130
+  },
+  "files": {
+    "questions.jsonl": "8f925cc24ee289b6b5ce2fed285ca1dc12eaab9ea43046fc0930ab9707f7bbc5",
+    "tokenizer/merges.json": "7a631cf8143b67db9c4246ed83a54d680f5300e55236851a1429d46551d0d8ed",
+    "tokenizer/tokenizer_config.json": "fae3d75d7ddb0fda306c7608f6caff65b47f5a33a4b2a486174c7b597d2a8210",
+    "tokenizer/tokenizer_manifest.json": "b98d98bdb58c7c7fe4e1fa2d6e7759449e84ab02a504777fa8a8738c94a30268",
+    "tokenizer/vocab.json": "9f5cf82719d7e2edc94b95937c1c699a25db6566e12c03958785f2aec5aee7b6"
+  },
+  "fingerprint": "5be360669114a460de9aa114309bdf3093e10a888884ffbe1c4c99fc0b10b4f5",
+  "min_samples": 2,
+  "question_ids": [
+    "wp09-f5db41ae49866a70878ac0a9289f20709203879bedb699b7c081f687a0a6794e",
+    "wp09-ae309d76148db09883c972b7b5d49c050bfcaa4fdea579b548bfe9edd6bbe481",
+    "wp09-a8f21fa4e3e8ad074cedd9ff90ed7d47cce40966e7526da544ff478f4d7cd831",
+    "wp09-c9584f2b3dfea67dfcb9c62d83f2a896fd43ce48cf94ef6ea7721c4b3fe46cff",
+    "wp09-4d40d47b7a631f6ea71a06b9e908aa62635d4a7192f0372258393064847dbe35",
+    "wp09-7c330745563364c983316f2b44505dd4b3acc0320800e14eca6e2bbd938dac97",
+    "wp09-ddea1f42afd9b0c6b864d070c4ab76b147b37f2a917cd4b2bfd20fa57c1cb58c",
+    "wp09-ebb8c1abbada110874175019a73ca6db94f7b24fa7e573528791dd9d30745e69",
+    "wp09-080c880c7cdbfaf498ab269814d17573fc05564efcfdb65a2d5db513a6d51759",
+    "wp09-14bad027a6efc3ba2d1b6e1982d554b274dc8907bab316a4b85183ac272d59e6",
+    "wp09-a67003b3c2717189405cb7d8d908f0b07b6b38b97c91ad4ab5157aedd5c68e98",
+    "wp09-c2ecb0ec4a4a021d93ade3460eab35e4cf1d27cd01ca81647f6940f5117ddb5d",
+    "wp09-1571b6a8f588548df8a90696cbf2e7b0e8d1efb52a92efc3f5fa6a0d3f0dec36",
+    "wp09-5bbd24cd50b01089c8f73a02712028003c95a43fba56204f6971960f3c8608d4",
+    "wp09-87ce3a8527b6a1f6a007d15d388e7ea105188ed31ef7a5c31373311d56845e52",
+    "wp09-6bd127ea2af5a49e0b5650cec904682b0b158259b15d774b68f66330c7c87ba7",
+    "wp09-e47821216315703e88d0f4f8b22111d00f4e0c75dded8191eaac4aa734170dd7",
+    "wp09-90af6f09afbf7ddc7f7c10f3e665795f7b6e95ff8f76b9f519af9962914b7a24",
+    "wp09-7b73f51cb79c47d87877ef0d4782ab18daf73fdeb7f08a3c0f3ebda05ca95668",
+    "wp09-cf55eef4032d23ced6549c3f48a3e5af887e6a05f759897240935c44b7e8c756"
+  ],
+  "schema_version": 1,
+  "scope": "calibration_fit_pilot_only",
+  "strata_counts": {
+    "boundary-100": 10,
+    "cross-medium": 10
+  },
+  "tokenizer_fingerprint": "49187f5c5a806801ae6fc86cce7a9e6ca26d54d81cc989b361bbc76724abada3",
+  "work_package": "WP09.2"
+}
